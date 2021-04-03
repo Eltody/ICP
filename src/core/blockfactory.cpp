@@ -112,6 +112,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MATH_GT:
         b = new MathGTBlock(g);
         break;
+    case MATH_LT:
+        b = new MathLTBlock(g);
+        break;
 	default:
 		return nullptr;
 	}

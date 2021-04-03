@@ -176,3 +176,23 @@ public:
     //! Virtual destructor to prevent leaks
     virtual ~MathGTBlock() = default;
 };
+
+
+/**
+ * @brief Less value than another block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathLTBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathLTBlock(Graph &g);
+
+    //! Performs the square root
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathLTBlock() = default;
+};

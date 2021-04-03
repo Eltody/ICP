@@ -169,3 +169,29 @@ void MathGTBlock::Compute(){
         this->Output(0)["Hodnota"] = -this->Output(0)["Hodnota"];
     }
 }
+
+
+// blok pre vyhodnotenie menšieho čísla z dvoch - LT - less than
+MathLTBlock::MathLTBlock(Graph &g)
+    : BlockBase(g, MATH_LT, BLOCK_NAME.at(MATH_LT),
+    {
+        InPort(*this, math(), "Číslo A"),
+        InPort(*this, math(), "Číslo B")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// vyhodnotenie menšieho čísla z dvoch - LT - less than
+void MathLTBlock::Compute(){
+    if (this->Input(0)["Hodnota"] < this->Input(1)["Hodnota"]){
+        this->Output(0)["Hodnota"] = -this->Input(0)["Hodnota"];
+        this->Output(0)["Hodnota"] = -this->Output(0)["Hodnota"];
+    }
+    else{
+        this->Output(0)["Hodnota"] = -this->Input(1)["Hodnota"];
+        this->Output(0)["Hodnota"] = -this->Output(0)["Hodnota"];
+    }
+}

@@ -100,6 +100,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MATH_GT:
         b = new BlockUI<MathGTBlock>(MathGTBlock(g), gp);
         break;
+    case MATH_LT:
+        b = new BlockUI<MathLTBlock>(MathLTBlock(g), gp);
+        break;
     case MAT_DETERMINANT:
         b = new BlockUI<MatrixDeterminantBlock>(MatrixDeterminantBlock(g), gp);
         break;
