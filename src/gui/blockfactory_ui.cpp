@@ -82,6 +82,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
 	case MAT_MUL_VEC:
 		b = new BlockUI<MatMulVecBlock>(MatMulVecBlock(g), gp);
 		break;
+    case MAT_SUB:
+        b = new BlockUI<MatrixSubBlock>(MatrixSubBlock(g), gp);
+        break;
 	default:
 		return nullptr;
 	}

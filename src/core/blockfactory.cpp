@@ -85,6 +85,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
 	case MAT_MUL_VEC:
 		b = new MatMulVecBlock(g);
 		break;
+    case MAT_SUB:
+        b = new MatrixSubBlock(g);
+        break;
 	default:
 		return nullptr;
 	}

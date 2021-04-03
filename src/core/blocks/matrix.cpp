@@ -184,3 +184,30 @@ void Matrix3x3MulBlock::Compute(){
     this->Output(0)["m32"] = (this->Input(0)["m31"] * this->Input(1)["m12"]) + (this->Input(0)["m32"] * this->Input(1)["m22"]) + (this->Input(0)["m33"] * this->Input(1)["m32"]);
     this->Output(0)["m33"] = (this->Input(0)["m31"] * this->Input(1)["m13"]) + (this->Input(0)["m32"] * this->Input(1)["m23"]) + (this->Input(0)["m33"] * this->Input(1)["m33"]);
 }
+
+
+
+
+//*****************************************************************************//
+
+// blok pre sčítanie matíc 2x2
+MatrixSubBlock::MatrixSubBlock(Graph &g)
+    : BlockBase(g, MAT_SUB, BLOCK_NAME.at(MAT_SUB),
+    {
+        InPort(*this, mat2(), "Matica A"),
+        InPort(*this, mat2(), "Matica B")
+    },
+    {
+        OutPort(*this, mat2(), "Výstup")
+    }
+    ){}
+
+
+// výpočet sčítania matíc 2x2
+void MatrixSubBlock::Compute(){
+    this->Output(0)["m11"] = this->Input(0)["m11"] - this->Input(1)["m11"];
+    this->Output(0)["m12"] = this->Input(0)["m12"] - this->Input(1)["m12"];
+    this->Output(0)["m21"] = this->Input(0)["m21"] - this->Input(1)["m21"];
+    this->Output(0)["m22"] = this->Input(0)["m22"] - this->Input(1)["m22"];
+}
+
