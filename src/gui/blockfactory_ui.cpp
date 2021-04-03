@@ -106,6 +106,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MATH_SIN:
         b = new BlockUI<MathSinBlock>(MathSinBlock(g), gp);
         break;
+    case MATH_COS:
+        b = new BlockUI<MathCosBlock>(MathCosBlock(g), gp);
+        break;
     case MAT_DETERMINANT:
         b = new BlockUI<MatrixDeterminantBlock>(MatrixDeterminantBlock(g), gp);
         break;

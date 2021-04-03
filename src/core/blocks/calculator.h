@@ -199,7 +199,7 @@ public:
 
 
 /**
- * @brief Less value than another block class
+ * @brief Sinus block class
  *
  * Construction, computation and destruction of a block.
  */
@@ -215,4 +215,24 @@ public:
     void Compute() override;
     //! Virtual destructor to prevent leaks
     virtual ~MathSinBlock() = default;
+};
+
+
+/**
+ * @brief Cosinus block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathCosBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathCosBlock(Graph &g);
+
+    //! Performs the square root
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathCosBlock() = default;
 };

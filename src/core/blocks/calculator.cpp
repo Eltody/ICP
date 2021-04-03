@@ -213,3 +213,21 @@ MathSinBlock::MathSinBlock(Graph &g)
 void MathSinBlock::Compute(){
         this->Output(0)["Hodnota"] = sin(this->Input(0)["Hodnota"]);
 }
+
+
+// blok pre výpočet cosinusu
+MathCosBlock::MathCosBlock(Graph &g)
+    : BlockBase(g, MATH_COS, BLOCK_NAME.at(MATH_COS),
+    {
+        InPort(*this, math(), "Číslo A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet cosinusu
+void MathCosBlock::Compute(){
+        this->Output(0)["Hodnota"] = cos(this->Input(0)["Hodnota"]);
+}
