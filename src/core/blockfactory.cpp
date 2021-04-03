@@ -13,7 +13,7 @@
 
 #include "blockfactory.h"
 
-#include "blocks/scalar.h"
+#include "blocks/calculator.h"
 #include "blocks/vector.h"
 #include "blocks/matrix.h"
 
@@ -22,12 +22,6 @@
 BlockBase *BlockFactory::AllocBlock(BlockType t){
 	BlockBase *b;
 	switch (t) {
-	case SCAL_INPUT:
-		b = new ScalarInput(g);
-		break;
-	case SCAL_OUTPUT:
-		b = new ScalarOutput(g);
-		break;
 	case VECTOR_INPUT:
 		b = new VectorInput(g);
 		break;
@@ -72,15 +66,6 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
         break;
     case VECTOR_DOTPRODUCT:
         b = new VectorDotProductBlock(g);
-        break;
-    case SCALAR_ADD:
-        b = new ScalarAddBlock(g);
-        break;
-    case SCALAR_SUB:
-        b = new ScalarSubBlock(g);
-        break;
-    case SCALAR_MUL:
-        b = new ScalarMulBlock(g);
         break;
     case MAT_ADD:
         b = new MatrixAddBlock(g);

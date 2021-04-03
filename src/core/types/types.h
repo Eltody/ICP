@@ -11,15 +11,6 @@
 #include "../type.h"
 
 /**
- * @brief Scalar value
- */
-class scal : public Type {
-public:
-	scal();
-	scal(double val);
-};
-
-/**
  * @brief 2D vector
  */
 class vec2 : public Type {
@@ -67,7 +58,6 @@ public:
     math();
     math(double val);
 };
-
 
 
 

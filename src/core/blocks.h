@@ -14,13 +14,11 @@
 //! BlockTypes used for adding blocks, block factories, etc. with assigned numbers for file saves
 enum BlockType {
 	// Input
-	SCAL_INPUT = 0,
 	VECTOR_INPUT = 1,
     VECTOR3D_INPUT = 23,
 	MAT2_INPUT = 2,
     MAT3_INPUT = 19,
 	// Output
-	SCAL_OUTPUT = 3,
 	VECTOR_OUTPUT = 4,
     VECTOR3D_OUTPUT = 24,
 	MAT2_OUTPUT = 5,
@@ -31,10 +29,6 @@ enum BlockType {
     VECTOR_ADD3D = 25,
 	VECTOR_SUB = 11,
     VECTOR_DOTPRODUCT = 12,
-	// Scalar
-    SCALAR_ADD = 13,
-    SCALAR_SUB = 14,
-    SCALAR_MUL = 15,
     // Matrix and Math
 	MAT_ADD = 16,
 	MAT_MUL = 17,
@@ -58,13 +52,11 @@ enum BlockType {
 //! Maps human readable block names to BlockType
 const std::map<BlockType, std::string> BLOCK_NAME = {
 	// Input
-    { SCAL_INPUT, "Skalárny vstup" },
     { VECTOR_INPUT, "Vektorový vstup" },
     { VECTOR3D_INPUT, "3D Vektorový vstup" },
     { MAT2_INPUT, "2x2 Maticový vstup" },
     { MAT3_INPUT, "3x3 Maticový vstup" },
 	// Output
-    { SCAL_OUTPUT, "Skalárny výstup" },
     { VECTOR_OUTPUT, "Vektorový výstup" },
     { VECTOR3D_OUTPUT, "3D Vektorový výstup" },
     { MAT2_OUTPUT, "2x2 Maticový výstup" },
@@ -75,10 +67,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { VECTOR_ADD3D, "3D Vektorové sčítanie"},
     { VECTOR_SUB,  "Vektorové odčítanie"},
     { VECTOR_DOTPRODUCT, "Skalárny súčin" },
-	// Scalar
-    { SCALAR_ADD, "Skalárne sčítanie"},
-    { SCALAR_SUB, "Skalárne odčítanie"},
-    { SCALAR_MUL,  "Skalárne násobenie"},
+
 	// Matrix
     { MAT_ADD, "2x2 Maticové sčítanie"},
     { MAT3_ADD, "3x3 Maticové sčítanie"},
@@ -90,6 +79,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MAT_DETERMINANT, "2x2 Výpočet determinantu matice"},
     { MAT_DETERMINANT_OUTPUT, "Maticový determinant výstup" },
     { MAT_DETERMINANT_INPUT, "2x2 Maticový vstup (pre determinant)" },
+
     // Math
     { MATH_INPUT, "Číselný vstup" },
     { MATH_OUTPUT, "Číselný výstup" },

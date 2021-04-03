@@ -24,8 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    src/core/blocks/calculator.cpp \
     src/core/blocks/matrix.cpp \
-    src/core/blocks/scalar.cpp \
     src/core/blocks/vector.cpp \
     src/gui/style.cpp \
     src/gui/tooltip.cpp \
@@ -45,8 +45,8 @@ SOURCES += \
     src/gui/blockmenu.cpp \
 
 HEADERS += \
+    src/core/blocks/calculator.h \
     src/core/blocks/matrix.h \
-    src/core/blocks/scalar.h \
     src/core/blocks/vector.h \
     src/gui/style.h \
     src/gui/tooltip.h \

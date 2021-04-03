@@ -11,7 +11,7 @@
 #include "graph_ui.h"
 #include "block_ui.h"
 
-#include "../core/blocks/scalar.h"
+#include "../core/blocks/calculator.h"
 #include "../core/blocks/vector.h"
 #include "../core/blocks/matrix.h"
 
@@ -19,12 +19,6 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
 	GraphUI *gp = static_cast<GraphUI*>(&g);
 	BlockBase *b;
 	switch (t) {
-	case SCAL_INPUT:
-		b = new InputBlockUI<ScalarInput>(BlockUI<ScalarInput>(ScalarInput(g), gp), gp);
-		break;
-	case SCAL_OUTPUT:
-		b = new OutputBlockUI<ScalarOutput>(BlockUI<ScalarOutput>(ScalarOutput(g), gp), gp);
-		break;
 	case VECTOR_INPUT:
 		b = new InputBlockUI<VectorInput>(BlockUI<VectorInput>(VectorInput(g), gp), gp);
 		break;
@@ -63,15 +57,6 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
         break;
     case VECTOR_DOTPRODUCT:
 		b = new BlockUI<VectorDotProductBlock>(VectorDotProductBlock(g), gp);
-        break;
-    case SCALAR_ADD:
-		b = new BlockUI<ScalarAddBlock>(ScalarAddBlock(g), gp);
-        break;
-    case SCALAR_SUB:
-		b = new BlockUI<ScalarSubBlock>(ScalarSubBlock(g), gp);
-        break;
-    case SCALAR_MUL:
-		b = new BlockUI<ScalarMulBlock>(ScalarMulBlock(g), gp);
         break;
     case MAT_ADD:
 		b = new BlockUI<MatrixAddBlock>(MatrixAddBlock(g), gp);

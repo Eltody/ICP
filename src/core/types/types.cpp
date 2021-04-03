@@ -13,13 +13,6 @@
 
 #include "types.h"
 
-scal::scal() : Type{"Hodnota"} { }
-
-scal::scal(double val) : scal()
-{
-    operator[]("Hodnota") = val;
-}
-
 vec2::vec2() : Type{"x", "y"} { }
 
 vec2::vec2(double x, double y) : vec2()

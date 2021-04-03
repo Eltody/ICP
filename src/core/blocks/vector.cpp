@@ -96,7 +96,7 @@ VectorDotProductBlock::VectorDotProductBlock(Graph &g)
         InPort(*this, vec2(), "Vektor B")
     },
     {
-        OutPort(*this, scal(), "Výstup")
+        OutPort(*this, math(), "Výstup")
     }
     ){}
 

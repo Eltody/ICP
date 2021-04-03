@@ -15,10 +15,8 @@
 
 BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     auto matrix = menu.addMenu("Matica");
-    auto scalar = menu.addMenu("Skalár");
     auto vector = menu.addMenu("Vektor");
     auto math = menu.addMenu("Kalkulačka");
-
 
 
     matrix->addAction(new BlockMenuAction(MAT2_INPUT, QIcon()));
@@ -37,13 +35,6 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     matrix->addAction(new BlockMenuAction(MAT_DETERMINANT, QIcon()));
 
 
-	scalar->addAction(new BlockMenuAction(SCAL_INPUT, QIcon()));
-	scalar->addAction(new BlockMenuAction(SCAL_OUTPUT, QIcon()));
-	scalar->addAction(new BlockMenuAction(SCALAR_ADD, QIcon()));
-	scalar->addAction(new BlockMenuAction(SCALAR_SUB, QIcon()));
-    scalar->addAction(new BlockMenuAction(SCALAR_MUL, QIcon()));
-
-
 	vector->addAction(new BlockMenuAction(VECTOR_INPUT, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR3D_INPUT, QIcon()));
 	vector->addAction(new BlockMenuAction(VECTOR_OUTPUT, QIcon()));
@@ -51,6 +42,7 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
 	vector->addAction(new BlockMenuAction(VECTOR_ADD, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR_ADD3D, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR_DOTPRODUCT, QIcon()));
+
 
     math->addAction(new BlockMenuAction(MATH_INPUT, QIcon()));
     math->addAction(new BlockMenuAction(MATH_OUTPUT, QIcon()));
