@@ -99,6 +99,25 @@ public:
 };
 
 
+/**
+ * @brief The vector subtraction block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class VectorSubBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    VectorSubBlock(Graph &g);
+
+    //! Performs the vector addition
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~VectorSubBlock() = default;
+};
+
 
 
 /**

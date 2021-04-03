@@ -55,6 +55,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
 	case VECTOR_ADD:
 		b = new BlockUI<VectorAddBlock>(VectorAddBlock(g), gp);
 		break;
+    case VECTOR_SUB:
+        b = new BlockUI<VectorSubBlock>(VectorSubBlock(g), gp);
+        break;
     case VECTOR_ADD3D:
         b = new BlockUI<VectorAddBlock3D>(VectorAddBlock3D(g), gp);
         break;
