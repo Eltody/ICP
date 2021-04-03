@@ -26,8 +26,11 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g)
 	scalar->addAction(new BlockMenuAction(SCALAR_MUL, QIcon()));
 
 	vector->addAction(new BlockMenuAction(VECTOR_INPUT, QIcon()));
+    vector->addAction(new BlockMenuAction(VECTOR3D_INPUT, QIcon()));
 	vector->addAction(new BlockMenuAction(VECTOR_OUTPUT, QIcon()));
+    vector->addAction(new BlockMenuAction(VECTOR3D_OUTPUT, QIcon()));
 	vector->addAction(new BlockMenuAction(VECTOR_ADD, QIcon()));
+    vector->addAction(new BlockMenuAction(VECTOR_ADD3D, QIcon()));
 	vector->addAction(new BlockMenuAction(VECTOR_DOTPRODUCT, QIcon()));
 
 	matrix->addAction(new BlockMenuAction(MAT2_INPUT, QIcon()));

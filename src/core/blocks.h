@@ -16,16 +16,19 @@ enum BlockType {
 	// Input
 	SCAL_INPUT = 0,
 	VECTOR_INPUT = 1,
+    VECTOR3D_INPUT = 23,
 	MAT2_INPUT = 2,
     MAT3_INPUT = 19,
 	// Output
 	SCAL_OUTPUT = 3,
 	VECTOR_OUTPUT = 4,
+    VECTOR3D_OUTPUT = 24,
 	MAT2_OUTPUT = 5,
     MAT3_OUTPUT = 20,
 	
 	// Vector
 	VECTOR_ADD = 10,
+    VECTOR_ADD3D = 25,
 	VECTOR_SUB = 11,
     VECTOR_DOTPRODUCT = 12,
 	// Scalar
@@ -45,16 +48,19 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
 	// Input
 	{ SCAL_INPUT, "Scalar Input" },
 	{ VECTOR_INPUT, "Vector Input" },
+    { VECTOR3D_INPUT, "Vector 3D Input" },
     { MAT2_INPUT, "Matrix 2x2 Input" },
     { MAT3_INPUT, "Matrix 3x3 Input" },
 	// Output
 	{ SCAL_OUTPUT, "Scalar Output" },
 	{ VECTOR_OUTPUT, "Vector Output" },
+    { VECTOR3D_OUTPUT, "Vector 3D Output" },
     { MAT2_OUTPUT, "Matrix 2x2 Output" },
     { MAT3_OUTPUT, "Matrix 3x3 Output" },
 
 	// Vector
 	{ VECTOR_ADD, "Vector Add"},
+    { VECTOR_ADD3D, "Vector 3D Add"},
 	/*{ VECTOR_SUB,  "Vector Sub"},*/
 	{ VECTOR_DOTPRODUCT, "Vector Dot Product" },
 	// Scalar

@@ -28,6 +28,8 @@ SOURCES += \
     src/core/blocks/matrix3x3_io.cpp \
     src/core/blocks/matrixaddblock3x3.cpp \
     src/core/blocks/matrixmulblock3x3.cpp \
+    src/core/blocks/vector3D_io.cpp \
+    src/core/blocks/vectoraddblock3D.cpp \
     src/gui/style.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
@@ -61,6 +63,8 @@ HEADERS += \
     src/core/blocks/matrix3x3_io.h \
     src/core/blocks/matrixaddblock3x3.h \
     src/core/blocks/matrixmulblock3x3.h \
+    src/core/blocks/vector3D_io.h \
+    src/core/blocks/vectoraddblock3D.h \
     src/gui/style.h \
     src/gui/tooltip.h \
     src/core/type.h \

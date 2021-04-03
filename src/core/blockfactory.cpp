@@ -9,9 +9,11 @@
 
 #include "blocks/scalar_io.h"
 #include "blocks/vector_io.h"
+#include "blocks/vector3D_io.h"
 #include "blocks/matrix_io.h"
 #include "blocks/matrix3x3_io.h"
 #include "blocks/vectoraddblock.h"
+#include "blocks/vectoraddblock3D.h"
 #include "blocks/vectordotproductblock.h"
 #include "blocks/scalaraddblock.h"
 #include "blocks/scalarsubblock.h"
@@ -35,9 +37,15 @@ BlockBase *BlockFactory::AllocBlock(BlockType t)
 	case VECTOR_INPUT:
 		b = new VectorInput(g);
 		break;
+    case VECTOR3D_INPUT:
+        b = new Vector3DInput(g);
+        break;
 	case VECTOR_OUTPUT:
 		b = new VectorOutput(g);
 		break;
+    case VECTOR3D_OUTPUT:
+        b = new Vector3DOutput(g);
+        break;
 	case MAT2_INPUT:
 		b = new MatrixInput(g);
 		break;
@@ -53,6 +61,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t)
 	case VECTOR_ADD:
 		b = new VectorAddBlock(g);
 		break;
+    case VECTOR_ADD3D:
+        b = new VectorAddBlock3D(g);
+        break;
     case VECTOR_DOTPRODUCT:
         b = new VectorDotProductBlock(g);
         break;

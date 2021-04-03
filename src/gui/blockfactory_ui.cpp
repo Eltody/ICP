@@ -13,9 +13,11 @@
 
 #include "../core/blocks/scalar_io.h"
 #include "../core/blocks/vector_io.h"
+#include "../core/blocks/vector3D_io.h"
 #include "../core/blocks/matrix_io.h"
 #include "../core/blocks/matrix3x3_io.h"
 #include "../core/blocks/vectoraddblock.h"
+#include "../core/blocks/vectoraddblock3D.h"
 #include "../core/blocks/vectordotproductblock.h"
 #include "../core/blocks/scalaraddblock.h"
 #include "../core/blocks/scalarsubblock.h"
@@ -41,8 +43,14 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t)
 	case VECTOR_INPUT:
 		b = new InputBlockUI<VectorInput>(BlockUI<VectorInput>(VectorInput(g), gp), gp);
 		break;
-	case VECTOR_OUTPUT:
-		b = new OutputBlockUI<VectorOutput>(BlockUI<VectorOutput>(VectorOutput(g), gp), gp);
+    case VECTOR3D_INPUT:
+        b = new InputBlockUI<Vector3DInput>(BlockUI<Vector3DInput>(Vector3DInput(g), gp), gp);
+        break;
+    case VECTOR_OUTPUT:
+        b = new OutputBlockUI<VectorOutput>(BlockUI<VectorOutput>(VectorOutput(g), gp), gp);
+        break;
+    case VECTOR3D_OUTPUT:
+        b = new OutputBlockUI<Vector3DOutput>(BlockUI<Vector3DOutput>(Vector3DOutput(g), gp), gp);
 		break;
 	case MAT2_INPUT:
 		b = new InputBlockUI<MatrixInput>(BlockUI<MatrixInput>(MatrixInput(g), gp), gp);
@@ -59,6 +67,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t)
 	case VECTOR_ADD:
 		b = new BlockUI<VectorAddBlock>(VectorAddBlock(g), gp);
 		break;
+    case VECTOR_ADD3D:
+        b = new BlockUI<VectorAddBlock3D>(VectorAddBlock3D(g), gp);
+        break;
     case VECTOR_DOTPRODUCT:
 		b = new BlockUI<VectorDotProductBlock>(VectorDotProductBlock(g), gp);
         break;

@@ -22,6 +22,15 @@ vec2::vec2(double x, double y) : vec2()
 	operator[]("y") = y;
 }
 
+vec3::vec3() : Type{"x", "y", "z"} { }
+
+vec3::vec3(double x, double y, double z) : vec3()
+{
+    operator[]("x") = x;
+    operator[]("y") = y;
+    operator[]("z") = z;
+}
+
 mat2::mat2() : Type{"m11", "m12", "m21", "m22"} { }
 
 mat2::mat2(double m11, double m12, double m21, double m22) : mat2()
