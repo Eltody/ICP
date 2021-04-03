@@ -7,19 +7,11 @@
 
 #include "blockfactory.h"
 
-#include "blocks/scalar_io.h"
-#include "blocks/vector_io.h"
-#include "blocks/vector3D_io.h"
+#include "blocks/scalar.h"
+#include "blocks/vector.h"
 #include "blocks/matrix.h"
-#include "blocks/vectoraddblock.h"
-#include "blocks/vectoraddblock3D.h"
-#include "blocks/vectordotproductblock.h"
-#include "blocks/scalaraddblock.h"
-#include "blocks/scalarsubblock.h"
-#include "blocks/scalarmulblock.h"
 
-BlockBase *BlockFactory::AllocBlock(BlockType t)
-{
+BlockBase *BlockFactory::AllocBlock(BlockType t){
 	BlockBase *b;
 	switch (t) {
 	case SCAL_INPUT:
@@ -92,16 +84,14 @@ BlockBase *BlockFactory::AllocBlock(BlockType t)
 	return b;
 }
 
-void BlockFactory::FreeBlock(BlockBase *b)
-{
+void BlockFactory::FreeBlock(BlockBase *b){
 	blocks.remove(b);
 	delete b;
 }
 
 BlockFactory::BlockFactory(Graph &g) : g(g) { }
 
-BlockFactory::~BlockFactory()
-{
+BlockFactory::~BlockFactory(){
 	for(BlockBase *b : blocks){
 		delete b;
 	}

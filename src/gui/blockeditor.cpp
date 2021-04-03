@@ -279,18 +279,18 @@ void BLOCKEDITOR::help(){
 }
 
 bool BLOCKEDITOR::maybeSave(){
-	if(this->isWindowModified()) {
+    if(this->isWindowModified()){
         QMessageBox ret(QMessageBox::Question, tr("Uložiť?"), tr("Plocha bola upravená.\nPrajete si uložiť vykonané zmeny?"), QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
         ret.setButtonText(QMessageBox::Save, tr("Uložiť"));
         ret.setButtonText(QMessageBox::Discard, tr("Zahodiť"));
         ret.setButtonText(QMessageBox::Cancel, tr("Zrušiť"));
         ret.exec();
 
-        if (ret.exec() == QMessageBox::Save) {
+        if (ret.exec() == QMessageBox::Save){
             return save();
         }
         else {
-            if (ret.exec() == QMessageBox::Cancel) {
+            if (ret.exec() == QMessageBox::Cancel){
             return false;
             }
         }

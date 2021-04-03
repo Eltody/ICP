@@ -24,21 +24,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    src/core/blocks/matmulvecblock3x3.cpp \
     src/core/blocks/matrix.cpp \
-    src/core/blocks/matrix3x3_io.cpp \
-    src/core/blocks/matrixaddblock3x3.cpp \
-    src/core/blocks/matrixmulblock3x3.cpp \
-    src/core/blocks/vector3D_io.cpp \
-    src/core/blocks/vectoraddblock3D.cpp \
+    src/core/blocks/scalar.cpp \
+    src/core/blocks/vector.cpp \
     src/gui/style.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
     src/core/type.cpp \
     src/core/port.cpp \
     src/core/blockbase.cpp \
-    src/core/blocks/vectoraddblock.cpp \
-    src/core/blocks/vector_io.cpp \
     src/gui/connection_ui.cpp \
     src/gui/port_ui.cpp \
     src/gui/blockeditor.cpp \
@@ -47,33 +41,18 @@ SOURCES += \
     src/core/blockfactory.cpp \
     src/gui/blockfactory_ui.cpp \
     src/gui/graph_ui.cpp \
-    src/core/blocks/vectordotproductblock.cpp \
-    src/core/blocks/scalaraddblock.cpp \
-    src/core/blocks/matrixmulblock.cpp \
-    src/core/blocks/matrixaddblock.cpp \
-    src/core/blocks/scalarsubblock.cpp \
-    src/core/blocks/scalarmulblock.cpp \
-    src/core/blocks/scalar_io.cpp \
-    src/core/blocks/matrix_io.cpp \
     src/gui/alert.cpp \
     src/gui/blockmenu.cpp \
-    src/core/blocks/matmulvecblock.cpp
 
 HEADERS += \
-    src/core/blocks/matmulvecblock3x3.h \
     src/core/blocks/matrix.h \
-    src/core/blocks/matrix3x3_io.h \
-    src/core/blocks/matrixaddblock3x3.h \
-    src/core/blocks/matrixmulblock3x3.h \
-    src/core/blocks/vector3D_io.h \
-    src/core/blocks/vectoraddblock3D.h \
+    src/core/blocks/scalar.h \
+    src/core/blocks/vector.h \
     src/gui/style.h \
     src/gui/tooltip.h \
     src/core/type.h \
     src/core/port.h \
     src/core/blockbase.h \
-    src/core/blocks/vectoraddblock.h \
-    src/core/blocks/vector_io.h \
     src/gui/connection_ui.h \
     src/gui/block_ui.h \
     src/gui/port_ui.h \
@@ -84,17 +63,8 @@ HEADERS += \
     src/core/blocks.h \
     src/gui/blockfactory_ui.h \
     src/gui/graph_ui.h \
-    src/core/blocks/vectordotproductblock.h \
-    src/core/blocks/scalaraddblock.h \
-    src/core/blocks/matrixaddblock.h \
-    src/core/blocks/matrixmulblock.h \
-    src/core/blocks/scalarsubblock.h \
-    src/core/blocks/scalarmulblock.h \
-    src/core/blocks/scalar_io.h \
-    src/core/blocks/matrix_io.h \
     src/gui/alert.h \
     src/gui/blockmenu.h \
-    src/core/blocks/matmulvecblock.h
 
 FORMS += \
     src/gui/blockeditor.ui

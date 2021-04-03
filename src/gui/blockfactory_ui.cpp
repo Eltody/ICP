@@ -11,19 +11,11 @@
 #include "graph_ui.h"
 #include "block_ui.h"
 
-#include "../core/blocks/scalar_io.h"
-#include "../core/blocks/vector_io.h"
-#include "../core/blocks/vector3D_io.h"
+#include "../core/blocks/scalar.h"
+#include "../core/blocks/vector.h"
 #include "../core/blocks/matrix.h"
-#include "../core/blocks/vectoraddblock.h"
-#include "../core/blocks/vectoraddblock3D.h"
-#include "../core/blocks/vectordotproductblock.h"
-#include "../core/blocks/scalaraddblock.h"
-#include "../core/blocks/scalarsubblock.h"
-#include "../core/blocks/scalarmulblock.h"
 
-BlockBase *BlockFactoryUI::AllocBlock(BlockType t)
-{
+BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
 	GraphUI *gp = static_cast<GraphUI*>(&g);
 	BlockBase *b;
 	switch (t) {
