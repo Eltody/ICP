@@ -47,7 +47,8 @@ enum BlockType {
     MAT_DETERMINANT_INPUT = 35,
     MAT_DETERMINANT_OUTPUT = 36,
     MATH_SQRT = 37,
-    MATH_ABS = 38
+    MATH_ABS = 38,
+    MATH_GT = 39
 };
 
 //! Maps human readable block names to BlockType
@@ -90,6 +91,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MATH_DIV, "Delenie dvoch čísel"},
     { MATH_SQRT, "Druhá odmocnina čísla"},
     { MATH_ABS, "Absolútna hodnota čísla"},
+    { MATH_GT, "Porovnanie čísel - väčšie ako"},
 };
 
 #endif // BLOCKS_H

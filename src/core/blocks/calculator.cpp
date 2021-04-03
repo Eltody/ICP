@@ -143,3 +143,29 @@ MathAbsBlock::MathAbsBlock(Graph &g)
 void MathAbsBlock::Compute(){
     this->Output(0)["Hodnota"] = abs(this->Input(0)["Hodnota"]);
 }
+
+
+// blok pre vyhodnotenie väčšieho čísla z dvoch - GT - greater than
+MathGTBlock::MathGTBlock(Graph &g)
+    : BlockBase(g, MATH_GT, BLOCK_NAME.at(MATH_GT),
+    {
+        InPort(*this, math(), "Číslo A"),
+        InPort(*this, math(), "Číslo B")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// vyhodnotenie väčšieho čísla z dvoch - GT - greater than
+void MathGTBlock::Compute(){
+    if (this->Input(0)["Hodnota"] > this->Input(1)["Hodnota"]){
+        this->Output(0)["Hodnota"] = -this->Input(0)["Hodnota"];
+        this->Output(0)["Hodnota"] = -this->Output(0)["Hodnota"];
+    }
+    else{
+        this->Output(0)["Hodnota"] = -this->Input(1)["Hodnota"];
+        this->Output(0)["Hodnota"] = -this->Output(0)["Hodnota"];
+    }
+}
