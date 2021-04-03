@@ -59,11 +59,6 @@ private slots:
 	void reset();
 	//! Button slot called when opening help
 	void help();
-	//! Button slot called when opening about box
-	void about();
-
-	//! Function called on scheme name text edit field change
-	void graphNameChange(const QString & name);
 
 private:
 	Ui::BLOCKEDITOR *ui;
@@ -105,15 +100,6 @@ private:
 	//! Toolbar with a name of currently edited scheme
 	QToolBar *nameToolBar;
 
-	//! Widget that right-aligns the scheme name
-	QWidget *spacerWidget;
-
-	//! Widget that captions scheme name text edit with scheme name (graphName)
-	QLabel *graphNameHint;
-
-	//! Text edit where user can see and change name of the scheme
-	QLineEdit *graphName;
-
 	//! Action for creating a new file
 	QAction *newAct;
 	//! Action for opening a file
@@ -136,9 +122,6 @@ private:
 	QAction *deleteAct;
 	//! Action for showing the help box
     QAction *helpAct;
-	//! Action for calling the about box
-    QAction *aboutAct;
-
 };
 
 #endif // BLOCKEDITOR_H

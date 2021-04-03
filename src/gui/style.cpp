@@ -16,7 +16,7 @@ const QColor Style::PortFreeCol = QColor(255, 255, 255);
 const QColor Style::PortHoverCol = QColor(200, 200, 200);
 
 const int Style::ConnectionHoverSize = 16;
-const QColor Style::ConnectionCol = QColor(0, 0, 0);
+const QColor Style::ConnectionCol = QColor(255, 255, 255);
 
 const int Style::GraphLoadPadding = 16;
 
@@ -28,11 +28,11 @@ const int Style::NodeMinWidth = 64;
 const int Style::NodeRoundSize = 16;
 const QColor Style::NodeOutlineCol = QColor(0, 0, 0);
 const QColor Style::NodeOutlineHighlightCol = QColor(50, 100, 255);
-const QColor Style::NodeBackgroundCol = QColor(160, 160, 160);
+const QColor Style::NodeBackgroundCol = QColor(76, 76, 76);
 
 const int Style::TooltipRoundSize = 8;
 const int Style::TooltipPadding = 8;
 const int Style::TooltipHPadding = 16;
 const QColor Style::TooltipOutlineCol = QColor(0, 0, 0, 0);
-const QColor Style::TooltipBackgroundCol = QColor(0, 0, 0, 80);
+const QColor Style::TooltipBackgroundCol = QColor(38, 38, 38);
 const QColor Style::TooltipTextCol = QColor(255, 255, 255);
