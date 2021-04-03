@@ -13,6 +13,7 @@
 #include "../types/types.h"
 #include "../blocks.h"
 #include "scalar.h"
+#include "math.h"
 
 // blok pre načítanie vstupu skaláru
 ScalarInput::ScalarInput(Graph &g)
@@ -182,4 +183,19 @@ void MathDivBlock::Compute(){
 }
 
 
+// blok pre druhú odmocninu čísla
+MathSqrtBlock::MathSqrtBlock(Graph &g)
+    : BlockBase(g, MATH_SQRT, BLOCK_NAME.at(MATH_SQRT),
+    {
+        InPort(*this, math(), "Číslo A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
 
+
+// výpočet druhej odmocniny čisla
+void MathSqrtBlock::Compute(){
+    this->Output(0)["Hodnota"] = sqrt(this->Input(0)["Hodnota"]);
+}

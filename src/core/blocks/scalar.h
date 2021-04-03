@@ -218,3 +218,23 @@ public:
     //! Virtual destructor to prevent leaks
     virtual ~MathDivBlock() = default;
 };
+
+
+/**
+ * @brief The square root block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathSqrtBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathSqrtBlock(Graph &g);
+
+    //! Performs the square root
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathSqrtBlock() = default;
+};

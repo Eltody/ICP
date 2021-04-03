@@ -13,6 +13,7 @@
 #include "../types/types.h"
 #include "../blocks.h"
 #include "vector.h"
+#include "math.h"
 
 // blok pre načítanie vstupu 2D vektoru
 VectorInput::VectorInput(Graph &g)

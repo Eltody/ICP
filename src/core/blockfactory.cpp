@@ -118,6 +118,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MATH_DIV:
         b = new MathDivBlock(g);
         break;
+    case MATH_SQRT:
+        b = new MathSqrtBlock(g);
+        break;
 	default:
 		return nullptr;
 	}
