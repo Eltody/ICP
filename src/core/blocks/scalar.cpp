@@ -90,25 +90,6 @@ void ScalarMulBlock::Compute(){
 //*******************************************************//
 
 
-// blok pre sčítanie dvoch čísel
-MathAddBlock::MathAddBlock(Graph &g)
-    : BlockBase(g, MATH_ADD, BLOCK_NAME.at(MATH_ADD),
-    {
-        InPort(*this, scal(), "Číslo A"),
-        InPort(*this, scal(), "Číslo B")
-    },
-    {
-        OutPort(*this, scal(), "Výstup")
-    }
-    ){}
-
-
-// výpočet sčítania dvoch čísel
-void MathAddBlock::Compute(){
-    this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] + this->Input(1)["Hodnota"];
-}
-
-
 // blok pre načítanie vstupu skaláru
 MathInput::MathInput(Graph &g)
     : BlockBase(g, MATH_INPUT, "Vstup",
@@ -123,3 +104,82 @@ MathOutput::MathOutput(Graph &g)
 
 void MathInput::Compute() { }
 void MathOutput::Compute() { }
+
+
+// blok pre sčítanie dvoch čísel
+MathAddBlock::MathAddBlock(Graph &g)
+    : BlockBase(g, MATH_ADD, BLOCK_NAME.at(MATH_ADD),
+    {
+        InPort(*this, math(), "Číslo A"),
+        InPort(*this, math(), "Číslo B")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet sčítania dvoch čísel
+void MathAddBlock::Compute(){
+    this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] + this->Input(1)["Hodnota"];
+}
+
+
+// blok pre odčítanie dvoch čísel
+MathSubBlock::MathSubBlock(Graph &g)
+    : BlockBase(g, MATH_SUB, BLOCK_NAME.at(MATH_SUB),
+    {
+        InPort(*this, math(), "Číslo A"),
+        InPort(*this, math(), "Číslo B")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet odčítania dvoch čísel
+void MathSubBlock::Compute(){
+    this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] - this->Input(1)["Hodnota"];
+}
+
+
+// blok pre násobenie dvoch čísel
+MathMulBlock::MathMulBlock(Graph &g)
+    : BlockBase(g, MATH_MUL, BLOCK_NAME.at(MATH_MUL),
+    {
+        InPort(*this, math(), "Číslo A"),
+        InPort(*this, math(), "Číslo B")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet násobenia dvoch čísel
+void MathMulBlock::Compute(){
+    this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] * this->Input(1)["Hodnota"];
+}
+
+
+// blok pre delenie dvoch čísel
+MathDivBlock::MathDivBlock(Graph &g)
+    : BlockBase(g, MATH_DIV, BLOCK_NAME.at(MATH_DIV),
+    {
+        InPort(*this, math(), "Číslo A"),
+        InPort(*this, math(), "Číslo B")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet delenia dvoch čísel
+void MathDivBlock::Compute(){
+    this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] / this->Input(1)["Hodnota"];
+}
+
+
+

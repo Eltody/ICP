@@ -158,3 +158,63 @@ public:
     //! Virtual destructor to prevent leaks
     virtual ~MathAddBlock() = default;
 };
+
+
+/**
+ * @brief The mathematical subtraction block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathSubBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathSubBlock(Graph &g);
+
+    //! Performs the mathematical subtraction
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathSubBlock() = default;
+};
+
+
+/**
+ * @brief The mathematical multiplication block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathMulBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathMulBlock(Graph &g);
+
+    //! Performs the mathematical multiplication
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathMulBlock() = default;
+};
+
+
+/**
+ * @brief The mathematical division block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathDivBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathDivBlock(Graph &g);
+
+    //! Performs the mathematical division
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathDivBlock() = default;
+};

@@ -100,6 +100,15 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MATH_ADD:
         b = new MathAddBlock(g);
         break;
+    case MATH_SUB:
+        b = new MathSubBlock(g);
+        break;
+    case MATH_MUL:
+        b = new MathMulBlock(g);
+        break;
+    case MATH_DIV:
+        b = new MathDivBlock(g);
+        break;
 	default:
 		return nullptr;
 	}

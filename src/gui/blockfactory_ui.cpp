@@ -97,6 +97,15 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MATH_ADD:
         b = new BlockUI<MathAddBlock>(MathAddBlock(g), gp);
         break;
+    case MATH_SUB:
+        b = new BlockUI<MathSubBlock>(MathSubBlock(g), gp);
+        break;
+    case MATH_MUL:
+        b = new BlockUI<MathMulBlock>(MathMulBlock(g), gp);
+        break;
+    case MATH_DIV:
+        b = new BlockUI<MathDivBlock>(MathDivBlock(g), gp);
+        break;
 	default:
 		return nullptr;
 	}
