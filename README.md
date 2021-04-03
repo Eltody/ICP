@@ -7,3 +7,10 @@ Seminár C++
 
 ## Zadanie projektu
 Celkové zadanie projektu: https://wis.fit.vutbr.cz/FIT/st/cwk.php.cs?title=Projekt_20202021&csid=722871&id=13964
+
+## Názov tímu:
+* **Slovenská (j)elita**
+
+## Členovia tímu:
+* **Tomáš Zaťko (xzatko02)**
+* **Martin Rakús (xrakus04)**
