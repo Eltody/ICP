@@ -124,6 +124,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MATH_INC:
         b = new MathIncBlock(g);
         break;
+    case MATH_DEC:
+        b = new MathDecBlock(g);
+        break;
 	default:
 		return nullptr;
 	}

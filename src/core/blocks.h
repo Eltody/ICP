@@ -52,7 +52,8 @@ enum BlockType {
     MATH_LT = 40,
     MATH_SIN = 41,
     MATH_COS = 42,
-    MATH_INC = 43
+    MATH_INC = 43,
+    MATH_DEC = 44
 };
 
 //! Maps human readable block names to BlockType
@@ -100,6 +101,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MATH_SIN, "Sínus čísla"},
     { MATH_COS, "Cosínus čísla"},
     { MATH_INC, "Inkrement čísla o 1"},
+    { MATH_DEC, "Dekrement čísla o 1"},
 };
 
 #endif // BLOCKS_H

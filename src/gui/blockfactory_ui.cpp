@@ -112,6 +112,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MATH_INC:
         b = new BlockUI<MathIncBlock>(MathIncBlock(g), gp);
         break;
+    case MATH_DEC:
+        b = new BlockUI<MathDecBlock>(MathDecBlock(g), gp);
+        break;
     case MAT_DETERMINANT:
         b = new BlockUI<MatrixDeterminantBlock>(MatrixDeterminantBlock(g), gp);
         break;

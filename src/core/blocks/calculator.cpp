@@ -249,3 +249,21 @@ MathIncBlock::MathIncBlock(Graph &g)
 void MathIncBlock::Compute(){
         this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] + 1;
 }
+
+
+// blok pre dekrement
+MathDecBlock::MathDecBlock(Graph &g)
+    : BlockBase(g, MATH_DEC, BLOCK_NAME.at(MATH_DEC),
+    {
+        InPort(*this, math(), "Číslo A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// vykonanie inkrementu
+void MathDecBlock::Compute(){
+        this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] - 1;
+}

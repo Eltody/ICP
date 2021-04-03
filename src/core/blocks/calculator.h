@@ -256,3 +256,23 @@ public:
     //! Virtual destructor to prevent leaks
     virtual ~MathIncBlock() = default;
 };
+
+
+/**
+ * @brief Decrement block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathDecBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathDecBlock(Graph &g);
+
+    //! Performs the square root
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathDecBlock() = default;
+};
