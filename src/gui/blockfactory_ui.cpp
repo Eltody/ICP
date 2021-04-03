@@ -49,6 +49,12 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MAT3_OUTPUT:
         b = new OutputBlockUI<Matrix3x3Output>(BlockUI<Matrix3x3Output>(Matrix3x3Output(g), gp), gp);
         break;
+    case MATH_INPUT:
+        b = new InputBlockUI<MathInput>(BlockUI<MathInput>(MathInput(g), gp), gp);
+        break;
+    case MATH_OUTPUT:
+        b = new OutputBlockUI<MathOutput>(BlockUI<MathOutput>(MathOutput(g), gp), gp);
+        break;
 	case VECTOR_ADD:
 		b = new BlockUI<VectorAddBlock>(VectorAddBlock(g), gp);
 		break;
@@ -87,6 +93,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
         break;
     case MAT3_SUB:
         b = new BlockUI<Matrix3x3SubBlock>(Matrix3x3SubBlock(g), gp);
+        break;
+    case MATH_ADD:
+        b = new BlockUI<MathAddBlock>(MathAddBlock(g), gp);
         break;
 	default:
 		return nullptr;

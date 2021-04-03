@@ -52,6 +52,12 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MAT3_OUTPUT:
         b = new Matrix3x3Output(g);
         break;
+    case MATH_INPUT:
+        b = new MathInput(g);
+        break;
+    case MATH_OUTPUT:
+        b = new MathOutput(g);
+        break;
 	case VECTOR_ADD:
 		b = new VectorAddBlock(g);
 		break;
@@ -90,6 +96,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
         break;
     case MAT3_SUB:
         b = new Matrix3x3SubBlock(g);
+        break;
+    case MATH_ADD:
+        b = new MathAddBlock(g);
         break;
 	default:
 		return nullptr;

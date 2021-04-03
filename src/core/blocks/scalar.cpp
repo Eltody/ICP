@@ -85,3 +85,41 @@ ScalarMulBlock::ScalarMulBlock(Graph &g)
 void ScalarMulBlock::Compute(){
     this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] * this->Input(1)["Hodnota"];
 }
+
+
+//*******************************************************//
+
+
+// blok pre sčítanie dvoch čísel
+MathAddBlock::MathAddBlock(Graph &g)
+    : BlockBase(g, MATH_ADD, BLOCK_NAME.at(MATH_ADD),
+    {
+        InPort(*this, scal(), "Číslo A"),
+        InPort(*this, scal(), "Číslo B")
+    },
+    {
+        OutPort(*this, scal(), "Výstup")
+    }
+    ){}
+
+
+// výpočet sčítania dvoch čísel
+void MathAddBlock::Compute(){
+    this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] + this->Input(1)["Hodnota"];
+}
+
+
+// blok pre načítanie vstupu skaláru
+MathInput::MathInput(Graph &g)
+    : BlockBase(g, MATH_INPUT, "Vstup",
+{}, {OutPort(*this, math(), "")}) { }
+
+
+// blok pre výstup skaláru
+MathOutput::MathOutput(Graph &g)
+    : BlockBase(g, MATH_OUTPUT, "Výstup",
+    {InPort(*this, math(), "")}, {}) { }
+
+
+void MathInput::Compute() { }
+void MathOutput::Compute() { }

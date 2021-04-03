@@ -62,3 +62,10 @@ mat3::mat3(double m11, double m12, double m13, double m21, double m22, double m2
     operator[]("m33") = m33;
 }
 
+math::math() : Type{"Hodnota"} { }
+
+math::math(double val) : math()
+{
+    operator[]("Hodnota") = val;
+}
+
