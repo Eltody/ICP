@@ -9,13 +9,13 @@
 #include "../types/types.h"
 
 MatrixInput::MatrixInput(Graph &g)
-	: BlockBase(g, MAT2_INPUT, "Input",
+    : BlockBase(g, MAT2_INPUT, "Vstup",
 {}, {OutPort(*this, mat2(), "")}) { }
 
 void MatrixInput::Compute() { }
 
 MatrixOutput::MatrixOutput(Graph &g)
-	: BlockBase(g, MAT2_OUTPUT, "Output",
+    : BlockBase(g, MAT2_OUTPUT, "Výstup",
 	{InPort(*this, mat2(), "")}, {}) { }
 
 void MatrixOutput::Compute() { }

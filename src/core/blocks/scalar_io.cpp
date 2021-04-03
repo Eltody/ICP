@@ -9,13 +9,13 @@
 #include "../types/types.h"
 
 ScalarInput::ScalarInput(Graph &g)
-	: BlockBase(g, SCAL_INPUT, "Input",
+    : BlockBase(g, SCAL_INPUT, "Vstup",
 {}, {OutPort(*this, scal(), "")}) { }
 
 void ScalarInput::Compute() { }
 
 ScalarOutput::ScalarOutput(Graph &g)
-	: BlockBase(g, SCAL_OUTPUT, "Output",
+    : BlockBase(g, SCAL_OUTPUT, "Výstup",
 	{InPort(*this, scal(), "")}, {}) { }
 
 void ScalarOutput::Compute() { }

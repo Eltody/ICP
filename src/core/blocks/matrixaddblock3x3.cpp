@@ -12,11 +12,11 @@
 Matrix3x3AddBlock::Matrix3x3AddBlock(Graph &g)
     : BlockBase(g, MAT3_ADD, BLOCK_NAME.at(MAT3_ADD),
     {
-        InPort(*this, mat3(), "A"),
-        InPort(*this, mat3(), "B")
+        InPort(*this, mat3(), "Matica A"),
+        InPort(*this, mat3(), "Matica B")
     },
     {
-        OutPort(*this, mat3(), "Out")
+        OutPort(*this, mat3(), "Výstup")
     }
     ){}
 

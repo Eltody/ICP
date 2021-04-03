@@ -30,43 +30,61 @@
   </widget>
   <action name="openAct">
    <property name="text">
-    <string>&amp;Open</string>
+    <string>&amp;Otvoriť</string>
+   </property>
+   <property name="toolTip">
+    <string>Otvoriť</string>
    </property>
   </action>
   <action name="saveAct">
    <property name="text">
-    <string>&amp;Save</string>
+    <string>&amp;Uložiť</string>
    </property>
    <property name="iconText">
     <string>Save</string>
    </property>
    <property name="toolTip">
-    <string>Saves the unsaved changes</string>
+    <string>Uloží vykonané zmeny</string>
    </property>
   </action>
   <action name="saveAsAct">
    <property name="text">
-    <string>Save as...</string>
+    <string>Uložiť ako</string>
+   </property>
+   <property name="toolTip">
+    <string>Uložiť ako</string>
    </property>
   </action>
   <action name="helpAct">
    <property name="text">
-    <string>Guide</string>
+    <string>Nápoveda</string>
+   </property>
+   <property name="toolTip">
+    <string>Nápoveda</string>
    </property>
   </action>
   <action name="aboutAct">
    <property name="text">
-    <string>About</string>
+    <string>O programe</string>
+   </property>
+   <property name="toolTip">
+    <string>O programe</string>
    </property>
   </action>
   <action name="exitAct">
    <property name="text">
-    <string>E&amp;xit</string>
+    <string>Zatvoriť</string>
+   </property>
+   <property name="toolTip">
+    <string>Zatvoriť</string>
    </property>
   </action>
   <action name="actionExit">
    <property name="text">
-    <string>Exit</string>
+    <string>Zatvoriť</string>
+   </property>
+   <property name="toolTip">
+    <string>Zatvoriť</string>
    </property>
   </action>
  </widget>

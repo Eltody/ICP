@@ -12,11 +12,11 @@
 ScalarAddBlock::ScalarAddBlock(Graph &g)
 	: BlockBase(g, SCALAR_ADD, BLOCK_NAME.at(SCALAR_ADD),
     {
-        InPort(*this, scal(), "A"),
-        InPort(*this, scal(), "B")
+        InPort(*this, scal(), "Skalár A"),
+        InPort(*this, scal(), "Skalár B")
     },
     {
-        OutPort(*this, scal(), "Out")
+        OutPort(*this, scal(), "Výstup")
     }
     ){}
 

@@ -12,11 +12,11 @@
 Mat3x3MulVecBlock::Mat3x3MulVecBlock(Graph &g)
     : BlockBase(g, MAT_MUL_VEC, BLOCK_NAME.at(MAT_MUL_VEC),
     {
-        InPort(*this, mat3(), "Mat"),
-        InPort(*this, vec2(), "Vec")
+        InPort(*this, mat3(), "Matica"),
+        InPort(*this, vec2(), "Vektor")
     },
     {
-        OutPort(*this, vec2(), "Out")
+        OutPort(*this, vec2(), "Výstup")
     }
     ){}
 

@@ -9,13 +9,13 @@
 #include "../types/types.h"
 
 Matrix3x3Input::Matrix3x3Input(Graph &g)
-    : BlockBase(g, MAT3_INPUT, "Input",
+    : BlockBase(g, MAT3_INPUT, "Vstup",
 {}, {OutPort(*this, mat3(), "")}) { }
 
 void Matrix3x3Input::Compute() { }
 
 Matrix3x3Output::Matrix3x3Output(Graph &g)
-    : BlockBase(g, MAT3_OUTPUT, "Output",
+    : BlockBase(g, MAT3_OUTPUT, "Výstup",
     {InPort(*this, mat3(), "")}, {}) { }
 
 void Matrix3x3Output::Compute() { }

@@ -12,11 +12,11 @@
 VectorDotProductBlock::VectorDotProductBlock(Graph &g)
 	: BlockBase(g, VECTOR_DOTPRODUCT, BLOCK_NAME.at(VECTOR_DOTPRODUCT),
     {
-        InPort(*this, vec2(), "A"),
-        InPort(*this, vec2(), "B")
+        InPort(*this, vec2(), "Vektor A"),
+        InPort(*this, vec2(), "Vektor B")
     },
     {
-		OutPort(*this, scal(), "Dot")
+        OutPort(*this, scal(), "Výstup")
     }
     ){}
 

@@ -13,7 +13,7 @@
 void ErrorAlert(std::string message)
 {
 	QMessageBox alert;
-	alert.setWindowTitle("ERROR");
+    alert.setWindowTitle("Chyba");
 	alert.setText(message.c_str());
 	alert.show();
 	alert.exec();

@@ -12,11 +12,11 @@
 ScalarSubBlock::ScalarSubBlock(Graph &g)
 	: BlockBase(g, SCALAR_SUB, BLOCK_NAME.at(SCALAR_SUB),
     {
-        InPort(*this, scal(), "A"),
-        InPort(*this, scal(), "B")
+        InPort(*this, scal(), "Skalár A"),
+        InPort(*this, scal(), "Skalár B")
     },
     {
-        OutPort(*this, scal(), "Out")
+        OutPort(*this, scal(), "Výstup")
     }
     ){}
 

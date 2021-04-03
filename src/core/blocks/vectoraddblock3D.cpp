@@ -12,11 +12,11 @@
 VectorAddBlock3D::VectorAddBlock3D(Graph &g)
     : BlockBase(g, VECTOR_ADD3D, BLOCK_NAME.at(VECTOR_ADD3D),
 	{
-        InPort(*this, vec3(), "A"),
-        InPort(*this, vec3(), "B")
+        InPort(*this, vec3(), "Vektor A"),
+        InPort(*this, vec3(), "Vektor B")
 	},
 	{
-        OutPort(*this, vec3(), "Out")
+        OutPort(*this, vec3(), "Výstup")
 	}
 	){}
 

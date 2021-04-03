@@ -15,9 +15,9 @@
 
 BlockMenu::BlockMenu(GraphUI &g) : graph(g)
 {
-	auto scalar = menu.addMenu("Scalar");
-	auto vector = menu.addMenu("Vector");
-	auto matrix = menu.addMenu("Matrix");
+    auto scalar = menu.addMenu("Skalár");
+    auto vector = menu.addMenu("Vektor");
+    auto matrix = menu.addMenu("Matica");
 
 	scalar->addAction(new BlockMenuAction(SCAL_INPUT, QIcon()));
 	scalar->addAction(new BlockMenuAction(SCAL_OUTPUT, QIcon()));
@@ -69,7 +69,7 @@ BlockMenuAction::operator BlockType()
 
 BlockDelete::BlockDelete(GraphUI &g) : graph(g)
 {
-	menu.addAction(QIcon(":/icons/delete.png"), "Delete");
+    menu.addAction(QIcon(":/icons/delete.png"), "Vymazať");
 }
 
 void BlockDelete::ShowMenu(BlockBase *block)

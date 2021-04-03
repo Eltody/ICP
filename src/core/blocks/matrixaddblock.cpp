@@ -12,11 +12,11 @@
 MatrixAddBlock::MatrixAddBlock(Graph &g)
 	: BlockBase(g, MAT_ADD, BLOCK_NAME.at(MAT_ADD),
     {
-        InPort(*this, mat2(), "A"),
-        InPort(*this, mat2(), "B")
+        InPort(*this, mat2(), "Matica A"),
+        InPort(*this, mat2(), "Matica B")
     },
     {
-        OutPort(*this, mat2(), "Out")
+        OutPort(*this, mat2(), "Výstup")
     }
     ){}
 

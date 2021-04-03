@@ -15,11 +15,10 @@
 #include "graph_ui.h"
 
 BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
-	QMainWindow(parent),  ui(new Ui::BLOCKEDITOR), graph(g)
-{
+	QMainWindow(parent),  ui(new Ui::BLOCKEDITOR), graph(g){
 	ui->setupUi(this);
 
-	QApplication::setApplicationDisplayName("BLOCKEDITOR");
+    QApplication::setApplicationDisplayName("(j)Elitný editor");
 
 	createActions();
 	createMenus();
@@ -31,15 +30,14 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	show();
 
 	// Signalling changes in scheme name
-	connect(graphName, SIGNAL(textChanged(const QString &)), this,
-		SLOT(graphNameChange(const QString &))
+    connect(graphName, SIGNAL(textChanged(QString)), this,
+        SLOT(graphNameChange(QString))
 	);
 
 	graph.onGraphChange([this](){this->setWindowModified(true);});
 }
 
-BLOCKEDITOR::~BLOCKEDITOR()
-{
+BLOCKEDITOR::~BLOCKEDITOR(){
 	//avoid destruction of graph, which is destructed externally
 	centralWidget()->setParent(nullptr);
 
@@ -48,8 +46,7 @@ BLOCKEDITOR::~BLOCKEDITOR()
 	delete ui;
 }
 
-void BLOCKEDITOR::deleteActions()
-{
+void BLOCKEDITOR::deleteActions(){
 	delete newAct;
 	delete openAct;
 	delete mergeAct;
@@ -63,67 +60,65 @@ void BLOCKEDITOR::deleteActions()
 	delete exitAct;
 }
 
-void BLOCKEDITOR::createActions()
-{
-	newAct = new QAction(QIcon(":/icons/new.png"), "&New...", this);
+void BLOCKEDITOR::createActions(){
+    newAct = new QAction(QIcon(":/icons/new.png"), "&Nový...", this);
 	newAct->setShortcuts(QKeySequence::New);
-	newAct->setStatusTip("Create a new schema");
+    newAct->setStatusTip("Vytvoriť novú plochu");
 	connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-	openAct = new QAction(QIcon(":/icons/open.png"), "&Open...", this);
+    openAct = new QAction(QIcon(":/icons/open.png"), "&Otvoriť...", this);
 	openAct->setShortcuts(QKeySequence::Open);
-	openAct->setStatusTip("Open an existing file");
+    openAct->setStatusTip("Otvoriť uložený súbor");
 	connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-	mergeAct = new QAction("&Merge", this);
-	mergeAct->setStatusTip("Merge file into currently opened scheme");
+    mergeAct = new QAction("&Vložiť", this);
+    mergeAct->setStatusTip("Vloží súbor do aktuálnej plochy");
 	connect(mergeAct, SIGNAL(triggered()), this, SLOT(merge()));
 
 
-	saveAct = new QAction(QIcon(":/icons/save.png"), "&Save", this);
+    saveAct = new QAction(QIcon(":/icons/save.png"), "&Uložiť", this);
 	saveAct->setShortcuts(QKeySequence::Save);
-	saveAct->setStatusTip("Save the document to disk");
+    saveAct->setStatusTip("Uloží plochu na disk");
 	connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
 
-	saveAsAct = new QAction(QIcon(":/icons/save-as.png"), "Save &As...", this);
+    saveAsAct = new QAction(QIcon(":/icons/save-as.png"), "Uložiť &ako...", this);
 	saveAsAct->setShortcuts(QKeySequence::SaveAs);
-	saveAsAct->setStatusTip("Save the document with a new name");
+    saveAsAct->setStatusTip("Uloží plochu ako nový súbor");
 	connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));
 
-	computeAct = new QAction(QIcon(":/icons/compute.png"), "&Compute (F3)", this);
+    computeAct = new QAction(QIcon(":/icons/compute.png"), "&Vypočítať (F3)", this);
 	computeAct->setShortcut(QKeySequence::fromString("F3", QKeySequence::NativeText));
-	computeAct->setStatusTip("Computes the whole scheme");
+    computeAct->setStatusTip("Vypočíta všetky bloky");
 	connect(computeAct, SIGNAL(triggered()), this, SLOT(compute()));
 
-	stepAct = new QAction(QIcon(":/icons/step.png"), "&Step (F4)", this);
+    stepAct = new QAction(QIcon(":/icons/step.png"), "&Krokovať (F4)", this);
 	stepAct->setShortcut(QKeySequence::fromString("F4", QKeySequence::NativeText));
-	stepAct->setStatusTip("Steps through the computation");
+    stepAct->setStatusTip("Vypočíta jeden krok");
 	connect(stepAct, SIGNAL(triggered()), this, SLOT(step()));
 
-	resetAct = new QAction(QIcon(":/icons/reset.png"), "&Reset (F5)", this);
+    resetAct = new QAction(QIcon(":/icons/reset.png"), "&Obnoviť (F5)", this);
 	resetAct->setShortcut(QKeySequence::fromString("F5", QKeySequence::NativeText));
-	resetAct->setStatusTip("Marks first block as next to compute");
+    resetAct->setStatusTip("Vynuluje výpočet");
 	connect(resetAct, SIGNAL(triggered()), this, SLOT(reset()));
 
-	aboutAct = new QAction(QIcon(":/icons/about.png"), "&About", this);
-	aboutAct->setStatusTip("Show the application's about box");
+    aboutAct = new QAction(QIcon(":/icons/about.png"), "&O programe", this);
+    aboutAct->setStatusTip("Zobrazí informácie o programe");
 	connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
 
-	helpAct = new QAction(QIcon(":/icons/help.png"), "&Help", this);
-	helpAct->setStatusTip("Show the application's help");
+    helpAct = new QAction(QIcon(":/icons/help.png"), "&Nápoveda", this);
+    helpAct->setStatusTip("Zobrazí nápovedu");
 	helpAct->setShortcuts(QKeySequence::HelpContents);
 	connect(helpAct, SIGNAL(triggered()), this, SLOT(help()));
 
-	exitAct = new QAction(QIcon(":/icons/exit.png"), "E&xit", this);
-	exitAct->setStatusTip("Close the application");
+    exitAct = new QAction(QIcon(":/icons/exit.png"), "Zatvoriť", this);
+    exitAct->setStatusTip("Zatvorí aplikáciu");
 	exitAct->setShortcuts(QKeySequence::Quit);
 	connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
 }
 
-void BLOCKEDITOR::createMenus()
-{
-	fileMenu = menuBar()->addMenu("&File");
+void BLOCKEDITOR::createMenus(){
+    fileMenu = menuBar()->addMenu("&Súbor");
 	fileMenu->addAction(newAct);
 	fileMenu->addSeparator();
 	fileMenu->addAction(openAct);
@@ -134,50 +129,47 @@ void BLOCKEDITOR::createMenus()
 	fileMenu->addSeparator();
 	fileMenu->addAction(exitAct);
 
-	helpMenu = menuBar()->addMenu("&Help");
+    helpMenu = menuBar()->addMenu("&Nápoveda");
 	helpMenu->addAction(aboutAct);
 	helpMenu->addSeparator();
 	helpMenu->addAction(helpAct);
 }
 
-void BLOCKEDITOR::deleteToolBars()
-{
+void BLOCKEDITOR::deleteToolBars(){
 	delete graphName;
 	delete graphNameHint;
 	delete spacerWidget;
 }
 
-void BLOCKEDITOR::createToolBars()
-{
-	fileToolBar = addToolBar("File");
+void BLOCKEDITOR::createToolBars(){
+    fileToolBar = addToolBar("Súbor");
 	fileToolBar->addAction(newAct);
 	fileToolBar->addAction(openAct);
 	fileToolBar->addAction(saveAct);
 
-	actionToolBar = addToolBar("Actions");
+    actionToolBar = addToolBar("Akcie");
 	actionToolBar->addAction(computeAct);
 	actionToolBar->addAction(stepAct);
 	actionToolBar->addAction(resetAct);
 
-	helpToolBar = addToolBar("Help");
+    helpToolBar = addToolBar("Nápoveda");
 	helpToolBar->addAction(helpAct);
 
 	spacerWidget = new QWidget();
 	spacerWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
 
-	graphNameHint = new QLabel("Scheme name: ");
+    graphNameHint = new QLabel("Názov plochy: ");
 
 	graphName = new QLineEdit();
 	graphName->setMaximumWidth(200);
 
-	nameToolBar = addToolBar("Graph Name");
+    nameToolBar = addToolBar("Názov grafu");
 	nameToolBar->addWidget(spacerWidget);
 	nameToolBar->addWidget(graphNameHint);
 	nameToolBar->addWidget(graphName);
 }
 
-void BLOCKEDITOR::closeEvent(QCloseEvent *event)
-{
+void BLOCKEDITOR::closeEvent(QCloseEvent *event){
 	if (maybeSave()) {
 		event->accept();
 	} else {
@@ -185,8 +177,7 @@ void BLOCKEDITOR::closeEvent(QCloseEvent *event)
 	}
 }
 
-void BLOCKEDITOR::newFile()
-{
+void BLOCKEDITOR::newFile(){
 	if(maybeSave())
 	{
 		graph.clearGraph();
@@ -195,28 +186,25 @@ void BLOCKEDITOR::newFile()
 	}
 }
 
-void BLOCKEDITOR::open()
-{
+void BLOCKEDITOR::open(){
 	if (maybeSave()) {
 		QString fileName = QFileDialog::getOpenFileName(this,
-			QString(), QString(), QString("BLOCKEDITOR Files (*.gph)"));
+            QString(), QString(), QString("Súbory dizajnéru (*.jee)"));
 		if (!fileName.isEmpty())
 			loadFile(fileName, false);
 	}
 }
 
-void BLOCKEDITOR::merge()
-{
+void BLOCKEDITOR::merge(){
 
 	QString fileName = QFileDialog::getOpenFileName(this,
-		QString("Merge"), QString(), QString("BLOCKEDITOR Files (*.gph)"));
+        QString("Vložiť"), QString(), QString("Súbory dizajnéru (*.jee)"));
 	if (!fileName.isEmpty())
 		loadFile(fileName, true);
 
 }
 
-bool BLOCKEDITOR::save()
-{
+bool BLOCKEDITOR::save(){
 	if (curFile.isEmpty()) {
 		return saveAs();
 	} else {
@@ -224,18 +212,17 @@ bool BLOCKEDITOR::save()
 	}
 }
 
-bool BLOCKEDITOR::saveAs()
-{
+bool BLOCKEDITOR::saveAs(){
 	QFileDialog dialog(this);
 	dialog.setWindowModality(Qt::WindowModal);
 	dialog.setAcceptMode(QFileDialog::AcceptSave);
-	dialog.setNameFilter("BLOCKEDITOR Files (*.gph)");
+    dialog.setNameFilter("Súbory dizajnéru (*.jee)");
 	std::string saveName;
 	if (curFile.isEmpty()) {
 		if (graph.GetName().empty()){
-			saveName = "untitled.gph";
+            saveName = "plocha1.jee";
 		} else {
-			saveName = graph.GetName() + ".gph";
+            saveName = graph.GetName() + ".jee";
 		}
 	} else {
 		saveName = curFile.toStdString();
@@ -250,78 +237,72 @@ bool BLOCKEDITOR::saveAs()
 	return saveFile(files.at(0));
 }
 
-void BLOCKEDITOR::compute() {
+void BLOCKEDITOR::compute(){
 	graph.computeAll();
 }
 
-void BLOCKEDITOR::step() {
+void BLOCKEDITOR::step(){
 	graph.computeStep();
 }
 
-void BLOCKEDITOR::reset() {
+void BLOCKEDITOR::reset(){
 	graph.computeReset();
 }
 
-void BLOCKEDITOR::about()
-{
-	QMessageBox::about(this, "About Block Editor",
-							 "<h1>Block Editor</h1>"
-							 "<h2>ICP Project 2017/2018</h2>"
-							 "<p><b>Authors:</b> Tomáš Pazdiora, Michal Pospíšil</p>"
-							 "<p>Icons used under GNU/GPL license from <a href=\"https://sourceforge.net/projects/openiconlibrary/files/\">Open Icon Library</a></p>"
+void BLOCKEDITOR::about(){
+    QMessageBox::about(this, "O (j)Elitnom editore",
+                             "<h1>(j)Elitný editor</h1>"
+                             "<p><b>Authori:</b> Martin Rakús, Tomáš Zaťko</p>"
 							 );
 }
 
-void BLOCKEDITOR::graphNameChange(const QString &name)
-{
+void BLOCKEDITOR::graphNameChange(const QString &name){
 	graph.SetName(name.toStdString());
 }
 
-void BLOCKEDITOR::help()
-{
-	QMessageBox::about(this, "Help",
-							 "<h1>Block Editor Help</h1>"
-							 "<h2>Blocks</h2>"
-							 "<p><b>Creating blocks: </b>Right-click and select the desired type.</p>"
-							 "<p><b>Deleting blocks: </b>Right-click on block and select 'Delete'.</p>"
-							 "<h2>Connections</h2>"
-							 "<p><b>Creating connections: </b>Click on one port, then on other to make connection. Click elsewhere to discard connection.</p>"
-							 "<p><b>Detaching connection: </b>Click on input port to detach connection. Click elsewhere to discard connection or click on any input port to reconnect.</p>"
-							 "<h2>Computing</h2>"
-							 "<p><b>Step: </b> Every button press calculates the blocks one by one.</p>"
-							 "<p><b>Compute all: </b>Computes the whole scheme at once. Click again to update results after making changes.</p>"
-							 "<p><b>Reset: </b>Clears all values and resets the computation.</p>"
+void BLOCKEDITOR::help(){
+    QMessageBox::about(this, "Nápoveda",
+                             "<h1>(j)Elitný editor - nápoveda</h1>"
+                             "<h2>Bloky:</h2>"
+                             "<p><b>Pre vytvorenie bloku klikni pravým tlačítkom na myši a vyber požadovaný blok.</p>"
+                             "<p><b>Pre odstránenie bloku klikni na daný blok pravým tlačítkom na myši a vyber 'Odstrániť'</p>"
+                             "<h2>Prepojenia:</h2>"
+                             "<p><b>Pre vytvorenie prepojenia medzi dvomi blokmi klikni ľavým tlačítkom na myši na výstup jedného a následne vstup druhého bloku.</p>"
+                             "<p><b>Pre upravenie prepojenia klikni ľavým tlačítkom na myši na vstup bloku a následne klikni na požadovaný výstup.</p>"
+                             "<p><b>Pre odstránenie prepojenia klikni ľavým tlačítkom na myši na vstup bloku a následne klikni do priestoru.</p>"
+                             "<h2>Výpočty:</h2>"
+                             "<p><b>Pre výpočet všetkých blokov naraz klikni na tlačidlo 'Vypočítať', alebo stlač F3 na klávesnici.</p>"
+                             "<p><b>Pre výpočet jedného kroku klikni na tlačidlo 'Krokovať', alebo stlač F4 na klávesnici.</p>"
+                             "<p><b>Pre vynulovanie výpočtov klikni na tlačidlo 'Obnoviť', alebo stlač F5 na klávesnici.</p>"
 					   );
 
 }
 
-bool BLOCKEDITOR::maybeSave()
-{
+bool BLOCKEDITOR::maybeSave(){
 	if(this->isWindowModified()) {
-		QMessageBox::StandardButton ret;
-		ret = QMessageBox::warning(this, "BLOCKEDITOR",
-										 "The document has been modified.\n"
-										 "Do you want to save your changes?",
-					 QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
-		if (ret == QMessageBox::Save) {
-			return save();
-		}
-		else {
-			if (ret == QMessageBox::Cancel) {
-			return false;
-			}
-		}
+        QMessageBox ret(QMessageBox::Question, tr("Uložiť?"), tr("Plocha bola upravená.\nPrajete si uložiť vykonané zmeny?"), QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        ret.setButtonText(QMessageBox::Save, tr("Uložiť"));
+        ret.setButtonText(QMessageBox::Discard, tr("Zahodiť"));
+        ret.setButtonText(QMessageBox::Cancel, tr("Zrušiť"));
+        ret.exec();
+
+        if (ret.exec() == QMessageBox::Save) {
+            return save();
+        }
+        else {
+            if (ret.exec() == QMessageBox::Cancel) {
+            return false;
+            }
+        }
 	}
 	return true;
-
 }
 
-void BLOCKEDITOR::loadFile(const QString &fileName, bool merge)
-{
+void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
 	QFile file(fileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
-		QMessageBox::warning(this, "BLOCKEDITOR",
-								   QString::fromStdString("Cannot read file %1:\n%2.")
+        QMessageBox::warning(this, "(j)Elitný editor",
+                                   QString::fromStdString("Nemožno otvoriť súbor %1:\n%2.")
 							 .arg(fileName)
 							 .arg(file.errorString()));
 		return;
@@ -338,15 +319,15 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge)
 	}
 
 	if(!graph.loadGraph(funcIn, merge)) {
-		QMessageBox::warning(this, "BLOCKEDITOR",
-								   QString::fromStdString("Error while reading the file."));
+        QMessageBox::warning(this, "(j)Elitný editor",
+                                   QString::fromStdString("Chyba čítania súboru."));
 	}
 #ifndef QT_NO_CURSOR
 	QApplication::restoreOverrideCursor();
 #endif
 
 	graphName->setText(QString::fromStdString(graph.GetName()));
-	statusBar()->showMessage("File loaded", 2000);
+    statusBar()->showMessage("Súbor bol otvorený", 2000);
 
 	if(!merge){
 		setCurrentFile(fileName);
@@ -359,8 +340,8 @@ bool BLOCKEDITOR::saveFile(const QString &fileName)
 {
 	QFile file(fileName);
 	if (!file.open(QFile::WriteOnly | QFile::Text)) {
-		QMessageBox::warning(this, "Application",
-							 QString::fromStdString("Cannot write file %1:\n%2.")
+        QMessageBox::warning(this, "(j)Elitný editor",
+                             QString::fromStdString("Nemožno uložiť súbor %1:\n%2.")
 							 .arg(fileName)
 							 .arg(file.errorString()));
 		return false;
@@ -380,15 +361,15 @@ bool BLOCKEDITOR::saveFile(const QString &fileName)
 		out << QString::fromStdString(str) << '\n';
 	}
 	if(funcOut.fail()) {
-		QMessageBox::warning(this, "BLOCKEDITOR",
-								   QString::fromStdString("Error while writing the file."));
+        QMessageBox::warning(this, "(j)Elitný editor",
+                                   QString::fromStdString("Chyba zápisu súboru."));
 	}
 #ifndef QT_NO_CURSOR
 	QApplication::restoreOverrideCursor();
 #endif
 
 	setCurrentFile(fileName);
-	statusBar()->showMessage("File saved", 2000);
+    statusBar()->showMessage("Súbor bol uložený", 2000);
 	return true;
 }
 
@@ -400,7 +381,7 @@ void BLOCKEDITOR::setCurrentFile(const QString &fileName)
 
 	QString shownName = curFile;
 	if (curFile.isEmpty()) {
-		shownName = "untitled.gph";
+        shownName = "plocha.jee";
 	}
 
 	setWindowFilePath(shownName);

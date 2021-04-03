@@ -9,13 +9,13 @@
 #include "../types/types.h"
 
 Vector3DInput::Vector3DInput(Graph &g)
-    : BlockBase(g, VECTOR3D_INPUT, "Input",
+    : BlockBase(g, VECTOR3D_INPUT, "Vstup",
 {}, {OutPort(*this, vec3(), "")}) { }
 
 void Vector3DInput::Compute() { }
 
 Vector3DOutput::Vector3DOutput(Graph &g)
-    : BlockBase(g, VECTOR3D_OUTPUT, "Output",
+    : BlockBase(g, VECTOR3D_OUTPUT, "Výstup",
     {InPort(*this, vec3(), "")}, {}) { }
 
 void Vector3DOutput::Compute() { }

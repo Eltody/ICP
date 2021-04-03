@@ -174,10 +174,10 @@ bool GraphUI::addConnection(OutPort &a, InPort &b)
 	}
 	else {
 		if(!a.Value().type_of(b.Value())){
-			ErrorAlert("These port types are incompatible!");
+            ErrorAlert("Hodnoty týchto konektorov nie sú kompatibilné!");
 		}
 		else {
-			ErrorAlert("This connection would form cycle!");
+            ErrorAlert("Toto prepojenie by vytvorilo cyklus!");
 		}
 
 		this->in_click = nullptr;
@@ -275,7 +275,7 @@ void GraphUI::hideHoverConnectionUI()
 bool GraphUI::allInputsConnected()
 {
 	if(!Graph::allInputsConnected()){
-		ErrorAlert("Some input ports are not connected!");
+        ErrorAlert("Nie všetky vstupy sú pripojené!");
 		return false;
 	}
 	return true;
