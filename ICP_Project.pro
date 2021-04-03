@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/core/blocks/matmulvecblock3x3.cpp \
+    src/core/blocks/matrix.cpp \
     src/core/blocks/matrix3x3_io.cpp \
     src/core/blocks/matrixaddblock3x3.cpp \
     src/core/blocks/matrixmulblock3x3.cpp \
@@ -60,6 +61,7 @@ SOURCES += \
 
 HEADERS += \
     src/core/blocks/matmulvecblock3x3.h \
+    src/core/blocks/matrix.h \
     src/core/blocks/matrix3x3_io.h \
     src/core/blocks/matrixaddblock3x3.h \
     src/core/blocks/matrixmulblock3x3.h \

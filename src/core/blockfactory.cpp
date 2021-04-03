@@ -10,19 +10,13 @@
 #include "blocks/scalar_io.h"
 #include "blocks/vector_io.h"
 #include "blocks/vector3D_io.h"
-#include "blocks/matrix_io.h"
-#include "blocks/matrix3x3_io.h"
+#include "blocks/matrix.h"
 #include "blocks/vectoraddblock.h"
 #include "blocks/vectoraddblock3D.h"
 #include "blocks/vectordotproductblock.h"
 #include "blocks/scalaraddblock.h"
 #include "blocks/scalarsubblock.h"
 #include "blocks/scalarmulblock.h"
-#include "blocks/matrixaddblock.h"
-#include "blocks/matrixaddblock3x3.h"
-#include "blocks/matrixmulblock.h"
-#include "blocks/matrixmulblock3x3.h"
-#include "blocks/matmulvecblock.h"
 
 BlockBase *BlockFactory::AllocBlock(BlockType t)
 {

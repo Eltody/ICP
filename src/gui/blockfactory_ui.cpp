@@ -14,20 +14,13 @@
 #include "../core/blocks/scalar_io.h"
 #include "../core/blocks/vector_io.h"
 #include "../core/blocks/vector3D_io.h"
-#include "../core/blocks/matrix_io.h"
-#include "../core/blocks/matrix3x3_io.h"
+#include "../core/blocks/matrix.h"
 #include "../core/blocks/vectoraddblock.h"
 #include "../core/blocks/vectoraddblock3D.h"
 #include "../core/blocks/vectordotproductblock.h"
 #include "../core/blocks/scalaraddblock.h"
 #include "../core/blocks/scalarsubblock.h"
 #include "../core/blocks/scalarmulblock.h"
-#include "../core/blocks/matrixaddblock.h"
-#include "../core/blocks/matrixaddblock3x3.h"
-#include "../core/blocks/matrixmulblock.h"
-#include "../core/blocks/matrixmulblock3x3.h"
-#include "../core/blocks/matmulvecblock.h"
-#include "../core/blocks/matmulvecblock3x3.h"
 
 BlockBase *BlockFactoryUI::AllocBlock(BlockType t)
 {
