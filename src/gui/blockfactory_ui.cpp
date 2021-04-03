@@ -28,6 +28,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case VECTOR_OUTPUT:
         b = new OutputBlockUI<VectorOutput>(BlockUI<VectorOutput>(VectorOutput(g), gp), gp);
         break;
+    case VECTOR_DOT_OUTPUT:
+        b = new OutputBlockUI<VectorDotOutput>(BlockUI<VectorDotOutput>(VectorDotOutput(g), gp), gp);
+        break;
     case VECTOR3D_OUTPUT:
         b = new OutputBlockUI<Vector3DOutput>(BlockUI<Vector3DOutput>(Vector3DOutput(g), gp), gp);
 		break;
@@ -56,7 +59,7 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
         b = new BlockUI<VectorAddBlock3D>(VectorAddBlock3D(g), gp);
         break;
     case VECTOR_DOTPRODUCT:
-		b = new BlockUI<VectorDotProductBlock>(VectorDotProductBlock(g), gp);
+        b = new BlockUI<VectorDotProductBlock2D>(VectorDotProductBlock2D(g), gp);
         break;
     case MAT_ADD:
 		b = new BlockUI<MatrixAddBlock>(MatrixAddBlock(g), gp);

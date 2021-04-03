@@ -31,6 +31,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
 	case VECTOR_OUTPUT:
 		b = new VectorOutput(g);
 		break;
+    case VECTOR_DOT_OUTPUT:
+        b = new VectorDotOutput(g);
+        break;
     case VECTOR3D_OUTPUT:
         b = new Vector3DOutput(g);
         break;
@@ -65,7 +68,7 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
         b = new VectorAddBlock3D(g);
         break;
     case VECTOR_DOTPRODUCT:
-        b = new VectorDotProductBlock(g);
+        b = new VectorDotProductBlock2D(g);
         break;
     case MAT_ADD:
         b = new MatrixAddBlock(g);

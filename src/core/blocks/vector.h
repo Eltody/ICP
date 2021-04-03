@@ -128,16 +128,35 @@ public:
  *
  * Construction, computation and destruction of a block.
  */
-class VectorDotProductBlock : public BlockBase
+class VectorDotProductBlock2D : public BlockBase
 {
 public:
     //! Constructor
 
     //! @param g Graph object - parent scheme
-    VectorDotProductBlock(Graph &g);
+    VectorDotProductBlock2D(Graph &g);
 
     //! Computes the vectors' dot product
     void Compute() override;
     //! Virtual destructor to prevent leaks
-    virtual ~VectorDotProductBlock() = default;
+    virtual ~VectorDotProductBlock2D() = default;
+};
+
+
+/**
+ * @brief The vector output block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class VectorDotOutput : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    VectorDotOutput(Graph &g);
+    //! Not used for Output Blocks
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~VectorDotOutput() = default;
 };

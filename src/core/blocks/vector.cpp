@@ -91,7 +91,7 @@ void VectorAddBlock3D::Compute(){
 
 
 // blok pre vektorový súčin dvoch 2D vektorov
-VectorDotProductBlock::VectorDotProductBlock(Graph &g)
+VectorDotProductBlock2D::VectorDotProductBlock2D(Graph &g)
     : BlockBase(g, VECTOR_DOTPRODUCT, BLOCK_NAME.at(VECTOR_DOTPRODUCT),
     {
         InPort(*this, vec2(), "Vektor A"),
@@ -104,6 +104,15 @@ VectorDotProductBlock::VectorDotProductBlock(Graph &g)
 
 
 // výpočet vektorového súčinu dvoch 2D vektorov
-void VectorDotProductBlock::Compute(){
+void VectorDotProductBlock2D::Compute(){
     this->Output(0)["Hodnota"] = this->Input(0)["x"] * this->Input(1)["x"] + this->Input(0)["y"] * this->Input(1)["y"];
 }
+
+
+// blok pre výstup 2D skalárneho súčinu
+VectorDotOutput::VectorDotOutput(Graph &g)
+    : BlockBase(g, VECTOR_DOT_OUTPUT, "Výstup",
+    {InPort(*this, math(), "")}, {}) { }
+
+
+void VectorDotOutput::Compute() { }
