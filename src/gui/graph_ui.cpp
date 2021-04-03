@@ -1,14 +1,6 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file graph_ui.cpp
- * @brief Actions performed on the whole scheme
- * @details GraphUI is a central widget, all new blocks and connections are created here
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
+#include "blockeditor.h"
 #include "graph_ui.h"
 #include "block_ui.h"
-#include "style.h"
 #include "alert.h"
 
 BlockFactory &GraphUI::GetBlockFactory()

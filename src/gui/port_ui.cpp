@@ -1,12 +1,5 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file port_ui.cpp
- * @brief Port related actions
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
+#include "blockeditor.h"
 #include "port_ui.h"
-#include "style.h"
 #include <QPainter>
 #include <QPainterPath>
 #include <QApplication>

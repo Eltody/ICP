@@ -8,6 +8,7 @@
 #ifndef BLOCK_UI_H
 #define BLOCK_UI_H
 
+#include <QFontMetricsF>
 #include <QApplication>
 #include <QPaintEvent>
 #include <QWidget>
@@ -20,7 +21,7 @@
 #include <utility>
 #include <algorithm>
 
-#include "style.h"
+#include "blockeditor.h"
 #include "port_ui.h"
 #include "graph_ui.h"
 
@@ -82,7 +83,7 @@ public:
 		width_ = std::max(input_w + output_w, Style::NodeMinWidth);
         width_ = std::max(width_, Style::NodeNamePadding * 2 + QApplication::fontMetrics().horizontalAdvance(label.text()));
 
-		resize(width_ + 1, height_ + 1);
+        resize(width_ + 1, height_ + 1);
 
 		Move(0, 0);
 
@@ -366,7 +367,7 @@ protected:
     void paintEvent(QPaintEvent *event) {
 		BlockUI<BlockBaseT>::paintEvent(event);
 
-		int h = QApplication::fontMetrics().height();
+        int h = QApplication::fontMetrics().height();
 
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);

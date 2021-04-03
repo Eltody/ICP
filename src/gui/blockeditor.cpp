@@ -5,6 +5,39 @@
 #include "ui_blockeditor.h"
 #include "graph_ui.h"
 
+
+const int Style::ConnectionHoverSize = 15;
+const QColor Style::ConnectionCol = QColor(255, 255, 255);
+
+const int Style::GraphLoadPadding = 15;
+
+const int Style::NodeFieldOffset = 25;
+const int Style::NodeFieldWidth = 65;
+const int Style::NodeNamePadding = 14;
+const int Style::NodeNameHeight = 40;
+const int Style::NodeMinWidth = 60;
+const int Style::NodeRoundSize = 5;
+const QColor Style::NodeOutlineCol = QColor(0, 0, 0);
+const QColor Style::NodeOutlineHighlightCol = QColor(76, 76, 76);
+const QColor Style::NodeBackgroundCol = QColor(76, 76, 76);
+
+const int Style::TooltipRoundSize = 10;
+const int Style::TooltipPadding = 10;
+const int Style::TooltipHPadding = 18;
+const QColor Style::TooltipOutlineCol = QColor(0, 0, 0, 0);
+const QColor Style::TooltipBackgroundCol = QColor(76, 76, 76);
+const QColor Style::TooltipTextCol = QColor(255, 255, 255);
+
+const int Style::PortDrawSize = 10;
+const int Style::PortSize = 25;
+const int Style::PortMarginV = 30;
+const int Style::PortNamePadding = 15;
+const QColor Style::PortOutlineCol = QColor(0, 0, 0);
+const QColor Style::PortFreeCol = QColor(255, 255, 255);
+const QColor Style::PortHoverCol = QColor(175, 175, 175);
+
+
+
 BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	QMainWindow(parent),  ui(new Ui::BLOCKEDITOR), graph(g){
 	ui->setupUi(this);

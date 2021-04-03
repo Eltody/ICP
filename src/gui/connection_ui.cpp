@@ -7,7 +7,7 @@
 
 
 #include "connection_ui.h"
-#include "style.h"
+#include "blockeditor.h"
 
 #include <QPen>
 #include <QPainter>

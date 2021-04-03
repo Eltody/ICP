@@ -29,7 +29,6 @@ SOURCES += \
     src/core/blocks/calculator.cpp \
     src/core/blocks/matrix.cpp \
     src/core/blocks/vector.cpp \
-    src/gui/style.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
     src/core/type.cpp \
@@ -50,7 +49,6 @@ HEADERS += \
     src/core/blocks/calculator.h \
     src/core/blocks/matrix.h \
     src/core/blocks/vector.h \
-    src/gui/style.h \
     src/gui/tooltip.h \
     src/core/type.h \
     src/core/port.h \

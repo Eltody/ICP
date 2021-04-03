@@ -1,12 +1,5 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file tooltip.cpp
- * @brief Tooltips for viewing values at connections
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
+#include "blockeditor.h"
 #include "tooltip.h"
-#include "style.h"
 
 #include <QPainter>
 #include <QPainterPath>
