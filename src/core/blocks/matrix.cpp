@@ -159,7 +159,7 @@ void MatrixMulBlock::Compute(){
 }
 
 
-// blok pre sčítanie matíc 3x3
+// blok pre násobenie matíc 3x3
 Matrix3x3MulBlock::Matrix3x3MulBlock(Graph &g)
     : BlockBase(g, MAT3_MUL, BLOCK_NAME.at(MAT3_MUL),
     {
