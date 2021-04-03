@@ -85,6 +85,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MAT_SUB:
         b = new BlockUI<MatrixSubBlock>(MatrixSubBlock(g), gp);
         break;
+    case MAT3_SUB:
+        b = new BlockUI<Matrix3x3SubBlock>(Matrix3x3SubBlock(g), gp);
+        break;
 	default:
 		return nullptr;
 	}

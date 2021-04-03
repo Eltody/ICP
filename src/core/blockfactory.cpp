@@ -88,6 +88,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MAT_SUB:
         b = new MatrixSubBlock(g);
         break;
+    case MAT3_SUB:
+        b = new Matrix3x3SubBlock(g);
+        break;
 	default:
 		return nullptr;
 	}

@@ -272,6 +272,10 @@ public:
 
 #endif // MATRIXMULBLOCK
 
+
+//************************************************************//
+
+
 #ifndef MATRIXSUBBLOCK
 #define MATRIXSUBBLOCK
 
@@ -295,6 +299,34 @@ public:
     void Compute() override;
     //! Virtual destructor to prevent leaks
     virtual ~MatrixSubBlock() = default;
+};
+
+#endif // MATRIXSUBBLOCK
+
+
+#ifndef MATRIX3x3SUBBLOCK
+#define MATRIX3x3SUBBLOCK
+
+#include "../blockbase.h"
+#include "../graph.h"
+
+/**
+ * @brief The matrix subtracion block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class Matrix3x3SubBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    Matrix3x3SubBlock(Graph &g);
+
+    //! Performs the matrix addition
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~Matrix3x3SubBlock() = default;
 };
 
 #endif // MATRIXSUBBLOCK

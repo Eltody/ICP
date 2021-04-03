@@ -41,7 +41,8 @@ enum BlockType {
     MAT3_ADD = 21,
     MAT3_MUL = 22,
     MAT_MUL_VEC = 18,
-    MAT_SUB = 26
+    MAT_SUB = 26,
+    MAT3_SUB = 27
 };
 
 //! Maps human readable block names to BlockType
@@ -75,6 +76,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MAT3_MUL,  "3x3 Maticové násobenie"},
     { MAT_MUL_VEC,  "Násobenie matice a vektoru"},
     { MAT_SUB, "Maticové odčítanie"},
+    { MAT3_SUB, "3x3 Maticové odčítanie"},
 };
 
 #endif // BLOCKS_H

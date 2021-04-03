@@ -26,6 +26,7 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     matrix->addAction(new BlockMenuAction(MAT_ADD, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_SUB, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT3_ADD, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT3_SUB, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_MUL, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT3_MUL, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_MUL_VEC, QIcon()));
