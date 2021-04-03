@@ -284,15 +284,17 @@ bool BLOCKEDITOR::maybeSave(){
         ret.setButtonText(QMessageBox::Save, tr("Uložiť"));
         ret.setButtonText(QMessageBox::Discard, tr("Zahodiť"));
         ret.setButtonText(QMessageBox::Cancel, tr("Zrušiť"));
-        ret.exec();
-
-        if (ret.exec() == QMessageBox::Save){
-            return save();
-        }
-        else {
-            if (ret.exec() == QMessageBox::Cancel){
-            return false;
-            }
+        switch(ret.exec()){
+            case QMessageBox::Save:
+                return save();
+                break;
+            case QMessageBox::Cancel:
+                return false;
+                break;
+            case QMessageBox::Discard:
+                break;
+            default:
+                break;
         }
 	}
 	return true;

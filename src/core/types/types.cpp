@@ -7,11 +7,11 @@
 
 #include "types.h"
 
-scal::scal() : Type{"val"} { }
+scal::scal() : Type{"Hodnota"} { }
 
 scal::scal(double val) : scal()
 {
-	operator[]("val") = val;
+    operator[]("Hodnota") = val;
 }
 
 vec2::vec2() : Type{"x", "y"} { }
