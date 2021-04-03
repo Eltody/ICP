@@ -1,15 +1,22 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file type.cpp
- * @brief Implementation of type-related operations
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
+/** VUT FIT ICP
+ * Predmet: Seminár C++ 2020/2021
+ *
+ * Názov súboru: type.cpp
+ * Popis súboru: implementácia type-related operácií
+ *
+ * Dátum: 3.4.2021
+ * Autori:
+ *        Zaťko Tomáš  - xzatko02
+ *        Martin Rakús - xrakus04
  */
+
 
 #include "type.h"
 #include "port.h"
 #include <utility>
 #include <sstream>
 #include <stdexcept>
+
 
 Type::Type(std::initializer_list<std::string> components) : null_data(true), port(nullptr)
 {
@@ -18,11 +25,13 @@ Type::Type(std::initializer_list<std::string> components) : null_data(true), por
 	}
 }
 
+
 Type::Type(const Type &other) : null_data(other.null_data), port(other.port) {
 	for (const auto &elem : other.data) {
 		this->data.insert(std::pair<std::string, TypeValue>(elem.first, TypeValue(*this, elem.second.data)));
 	}
 }
+
 
 Type::Type(const Type &other, Port *port) : null_data(other.null_data), port(port) {
 	for (const auto &elem : other.data) {
@@ -30,8 +39,8 @@ Type::Type(const Type &other, Port *port) : null_data(other.null_data), port(por
 	}
 }
 
-Type &Type::operator=(const Type &other)
-{
+
+Type &Type::operator=(const Type &other) {
 	null_data = other.null_data;
 	this->data.clear();
 	for (const auto &elem : other.data) {
@@ -43,33 +52,33 @@ Type &Type::operator=(const Type &other)
 	return *this;
 }
 
+
 // access component of type
-TypeValue &Type::operator[](const std::string &component)
-{
+TypeValue &Type::operator[](const std::string &component) {
 	return this->data.at(component);
 }
 
-const std::map<std::string, TypeValue> Type::Data()
-{
+
+const std::map<std::string, TypeValue> Type::Data(){
 	return data;
 }
 
-bool Type::isNull() const
-{
+
+bool Type::isNull() const {
 	return null_data;
 }
 
-void Type::setNull()
-{
+
+void Type::setNull(){
 	null_data = true;
 	if (this->port != nullptr) {
 		this->port->eventValueChange();
 	}
 }
 
-// check type compatibility
-bool Type::type_of(const Type &other) const
-{
+
+// kontrola typovej kompatibility
+bool Type::type_of(const Type &other) const {
 	for (const auto &element : this->data) {
 		if (other.data.count(element.first) == 0) {
 			return false;
@@ -78,8 +87,8 @@ bool Type::type_of(const Type &other) const
 	return true;
 }
 
-Type::operator std::string()
-{
+
+Type::operator std::string() {
 	std::stringstream ss;
 	for(const auto &elem : data)
 	{
@@ -94,9 +103,9 @@ Type::operator std::string()
 	return ss.str();
 }
 
+
 // 'a' values equals 'b' values
-bool operator==(const Type &a, const Type &b)
-{
+bool operator==(const Type &a, const Type &b) {
 	if(!a.type_of(b)){
 		return false;
 	}
@@ -115,19 +124,20 @@ bool operator==(const Type &a, const Type &b)
 	return true;
 }
 
+
 TypeValue::TypeValue(Type &type, double value) : data(value), type(type) { }
 
-TypeValue::operator const double &() const
-{
+
+TypeValue::operator const double &() const {
 	if(this->type.isNull()){
 		throw std::runtime_error("Trying to access null TypeValue!");
 	}
 	return this->data;
 }
 
+
 // after setting any component to some value, other components are not null anymore and are set to default value '0.0'
-TypeValue &TypeValue::operator=(const double &value)
-{
+TypeValue &TypeValue::operator=(const double &value) {
 	this->data = value;
 	this->type.null_data = false;
 	if (this->type.port != nullptr) {
@@ -136,7 +146,6 @@ TypeValue &TypeValue::operator=(const double &value)
 	return *this;
 }
 
-bool operator==(const TypeValue &a, const TypeValue &b)
-{
+bool operator==(const TypeValue &a, const TypeValue &b){
 	return a.data == b.data;
 }

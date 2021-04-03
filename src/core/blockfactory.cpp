@@ -1,9 +1,15 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockfactory.cpp
- * @brief (De)Allocation of blocks
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
+/** VUT FIT ICP
+ * Predmet: Seminár C++ 2020/2021
+ *
+ * Názov súboru: blockfactory.cpp
+ * Popis súboru: alokácia a dealokácia blokov
+ *
+ * Dátum: 3.4.2021
+ * Autori:
+ *        Zaťko Tomáš  - xzatko02
+ *        Martin Rakús - xrakus04
  */
+
 
 #include "blockfactory.h"
 
@@ -11,6 +17,8 @@
 #include "blocks/vector.h"
 #include "blocks/matrix.h"
 
+
+// alokácia blokov
 BlockBase *BlockFactory::AllocBlock(BlockType t){
 	BlockBase *b;
 	switch (t) {
@@ -84,13 +92,18 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
 	return b;
 }
 
+
+BlockFactory::BlockFactory(Graph &g) : g(g) { }
+
+
+// uvoľnenie bloku
 void BlockFactory::FreeBlock(BlockBase *b){
 	blocks.remove(b);
 	delete b;
 }
 
-BlockFactory::BlockFactory(Graph &g) : g(g) { }
 
+// uvoľnenie všetkých blokov
 BlockFactory::~BlockFactory(){
 	for(BlockBase *b : blocks){
 		delete b;

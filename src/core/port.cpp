@@ -1,20 +1,28 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file port.cpp
- * @brief Ports for blocks
- * and menus created when right-clicking blocks
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
+/** VUT FIT ICP
+ * Predmet: Seminár C++ 2020/2021
+ *
+ * Názov súboru: port.cpp
+ * Popis súboru: porty pre bloky a vytvorenie menu pri right click-u na blok
+ *
+ * Dátum: 3.4.2021
+ * Autori:
+ *        Zaťko Tomáš  - xzatko02
+ *        Martin Rakús - xrakus04
  */
+
 
 #include "port.h"
 #include "blockbase.h"
+
 
 Port::Port(const Port &other) : data(other.data, this),
 	connUpdate(other.connUpdate), valUpdate(other.valUpdate),
 	block(other.block), name(other.name) { }
 
+
 Port::Port(const BlockBase &b, const Type &t, std::string name)
 	: data(t, this), block(b), name(name) { }
+
 
 void Port::eventValueChange() {
 	if (valUpdate) {
@@ -22,35 +30,43 @@ void Port::eventValueChange() {
 	}
 }
 
+
 void Port::eventConnectionChange() {
 	if (connUpdate) {
 		connUpdate(*this);
 	}
 }
 
+
 void Port::onConnectionChange(std::function<void (Port &)> callback)
 {
 	this->connUpdate = callback;
 }
+
 
 void Port::onValueChange(std::function<void (Port &)> callback)
 {
 	this->valUpdate = callback;
 }
 
+
 TypeValue &Port::operator[](const std::string &s)
 {
 	return Value()[s];
 }
+
 
 int InPort::getID() const
 {
 	return this->block.getPortID(*this);
 }
 
+
 InPort::InPort(const InPort &other, const BlockBase &b) : InPort(b, other.data, other.name) { }
 
+
 InPort::InPort(const BlockBase &b, const Type &t, std::string name) : Port(b, t, name) { }
+
 
 Type &InPort::Value()
 {
@@ -64,6 +80,7 @@ Type &InPort::Value()
 	return this->data;
 }
 
+
 void OutPort::eventValueChange()
 {
 	Port::eventValueChange();
@@ -74,14 +91,18 @@ void OutPort::eventValueChange()
 	}
 }
 
+
 int OutPort::getID() const
 {
 	return this->block.getPortID(*this);
 }
 
+
 OutPort::OutPort(const OutPort &other, const BlockBase &b) : OutPort(b, other.data, other.name) { }
 
+
 OutPort::OutPort(const BlockBase &b, const Type &t, std::string name) : Port(b, t, name) { }
+
 
 Type &OutPort::Value()
 {

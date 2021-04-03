@@ -13,17 +13,29 @@
 #include "../core/blocks.h"
 #include "block_ui.h"
 
-BlockMenu::BlockMenu(GraphUI &g) : graph(g)
-{
+BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
+    auto matrix = menu.addMenu("Matica");
     auto scalar = menu.addMenu("Skalár");
     auto vector = menu.addMenu("Vektor");
-    auto matrix = menu.addMenu("Matica");
+
+
+    matrix->addAction(new BlockMenuAction(MAT2_INPUT, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT2_OUTPUT, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT3_INPUT, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT3_OUTPUT, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT_ADD, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT3_ADD, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT_MUL, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT3_MUL, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT_MUL_VEC, QIcon()));
+
 
 	scalar->addAction(new BlockMenuAction(SCAL_INPUT, QIcon()));
 	scalar->addAction(new BlockMenuAction(SCAL_OUTPUT, QIcon()));
 	scalar->addAction(new BlockMenuAction(SCALAR_ADD, QIcon()));
 	scalar->addAction(new BlockMenuAction(SCALAR_SUB, QIcon()));
 	scalar->addAction(new BlockMenuAction(SCALAR_MUL, QIcon()));
+
 
 	vector->addAction(new BlockMenuAction(VECTOR_INPUT, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR3D_INPUT, QIcon()));
@@ -32,20 +44,10 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g)
 	vector->addAction(new BlockMenuAction(VECTOR_ADD, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR_ADD3D, QIcon()));
 	vector->addAction(new BlockMenuAction(VECTOR_DOTPRODUCT, QIcon()));
-
-	matrix->addAction(new BlockMenuAction(MAT2_INPUT, QIcon()));
-	matrix->addAction(new BlockMenuAction(MAT2_OUTPUT, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_INPUT, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_OUTPUT, QIcon()));
-	matrix->addAction(new BlockMenuAction(MAT_ADD, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_ADD, QIcon()));
-	matrix->addAction(new BlockMenuAction(MAT_MUL, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_MUL, QIcon()));
-	matrix->addAction(new BlockMenuAction(MAT_MUL_VEC, QIcon()));
 }
 
-void BlockMenu::ShowMenu()
-{
+
+void BlockMenu::ShowMenu() {
 	auto point = QCursor::pos();
 	menu.move(point);
 	auto selected = menu.exec();
@@ -59,21 +61,22 @@ void BlockMenu::ShowMenu()
 	}
 }
 
+
 BlockMenuAction::BlockMenuAction(BlockType t, const QIcon &icon)
 	: QAction(icon, QString(BLOCK_NAME.at(t).c_str()), nullptr), t(t) { }
 
-BlockMenuAction::operator BlockType()
-{
+
+BlockMenuAction::operator BlockType() {
 	return t;
 }
 
-BlockDelete::BlockDelete(GraphUI &g) : graph(g)
-{
+
+BlockDelete::BlockDelete(GraphUI &g) : graph(g) {
     menu.addAction(QIcon(":/icons/delete.png"), "Vymazať");
 }
 
-void BlockDelete::ShowMenu(BlockBase *block)
-{
+
+void BlockDelete::ShowMenu(BlockBase *block) {
 	menu.move(QCursor::pos());
 	if (menu.exec() != nullptr) {
 		graph.removeBlock(block);
