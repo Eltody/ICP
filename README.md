@@ -1,2 +1,3 @@
-# ICP
-VUT FIT ICP - Seminár C++
+<div align="center">
+    <h1>VUT FIT ICP</h1>
+</div>
