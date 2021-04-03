@@ -22,6 +22,7 @@ enum BlockType {
     VECTOR_ADD = 5,
     VECTOR_ADD3D = 6,
     VECTOR_SUB = 7,
+    VECTOR_SUB3D = 38,
     VECTOR_DOTPRODUCT = 8,
 
 
@@ -68,6 +69,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { VECTOR_DOT_OUTPUT, "Vektorový výstup (pre skalárny súčin)" },
     { VECTOR_ADD, "Vektorové sčítanie"},
     { VECTOR_ADD3D, "3D Vektorové sčítanie"},
+    { VECTOR_SUB3D, "3D Vektorové odčítanie"},
     { VECTOR_SUB,  "Vektorové odčítanie"},
     { VECTOR_DOTPRODUCT, "Skalárny súčin" },
 

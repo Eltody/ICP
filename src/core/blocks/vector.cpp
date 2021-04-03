@@ -110,6 +110,27 @@ void VectorAddBlock3D::Compute(){
 }
 
 
+// blok pre odčítanie dvoch 3D vektorov
+VectorSubBlock3D::VectorSubBlock3D(Graph &g)
+    : BlockBase(g, VECTOR_SUB3D, BLOCK_NAME.at(VECTOR_SUB3D),
+    {
+        InPort(*this, vec3(), "Vektor A"),
+        InPort(*this, vec3(), "Vektor B")
+    },
+    {
+        OutPort(*this, vec3(), "Výstup")
+    }
+    ){}
+
+
+// výpočet odčítania dvoch 3D vektorov
+void VectorSubBlock3D::Compute(){
+    this->Output(0)["x"] = this->Input(0)["x"] - this->Input(1)["x"];
+    this->Output(0)["y"] = this->Input(0)["y"] - this->Input(1)["y"];
+    this->Output(0)["z"] = this->Input(0)["z"] - this->Input(1)["z"];
+}
+
+
 // blok pre vektorový súčin dvoch 2D vektorov
 VectorDotProductBlock2D::VectorDotProductBlock2D(Graph &g)
     : BlockBase(g, VECTOR_DOTPRODUCT, BLOCK_NAME.at(VECTOR_DOTPRODUCT),

@@ -121,7 +121,7 @@ public:
 
 
 /**
- * @brief The vector addition block class
+ * @brief The 3D vector addition block class
  *
  * Construction, computation and destruction of a block.
  */
@@ -140,6 +140,24 @@ public:
 };
 
 
+/**
+ * @brief The 3D vector subtraction block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class VectorSubBlock3D : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    VectorSubBlock3D(Graph &g);
+
+    //! Performs the vector addition
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~VectorSubBlock3D() = default;
+};
 
 
 /**

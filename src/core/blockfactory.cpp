@@ -70,6 +70,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case VECTOR_ADD3D:
         b = new VectorAddBlock3D(g);
         break;
+    case VECTOR_SUB3D:
+        b = new VectorSubBlock3D(g);
+        break;
     case VECTOR_DOTPRODUCT:
         b = new VectorDotProductBlock2D(g);
         break;
