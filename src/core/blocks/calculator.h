@@ -236,3 +236,23 @@ public:
     //! Virtual destructor to prevent leaks
     virtual ~MathCosBlock() = default;
 };
+
+
+/**
+ * @brief Increment block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathIncBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathIncBlock(Graph &g);
+
+    //! Performs the square root
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathIncBlock() = default;
+};

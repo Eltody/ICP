@@ -231,3 +231,21 @@ MathCosBlock::MathCosBlock(Graph &g)
 void MathCosBlock::Compute(){
         this->Output(0)["Hodnota"] = cos(this->Input(0)["Hodnota"]);
 }
+
+
+// blok pre inkrement
+MathIncBlock::MathIncBlock(Graph &g)
+    : BlockBase(g, MATH_INC, BLOCK_NAME.at(MATH_INC),
+    {
+        InPort(*this, math(), "Číslo A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// vykonanie inkrementu
+void MathIncBlock::Compute(){
+        this->Output(0)["Hodnota"] = this->Input(0)["Hodnota"] + 1;
+}
