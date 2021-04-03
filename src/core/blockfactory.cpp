@@ -115,6 +115,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case MATH_LT:
         b = new MathLTBlock(g);
         break;
+    case MATH_SIN:
+        b = new MathSinBlock(g);
+        break;
 	default:
 		return nullptr;
 	}

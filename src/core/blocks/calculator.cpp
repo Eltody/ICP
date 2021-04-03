@@ -195,3 +195,21 @@ void MathLTBlock::Compute(){
         this->Output(0)["Hodnota"] = -this->Output(0)["Hodnota"];
     }
 }
+
+
+// blok pre výpočet sinusu
+MathSinBlock::MathSinBlock(Graph &g)
+    : BlockBase(g, MATH_SIN, BLOCK_NAME.at(MATH_SIN),
+    {
+        InPort(*this, math(), "Číslo A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet sinusu
+void MathSinBlock::Compute(){
+        this->Output(0)["Hodnota"] = sin(this->Input(0)["Hodnota"]);
+}
