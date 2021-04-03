@@ -330,3 +330,71 @@ public:
 };
 
 #endif // MATRIXSUBBLOCK
+
+
+#ifndef MATRIXDETERMINANTBLOCK
+#define MATRIXDETERMINANTBLOCK
+
+#include "../blockbase.h"
+#include "../graph.h"
+
+/**
+ * @brief The matrix determinant block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MatrixDeterminantBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MatrixDeterminantBlock(Graph &g);
+
+    //! Performs the matrix determinant
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MatrixDeterminantBlock() = default;
+};
+
+#endif // MATRIXDETERMINANTBLOCK
+
+#ifndef MATRIX_DETERMINANT_IO_H
+#define MATRIX_DETERMINANT_IO_H
+
+/**
+ * @brief The matrix determinant output block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MatrixDeterminantOutput : public BlockBase{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MatrixDeterminantOutput(Graph &g);
+    //! Not used for Output Blocks
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MatrixDeterminantOutput() = default;
+};
+
+
+/**
+ * @brief The matrix determinant input block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MatrixDeterminantInput : public BlockBase{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MatrixDeterminantInput(Graph &g);
+    //! Not used for Input Blocks
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MatrixDeterminantInput() = default;
+};
+
+#endif // MATRIX_DETERMINANT_IO_H

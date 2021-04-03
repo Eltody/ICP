@@ -46,6 +46,12 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
 	case MAT2_OUTPUT:
 		b = new MatrixOutput(g);
 		break;
+    case MAT_DETERMINANT_INPUT:
+        b = new MatrixDeterminantInput(g);
+        break;
+    case MAT_DETERMINANT_OUTPUT:
+        b = new MatrixDeterminantOutput(g);
+        break;
     case MAT3_INPUT:
         b = new Matrix3x3Input(g);
         break;
@@ -96,6 +102,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
         break;
     case MAT3_SUB:
         b = new Matrix3x3SubBlock(g);
+        break;
+    case MAT_DETERMINANT:
+        b = new MatrixDeterminantBlock(g);
         break;
     case MATH_ADD:
         b = new MathAddBlock(g);

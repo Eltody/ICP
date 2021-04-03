@@ -68,4 +68,7 @@ public:
     math(double val);
 };
 
+
+
+
 #endif // TYPES_H

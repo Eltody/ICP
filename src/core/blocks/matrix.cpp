@@ -239,3 +239,35 @@ void Matrix3x3SubBlock::Compute(){
     this->Output(0)["m32"] = this->Input(0)["m32"] - this->Input(1)["m32"];
     this->Output(0)["m33"] = this->Input(0)["m33"] - this->Input(1)["m33"];
 }
+
+
+// blok pre výpočet determinantu matice 2x2
+MatrixDeterminantBlock::MatrixDeterminantBlock(Graph &g)
+    : BlockBase(g, MAT_DETERMINANT, BLOCK_NAME.at(MAT_DETERMINANT),
+    {
+        InPort(*this, mat2(), "Matica A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet determinantu matice 2x2
+void MatrixDeterminantBlock::Compute(){
+    this->Output(0)["Hodnota"] = this->Input(0)["m11"] * this->Input(0)["m22"] - this->Input(0)["m12"] * this->Input(0)["m21"];
+}
+
+// blok pre načítanie vstupu matice 2x2 pre výpočet determinantu
+MatrixDeterminantInput::MatrixDeterminantInput(Graph &g)
+    : BlockBase(g, MAT_DETERMINANT_INPUT, "Vstup",
+{}, {OutPort(*this, mat2(), "")}) { }
+
+void MatrixDeterminantInput::Compute() { }
+
+// blok pre výstup determinant matice 2x2
+MatrixDeterminantOutput::MatrixDeterminantOutput(Graph &g)
+    : BlockBase(g, MAT_DETERMINANT_OUTPUT, "Výstup",
+    {InPort(*this, math(), "")}, {}) { }
+
+void MatrixDeterminantOutput::Compute() { }

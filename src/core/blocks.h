@@ -35,7 +35,7 @@ enum BlockType {
     SCALAR_ADD = 13,
     SCALAR_SUB = 14,
     SCALAR_MUL = 15,
-	// Matrix
+    // Matrix and Math
 	MAT_ADD = 16,
 	MAT_MUL = 17,
     MAT3_ADD = 21,
@@ -48,7 +48,10 @@ enum BlockType {
     MATH_OUTPUT = 30,
     MATH_SUB = 31,
     MATH_MUL = 32,
-    MATH_DIV = 33
+    MATH_DIV = 33,
+    MAT_DETERMINANT = 34,
+    MAT_DETERMINANT_INPUT = 35,
+    MAT_DETERMINANT_OUTPUT = 36
 };
 
 //! Maps human readable block names to BlockType
@@ -57,13 +60,13 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { SCAL_INPUT, "Skalárny vstup" },
     { VECTOR_INPUT, "Vektorový vstup" },
     { VECTOR3D_INPUT, "3D Vektorový vstup" },
-    { MAT2_INPUT, "Maticový vstup" },
+    { MAT2_INPUT, "2x2 Maticový vstup" },
     { MAT3_INPUT, "3x3 Maticový vstup" },
 	// Output
     { SCAL_OUTPUT, "Skalárny výstup" },
     { VECTOR_OUTPUT, "Vektorový výstup" },
     { VECTOR3D_OUTPUT, "3D Vektorový výstup" },
-    { MAT2_OUTPUT, "Maticový výstup" },
+    { MAT2_OUTPUT, "2x2 Maticový výstup" },
     { MAT3_OUTPUT, "3x3 Maticový výstup" },
 
 	// Vector
@@ -76,13 +79,16 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { SCALAR_SUB, "Skalárne odčítanie"},
     { SCALAR_MUL,  "Skalárne násobenie"},
 	// Matrix
-    { MAT_ADD, "Maticové sčítanie"},
+    { MAT_ADD, "2x2 Maticové sčítanie"},
     { MAT3_ADD, "3x3 Maticové sčítanie"},
-    { MAT_MUL,  "Maticové násobenie"},
+    { MAT_MUL,  "2x2 Maticové násobenie"},
     { MAT3_MUL,  "3x3 Maticové násobenie"},
     { MAT_MUL_VEC,  "Násobenie matice a vektoru"},
-    { MAT_SUB, "Maticové odčítanie"},
+    { MAT_SUB, "2x2 Maticové odčítanie"},
     { MAT3_SUB, "3x3 Maticové odčítanie"},
+    { MAT_DETERMINANT, "2x2 Výpočet determinantu matice"},
+    { MAT_DETERMINANT_OUTPUT, "Maticový determinant výstup" },
+    { MAT_DETERMINANT_INPUT, "2x2 Maticový vstup (pre determinant)" },
     // Math
     { MATH_INPUT, "Číselný vstup" },
     { MATH_OUTPUT, "Číselný výstup" },

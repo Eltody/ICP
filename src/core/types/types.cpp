@@ -68,4 +68,3 @@ math::math(double val) : math()
 {
     operator[]("Hodnota") = val;
 }
-

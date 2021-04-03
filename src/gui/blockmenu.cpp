@@ -25,6 +25,8 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     matrix->addAction(new BlockMenuAction(MAT2_OUTPUT, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT3_INPUT, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT3_OUTPUT, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT_DETERMINANT_INPUT, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT_DETERMINANT_OUTPUT, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_ADD, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_SUB, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT3_ADD, QIcon()));
@@ -32,6 +34,7 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     matrix->addAction(new BlockMenuAction(MAT_MUL, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT3_MUL, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_MUL_VEC, QIcon()));
+    matrix->addAction(new BlockMenuAction(MAT_DETERMINANT, QIcon()));
 
 
 	scalar->addAction(new BlockMenuAction(SCAL_INPUT, QIcon()));
