@@ -14,6 +14,7 @@
 #include "../blocks.h"
 #include "calculator.h"
 #include "math.h"
+#include <cmath>
 
 
 // blok pre načítanie vstupu skaláru
@@ -123,4 +124,22 @@ MathSqrtBlock::MathSqrtBlock(Graph &g)
 // výpočet druhej odmocniny čisla
 void MathSqrtBlock::Compute(){
     this->Output(0)["Hodnota"] = sqrt(this->Input(0)["Hodnota"]);
+}
+
+
+// blok pre výpočet absolútnej hodnoty čísla
+MathAbsBlock::MathAbsBlock(Graph &g)
+    : BlockBase(g, MATH_ABS, BLOCK_NAME.at(MATH_ABS),
+    {
+        InPort(*this, math(), "Číslo A")
+    },
+    {
+        OutPort(*this, math(), "Výstup")
+    }
+    ){}
+
+
+// výpočet druhej odmocniny čisla
+void MathAbsBlock::Compute(){
+    this->Output(0)["Hodnota"] = abs(this->Input(0)["Hodnota"]);
 }

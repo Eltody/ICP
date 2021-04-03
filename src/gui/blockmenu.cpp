@@ -51,6 +51,7 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     math->addAction(new BlockMenuAction(MATH_MUL, QIcon()));
     math->addAction(new BlockMenuAction(MATH_DIV, QIcon()));
     math->addAction(new BlockMenuAction(MATH_SQRT, QIcon()));
+    math->addAction(new BlockMenuAction(MATH_ABS, QIcon()));
 }
 
 

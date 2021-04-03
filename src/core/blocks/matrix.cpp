@@ -15,6 +15,7 @@
 #include "../blocks.h"
 #include "matrix.h"
 #include "math.h"
+#include <cmath>
 
 // blok pre načítanie vstupu matice 2x2
 MatrixInput::MatrixInput(Graph &g)

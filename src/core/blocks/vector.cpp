@@ -14,6 +14,8 @@
 #include "../blocks.h"
 #include "vector.h"
 #include "math.h"
+#include <cmath>
+
 
 // blok pre načítanie vstupu 2D vektoru
 VectorInput::VectorInput(Graph &g)

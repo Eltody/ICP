@@ -94,6 +94,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case MATH_SQRT:
         b = new BlockUI<MathSqrtBlock>(MathSqrtBlock(g), gp);
         break;
+    case MATH_ABS:
+        b = new BlockUI<MathAbsBlock>(MathAbsBlock(g), gp);
+        break;
     case MAT_DETERMINANT:
         b = new BlockUI<MatrixDeterminantBlock>(MatrixDeterminantBlock(g), gp);
         break;

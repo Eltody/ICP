@@ -136,3 +136,23 @@ public:
     //! Virtual destructor to prevent leaks
     virtual ~MathSqrtBlock() = default;
 };
+
+
+/**
+ * @brief The absolute value block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class MathAbsBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    MathAbsBlock(Graph &g);
+
+    //! Performs the square root
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~MathAbsBlock() = default;
+};
