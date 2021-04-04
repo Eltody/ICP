@@ -55,7 +55,7 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	createToolBars();
 	setCurrentFile("");
 	setUnifiedTitleAndToolBarOnMac(true);
-
+    setContextMenuPolicy(Qt::NoContextMenu);
 	setCentralWidget(&graph);
 	show();
 
