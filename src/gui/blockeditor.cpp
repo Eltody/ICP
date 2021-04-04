@@ -124,9 +124,12 @@ void BLOCKEDITOR::createToolBars(){
     actionToolBar = addToolBar("Akcie");
 	actionToolBar->addAction(computeAct);
 	actionToolBar->addAction(stepAct);
-	actionToolBar->addAction(resetAct);
+    actionToolBar->addAction(resetAct);
 
+    spacerWidget = new QWidget();
+    spacerWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
     helpToolBar = addToolBar("Nápoveda");
+    helpToolBar->addWidget(spacerWidget);
 	helpToolBar->addAction(helpAct);
 }
 

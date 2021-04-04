@@ -116,8 +116,6 @@ public:
 protected:
 	//! Invokes actions triggered by mouse movement
 	void mouseMoveEvent(QMouseEvent *event) override;
-    //! Invokes actions triggered by mouse wheel scroll
-    void wheelEvent(QWheelEvent *event) override;
 	//! Invokes actions triggered by mouse clicks
 	void mousePressEvent(QMouseEvent *event) override;
 	//! Invokes actions triggered by releasing the mouse button

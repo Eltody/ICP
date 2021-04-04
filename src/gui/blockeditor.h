@@ -166,6 +166,9 @@ private:
 	//! Toolbar with a name of currently edited scheme
 	QToolBar *nameToolBar;
 
+    //! Widget that right-aligns the scheme name
+    QWidget *spacerWidget;
+
 	//! Action for creating a new file
 	QAction *newBTN;
 	//! Action for opening a file
