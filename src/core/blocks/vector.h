@@ -206,7 +206,7 @@ public:
 
 
 /**
- * @brief The vector multiplied by const block class
+ * @brief The 2D vector multiplied by const block class
  *
  * Construction, computation and destruction of a block.
  */
@@ -222,4 +222,24 @@ public:
     void Compute() override;
     //! Virtual destructor to prevent leaks
     virtual ~VectorMulConstBlock() = default;
+};
+
+
+/**
+ * @brief The 3D vector multiplied by const block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class VectorMulConstBlock3D : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    VectorMulConstBlock3D(Graph &g);
+
+    //! Performs the vector addition
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~VectorMulConstBlock3D() = default;
 };

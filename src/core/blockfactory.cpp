@@ -79,6 +79,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case VECTOR_MUL_CONST:
         b = new VectorMulConstBlock(g);
         break;
+    case VECTOR_MUL_CONST3D:
+        b = new VectorMulConstBlock3D(g);
+        break;
     case MAT_ADD:
         b = new MatrixAddBlock(g);
         break;

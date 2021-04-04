@@ -25,6 +25,7 @@ enum BlockType {
     VECTOR_SUB3D = 38,
     VECTOR_DOTPRODUCT = 8,
     VECTOR_MUL_CONST = 39,
+    VECTOR_MUL_CONST3D = 40,
 
     // Matrix
     MAT2_INPUT = 9,
@@ -72,7 +73,8 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { VECTOR_SUB3D, "3D Vektorové odčítanie"},
     { VECTOR_SUB,  "Vektorové odčítanie"},
     { VECTOR_DOTPRODUCT, "Skalárny súčin" },
-    { VECTOR_MUL_CONST, "Vektorové násobenie konštantou"},
+    { VECTOR_MUL_CONST, "2D Vektorové násobenie konštantou"},
+    { VECTOR_MUL_CONST3D, "3D Vektorové násobenie konštantou"},
 
     // Matrix
     { MAT2_INPUT, "2x2 Maticový vstup" },
