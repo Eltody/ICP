@@ -1,11 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file connection_ui.cpp
- * @brief UI Class for block connections
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
-
 #include "connection_ui.h"
 #include "blockeditor.h"
 

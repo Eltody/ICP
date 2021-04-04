@@ -111,8 +111,10 @@ private slots:
     void calc();
     //! Button slot called when opening vector operations
     void vect();
-    //! Button slot called when opening matrix operations
-    void matr();
+    //! Button slot called when opening 2x2 matrix operations
+    void matr2();
+    //! Button slot called when opening 3x3 matrix operations
+    void matr3();
 	//! Button slot to call when creating a new scheme
 	void newFile();
 	//! Button slot to call when opening a file
@@ -181,8 +183,10 @@ private:
     QAction *calculatorBTN;
     //! Action for opening vector operations
     QAction *vectorBTN;
-    //! Action for opening matrix operations
-    QAction *matrixBTN;
+    //! Action for opening 2x2 matrix operations
+    QAction *matrix2BTN;
+    //! Action for opening 3x3 matrix operations
+    QAction *matrix3BTN;
 
     QAction *calcIn = new BlockMenuAction(MATH_INPUT, QIcon());
     QAction *calcOut = new BlockMenuAction(MATH_OUTPUT, QIcon());

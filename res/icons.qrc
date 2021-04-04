@@ -10,12 +10,15 @@
         <file>icons/new.png</file>
         <file>icons/import.png</file>
         <file>icons/expandCalc.png</file>
-        <file>icons/expandMatr.png</file>
         <file>icons/expandVect.png</file>
         <file>icons/contractCalc.png</file>
-        <file>icons/contractMatr.png</file>
         <file>icons/contractVect.png</file>
         <file>icons/btmVect.png</file>
-        <file>icons/btmMatr.png</file>
+        <file>icons/btmMatr2.png</file>
+        <file>icons/btmMatr3.png</file>
+        <file>icons/contractMatr2.png</file>
+        <file>icons/contractMatr3.png</file>
+        <file>icons/expandMatr2.png</file>
+        <file>icons/expandMatr3.png</file>
     </qresource>
 </RCC>
