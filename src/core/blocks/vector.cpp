@@ -168,8 +168,29 @@ VectorMulConstBlock::VectorMulConstBlock(Graph &g)
     ){}
 
 
-// výpočet vynásobenia 2D vektoru konštantou
+// výpočet vynásobenia 2D vektora konštantou
 void VectorMulConstBlock::Compute(){
     this->Output(0)["x"] = this->Input(0)["x"] * this->Input(1)["Hodnota"];
     this->Output(0)["y"] = this->Input(0)["y"] * this->Input(1)["Hodnota"];
+}
+
+
+// blok pre vynásobenie 3D vektora konštantou
+VectorMulConstBlock3D::VectorMulConstBlock3D(Graph &g)
+    : BlockBase(g, VECTOR_MUL_CONST3D, BLOCK_NAME.at(VECTOR_MUL_CONST3D),
+    {
+        InPort(*this, vec3(), "Vektor"),
+        InPort(*this, math(), "Konštanta")
+    },
+    {
+        OutPort(*this, vec3(), "Výstup")
+    }
+    ){}
+
+
+// výpočet vynásobenia 3D vektora konštantou
+void VectorMulConstBlock3D::Compute(){
+    this->Output(0)["x"] = this->Input(0)["x"] * this->Input(1)["Hodnota"];
+    this->Output(0)["y"] = this->Input(0)["y"] * this->Input(1)["Hodnota"];
+    this->Output(0)["z"] = this->Input(0)["z"] * this->Input(1)["Hodnota"];
 }
