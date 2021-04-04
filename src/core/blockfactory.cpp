@@ -76,6 +76,9 @@ BlockBase *BlockFactory::AllocBlock(BlockType t){
     case VECTOR_DOTPRODUCT:
         b = new VectorDotProductBlock2D(g);
         break;
+    case VECTOR_MUL_CONST:
+        b = new VectorMulConstBlock(g);
+        break;
     case MAT_ADD:
         b = new MatrixAddBlock(g);
         break;

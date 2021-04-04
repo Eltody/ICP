@@ -1,13 +1,9 @@
-/** VUT FIT ICP
- * Predmet: Seminár C++ 2020/2021
- *
- * Názov súboru: calculator.cpp
- * Popis súboru: súbor obsahuje funkcie pre prácu s skalármi a matematické operácie nad nimi
- *
- * Dátum: 3.4.2021
- * Autori:
- *        Zaťko Tomáš  - xzatko02
- *        Martin Rakús - xrakus04
+/** VUT FIT ICP 2020/2021
+ * @file calculator.cpp
+ * @brief Súbor obsahuje funkcie pre prácu so základnými matematickými operáciami
+ * @date 3.4.2021
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
 
 #include "../types/types.h"
@@ -17,13 +13,13 @@
 #include <cmath>
 
 
-// blok pre načítanie vstupu skaláru
+// blok pre načítanie vstupu čísla
 MathInput::MathInput(Graph &g)
     : BlockBase(g, MATH_INPUT, "Vstup",
 {}, {OutPort(*this, math(), "")}) { }
 
 
-// blok pre výstup skaláru
+// blok pre výstup čísla
 MathOutput::MathOutput(Graph &g)
     : BlockBase(g, MATH_OUTPUT, "Výstup",
     {InPort(*this, math(), "")}, {}) { }

@@ -1,14 +1,11 @@
-/** VUT FIT ICP
- * Predmet: Seminár C++ 2020/2021
- *
- * Názov súboru: matrix.cpp
- * Popis súboru: súbor obsahuje funkcie pre prácu s maticami 2x2 a 3x3 a matematické operácie nad nimi
- *
- * Dátum: 3.4.2021
- * Autori:
- *        Zaťko Tomáš  - xzatko02
- *        Martin Rakús - xrakus04
+/** VUT FIT ICP 2020/2021
+ * @file matrix.cpp
+ * @brief Súbor obsahuje funkcie pre prácu s maticami a operáciami nad nimi
+ * @date 3.4.2021
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
+
 
 
 #include "../types/types.h"

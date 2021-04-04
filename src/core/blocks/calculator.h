@@ -1,3 +1,10 @@
+/** VUT FIT ICP
+ * @file calculator.h
+ * @brief Calculator Blocks Header
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include "../blockbase.h"
 #include "../graph.h"
 

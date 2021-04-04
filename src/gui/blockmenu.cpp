@@ -45,6 +45,7 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     vector->addAction(new BlockMenuAction(VECTOR_ADD3D, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR_SUB3D, QIcon()));
     vector->addAction(new BlockMenuAction(VECTOR_DOTPRODUCT, QIcon()));
+    vector->addAction(new BlockMenuAction(VECTOR_MUL_CONST, QIcon()));
 
 
     math->addAction(new BlockMenuAction(MATH_INPUT, QIcon()));

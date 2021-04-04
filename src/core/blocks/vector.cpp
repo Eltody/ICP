@@ -1,13 +1,9 @@
-/** VUT FIT ICP
- * Predmet: Seminár C++ 2020/2021
- *
- * Názov súboru: vector.cpp
- * Popis súboru: súbor obsahuje funkcie pre prácu s vektormi a matematické operácie nad nimi
- *
- * Dátum: 3.4.2021
- * Autori:
- *        Zaťko Tomáš  - xzatko02
- *        Martin Rakús - xrakus04
+/** VUT FIT ICP 2020/2021
+ * @file vector.cpp
+ * @brief Súbor obsahuje funkcie pre prácu s vektormi a operáciami nad nimi
+ * @date 3.4.2021
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
 
 #include "../types/types.h"
@@ -157,3 +153,23 @@ VectorDotOutput::VectorDotOutput(Graph &g)
 
 
 void VectorDotOutput::Compute() { }
+
+
+// blok pre vynásobenie 2D vektora konštantou
+VectorMulConstBlock::VectorMulConstBlock(Graph &g)
+    : BlockBase(g, VECTOR_MUL_CONST, BLOCK_NAME.at(VECTOR_MUL_CONST),
+    {
+        InPort(*this, vec2(), "Vektor"),
+        InPort(*this, math(), "Konštanta")
+    },
+    {
+        OutPort(*this, vec2(), "Výstup")
+    }
+    ){}
+
+
+// výpočet vynásobenia 2D vektoru konštantou
+void VectorMulConstBlock::Compute(){
+    this->Output(0)["x"] = this->Input(0)["x"] * this->Input(1)["Hodnota"];
+    this->Output(0)["y"] = this->Input(0)["y"] * this->Input(1)["Hodnota"];
+}

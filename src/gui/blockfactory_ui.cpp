@@ -67,6 +67,9 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
     case VECTOR_DOTPRODUCT:
         b = new BlockUI<VectorDotProductBlock2D>(VectorDotProductBlock2D(g), gp);
         break;
+    case VECTOR_MUL_CONST:
+        b = new BlockUI<VectorMulConstBlock>(VectorMulConstBlock(g), gp);
+        break;
     case MAT_ADD:
 		b = new BlockUI<MatrixAddBlock>(MatrixAddBlock(g), gp);
         break;

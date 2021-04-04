@@ -1,3 +1,9 @@
+/** VUT FIT ICP
+ * @file vector.h
+ * @brief Vector Blocks Header
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
 #include "../blockbase.h"
 #include "../graph.h"
 
@@ -196,4 +202,24 @@ public:
     void Compute() override;
     //! Virtual destructor to prevent leaks
     virtual ~VectorDotOutput() = default;
+};
+
+
+/**
+ * @brief The vector multiplied by const block class
+ *
+ * Construction, computation and destruction of a block.
+ */
+class VectorMulConstBlock : public BlockBase
+{
+public:
+    //! Constructor
+
+    //! @param g Graph object - parent scheme
+    VectorMulConstBlock(Graph &g);
+
+    //! Performs the vector addition
+    void Compute() override;
+    //! Virtual destructor to prevent leaks
+    virtual ~VectorMulConstBlock() = default;
 };

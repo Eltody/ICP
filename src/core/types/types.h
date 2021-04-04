@@ -11,7 +11,7 @@
 #include "../type.h"
 
 /**
- * @brief 2D vector
+ * @brief Dátový typ pre 2D vektor
  */
 class vec2 : public Type {
 public:
@@ -20,7 +20,7 @@ public:
 };
 
 /**
- * @brief 3D vector
+ * @brief Dátový typ pre 3D vektor
  */
 class vec3 : public Type {
 public:
@@ -29,7 +29,7 @@ public:
 };
 
 /**
- * @brief 2x2 matrix
+ * @brief Dátový typ pre 2x2 maticu
  */
 class mat2 : public Type {
 public:
@@ -38,7 +38,7 @@ public:
 };
 
 /**
- * @brief 3x3 matrix
+ * @brief Dátový typ pre 3x3 maticu
  */
 class mat3 : public Type {
 public:
@@ -47,16 +47,13 @@ public:
 };
 
 
-//********************************************//
-
-
 /**
- * @brief Scalar value
+ * @brief Dátový typ pre jednoprvkový výsledok matematického výrazu
  */
 class math : public Type {
 public:
     math();
-    math(double val);
+    math(double hodnota);
 };
 
 

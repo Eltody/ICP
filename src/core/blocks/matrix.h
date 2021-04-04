@@ -1,3 +1,10 @@
+/** VUT FIT ICP
+ * @file vector.h
+ * @brief Matrix Blocks header
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #ifndef MATRIX_IO_H
 #define MATRIX_IO_H
 

@@ -18,7 +18,7 @@
 
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
-	GraphUI schema;
-	BLOCKEDITOR win(schema);
+    GraphUI scheme;
+    BLOCKEDITOR win(scheme);
 	return app.exec();
 }
