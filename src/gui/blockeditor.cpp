@@ -1,8 +1,11 @@
 #include <QtWidgets>
+#include <QToolBar>
 #include <QString>
 
+#include "../core/blocks.h"
 #include "blockeditor.h"
 #include "ui_blockeditor.h"
+#include "block_ui.h"
 #include "graph_ui.h"
 
 
@@ -36,6 +39,9 @@ const QColor Style::PortOutlineCol = QColor(0, 0, 0);
 const QColor Style::PortFreeCol = QColor(255, 255, 255);
 const QColor Style::PortHoverCol = QColor(175, 175, 175);
 
+bool calcIsOpen = false;
+bool vectIsOpen = false;
+bool matrIsOpen = false;
 
 
 BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
@@ -115,13 +121,49 @@ void BLOCKEDITOR::createActions(){
 }
 
 void BLOCKEDITOR::createToolBars(){
+    vectorInp = new BlockMenuAction(VECTOR_INPUT, QIcon());
+    vectorInp3D = new BlockMenuAction(VECTOR3D_INPUT, QIcon());
+    vectorOut = new BlockMenuAction(VECTOR_OUTPUT, QIcon());
+    vectorOut3D = new BlockMenuAction(VECTOR3D_OUTPUT, QIcon());
+    vectorDotOut = new BlockMenuAction(VECTOR_DOT_OUTPUT, QIcon());
+    vectorAdd = new BlockMenuAction(VECTOR_ADD, QIcon());
+    vectorAdd3D = new BlockMenuAction(VECTOR_ADD3D, QIcon());
+    vectorSub = new BlockMenuAction(VECTOR_SUB, QIcon());
+    vectorSub3D = new BlockMenuAction(VECTOR_SUB3D, QIcon());
+    vectorMul = new BlockMenuAction(VECTOR_MUL_CONST, QIcon());
+    vectorMul3D = new BlockMenuAction(VECTOR_MUL_CONST3D, QIcon());
+    vectorDot = new BlockMenuAction(VECTOR_DOTPRODUCT, QIcon());
+
+    calculatorBTN = new QAction(QIcon(":/icons/expandCalc.png"), "", this);
+    calculatorBTN->setStatusTip("Základné matematické operácie");
+    connect(calculatorBTN, SIGNAL(triggered()), this, SLOT(calc()));
+
+    vectorBTN = new QAction(QIcon(":/icons/expandVect.png"), "", this);
+    vectorBTN->setStatusTip("Operácie nad vektormi");
+    connect(vectorBTN, SIGNAL(triggered()), this, SLOT(vect()));
+
+    matrixBTN = new QAction(QIcon(":/icons/expandMatr.png"), "", this);
+    matrixBTN->setStatusTip("Operácie nad maticami");
+    connect(matrixBTN, SIGNAL(triggered()), this, SLOT(matr()));
+
+    blockMenu = new QToolBar();
+    addToolBar(Qt::LeftToolBarArea, blockMenu);
+    blockMenu->setIconSize(QSize(150, 30));
+    blockMenu->setFixedWidth(226);
+    blockMenu->setMovable(false);
+    blockMenu->addAction(calculatorBTN);
+    blockMenu->addAction(vectorBTN);
+    blockMenu->addAction(matrixBTN);
+
     fileToolBar = addToolBar("Súbor");
+    fileToolBar->setMovable(false);
     fileToolBar->addAction(newBTN);
     fileToolBar->addAction(openBTN);
     fileToolBar->addAction(saveBTN);
     fileToolBar->addAction(importBTN);
 
     actionToolBar = addToolBar("Akcie");
+    actionToolBar->setMovable(false);
 	actionToolBar->addAction(computeAct);
 	actionToolBar->addAction(stepAct);
     actionToolBar->addAction(resetAct);
@@ -129,16 +171,140 @@ void BLOCKEDITOR::createToolBars(){
     spacerWidget = new QWidget();
     spacerWidget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
     helpToolBar = addToolBar("Nápoveda");
+    helpToolBar->setMovable(false);
     helpToolBar->addWidget(spacerWidget);
 	helpToolBar->addAction(helpAct);
 }
 
 void BLOCKEDITOR::closeEvent(QCloseEvent *event){
-	if (maybeSave()) {
-		event->accept();
-	} else {
-		event->ignore();
-	}
+    if (maybeSave()) {
+        event->accept();
+    } else {
+        event->ignore();
+    }
+}
+
+void BLOCKEDITOR::calc(){
+    if (vectIsOpen == true){
+        vect();
+    } else if (matrIsOpen == true){
+        matr();
+    }
+    if (calcIsOpen == false){
+        calcIsOpen = true;
+        calculatorBTN->setIcon(QIcon(":/icons/contractCalc.png"));
+        blockMenu->removeAction(vectorBTN);
+        blockMenu->removeAction(matrixBTN);
+        blockMenu->addAction(vectorInp);
+        blockMenu->addAction(vectorInp3D);
+        blockMenu->addAction(vectorOut);
+        blockMenu->addAction(vectorOut3D);
+        blockMenu->addAction(vectorDotOut);
+        blockMenu->addAction(vectorAdd);
+        blockMenu->addAction(vectorAdd3D);
+        blockMenu->addAction(vectorSub);
+        blockMenu->addAction(vectorSub3D);
+        blockMenu->addAction(vectorMul);
+        blockMenu->addAction(vectorMul3D);
+        blockMenu->addAction(vectorDot);
+        blockMenu->addAction(vectorBTN);
+        blockMenu->addAction(matrixBTN);
+    } else{
+        calcIsOpen = false;
+        calculatorBTN->setIcon(QIcon(":/icons/expandCalc.png"));
+        blockMenu->removeAction(vectorInp);
+        blockMenu->removeAction(vectorInp3D);
+        blockMenu->removeAction(vectorOut);
+        blockMenu->removeAction(vectorOut3D);
+        blockMenu->removeAction(vectorDotOut);
+        blockMenu->removeAction(vectorAdd);
+        blockMenu->removeAction(vectorAdd3D);
+        blockMenu->removeAction(vectorSub);
+        blockMenu->removeAction(vectorSub3D);
+        blockMenu->removeAction(vectorMul);
+        blockMenu->removeAction(vectorMul3D);
+        blockMenu->removeAction(vectorDot);
+    }
+}
+
+void BLOCKEDITOR::vect(){
+    if (calcIsOpen == true){
+        calc();
+    } else if (matrIsOpen == true){
+        matr();
+    }
+    if (vectIsOpen == false){
+        vectIsOpen = true;
+        vectorBTN->setIcon(QIcon(":/icons/contractVect.png"));
+        blockMenu->removeAction(matrixBTN);
+        blockMenu->addAction(vectorInp);
+        blockMenu->addAction(vectorInp3D);
+        blockMenu->addAction(vectorOut);
+        blockMenu->addAction(vectorOut3D);
+        blockMenu->addAction(vectorDotOut);
+        blockMenu->addAction(vectorAdd);
+        blockMenu->addAction(vectorAdd3D);
+        blockMenu->addAction(vectorSub);
+        blockMenu->addAction(vectorSub3D);
+        blockMenu->addAction(vectorMul);
+        blockMenu->addAction(vectorMul3D);
+        blockMenu->addAction(vectorDot);
+        blockMenu->addAction(matrixBTN);
+    } else{
+        vectIsOpen = false;
+        vectorBTN->setIcon(QIcon(":/icons/expandVect.png"));
+        blockMenu->removeAction(vectorInp);
+        blockMenu->removeAction(vectorInp3D);
+        blockMenu->removeAction(vectorOut);
+        blockMenu->removeAction(vectorOut3D);
+        blockMenu->removeAction(vectorDotOut);
+        blockMenu->removeAction(vectorAdd);
+        blockMenu->removeAction(vectorAdd3D);
+        blockMenu->removeAction(vectorSub);
+        blockMenu->removeAction(vectorSub3D);
+        blockMenu->removeAction(vectorMul);
+        blockMenu->removeAction(vectorMul3D);
+        blockMenu->removeAction(vectorDot);
+    }
+}
+
+void BLOCKEDITOR::matr(){
+    if (calcIsOpen == true){
+        calc();
+    } else if (vectIsOpen == true){
+        vect();
+    }
+    if (matrIsOpen == false){
+        matrIsOpen = true;
+        matrixBTN->setIcon(QIcon(":/icons/contractMatr.png"));
+        blockMenu->addAction(vectorInp);
+        blockMenu->addAction(vectorInp3D);
+        blockMenu->addAction(vectorOut);
+        blockMenu->addAction(vectorOut3D);
+        blockMenu->addAction(vectorDotOut);
+        blockMenu->addAction(vectorAdd);
+        blockMenu->addAction(vectorAdd3D);
+        blockMenu->addAction(vectorSub);
+        blockMenu->addAction(vectorSub3D);
+        blockMenu->addAction(vectorMul);
+        blockMenu->addAction(vectorMul3D);
+        blockMenu->addAction(vectorDot);
+    } else{
+        matrIsOpen = false;
+        matrixBTN->setIcon(QIcon(":/icons/expandMatr.png"));
+        blockMenu->removeAction(vectorInp);
+        blockMenu->removeAction(vectorInp3D);
+        blockMenu->removeAction(vectorOut);
+        blockMenu->removeAction(vectorOut3D);
+        blockMenu->removeAction(vectorDotOut);
+        blockMenu->removeAction(vectorAdd);
+        blockMenu->removeAction(vectorAdd3D);
+        blockMenu->removeAction(vectorSub);
+        blockMenu->removeAction(vectorSub3D);
+        blockMenu->removeAction(vectorMul);
+        blockMenu->removeAction(vectorMul3D);
+        blockMenu->removeAction(vectorDot);
+    }
 }
 
 void BLOCKEDITOR::newFile(){

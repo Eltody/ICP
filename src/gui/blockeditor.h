@@ -8,6 +8,7 @@
 #ifndef BLOCKEDITOR_H
 #define BLOCKEDITOR_H
 
+#include <QGraphicsLinearLayout>
 #include <QMainWindow>
 #include "graph_ui.h"
 
@@ -107,6 +108,12 @@ protected:
 	void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 private slots:
+    //! Button slot called when opening standard calculator operations
+    void calc();
+    //! Button slot called when opening vector operations
+    void vect();
+    //! Button slot called when opening matrix operations
+    void matr();
 	//! Button slot to call when creating a new scheme
 	void newFile();
 	//! Button slot to call when opening a file
@@ -157,6 +164,8 @@ private:
 	//! Dialog used for help and about boxes
     QMenu *helpMenu;
 
+    //! Menu with available blocks
+    QToolBar *blockMenu;
 	//! Toolbar with file buttons
 	QToolBar *fileToolBar;
 	//! Toolbar with buttons related to computing blocks
@@ -168,6 +177,26 @@ private:
 
     //! Widget that right-aligns the scheme name
     QWidget *spacerWidget;
+
+    //! Action for opening standard calculator operations
+    QAction *calculatorBTN;
+    //! Action for opening vector operations
+    QAction *vectorBTN;
+    //! Action for opening matrix operations
+    QAction *matrixBTN;
+
+    QAction *vectorInp;
+    QAction *vectorInp3D;
+    QAction *vectorOut;
+    QAction *vectorOut3D;
+    QAction *vectorDotOut;
+    QAction *vectorAdd;
+    QAction *vectorAdd3D;
+    QAction *vectorSub;
+    QAction *vectorSub3D;
+    QAction *vectorMul;
+    QAction *vectorMul3D;
+    QAction *vectorDot;
 
 	//! Action for creating a new file
 	QAction *newBTN;

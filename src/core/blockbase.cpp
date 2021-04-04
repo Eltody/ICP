@@ -1,8 +1,8 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockbase.cpp
- * @brief Base class for blocks
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
+/** VUT FIT ICP
+ * @file blockfactory.cpp
+ * @brief Alokácia a dealokácia blokov
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
 
 #include "blockbase.h"

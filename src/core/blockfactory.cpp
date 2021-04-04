@@ -5,7 +5,6 @@
  * @author Martin Rakús - xrakus04
  */
 
-
 #include "blockfactory.h"
 
 #include "blocks/calculator.h"
