@@ -3,23 +3,20 @@
 #include "block_ui.h"
 #include "alert.h"
 
-BlockFactory &GraphUI::GetBlockFactory()
-{
+BlockFactory &GraphUI::GetBlockFactory(){
 	return bf;
 }
 
 GraphUI::GraphUI() : in_click(nullptr), out_click(nullptr),
-	tc(&in_click, &out_click, this), bf(*this), block_menu(*this), block_context_menu(*this) {
+    tc(&in_click, &out_click, this), bf(*this), block_menu(*this), block_context_menu(*this){
 	setMouseTracking(true);
 }
 
-QPoint GraphUI::getOffset() const
-{
+QPoint GraphUI::getOffset() const{
 	return pos_offset;
 }
 
-void GraphUI::clearGraph()
-{
+void GraphUI::clearGraph(){
 	Graph::clearGraph();
 	for(ConnectionUI *c : ui_connections){
 		delete c;
@@ -30,8 +27,7 @@ void GraphUI::clearGraph()
 	last_computed = nullptr;
 }
 
-bool GraphUI::loadGraph(std::stringstream &graph, bool merge)
-{
+bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
 
@@ -92,8 +88,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge)
 	return true;
 }
 
-std::stringstream GraphUI::saveGraph()
-{
+std::stringstream GraphUI::saveGraph(){
 	std::stringstream ss = Graph::saveGraph();
 
 	// get offset
@@ -128,20 +123,17 @@ std::stringstream GraphUI::saveGraph()
 	return std::move(ss);
 }
 
-void GraphUI::blockContextMenu(BlockBase *b)
-{
+void GraphUI::blockContextMenu(BlockBase *b){
 	block_context_menu.ShowMenu(b);
 }
 
-BlockBase *GraphUI::addBlock(BlockType t)
-{
+BlockBase *GraphUI::addBlock(BlockType t){
 	BlockBase *b = Graph::addBlock(t);
 	static_cast<BlockUI<BlockBase>*>(b)->updateOffset(pos_offset);
 	return b;
 }
 
-void GraphUI::removeBlock(BlockBase *b)
-{
+void GraphUI::removeBlock(BlockBase *b){
 	Graph::removeBlock(b);
 	this->in_click = nullptr;
 	this->out_click = nullptr;
@@ -149,7 +141,7 @@ void GraphUI::removeBlock(BlockBase *b)
 
 bool GraphUI::addConnection(OutPort &a, InPort &b)
 {
-	if(Graph::addConnection(a, b)) {
+    if(Graph::addConnection(a, b)){
 		// remove previous connection
 		for(ConnectionUI *c : ui_connections){
 			if((*c) == b){

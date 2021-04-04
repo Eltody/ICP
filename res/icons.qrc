@@ -15,5 +15,7 @@
         <file>icons/contractCalc.png</file>
         <file>icons/contractMatr.png</file>
         <file>icons/contractVect.png</file>
+        <file>icons/btmVect.png</file>
+        <file>icons/btmMatr.png</file>
     </qresource>
 </RCC>

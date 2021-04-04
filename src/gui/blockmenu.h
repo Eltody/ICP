@@ -16,8 +16,7 @@
 class GraphUI;
 
 //! BlockType decorator for QAction
-class BlockMenuAction : public QAction
-{
+class BlockMenuAction : public QAction{
 private:
 	//! Type of the generated block
 	BlockType t;
@@ -28,8 +27,7 @@ public:
 };
 
 //! Class that defines the dropdown menu for selecting a block to generate
-class BlockMenu
-{
+class BlockMenu{
 private:
 	//! Parent GraphUI
 	GraphUI &graph;
@@ -43,8 +41,7 @@ public:
 };
 
 //! Menu shown after right-clicking a block (contains only a delete option)
-class BlockDelete
-{
+class BlockDelete{
 private:
 	//! Parent widget
 	GraphUI &graph;

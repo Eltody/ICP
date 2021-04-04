@@ -208,8 +208,7 @@ public:
 
 protected:
 	//! Rendering the block
-    void paintEvent(QPaintEvent *)
-	{
+    void paintEvent(QPaintEvent *){
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 
@@ -218,7 +217,7 @@ protected:
 
 		painter.fillPath(path, QBrush(Style::NodeBackgroundCol));
 
-		if (highlight) {
+        if (highlight){
 			QPainterPath h;
 			h.addRoundedRect(QRectF(2.5, 2.5, width_ - 4, height_ - 4), Style::NodeRoundSize, Style::NodeRoundSize);
 
@@ -232,8 +231,7 @@ protected:
 	}
 
 	//! Moving block by dragging
-    void mouseMoveEvent(QMouseEvent *event)
-	{
+    void mouseMoveEvent(QMouseEvent *event){
 		static_cast<GraphUI&>(this->graph).hideHoverConnectionUI();
 		if(drag){
 			QPoint tmp = Pos() + event->pos() - drag_p;
@@ -241,10 +239,9 @@ protected:
 		}
 	}
 	//! Begin drag on left click, open context menu on right click
-    void mousePressEvent(QMouseEvent *event)
-	{
+    void mousePressEvent(QMouseEvent *event){
 		setFocus();
-		if(event->button() != Qt::RightButton) {
+        if(event->button() != Qt::RightButton){
 			drag = true;
 			drag_p = event->pos();
 		}
@@ -254,14 +251,12 @@ protected:
 	}
 
 	//! End drag
-    void mouseReleaseEvent(QMouseEvent *)
-	{
+    void mouseReleaseEvent(QMouseEvent *){
 		drag = false;
 	}
 
 	//! Hide connection tooltip when hovering over the block
-    void enterEvent(QEvent *)
-	{
+    void enterEvent(QEvent *){
 		static_cast<GraphUI&>(this->graph).hideHoverConnectionUI();
 	}
 };
@@ -277,22 +272,22 @@ private:
 	QString prev;
 public:
 	TextEdit(QWidget *parent, std::function<void(void)> callback)
-		: QLineEdit(parent), callback(callback) { }
+        : QLineEdit(parent), callback(callback){ }
 	void ErrorColor(bool err) {
 		this->err = err;
 	}
 protected:
-    void focusOutEvent(QFocusEvent *e) {
+    void focusOutEvent(QFocusEvent *e){
 		QLineEdit::focusOutEvent(e);
 		if (text() != prev) { callback(); }
 		prev = text();
 	}
-    void keyPressEvent(QKeyEvent *e) {
+    void keyPressEvent(QKeyEvent *e){
 		QLineEdit::keyPressEvent(e);
 		if (text() != prev) { callback(); }
 		prev = text();
 	}
-    void paintEvent(QPaintEvent *e) {
+    void paintEvent(QPaintEvent *e){
 		QLineEdit::paintEvent(e);
 		if(err){
 			QPainter painter(this);
@@ -306,7 +301,7 @@ protected:
  * @brief Input Block GUI representation
  */
 template <typename BlockBaseT>
-class InputBlockUI : public BlockUI<BlockBaseT> {
+class InputBlockUI : public BlockUI<BlockBaseT>{
 private:
 	int orig_w, orig_h;
 	int text_in_off;

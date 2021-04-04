@@ -17,8 +17,7 @@
 /**
  * @brief Container for all custom defined styles
  */
-class Style
-{
+class Style{
 public:
     //! Port connect diameter
     static const int PortSize;
@@ -94,8 +93,7 @@ class BLOCKEDITOR;
  * This class is a QWidget that is parent to all graphic elements within the window.
  * All other control widgets (except the dropdown menus for adding/removing blocks) are declared here.
  */
-class BLOCKEDITOR : public QMainWindow
-{
+class BLOCKEDITOR : public QMainWindow{
     Q_OBJECT
 public:
 	//! Constructor
@@ -185,18 +183,48 @@ private:
     //! Action for opening matrix operations
     QAction *matrixBTN;
 
-    QAction *vectorInp;
-    QAction *vectorInp3D;
-    QAction *vectorOut;
-    QAction *vectorOut3D;
-    QAction *vectorDotOut;
-    QAction *vectorAdd;
-    QAction *vectorAdd3D;
-    QAction *vectorSub;
-    QAction *vectorSub3D;
-    QAction *vectorMul;
-    QAction *vectorMul3D;
-    QAction *vectorDot;
+    QAction *calcIn = new BlockMenuAction(MATH_INPUT, QIcon());
+    QAction *calcOut = new BlockMenuAction(MATH_OUTPUT, QIcon());
+    QAction *calcAdd = new BlockMenuAction(MATH_ADD, QIcon());
+    QAction *calcSub = new BlockMenuAction(MATH_SUB, QIcon());
+    QAction *calcMul = new BlockMenuAction(MATH_MUL, QIcon());
+    QAction *calcDiv = new BlockMenuAction(MATH_DIV, QIcon());
+    QAction *calcSqrt = new BlockMenuAction(MATH_SQRT, QIcon());
+    QAction *calcAbs = new BlockMenuAction(MATH_ABS, QIcon());
+    QAction *calcGt = new BlockMenuAction(MATH_GT, QIcon());
+    QAction *calcLt = new BlockMenuAction(MATH_LT, QIcon());
+    QAction *calcSin = new BlockMenuAction(MATH_SIN, QIcon());
+    QAction *calcCos = new BlockMenuAction(MATH_COS, QIcon());
+    QAction *calcInc = new BlockMenuAction(MATH_INC, QIcon());
+    QAction *calcDec = new BlockMenuAction(MATH_DEC, QIcon());
+
+    QAction *vectorInp = new BlockMenuAction(VECTOR_INPUT, QIcon());
+    QAction *vectorInp3D = new BlockMenuAction(VECTOR3D_INPUT, QIcon());
+    QAction *vectorOut = new BlockMenuAction(VECTOR_OUTPUT, QIcon());
+    QAction *vectorOut3D = new BlockMenuAction(VECTOR3D_OUTPUT, QIcon());
+    QAction *vectorDotOut = new BlockMenuAction(VECTOR_DOT_OUTPUT, QIcon());
+    QAction *vectorAdd = new BlockMenuAction(VECTOR_ADD, QIcon());
+    QAction *vectorAdd3D = new BlockMenuAction(VECTOR_ADD3D, QIcon());
+    QAction *vectorSub = new BlockMenuAction(VECTOR_SUB, QIcon());
+    QAction *vectorSub3D = new BlockMenuAction(VECTOR_SUB3D, QIcon());
+    QAction *vectorMul = new BlockMenuAction(VECTOR_MUL_CONST, QIcon());
+    QAction *vectorMul3D = new BlockMenuAction(VECTOR_MUL_CONST3D, QIcon());
+    QAction *vectorDot = new BlockMenuAction(VECTOR_DOTPRODUCT, QIcon());
+
+    QAction *matrixInp = new BlockMenuAction(MAT2_INPUT, QIcon());
+    QAction *matrixOut = new BlockMenuAction(MAT2_OUTPUT, QIcon());
+    QAction *matrixDetIn = new BlockMenuAction(MAT_DETERMINANT_INPUT, QIcon());
+    QAction *matrixDetOut = new BlockMenuAction(MAT_DETERMINANT_OUTPUT, QIcon());
+    QAction *matrixAdd = new BlockMenuAction(MAT_ADD, QIcon());
+    QAction *matrixSub = new BlockMenuAction(MAT_SUB, QIcon());
+    QAction *matrixMul = new BlockMenuAction(MAT_MUL, QIcon());
+    QAction *matrixMulVec = new BlockMenuAction(MAT_MUL_VEC, QIcon());
+    QAction *matrixDet = new BlockMenuAction(MAT_DETERMINANT, QIcon());
+    QAction *matrix3In = new BlockMenuAction(MAT3_INPUT, QIcon());
+    QAction *matrix3Out = new BlockMenuAction(MAT3_OUTPUT, QIcon());
+    QAction *matrix3Add = new BlockMenuAction(MAT3_ADD, QIcon());
+    QAction *matrix3Sub = new BlockMenuAction(MAT3_SUB, QIcon());
+    QAction *matrix3Mul = new BlockMenuAction(MAT3_MUL, QIcon());
 
 	//! Action for creating a new file
 	QAction *newBTN;
