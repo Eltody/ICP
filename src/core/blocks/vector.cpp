@@ -16,13 +16,13 @@
 // blok pre načítanie vstupu 2D vektoru
 VectorInput::VectorInput(Graph &g)
     : BlockBase(g, VECTOR_INPUT, "Vstup",
-{}, {OutPort(*this, vec2(), "")}) { }
+{}, {OutPort(*this, vector2D_out(), "")}) { }
 
 
 // blok pre načítanie vstupu 3D vektoru
 Vector3DInput::Vector3DInput(Graph &g)
     : BlockBase(g, VECTOR3D_INPUT, "Vstup",
-{}, {OutPort(*this, vec3(), "")}) { }
+{}, {OutPort(*this, vector3D_out(), "")}) { }
 
 
 void VectorInput::Compute() { }
@@ -36,24 +36,24 @@ void Vector3DOutput::Compute() { }
 // blok pre výstup 2D vektoru
 VectorOutput::VectorOutput(Graph &g)
     : BlockBase(g, VECTOR_OUTPUT, "Výstup",
-	{InPort(*this, vec2(), "")}, {}) { }
+    {InPort(*this, vector2D_out(), "")}, {}) { }
 
 
 // blok pre výstup 3D vektoru
 Vector3DOutput::Vector3DOutput(Graph &g)
     : BlockBase(g, VECTOR3D_OUTPUT, "Výstup",
-    {InPort(*this, vec3(), "")}, {}) { }
+    {InPort(*this, vector3D_out(), "")}, {}) { }
 
 
 // blok pre sčítanie dvoch 2D vektorov
 VectorAddBlock::VectorAddBlock(Graph &g)
     : BlockBase(g, VECTOR_ADD, BLOCK_NAME.at(VECTOR_ADD),
     {
-        InPort(*this, vec2(), "Vektor A"),
-        InPort(*this, vec2(), "Vektor B")
+        InPort(*this, vector2D_out(), "Vektor A"),
+        InPort(*this, vector2D_out(), "Vektor B")
     },
     {
-        OutPort(*this, vec2(), "Výstup")
+        OutPort(*this, vector2D_out(), "Výstup")
     }
     ){}
 
@@ -69,11 +69,11 @@ void VectorAddBlock::Compute(){
 VectorSubBlock::VectorSubBlock(Graph &g)
     : BlockBase(g, VECTOR_SUB, BLOCK_NAME.at(VECTOR_SUB),
     {
-        InPort(*this, vec2(), "Vektor A"),
-        InPort(*this, vec2(), "Vektor B")
+        InPort(*this, vector2D_out(), "Vektor A"),
+        InPort(*this, vector2D_out(), "Vektor B")
     },
     {
-        OutPort(*this, vec2(), "Výstup")
+        OutPort(*this, vector2D_out(), "Výstup")
     }
     ){}
 
@@ -89,11 +89,11 @@ void VectorSubBlock::Compute(){
 VectorAddBlock3D::VectorAddBlock3D(Graph &g)
     : BlockBase(g, VECTOR_ADD3D, BLOCK_NAME.at(VECTOR_ADD3D),
     {
-        InPort(*this, vec3(), "Vektor A"),
-        InPort(*this, vec3(), "Vektor B")
+        InPort(*this, vector3D_out(), "Vektor A"),
+        InPort(*this, vector3D_out(), "Vektor B")
     },
     {
-        OutPort(*this, vec3(), "Výstup")
+        OutPort(*this, vector3D_out(), "Výstup")
     }
     ){}
 
@@ -110,11 +110,11 @@ void VectorAddBlock3D::Compute(){
 VectorSubBlock3D::VectorSubBlock3D(Graph &g)
     : BlockBase(g, VECTOR_SUB3D, BLOCK_NAME.at(VECTOR_SUB3D),
     {
-        InPort(*this, vec3(), "Vektor A"),
-        InPort(*this, vec3(), "Vektor B")
+        InPort(*this, vector3D_out(), "Vektor A"),
+        InPort(*this, vector3D_out(), "Vektor B")
     },
     {
-        OutPort(*this, vec3(), "Výstup")
+        OutPort(*this, vector3D_out(), "Výstup")
     }
     ){}
 
@@ -131,11 +131,11 @@ void VectorSubBlock3D::Compute(){
 VectorDotProductBlock2D::VectorDotProductBlock2D(Graph &g)
     : BlockBase(g, VECTOR_DOTPRODUCT, BLOCK_NAME.at(VECTOR_DOTPRODUCT),
     {
-        InPort(*this, vec2(), "Vektor A"),
-        InPort(*this, vec2(), "Vektor B")
+        InPort(*this, vector2D_out(), "Vektor A"),
+        InPort(*this, vector2D_out(), "Vektor B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -149,7 +149,7 @@ void VectorDotProductBlock2D::Compute(){
 // blok pre výstup 2D skalárneho súčinu
 VectorDotOutput::VectorDotOutput(Graph &g)
     : BlockBase(g, VECTOR_DOT_OUTPUT, "Výstup",
-    {InPort(*this, math(), "")}, {}) { }
+    {InPort(*this, one_number(), "")}, {}) { }
 
 
 void VectorDotOutput::Compute() { }
@@ -159,11 +159,11 @@ void VectorDotOutput::Compute() { }
 VectorMulConstBlock::VectorMulConstBlock(Graph &g)
     : BlockBase(g, VECTOR_MUL_CONST, BLOCK_NAME.at(VECTOR_MUL_CONST),
     {
-        InPort(*this, vec2(), "Vektor"),
-        InPort(*this, math(), "Konštanta")
+        InPort(*this, vector2D_out(), "Vektor"),
+        InPort(*this, one_number(), "Konštanta")
     },
     {
-        OutPort(*this, vec2(), "Výstup")
+        OutPort(*this, vector2D_out(), "Výstup")
     }
     ){}
 
@@ -179,11 +179,11 @@ void VectorMulConstBlock::Compute(){
 VectorMulConstBlock3D::VectorMulConstBlock3D(Graph &g)
     : BlockBase(g, VECTOR_MUL_CONST3D, BLOCK_NAME.at(VECTOR_MUL_CONST3D),
     {
-        InPort(*this, vec3(), "Vektor"),
-        InPort(*this, math(), "Konštanta")
+        InPort(*this, vector3D_out(), "Vektor"),
+        InPort(*this, one_number(), "Konštanta")
     },
     {
-        OutPort(*this, vec3(), "Výstup")
+        OutPort(*this, vector3D_out(), "Výstup")
     }
     ){}
 

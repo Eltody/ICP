@@ -16,13 +16,13 @@
 // blok pre načítanie vstupu čísla
 MathInput::MathInput(Graph &g)
     : BlockBase(g, MATH_INPUT, "Vstup",
-{}, {OutPort(*this, math(), "")}) { }
+{}, {OutPort(*this, one_number(), "")}) { }
 
 
 // blok pre výstup čísla
 MathOutput::MathOutput(Graph &g)
     : BlockBase(g, MATH_OUTPUT, "Výstup",
-    {InPort(*this, math(), "")}, {}) { }
+    {InPort(*this, one_number(), "")}, {}) { }
 
 
 void MathInput::Compute() { }
@@ -33,11 +33,11 @@ void MathOutput::Compute() { }
 MathAddBlock::MathAddBlock(Graph &g)
     : BlockBase(g, MATH_ADD, BLOCK_NAME.at(MATH_ADD),
     {
-        InPort(*this, math(), "Číslo A"),
-        InPort(*this, math(), "Číslo B")
+        InPort(*this, one_number(), "Číslo A"),
+        InPort(*this, one_number(), "Číslo B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -52,11 +52,11 @@ void MathAddBlock::Compute(){
 MathSubBlock::MathSubBlock(Graph &g)
     : BlockBase(g, MATH_SUB, BLOCK_NAME.at(MATH_SUB),
     {
-        InPort(*this, math(), "Číslo A"),
-        InPort(*this, math(), "Číslo B")
+        InPort(*this, one_number(), "Číslo A"),
+        InPort(*this, one_number(), "Číslo B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -71,11 +71,11 @@ void MathSubBlock::Compute(){
 MathMulBlock::MathMulBlock(Graph &g)
     : BlockBase(g, MATH_MUL, BLOCK_NAME.at(MATH_MUL),
     {
-        InPort(*this, math(), "Číslo A"),
-        InPort(*this, math(), "Číslo B")
+        InPort(*this, one_number(), "Číslo A"),
+        InPort(*this, one_number(), "Číslo B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -90,11 +90,11 @@ void MathMulBlock::Compute(){
 MathDivBlock::MathDivBlock(Graph &g)
     : BlockBase(g, MATH_DIV, BLOCK_NAME.at(MATH_DIV),
     {
-        InPort(*this, math(), "Číslo A"),
-        InPort(*this, math(), "Číslo B")
+        InPort(*this, one_number(), "Číslo A"),
+        InPort(*this, one_number(), "Číslo B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -109,10 +109,10 @@ void MathDivBlock::Compute(){
 MathSqrtBlock::MathSqrtBlock(Graph &g)
     : BlockBase(g, MATH_SQRT, BLOCK_NAME.at(MATH_SQRT),
     {
-        InPort(*this, math(), "Číslo A")
+        InPort(*this, one_number(), "Číslo A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -127,10 +127,10 @@ void MathSqrtBlock::Compute(){
 MathAbsBlock::MathAbsBlock(Graph &g)
     : BlockBase(g, MATH_ABS, BLOCK_NAME.at(MATH_ABS),
     {
-        InPort(*this, math(), "Číslo A")
+        InPort(*this, one_number(), "Číslo A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -145,11 +145,11 @@ void MathAbsBlock::Compute(){
 MathGTBlock::MathGTBlock(Graph &g)
     : BlockBase(g, MATH_GT, BLOCK_NAME.at(MATH_GT),
     {
-        InPort(*this, math(), "Číslo A"),
-        InPort(*this, math(), "Číslo B")
+        InPort(*this, one_number(), "Číslo A"),
+        InPort(*this, one_number(), "Číslo B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -171,11 +171,11 @@ void MathGTBlock::Compute(){
 MathLTBlock::MathLTBlock(Graph &g)
     : BlockBase(g, MATH_LT, BLOCK_NAME.at(MATH_LT),
     {
-        InPort(*this, math(), "Číslo A"),
-        InPort(*this, math(), "Číslo B")
+        InPort(*this, one_number(), "Číslo A"),
+        InPort(*this, one_number(), "Číslo B")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -197,10 +197,10 @@ void MathLTBlock::Compute(){
 MathSinBlock::MathSinBlock(Graph &g)
     : BlockBase(g, MATH_SIN, BLOCK_NAME.at(MATH_SIN),
     {
-        InPort(*this, math(), "Číslo A")
+        InPort(*this, one_number(), "Číslo A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -215,10 +215,10 @@ void MathSinBlock::Compute(){
 MathCosBlock::MathCosBlock(Graph &g)
     : BlockBase(g, MATH_COS, BLOCK_NAME.at(MATH_COS),
     {
-        InPort(*this, math(), "Číslo A")
+        InPort(*this, one_number(), "Číslo A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -233,10 +233,10 @@ void MathCosBlock::Compute(){
 MathIncBlock::MathIncBlock(Graph &g)
     : BlockBase(g, MATH_INC, BLOCK_NAME.at(MATH_INC),
     {
-        InPort(*this, math(), "Číslo A")
+        InPort(*this, one_number(), "Číslo A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -251,10 +251,10 @@ void MathIncBlock::Compute(){
 MathDecBlock::MathDecBlock(Graph &g)
     : BlockBase(g, MATH_DEC, BLOCK_NAME.at(MATH_DEC),
     {
-        InPort(*this, math(), "Číslo A")
+        InPort(*this, one_number(), "Číslo A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 

@@ -17,7 +17,7 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     auto matrix = menu.addMenu("Matica 2x2");
     auto matrix3 = menu.addMenu("Matica 3x3");
     auto vector = menu.addMenu("Vektor");
-    auto math = menu.addMenu("Kalkulačka");
+    auto calculator = menu.addMenu("Kalkulačka");
 
 
     matrix->addAction(new BlockMenuAction(MAT2_INPUT, QIcon()));
@@ -53,20 +53,20 @@ BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
     vector->addAction(new BlockMenuAction(VECTOR_MUL_CONST3D, QIcon()));
 
 
-    math->addAction(new BlockMenuAction(MATH_INPUT, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_OUTPUT, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_ADD, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_SUB, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_MUL, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_DIV, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_SQRT, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_ABS, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_GT, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_LT, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_SIN, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_COS, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_INC, QIcon()));
-    math->addAction(new BlockMenuAction(MATH_DEC, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_INPUT, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_OUTPUT, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_ADD, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_SUB, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_MUL, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_DIV, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_SQRT, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_ABS, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_GT, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_LT, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_SIN, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_COS, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_INC, QIcon()));
+    calculator->addAction(new BlockMenuAction(MATH_DEC, QIcon()));
 }
 
 

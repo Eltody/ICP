@@ -17,13 +17,13 @@
 // blok pre načítanie vstupu matice 2x2
 MatrixInput::MatrixInput(Graph &g)
     : BlockBase(g, MAT2_INPUT, "Vstup",
-{}, {OutPort(*this, mat2(), "")}) { }
+{}, {OutPort(*this, matrix2x2_out(), "")}) { }
 
 
 // blok pre načítanie vstupu matice 3x3
 Matrix3x3Input::Matrix3x3Input(Graph &g)
     : BlockBase(g, MAT3_INPUT, "Vstup",
-{}, {OutPort(*this, mat3(), "")}) { }
+{}, {OutPort(*this, matrix3x3_out(), "")}) { }
 
 
 void MatrixInput::Compute() { }
@@ -37,24 +37,24 @@ void Matrix3x3Output::Compute() { }
 // blok pre výstup matice 2x2
 MatrixOutput::MatrixOutput(Graph &g)
     : BlockBase(g, MAT2_OUTPUT, "Výstup",
-    {InPort(*this, mat2(), "")}, {}) { }
+    {InPort(*this, matrix2x2_out(), "")}, {}) { }
 
 
 // blok pre výstup matice 3x3
 Matrix3x3Output::Matrix3x3Output(Graph &g)
     : BlockBase(g, MAT3_OUTPUT, "Výstup",
-    {InPort(*this, mat3(), "")}, {}) { }
+    {InPort(*this, matrix3x3_out(), "")}, {}) { }
 
 
 // blok pre sčítanie matíc 2x2
 MatrixAddBlock::MatrixAddBlock(Graph &g)
     : BlockBase(g, MAT_ADD, BLOCK_NAME.at(MAT_ADD),
     {
-        InPort(*this, mat2(), "Matica A"),
-        InPort(*this, mat2(), "Matica B")
+        InPort(*this, matrix2x2_out(), "Matica A"),
+        InPort(*this, matrix2x2_out(), "Matica B")
     },
     {
-        OutPort(*this, mat2(), "Výstup")
+        OutPort(*this, matrix2x2_out(), "Výstup")
     }
     ){}
 
@@ -72,11 +72,11 @@ void MatrixAddBlock::Compute(){
 Matrix3x3AddBlock::Matrix3x3AddBlock(Graph &g)
     : BlockBase(g, MAT3_ADD, BLOCK_NAME.at(MAT3_ADD),
     {
-        InPort(*this, mat3(), "Matica A"),
-        InPort(*this, mat3(), "Matica B")
+        InPort(*this, matrix3x3_out(), "Matica A"),
+        InPort(*this, matrix3x3_out(), "Matica B")
     },
     {
-        OutPort(*this, mat3(), "Výstup")
+        OutPort(*this, matrix3x3_out(), "Výstup")
     }
     ){}
 
@@ -99,11 +99,11 @@ void Matrix3x3AddBlock::Compute(){
 MatMulVecBlock::MatMulVecBlock(Graph &g)
     : BlockBase(g, MAT_MUL_VEC, BLOCK_NAME.at(MAT_MUL_VEC),
     {
-        InPort(*this, mat2(), "Matica"),
-        InPort(*this, vec2(), "Vektor")
+        InPort(*this, matrix2x2_out(), "Matica"),
+        InPort(*this, vector2D_out(), "Vektor")
     },
     {
-        OutPort(*this, vec2(), "Výstup")
+        OutPort(*this, vector2D_out(), "Výstup")
     }
     ){}
 
@@ -119,11 +119,11 @@ void MatMulVecBlock::Compute(){
 Mat3x3MulVecBlock::Mat3x3MulVecBlock(Graph &g)
     : BlockBase(g, MAT_MUL_VEC, BLOCK_NAME.at(MAT_MUL_VEC),
     {
-        InPort(*this, mat3(), "Matica"),
-        InPort(*this, vec2(), "Vektor")
+        InPort(*this, matrix3x3_out(), "Matica"),
+        InPort(*this, vector2D_out(), "Vektor")
     },
     {
-        OutPort(*this, vec2(), "Výstup")
+        OutPort(*this, vector2D_out(), "Výstup")
     }
     ){}
 
@@ -140,11 +140,11 @@ void Mat3x3MulVecBlock::Compute(){
 MatrixMulBlock::MatrixMulBlock(Graph &g)
     : BlockBase(g, MAT_MUL, BLOCK_NAME.at(MAT_MUL),
     {
-        InPort(*this, mat2(), "Matica A"),
-        InPort(*this, mat2(), "Matica B")
+        InPort(*this, matrix2x2_out(), "Matica A"),
+        InPort(*this, matrix2x2_out(), "Matica B")
     },
     {
-        OutPort(*this, mat2(), "Výstup")
+        OutPort(*this, matrix2x2_out(), "Výstup")
     }
     ){}
 
@@ -162,11 +162,11 @@ void MatrixMulBlock::Compute(){
 Matrix3x3MulBlock::Matrix3x3MulBlock(Graph &g)
     : BlockBase(g, MAT3_MUL, BLOCK_NAME.at(MAT3_MUL),
     {
-        InPort(*this, mat3(), "Matica A"),
-        InPort(*this, mat3(), "Matica B")
+        InPort(*this, matrix3x3_out(), "Matica A"),
+        InPort(*this, matrix3x3_out(), "Matica B")
     },
     {
-        OutPort(*this, mat3(), "Výstup")
+        OutPort(*this, matrix3x3_out(), "Výstup")
     }
     ){}
 
@@ -195,11 +195,11 @@ void Matrix3x3MulBlock::Compute(){
 MatrixSubBlock::MatrixSubBlock(Graph &g)
     : BlockBase(g, MAT_SUB, BLOCK_NAME.at(MAT_SUB),
     {
-        InPort(*this, mat2(), "Matica A"),
-        InPort(*this, mat2(), "Matica B")
+        InPort(*this, matrix2x2_out(), "Matica A"),
+        InPort(*this, matrix2x2_out(), "Matica B")
     },
     {
-        OutPort(*this, mat2(), "Výstup")
+        OutPort(*this, matrix2x2_out(), "Výstup")
     }
     ){}
 
@@ -217,11 +217,11 @@ void MatrixSubBlock::Compute(){
 Matrix3x3SubBlock::Matrix3x3SubBlock(Graph &g)
     : BlockBase(g, MAT3_SUB, BLOCK_NAME.at(MAT3_SUB),
     {
-        InPort(*this, mat3(), "Matica A"),
-        InPort(*this, mat3(), "Matica B")
+        InPort(*this, matrix3x3_out(), "Matica A"),
+        InPort(*this, matrix3x3_out(), "Matica B")
     },
     {
-        OutPort(*this, mat3(), "Výstup")
+        OutPort(*this, matrix3x3_out(), "Výstup")
     }
     ){}
 
@@ -244,10 +244,10 @@ void Matrix3x3SubBlock::Compute(){
 MatrixDeterminantBlock::MatrixDeterminantBlock(Graph &g)
     : BlockBase(g, MAT_DETERMINANT, BLOCK_NAME.at(MAT_DETERMINANT),
     {
-        InPort(*this, mat2(), "Matica A")
+        InPort(*this, matrix2x2_out(), "Matica A")
     },
     {
-        OutPort(*this, math(), "Výstup")
+        OutPort(*this, one_number(), "Výstup")
     }
     ){}
 
@@ -260,13 +260,13 @@ void MatrixDeterminantBlock::Compute(){
 // blok pre načítanie vstupu matice 2x2 pre výpočet determinantu
 MatrixDeterminantInput::MatrixDeterminantInput(Graph &g)
     : BlockBase(g, MAT_DETERMINANT_INPUT, "Vstup",
-{}, {OutPort(*this, mat2(), "")}) { }
+{}, {OutPort(*this, matrix2x2_out(), "")}) { }
 
 void MatrixDeterminantInput::Compute() { }
 
 // blok pre výstup determinant matice 2x2
 MatrixDeterminantOutput::MatrixDeterminantOutput(Graph &g)
     : BlockBase(g, MAT_DETERMINANT_OUTPUT, "Výstup",
-    {InPort(*this, math(), "")}, {}) { }
+    {InPort(*this, one_number(), "")}, {}) { }
 
 void MatrixDeterminantOutput::Compute() { }

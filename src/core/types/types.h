@@ -13,47 +13,47 @@
 /**
  * @brief Dátový typ pre 2D vektor
  */
-class vec2 : public Type {
+class vector2D_out : public Type {
 public:
-	vec2();
-	vec2(double x, double y);
+    vector2D_out();
+    vector2D_out(double x, double y);
 };
 
 /**
  * @brief Dátový typ pre 3D vektor
  */
-class vec3 : public Type {
+class vector3D_out : public Type {
 public:
-    vec3();
-    vec3(double x, double y , double z);
+    vector3D_out();
+    vector3D_out(double x, double y , double z);
 };
 
 /**
  * @brief Dátový typ pre 2x2 maticu
  */
-class mat2 : public Type {
+class matrix2x2_out : public Type {
 public:
-	mat2();
-	mat2(double m11, double m12, double m21, double m22);
+    matrix2x2_out();
+    matrix2x2_out(double m11, double m12, double m21, double m22);
 };
 
 /**
  * @brief Dátový typ pre 3x3 maticu
  */
-class mat3 : public Type {
+class matrix3x3_out : public Type {
 public:
-    mat3();
-    mat3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33);
+    matrix3x3_out();
+    matrix3x3_out(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33);
 };
 
 
 /**
  * @brief Dátový typ pre jednoprvkový výsledok matematického výrazu
  */
-class math : public Type {
+class one_number : public Type {
 public:
-    math();
-    math(double hodnota);
+    one_number();
+    one_number(double hodnota);
 };
 
 
