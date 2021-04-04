@@ -106,7 +106,51 @@ protected:
 	void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 private slots:
-    void buildMathIn();
+    void buildMathInput();
+    void buildMathOutput();
+    void buildMathAdd();
+    void buildMathSub();
+    void buildMathMul();
+    void buildMathDiv();
+    void buildMathSqrt();
+    void buildMathAbs();
+    void buildMathGt();
+    void buildMathLt();
+    void buildMathSin();
+    void buildMathCos();
+    void buildMathInc();
+    void buildMathDec();
+
+    void buildVectorInput();
+    void buildVectorInput3D();
+    void buildVectorOutput();
+    void buildVectorOutput3D();
+    void buildVectorDotOut();
+    void buildVectorAdd();
+    void buildVectorAdd3D();
+    void buildVectorSub();
+    void buildVectorSub3D();
+    void buildVectorMul();
+    void buildVectorMul3D();
+    void buildVectorDot();
+
+    void buildMatrixInput();
+    void buildMatrixOutput();
+    void buildMatrixDetInput();
+    void buildMatrixDetOutput();
+    void buildMatrixAdd();
+    void buildMatrixSub();
+    void buildMatrixMul();
+    void buildMatrixMulVec();
+    void buildMatrixDet();
+    void buildMatrix3In();
+    void buildMatrix3Out();
+    void buildMatrix3Add();
+    void buildMatrix3Sub();
+    void buildMatrix3Mul();
+
+
+
     //! Button slot called when opening standard calculator operations
     void calc();
     //! Button slot called when opening vector operations

@@ -127,7 +127,48 @@ void BLOCKEDITOR::createActions(){
 }
 
 void BLOCKEDITOR::createToolBars(){
-    connect(calcIn, SIGNAL(triggered()), this , SLOT(buildMathIn()));
+    connect(calcIn, SIGNAL(triggered()), this , SLOT(buildMathInput()));
+    connect(calcOut, SIGNAL(triggered()), this , SLOT(buildMathOutput()));
+    connect(calcAdd, SIGNAL(triggered()), this , SLOT(buildMathAdd()));
+    connect(calcSub, SIGNAL(triggered()), this , SLOT(buildMathSub()));
+    connect(calcMul, SIGNAL(triggered()), this , SLOT(buildMathMul()));
+    connect(calcDiv, SIGNAL(triggered()), this , SLOT(buildMathDiv()));
+    connect(calcSqrt, SIGNAL(triggered()), this , SLOT(buildMathSqrt()));
+    connect(calcAbs, SIGNAL(triggered()), this , SLOT(buildMathAbs()));
+    connect(calcGt, SIGNAL(triggered()), this , SLOT(buildMathGt()));
+    connect(calcLt, SIGNAL(triggered()), this , SLOT(buildMathLt()));
+    connect(calcSin, SIGNAL(triggered()), this , SLOT(buildMathSin()));
+    connect(calcCos, SIGNAL(triggered()), this , SLOT(buildMathCos()));
+    connect(calcInc, SIGNAL(triggered()), this , SLOT(buildMathInc()));
+    connect(calcDec, SIGNAL(triggered()), this , SLOT(buildMathDec()));
+
+    connect(vectorInp, SIGNAL(triggered()), this , SLOT(buildVectorInput()));
+    connect(vectorInp3D, SIGNAL(triggered()), this , SLOT(buildVectorInput3D()));
+    connect(vectorOut, SIGNAL(triggered()), this , SLOT(buildVectorOutput()));
+    connect(vectorOut3D, SIGNAL(triggered()), this , SLOT(buildVectorOutput3D()));
+    connect(vectorDotOut, SIGNAL(triggered()), this , SLOT(buildVectorDotOut()));
+    connect(vectorAdd, SIGNAL(triggered()), this , SLOT(buildVectorAdd()));
+    connect(vectorAdd3D, SIGNAL(triggered()), this , SLOT(buildVectorAdd3D()));
+    connect(vectorSub, SIGNAL(triggered()), this , SLOT(buildVectorSub()));
+    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorSub3D()));
+    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorMul()));
+    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorMul3D()));
+    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorDot()));
+
+    connect(matrixInp, SIGNAL(triggered()), this , SLOT(buildMatrixInput()));
+    connect(matrixOut, SIGNAL(triggered()), this , SLOT(buildMatrixOutput()));
+    connect(matrixDetIn, SIGNAL(triggered()), this , SLOT(buildMatrixDetInput()));
+    connect(matrixDetOut, SIGNAL(triggered()), this , SLOT(buildMatrixDetOutput()));
+    connect(matrixAdd, SIGNAL(triggered()), this , SLOT(buildMatrixAdd()));
+    connect(matrixSub, SIGNAL(triggered()), this , SLOT(buildMatrixSub()));
+    connect(matrixMul, SIGNAL(triggered()), this , SLOT(buildMatrixMul()));
+    connect(matrixMulVec, SIGNAL(triggered()), this , SLOT(buildMatrixMulVec()));
+    connect(matrixDet, SIGNAL(triggered()), this , SLOT(buildMatrixDet()));
+    connect(matrix3In, SIGNAL(triggered()), this , SLOT(buildMatrix3In()));
+    connect(matrix3Out, SIGNAL(triggered()), this , SLOT(buildMatrix3Out()));
+    connect(matrix3Add, SIGNAL(triggered()), this , SLOT(buildMatrix3Add()));
+    connect(matrix3Sub, SIGNAL(triggered()), this , SLOT(buildMatrix3Sub()));
+    connect(matrix3Mul, SIGNAL(triggered()), this , SLOT(buildMatrix3Mul()));
 
 
     calculatorBTN = new QAction(QIcon(":/icons/expandCalc.png"), "", this);
@@ -177,9 +218,170 @@ void BLOCKEDITOR::createToolBars(){
 	helpToolBar->addAction(helpAct);
 }
 
-void BLOCKEDITOR::buildMathIn(){
+void BLOCKEDITOR::buildMathInput(){
     graph.addBlock(MATH_INPUT);
 }
+
+void BLOCKEDITOR::buildMathOutput(){
+    graph.addBlock(MATH_OUTPUT);
+}
+
+void BLOCKEDITOR::buildMathAdd(){
+    graph.addBlock(MATH_ADD);
+}
+
+void BLOCKEDITOR::buildMathSub(){
+    graph.addBlock(MATH_SUB);
+}
+
+void BLOCKEDITOR::buildMathMul(){
+    graph.addBlock(MATH_MUL);
+}
+
+void BLOCKEDITOR::buildMathDiv(){
+    graph.addBlock(MATH_DIV);
+}
+
+void BLOCKEDITOR::buildMathSqrt(){
+    graph.addBlock(MATH_SQRT);
+}
+
+void BLOCKEDITOR::buildMathAbs(){
+    graph.addBlock(MATH_ABS);
+}
+
+void BLOCKEDITOR::buildMathGt(){
+    graph.addBlock(MATH_GT);
+}
+
+void BLOCKEDITOR::buildMathLt(){
+    graph.addBlock(MATH_LT);
+}
+
+void BLOCKEDITOR::buildMathSin(){
+    graph.addBlock(MATH_SIN);
+}
+
+void BLOCKEDITOR::buildMathCos(){
+    graph.addBlock(MATH_COS);
+}
+
+void BLOCKEDITOR::buildMathInc(){
+    graph.addBlock(MATH_INC);
+}
+
+void BLOCKEDITOR::buildMathDec(){
+    graph.addBlock(MATH_DEC);
+}
+
+
+
+void BLOCKEDITOR::buildVectorInput(){
+    graph.addBlock(VECTOR_INPUT);
+}
+
+void BLOCKEDITOR::buildVectorInput3D(){
+    graph.addBlock(VECTOR3D_INPUT);
+}
+
+void BLOCKEDITOR::buildVectorOutput(){
+    graph.addBlock(VECTOR_OUTPUT);
+}
+
+void BLOCKEDITOR::buildVectorOutput3D(){
+    graph.addBlock(VECTOR3D_OUTPUT);
+}
+
+void BLOCKEDITOR::buildVectorDotOut(){
+    graph.addBlock(VECTOR_DOT_OUTPUT);
+}
+
+void BLOCKEDITOR::buildVectorAdd(){
+    graph.addBlock(VECTOR_ADD);
+}
+
+void BLOCKEDITOR::buildVectorAdd3D(){
+    graph.addBlock(VECTOR_ADD3D);
+}
+
+void BLOCKEDITOR::buildVectorSub(){
+    graph.addBlock(VECTOR_SUB);
+}
+
+void BLOCKEDITOR::buildVectorSub3D(){
+    graph.addBlock(VECTOR_SUB3D);
+}
+
+void BLOCKEDITOR::buildVectorMul(){
+    graph.addBlock(VECTOR_MUL_CONST);
+}
+
+void BLOCKEDITOR::buildVectorMul3D(){
+    graph.addBlock(VECTOR_MUL_CONST3D);
+}
+
+void BLOCKEDITOR::buildVectorDot(){
+    graph.addBlock(VECTOR_DOTPRODUCT);
+}
+
+
+
+void BLOCKEDITOR::buildMatrixInput(){
+    graph.addBlock(MAT2_INPUT);
+}
+
+void BLOCKEDITOR::buildMatrixOutput(){
+    graph.addBlock(MAT2_OUTPUT);
+}
+
+void BLOCKEDITOR::buildMatrixDetInput(){
+    graph.addBlock(MAT_DETERMINANT_INPUT);
+}
+
+void BLOCKEDITOR::buildMatrixDetOutput(){
+    graph.addBlock(MAT_DETERMINANT_OUTPUT);
+}
+
+void BLOCKEDITOR::buildMatrixAdd(){
+    graph.addBlock(MAT_ADD);
+}
+
+void BLOCKEDITOR::buildMatrixSub(){
+    graph.addBlock(MAT_SUB);
+}
+
+void BLOCKEDITOR::buildMatrixMul(){
+    graph.addBlock(MAT_MUL);
+}
+
+void BLOCKEDITOR::buildMatrixMulVec(){
+    graph.addBlock(MAT_MUL_VEC);
+}
+
+void BLOCKEDITOR::buildMatrixDet(){
+    graph.addBlock(MAT_DETERMINANT);
+}
+
+void BLOCKEDITOR::buildMatrix3In(){
+    graph.addBlock(MAT3_INPUT);
+}
+
+void BLOCKEDITOR::buildMatrix3Out(){
+    graph.addBlock(MAT3_OUTPUT);
+}
+
+void BLOCKEDITOR::buildMatrix3Add(){
+    graph.addBlock(MAT3_ADD);
+}
+
+void BLOCKEDITOR::buildMatrix3Sub(){
+    graph.addBlock(MAT3_SUB);
+}
+
+void BLOCKEDITOR::buildMatrix3Mul(){
+    graph.addBlock(MAT3_MUL);
+}
+
 
 void BLOCKEDITOR::closeEvent(QCloseEvent *event){
     if (maybeSave()) {
@@ -206,6 +408,7 @@ void BLOCKEDITOR::calc(){
         blockMenu->removeAction(vectorBTN);
         blockMenu->addAction(calcIn);
         blockMenu->addAction(calcOut);
+        blockMenu->addAction(calcAdd);
         blockMenu->addAction(calcSub);
         blockMenu->addAction(calcMul);
         blockMenu->addAction(calcDiv);
@@ -226,6 +429,7 @@ void BLOCKEDITOR::calc(){
         matrix2BTN->setIcon(QIcon(":/icons/expandMatr2.png"));
         blockMenu->removeAction(calcIn);
         blockMenu->removeAction(calcOut);
+        blockMenu->removeAction(calcAdd);
         blockMenu->removeAction(calcSub);
         blockMenu->removeAction(calcMul);
         blockMenu->removeAction(calcDiv);
