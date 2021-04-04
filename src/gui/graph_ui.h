@@ -40,8 +40,6 @@ private:
 	bool drag = false;
 	//! Current dragging coordinates
 	QPoint drag_p;
-	//! Right click dropdown menu for choosing a new block to add to the scheme
-	BlockMenu block_menu;
 	//! Right click dropdown menu for block options
 	BlockDelete block_context_menu;
 public:

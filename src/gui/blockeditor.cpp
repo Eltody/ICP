@@ -17,10 +17,10 @@ const int Style::GraphLoadPadding = 15;
 
 const int Style::NodeFieldOffset = 25;
 const int Style::NodeFieldWidth = 65;
-const int Style::NodeNamePadding = 14;
+const int Style::NodeNamePadding = 8;
 const int Style::NodeNameHeight = 40;
 const int Style::NodeMinWidth = 60;
-const int Style::NodeRoundSize = 5;
+const int Style::NodeRoundSize = 9;
 const QColor Style::NodeOutlineCol = QColor(0, 0, 0);
 const QColor Style::NodeOutlineHighlightCol = QColor(76, 76, 76);
 const QColor Style::NodeBackgroundCol = QColor(76, 76, 76);

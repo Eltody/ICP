@@ -1,6 +1,7 @@
 #include "blockeditor.h"
 #include "port_ui.h"
 #include <QPainter>
+#include <QRectF>
 #include <QPainterPath>
 #include <QApplication>
 #include <cmath>
@@ -80,7 +81,7 @@ void InPortUI::Move(int x, int y){
 }
 
 void OutPortUI::Move(int x, int y){
-	move(x - Style::PortSize/2 - 1, y - Style::PortSize/2 - 1);
+    move(x - Style::PortSize/2 - 1, y - Style::PortSize/2 - 1);
 	label.move(x - Style::PortNamePadding - label.width(), y - label.height() / 2);
 
 	GraphUI &g = static_cast<GraphUI&>(this->block.graph);
@@ -89,7 +90,7 @@ void OutPortUI::Move(int x, int y){
 
 void PortBaseUI::paintEvent(QPaintEvent *){
 	QPainter painter(this);
-	painter.setRenderHint(QPainter::Antialiasing);
+    QRectF rectangle(9, 9, 8, 8);
 
 	painter.setPen(Style::PortOutlineCol);
 	if(hover){
@@ -97,8 +98,7 @@ void PortBaseUI::paintEvent(QPaintEvent *){
 	} else {
 		painter.setBrush(Style::PortFreeCol); //free
 	}
-	painter.drawEllipse(QPoint((Style::PortSize/2 + 1), (Style::PortSize/2 + 1)),
-						Style::PortDrawSize/2, Style::PortDrawSize/2);
+    painter.drawRect(rectangle);
 }
 
 void PortBaseUI::mouseMoveEvent(QMouseEvent *event){
