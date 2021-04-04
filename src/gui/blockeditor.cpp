@@ -151,9 +151,9 @@ void BLOCKEDITOR::createToolBars(){
     connect(vectorAdd3D, SIGNAL(triggered()), this , SLOT(buildVectorAdd3D()));
     connect(vectorSub, SIGNAL(triggered()), this , SLOT(buildVectorSub()));
     connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorSub3D()));
-    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorMul()));
-    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorMul3D()));
-    connect(vectorSub3D, SIGNAL(triggered()), this , SLOT(buildVectorDot()));
+    connect(vectorMul, SIGNAL(triggered()), this , SLOT(buildVectorMul()));
+    connect(vectorMul3D, SIGNAL(triggered()), this , SLOT(buildVectorMul3D()));
+    connect(vectorDot, SIGNAL(triggered()), this , SLOT(buildVectorDot()));
 
     connect(matrixInp, SIGNAL(triggered()), this , SLOT(buildMatrixInput()));
     connect(matrixOut, SIGNAL(triggered()), this , SLOT(buildMatrixOutput()));
