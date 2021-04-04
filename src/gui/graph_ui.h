@@ -23,8 +23,7 @@ class ConnectionUI;
 /**
  * @brief Parent QWidget to all other widgets used in scheme
  */
-class GraphUI : public QWidget, public Graph
-{
+class GraphUI : public QWidget, public Graph{
 public:
 	//! Temporary value used while creating a connection - port's address after one click
 	InPort *in_click;
@@ -117,6 +116,8 @@ public:
 protected:
 	//! Invokes actions triggered by mouse movement
 	void mouseMoveEvent(QMouseEvent *event) override;
+    //! Invokes actions triggered by mouse wheel scroll
+    void wheelEvent(QWheelEvent *event) override;
 	//! Invokes actions triggered by mouse clicks
 	void mousePressEvent(QMouseEvent *event) override;
 	//! Invokes actions triggered by releasing the mouse button

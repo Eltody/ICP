@@ -167,17 +167,13 @@ private:
 	QToolBar *nameToolBar;
 
 	//! Action for creating a new file
-	QAction *newAct;
+	QAction *newBTN;
 	//! Action for opening a file
-	QAction *openAct;
-	//! Action for merging a file into the currently edited scheme
-	QAction *mergeAct;
+	QAction *openBTN;
 	//! Action for saving a file
-    QAction *saveAct;
-	//! Action for saving file as a new one
-    QAction *saveAsAct;
-	//! Action for closing the BlockEditor
-    QAction *exitAct;
+    QAction *saveBTN;
+    //! Action for importing a file
+    QAction *importBTN;
 	//! Action for computing the whole scheme
     QAction *computeAct;
 	//! Action for computing next block in the compute queue

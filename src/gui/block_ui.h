@@ -55,8 +55,7 @@ public:
 	 * @param parent Widget where the block is rendered
 	 */
 	explicit BlockUI(const BlockBaseT &b, QWidget *parent = nullptr)
-		: QWidget(parent), BlockBaseT(b), label(b.name.c_str(), this)
-	{
+        : QWidget(parent), BlockBaseT(b), label(b.name.c_str(), this){
 		setMouseTracking(true);
 		for(size_t i = 0; i < BlockBaseT::InputCount(); i++) {
 			inputs.push_back(InPortUI(InPort(BlockBaseT::Input(i), *this), parent));

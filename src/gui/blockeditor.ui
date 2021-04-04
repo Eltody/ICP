@@ -509,256 +509,6 @@
     <string notr="true">color: white; background-color: #262626;</string>
    </property>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Button">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Text">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Window">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ToolTipText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="PlaceholderText">
-       <brush brushstyle="NoBrush">
-        <color alpha="128">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Button">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Text">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Window">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ToolTipText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="PlaceholderText">
-       <brush brushstyle="NoBrush">
-        <color alpha="128">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="WindowText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Button">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Text">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Base">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="Window">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>38</red>
-         <green>38</green>
-         <blue>38</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="ToolTipText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-      <colorrole role="PlaceholderText">
-       <brush brushstyle="NoBrush">
-        <color alpha="128">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-     <pointsize>10</pointsize>
-     <weight>50</weight>
-     <bold>false</bold>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: white; background-color: #262626;</string>
-   </property>
-  </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="font">
     <font>
@@ -775,7 +525,7 @@
     <string notr="true">color: white; background-color: #262626;</string>
    </property>
   </widget>
-  <action name="openAct">
+  <action name="openBTN">
    <property name="text">
     <string>&amp;Otvoriť</string>
    </property>
@@ -783,7 +533,7 @@
     <string>Otvoriť</string>
    </property>
   </action>
-  <action name="saveAct">
+  <action name="saveBTN">
    <property name="text">
     <string>&amp;Uložiť</string>
    </property>
@@ -794,14 +544,6 @@
     <string>Uloží vykonané zmeny</string>
    </property>
   </action>
-  <action name="saveAsAct">
-   <property name="text">
-    <string>Uložiť ako</string>
-   </property>
-   <property name="toolTip">
-    <string>Uložiť ako</string>
-   </property>
-  </action>
   <action name="helpAct">
    <property name="text">
     <string>Nápoveda</string>
@@ -810,7 +552,7 @@
     <string>Nápoveda</string>
    </property>
   </action>
-  <action name="exitAct">
+  <action name="actionExit">
    <property name="text">
     <string>Zatvoriť</string>
    </property>
@@ -818,12 +560,12 @@
     <string>Zatvoriť</string>
    </property>
   </action>
-  <action name="actionExit">
+  <action name="importBTN">
    <property name="text">
-    <string>Zatvoriť</string>
+    <string>Vložiť</string>
    </property>
    <property name="toolTip">
-    <string>Zatvoriť</string>
+    <string>Vložiť</string>
    </property>
   </action>
  </widget>

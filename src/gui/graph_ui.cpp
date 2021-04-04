@@ -243,8 +243,7 @@ void GraphUI::hoverConnectionUI(QPoint mouse)
 	tc.Redraw();
 }
 
-void GraphUI::mouseMoveEvent(QMouseEvent *event)
-{
+void GraphUI::mouseMoveEvent(QMouseEvent *event){
 	hoverConnectionUI(event->pos());
 	tc.Redraw();
 	if(drag){

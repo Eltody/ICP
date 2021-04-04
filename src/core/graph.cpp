@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file graph.cpp
- * @brief Core graph functionality
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #include "graph.h"
 #include <utility>
 #include <sstream>

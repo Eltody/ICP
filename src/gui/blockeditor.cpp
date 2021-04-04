@@ -44,7 +44,6 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 
     QApplication::setApplicationDisplayName("(j)Elitný editor");
 	createActions();
-	createMenus();
 	createToolBars();
 	setCurrentFile("");
 	setUnifiedTitleAndToolBarOnMac(true);
@@ -64,43 +63,35 @@ BLOCKEDITOR::~BLOCKEDITOR(){
 }
 
 void BLOCKEDITOR::deleteActions(){
-	delete newAct;
-	delete openAct;
-	delete mergeAct;
-	delete saveAct;
-	delete saveAsAct;
+    delete newBTN;
+    delete openBTN;
+    delete saveBTN;
+    delete importBTN;
 	delete computeAct;
 	delete stepAct;
 	delete resetAct;
 	delete helpAct;
-	delete exitAct;
 }
 
 void BLOCKEDITOR::createActions(){
-    newAct = new QAction(QIcon(":/icons/new.png"), "&Nový...", this);
-	newAct->setShortcuts(QKeySequence::New);
-    newAct->setStatusTip("Vytvoriť novú plochu");
-	connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
+    newBTN = new QAction(QIcon(":/icons/new.png"), "&Nový...", this);
+    newBTN->setShortcuts(QKeySequence::New);
+    newBTN->setStatusTip("Vytvoriť novú plochu");
+    connect(newBTN, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(QIcon(":/icons/open.png"), "&Otvoriť...", this);
-	openAct->setShortcuts(QKeySequence::Open);
-    openAct->setStatusTip("Otvoriť uložený súbor");
-	connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
+    openBTN = new QAction(QIcon(":/icons/open.png"), "&Otvoriť...", this);
+    openBTN->setShortcuts(QKeySequence::Open);
+    openBTN->setStatusTip("Otvoriť uložený súbor");
+    connect(openBTN, SIGNAL(triggered()), this, SLOT(open()));
 
-    mergeAct = new QAction(QIcon(":/icons/import.png"), "&Vložiť", this);
-    mergeAct->setStatusTip("Vloží súbor do aktuálnej plochy");
-	connect(mergeAct, SIGNAL(triggered()), this, SLOT(merge()));
+    importBTN = new QAction(QIcon(":/icons/import.png"), "&Vložiť", this);
+    importBTN->setStatusTip("Vloží súbor do aktuálnej plochy");
+    connect(importBTN, SIGNAL(triggered()), this, SLOT(merge()));
 
-
-    saveAct = new QAction(QIcon(":/icons/save.png"), "&Uložiť", this);
-	saveAct->setShortcuts(QKeySequence::Save);
-    saveAct->setStatusTip("Uloží plochu na disk");
-	connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
-
-    saveAsAct = new QAction(QIcon(":/icons/save-as.png"), "Uložiť &ako...", this);
-	saveAsAct->setShortcuts(QKeySequence::SaveAs);
-    saveAsAct->setStatusTip("Uloží plochu ako nový súbor");
-	connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));
+    saveBTN = new QAction(QIcon(":/icons/save.png"), "&Uložiť", this);
+    saveBTN->setShortcuts(QKeySequence::Save);
+    saveBTN->setStatusTip("Uloží plochu na disk");
+    connect(saveBTN, SIGNAL(triggered()), this, SLOT(save()));
 
     computeAct = new QAction(QIcon(":/icons/compute.png"), "&Vypočítať (F3)", this);
 	computeAct->setShortcut(QKeySequence::fromString("F3", QKeySequence::NativeText));
@@ -121,31 +112,14 @@ void BLOCKEDITOR::createActions(){
     helpAct->setStatusTip("Zobrazí nápovedu");
 	helpAct->setShortcuts(QKeySequence::HelpContents);
 	connect(helpAct, SIGNAL(triggered()), this, SLOT(help()));
-
-    exitAct = new QAction(QIcon(":/icons/exit.png"), "Zatvoriť", this);
-    exitAct->setStatusTip("Zatvorí aplikáciu");
-	exitAct->setShortcuts(QKeySequence::Quit);
-	connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
-}
-
-void BLOCKEDITOR::createMenus(){
-    fileMenu = menuBar()->addMenu("&Súbor");
-	fileMenu->addAction(newAct);
-	fileMenu->addSeparator();
-	fileMenu->addAction(openAct);
-	fileMenu->addAction(mergeAct);
-	fileMenu->addSeparator();
-	fileMenu->addAction(saveAct);
-	fileMenu->addAction(saveAsAct);
-	fileMenu->addSeparator();
-	fileMenu->addAction(exitAct);
 }
 
 void BLOCKEDITOR::createToolBars(){
     fileToolBar = addToolBar("Súbor");
-	fileToolBar->addAction(newAct);
-	fileToolBar->addAction(openAct);
-	fileToolBar->addAction(saveAct);
+    fileToolBar->addAction(newBTN);
+    fileToolBar->addAction(openBTN);
+    fileToolBar->addAction(saveBTN);
+    fileToolBar->addAction(importBTN);
 
     actionToolBar = addToolBar("Akcie");
 	actionToolBar->addAction(computeAct);
