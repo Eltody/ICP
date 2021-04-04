@@ -15,135 +15,135 @@
 #include "../core/blocks/vector.h"
 #include "../core/blocks/matrix.h"
 
-BlockBase *BlockFactoryUI::AllocBlock(BlockType t){
+BlockBase *BlockFactoryUI::AllocBlock(BlockType option){
 	GraphUI *gp = static_cast<GraphUI*>(&g);
-	BlockBase *b;
-	switch (t) {
-	case VECTOR_INPUT:
-		b = new InputBlockUI<VectorInput>(BlockUI<VectorInput>(VectorInput(g), gp), gp);
-		break;
-    case VECTOR3D_INPUT:
-        b = new InputBlockUI<Vector3DInput>(BlockUI<Vector3DInput>(Vector3DInput(g), gp), gp);
-        break;
-    case VECTOR_OUTPUT:
-        b = new OutputBlockUI<VectorOutput>(BlockUI<VectorOutput>(VectorOutput(g), gp), gp);
-        break;
-    case VECTOR_DOT_OUTPUT:
-        b = new OutputBlockUI<VectorDotOutput>(BlockUI<VectorDotOutput>(VectorDotOutput(g), gp), gp);
-        break;
-    case VECTOR3D_OUTPUT:
-        b = new OutputBlockUI<Vector3DOutput>(BlockUI<Vector3DOutput>(Vector3DOutput(g), gp), gp);
-		break;
-	case MAT2_INPUT:
-		b = new InputBlockUI<MatrixInput>(BlockUI<MatrixInput>(MatrixInput(g), gp), gp);
-		break;
-	case MAT2_OUTPUT:
-		b = new OutputBlockUI<MatrixOutput>(BlockUI<MatrixOutput>(MatrixOutput(g), gp), gp);
-		break;
-    case MAT3_INPUT:
-        b = new InputBlockUI<Matrix3x3Input>(BlockUI<Matrix3x3Input>(Matrix3x3Input(g), gp), gp);
-        break;
-    case MAT3_OUTPUT:
-        b = new OutputBlockUI<Matrix3x3Output>(BlockUI<Matrix3x3Output>(Matrix3x3Output(g), gp), gp);
-        break;
-    case MATH_INPUT:
-        b = new InputBlockUI<MathInput>(BlockUI<MathInput>(MathInput(g), gp), gp);
-        break;
-    case MATH_OUTPUT:
-        b = new OutputBlockUI<MathOutput>(BlockUI<MathOutput>(MathOutput(g), gp), gp);
-        break;
-	case VECTOR_ADD:
-		b = new BlockUI<VectorAddBlock>(VectorAddBlock(g), gp);
-		break;
-    case VECTOR_SUB:
-        b = new BlockUI<VectorSubBlock>(VectorSubBlock(g), gp);
-        break;
-    case VECTOR_ADD3D:
-        b = new BlockUI<VectorAddBlock3D>(VectorAddBlock3D(g), gp);
-        break;
-    case VECTOR_SUB3D:
-        b = new BlockUI<VectorSubBlock3D>(VectorSubBlock3D(g), gp);
-        break;
-    case VECTOR_DOTPRODUCT:
-        b = new BlockUI<VectorDotProductBlock2D>(VectorDotProductBlock2D(g), gp);
-        break;
-    case VECTOR_MUL_CONST:
-        b = new BlockUI<VectorMulConstBlock>(VectorMulConstBlock(g), gp);
-        break;
-    case VECTOR_MUL_CONST3D:
-        b = new BlockUI<VectorMulConstBlock3D>(VectorMulConstBlock3D(g), gp);
-        break;
-    case MAT_ADD:
-		b = new BlockUI<MatrixAddBlock>(MatrixAddBlock(g), gp);
-        break;
-    case MAT3_ADD:
-        b = new BlockUI<Matrix3x3AddBlock>(Matrix3x3AddBlock(g), gp);
-        break;
-    case MAT_MUL:
-		b = new BlockUI<MatrixMulBlock>(MatrixMulBlock(g), gp);
-        break;
-    case MAT3_MUL:
-        b = new BlockUI<Matrix3x3MulBlock>(Matrix3x3MulBlock(g), gp);
-        break;
-	case MAT_MUL_VEC:
-		b = new BlockUI<MatMulVecBlock>(MatMulVecBlock(g), gp);
-		break;
-    case MAT_SUB:
-        b = new BlockUI<MatrixSubBlock>(MatrixSubBlock(g), gp);
-        break;
-    case MAT3_SUB:
-        b = new BlockUI<Matrix3x3SubBlock>(Matrix3x3SubBlock(g), gp);
-        break;
-    case MATH_ADD:
-        b = new BlockUI<MathAddBlock>(MathAddBlock(g), gp);
-        break;
-    case MATH_SUB:
-        b = new BlockUI<MathSubBlock>(MathSubBlock(g), gp);
-        break;
-    case MATH_MUL:
-        b = new BlockUI<MathMulBlock>(MathMulBlock(g), gp);
-        break;
-    case MATH_DIV:
-        b = new BlockUI<MathDivBlock>(MathDivBlock(g), gp);
-        break;
-    case MATH_SQRT:
-        b = new BlockUI<MathSqrtBlock>(MathSqrtBlock(g), gp);
-        break;
-    case MATH_ABS:
-        b = new BlockUI<MathAbsBlock>(MathAbsBlock(g), gp);
-        break;
-    case MATH_GT:
-        b = new BlockUI<MathGTBlock>(MathGTBlock(g), gp);
-        break;
-    case MATH_LT:
-        b = new BlockUI<MathLTBlock>(MathLTBlock(g), gp);
-        break;
-    case MATH_SIN:
-        b = new BlockUI<MathSinBlock>(MathSinBlock(g), gp);
-        break;
-    case MATH_COS:
-        b = new BlockUI<MathCosBlock>(MathCosBlock(g), gp);
-        break;
-    case MATH_INC:
-        b = new BlockUI<MathIncBlock>(MathIncBlock(g), gp);
-        break;
-    case MATH_DEC:
-        b = new BlockUI<MathDecBlock>(MathDecBlock(g), gp);
-        break;
-    case MAT_DETERMINANT:
-        b = new BlockUI<MatrixDeterminantBlock>(MatrixDeterminantBlock(g), gp);
-        break;
-    case MAT_DETERMINANT_INPUT:
-        b = new InputBlockUI<MatrixDeterminantInput>(BlockUI<MatrixDeterminantInput>(MatrixDeterminantInput(g), gp), gp);
-        break;
-    case MAT_DETERMINANT_OUTPUT:
-        b = new OutputBlockUI<MatrixDeterminantOutput>(BlockUI<MatrixDeterminantOutput>(MatrixDeterminantOutput(g), gp), gp);
-        break;
-	default:
+    BlockBase *block;
+
+    if(option == VECTOR_INPUT){
+        block = new InputBlockUI<VectorInput>(BlockUI<VectorInput>(VectorInput(g), gp), gp);
+    }
+    else if(option == VECTOR3D_INPUT){
+        block = new InputBlockUI<Vector3DInput>(BlockUI<Vector3DInput>(Vector3DInput(g), gp), gp);
+    }
+    else if(option == VECTOR_OUTPUT){
+        block = new OutputBlockUI<VectorOutput>(BlockUI<VectorOutput>(VectorOutput(g), gp), gp);
+    }
+    else if(option == VECTOR_DOT_OUTPUT){
+        block = new OutputBlockUI<VectorDotOutput>(BlockUI<VectorDotOutput>(VectorDotOutput(g), gp), gp);
+    }
+    else if(option == VECTOR3D_OUTPUT){
+        block = new OutputBlockUI<Vector3DOutput>(BlockUI<Vector3DOutput>(Vector3DOutput(g), gp), gp);
+    }
+    else if(option == MAT2_INPUT){
+        block = new InputBlockUI<MatrixInput>(BlockUI<MatrixInput>(MatrixInput(g), gp), gp);
+    }
+    else if(option == MAT2_OUTPUT){
+        block = new OutputBlockUI<MatrixOutput>(BlockUI<MatrixOutput>(MatrixOutput(g), gp), gp);
+    }
+    else if(option == MAT3_INPUT){
+        block = new InputBlockUI<Matrix3x3Input>(BlockUI<Matrix3x3Input>(Matrix3x3Input(g), gp), gp);
+    }
+    else if(option == MAT3_OUTPUT){
+        block = new OutputBlockUI<Matrix3x3Output>(BlockUI<Matrix3x3Output>(Matrix3x3Output(g), gp), gp);
+    }
+    else if(option == MATH_INPUT){
+        block = new InputBlockUI<MathInput>(BlockUI<MathInput>(MathInput(g), gp), gp);
+    }
+    else if(option == MATH_OUTPUT){
+        block = new OutputBlockUI<MathOutput>(BlockUI<MathOutput>(MathOutput(g), gp), gp);
+    }
+    else if(option == VECTOR_ADD){
+        block = new BlockUI<VectorAddBlock>(VectorAddBlock(g), gp);
+    }
+    else if(option == VECTOR_SUB){
+        block = new BlockUI<VectorSubBlock>(VectorSubBlock(g), gp);
+    }
+    else if(option == VECTOR_ADD3D){
+        block = new BlockUI<VectorAddBlock3D>(VectorAddBlock3D(g), gp);
+    }
+    else if(option == VECTOR_SUB3D){
+        block = new BlockUI<VectorSubBlock3D>(VectorSubBlock3D(g), gp);
+    }
+    else if(option == VECTOR_DOTPRODUCT){
+        block = new BlockUI<VectorDotProductBlock2D>(VectorDotProductBlock2D(g), gp);
+    }
+    else if(option == VECTOR_MUL_CONST){
+        block = new BlockUI<VectorMulConstBlock>(VectorMulConstBlock(g), gp);
+    }
+    else if(option == VECTOR_MUL_CONST3D){
+        block = new BlockUI<VectorMulConstBlock3D>(VectorMulConstBlock3D(g), gp);
+    }
+    else if(option == MAT_ADD){
+        block = new BlockUI<MatrixAddBlock>(MatrixAddBlock(g), gp);
+    }
+    else if(option == MAT3_ADD){
+        block = new BlockUI<Matrix3x3AddBlock>(Matrix3x3AddBlock(g), gp);
+    }
+    else if(option == MAT_MUL){
+        block = new BlockUI<MatrixMulBlock>(MatrixMulBlock(g), gp);
+    }
+    else if(option == MAT3_MUL){
+        block = new BlockUI<Matrix3x3MulBlock>(Matrix3x3MulBlock(g), gp);
+    }
+    else if(option == MAT_MUL_VEC){
+        block = new BlockUI<MatMulVecBlock>(MatMulVecBlock(g), gp);
+    }
+    else if(option == MAT_SUB){
+        block = new BlockUI<MatrixSubBlock>(MatrixSubBlock(g), gp);
+    }
+    else if(option == MAT3_SUB){
+        block = new BlockUI<Matrix3x3SubBlock>(Matrix3x3SubBlock(g), gp);
+    }
+    else if(option == MATH_ADD){
+        block = new BlockUI<MathAddBlock>(MathAddBlock(g), gp);
+    }
+    else if(option == MATH_SUB){
+        block = new BlockUI<MathSubBlock>(MathSubBlock(g), gp);
+    }
+    else if(option == MATH_MUL){
+        block = new BlockUI<MathMulBlock>(MathMulBlock(g), gp);
+    }
+    else if(option == MATH_DIV){
+        block = new BlockUI<MathDivBlock>(MathDivBlock(g), gp);
+    }
+    else if(option == MATH_SQRT){
+        block = new BlockUI<MathSqrtBlock>(MathSqrtBlock(g), gp);
+    }
+    else if(option == MATH_ABS){
+        block = new BlockUI<MathAbsBlock>(MathAbsBlock(g), gp);
+    }
+    else if(option == MATH_GT){
+        block = new BlockUI<MathGTBlock>(MathGTBlock(g), gp);
+    }
+    else if(option == MATH_LT){
+        block = new BlockUI<MathLTBlock>(MathLTBlock(g), gp);
+    }
+    else if(option == MATH_SIN){
+        block = new BlockUI<MathSinBlock>(MathSinBlock(g), gp);
+    }
+    else if(option == MATH_COS){
+        block = new BlockUI<MathCosBlock>(MathCosBlock(g), gp);
+    }
+    else if(option == MATH_INC){
+        block = new BlockUI<MathIncBlock>(MathIncBlock(g), gp);
+    }
+    else if(option == MATH_DEC){
+        block = new BlockUI<MathDecBlock>(MathDecBlock(g), gp);
+    }
+    else if(option == MAT_DETERMINANT){
+        block = new BlockUI<MatrixDeterminantBlock>(MatrixDeterminantBlock(g), gp);
+    }
+    else if(option == MAT_DETERMINANT_INPUT){
+        block = new InputBlockUI<MatrixDeterminantInput>(BlockUI<MatrixDeterminantInput>(MatrixDeterminantInput(g), gp), gp);
+    }
+    else if(option == MAT_DETERMINANT_OUTPUT){
+        block = new OutputBlockUI<MatrixDeterminantOutput>(BlockUI<MatrixDeterminantOutput>(MatrixDeterminantOutput(g), gp), gp);
+    }
+    else{
 		return nullptr;
-	}
-	blocks.push_back(b);
-	return b;
+    }
+    blocks.push_back(block);
+    return block;
 }
 
 BlockFactoryUI::BlockFactoryUI(GraphUI &g)

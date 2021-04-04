@@ -217,7 +217,7 @@ void BLOCKEDITOR::help(){
                              "<h1>(j)Elitný editor - nápoveda</h1>"
                              "<h2>Bloky:</h2>"
                              "<p><b>Pre vytvorenie bloku klikni pravým tlačítkom na myši a vyber požadovaný blok.</p>"
-                             "<p><b>Pre odstránenie bloku klikni na daný blok pravým tlačítkom na myši a vyber 'Odstrániť'</p>"
+                             "<p><b>Pre odstránenie bloku klikni na daný blok pravým tlačítkom na myši a vyber 'Odstrániť'.</p>"
                              "<h2>Prepojenia:</h2>"
                              "<p><b>Pre vytvorenie prepojenia medzi dvomi blokmi klikni ľavým tlačítkom na myši na výstup jedného a následne vstup druhého bloku.</p>"
                              "<p><b>Pre upravenie prepojenia klikni ľavým tlačítkom na myši na vstup bloku a následne klikni na požadovaný výstup.</p>"
@@ -227,7 +227,7 @@ void BLOCKEDITOR::help(){
                              "<p><b>Pre výpočet jedného kroku klikni na tlačidlo 'Krokovať', alebo stlač F4 na klávesnici.</p>"
                              "<p><b>Pre vynulovanie výpočtov klikni na tlačidlo 'Obnoviť', alebo stlač F5 na klávesnici.</p>"
                              "<h1>O (j)Elitnom editore</h1>"
-                             "<p><b>Authori:</b> Martin Rakús, Tomáš Zaťko</p>"
+                             "<p><b>Autori:</b> Martin Rakús, Tomáš Zaťko</p>"
 					   );
 }
 
