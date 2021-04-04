@@ -165,13 +165,11 @@ std::stringstream Graph::saveGraph()
 	return std::move(ss);
 }
 
-BlockFactory &Graph::GetBlockFactory()
-{
+BlockFactory &Graph::GetBlockFactory(){
 	return bf;
 }
 
-BlockBase *Graph::addBlock(BlockType t)
-{
+BlockBase *Graph::addBlock(BlockType t){
 	BlockBase *b = GetBlockFactory().AllocBlock(t);
 	if (b != nullptr) {
 		this->blocks.push_back(b);
@@ -183,8 +181,7 @@ BlockBase *Graph::addBlock(BlockType t)
 	return b;
 }
 
-void Graph::removeBlock(BlockBase *b)
-{
+void Graph::removeBlock(BlockBase *b){
 	this->blocks.remove(b);
 	for(std::size_t i = 0; i < b->InputCount(); i++){
 		removeConnection(b->Input(i));
@@ -199,8 +196,7 @@ void Graph::removeBlock(BlockBase *b)
 	}
 }
 
-OutPort *Graph::getConnectedOutPort(InPort &p)
-{
+OutPort *Graph::getConnectedOutPort(InPort &p){
 	if (connections.find(&p) != connections.end()){
 		return connections.at(&p);
 	} else {
@@ -208,8 +204,7 @@ OutPort *Graph::getConnectedOutPort(InPort &p)
 	}
 }
 
-bool Graph::addConnection(OutPort &a, InPort &b)
-{
+bool Graph::addConnection(OutPort &a, InPort &b){
 	if (!a.Value().type_of(b.Value())) {
 		return false;
 	}

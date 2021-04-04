@@ -121,6 +121,9 @@ void BLOCKEDITOR::createActions(){
 }
 
 void BLOCKEDITOR::createToolBars(){
+    connect(calcIn, SIGNAL(triggered()), this, SLOT(buildBlock()));
+
+
     calculatorBTN = new QAction(QIcon(":/icons/expandCalc.png"), "", this);
     calculatorBTN->setStatusTip("Základné matematické operácie");
     connect(calculatorBTN, SIGNAL(triggered()), this, SLOT(calc()));
@@ -161,6 +164,10 @@ void BLOCKEDITOR::createToolBars(){
     helpToolBar->setMovable(false);
     helpToolBar->addWidget(spacerWidget);
 	helpToolBar->addAction(helpAct);
+}
+
+void BLOCKEDITOR::buildBlock(){
+    graph.addBlock(MATH_INPUT);
 }
 
 void BLOCKEDITOR::closeEvent(QCloseEvent *event){

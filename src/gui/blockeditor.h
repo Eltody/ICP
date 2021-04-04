@@ -106,6 +106,7 @@ protected:
 	void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 private slots:
+    void buildBlock();
     //! Button slot called when opening standard calculator operations
     void calc();
     //! Button slot called when opening vector operations
