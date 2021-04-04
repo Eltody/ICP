@@ -14,25 +14,29 @@
 #include "block_ui.h"
 
 BlockMenu::BlockMenu(GraphUI &g) : graph(g) {
-    auto matrix = menu.addMenu("Matica");
+    auto matrix = menu.addMenu("Matica 2x2");
+    auto matrix3 = menu.addMenu("Matica 3x3");
     auto vector = menu.addMenu("Vektor");
     auto math = menu.addMenu("Kalkulačka");
 
 
     matrix->addAction(new BlockMenuAction(MAT2_INPUT, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT2_OUTPUT, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_INPUT, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_OUTPUT, QIcon()));
+
     matrix->addAction(new BlockMenuAction(MAT_DETERMINANT_INPUT, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_DETERMINANT_OUTPUT, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_ADD, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_SUB, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_ADD, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_SUB, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_MUL, QIcon()));
-    matrix->addAction(new BlockMenuAction(MAT3_MUL, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_MUL_VEC, QIcon()));
     matrix->addAction(new BlockMenuAction(MAT_DETERMINANT, QIcon()));
+
+
+    matrix3->addAction(new BlockMenuAction(MAT3_INPUT, QIcon()));
+    matrix3->addAction(new BlockMenuAction(MAT3_OUTPUT, QIcon()));
+    matrix3->addAction(new BlockMenuAction(MAT3_ADD, QIcon()));
+    matrix3->addAction(new BlockMenuAction(MAT3_SUB, QIcon()));
+    matrix3->addAction(new BlockMenuAction(MAT3_MUL, QIcon()));
 
 
 	vector->addAction(new BlockMenuAction(VECTOR_INPUT, QIcon()));
