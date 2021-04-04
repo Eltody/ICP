@@ -12,7 +12,7 @@
 #include <map>
 
 //! BlockTypes used for adding blocks, block factories, etc. with assigned numbers for file saves
-enum BlockType {
+enum BlockType{
     // Vector
 	VECTOR_INPUT = 1,
     VECTOR3D_INPUT = 2,

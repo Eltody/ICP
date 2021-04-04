@@ -1,6 +1,7 @@
 #include <QtWidgets>
 #include <QToolBar>
 #include <QString>
+#include <string>
 
 #include "../core/blocks.h"
 #include "blockeditor.h"
@@ -121,7 +122,7 @@ void BLOCKEDITOR::createActions(){
 }
 
 void BLOCKEDITOR::createToolBars(){
-    connect(calcIn, SIGNAL(triggered()), this, SLOT(buildBlock()));
+    connect(calcIn, SIGNAL(triggered()), this , SLOT(buildMathIn()));
 
 
     calculatorBTN = new QAction(QIcon(":/icons/expandCalc.png"), "", this);
@@ -166,7 +167,7 @@ void BLOCKEDITOR::createToolBars(){
 	helpToolBar->addAction(helpAct);
 }
 
-void BLOCKEDITOR::buildBlock(){
+void BLOCKEDITOR::buildMathIn(){
     graph.addBlock(MATH_INPUT);
 }
 
@@ -312,15 +313,14 @@ void BLOCKEDITOR::matr(){
 }
 
 void BLOCKEDITOR::newFile(){
-	if(maybeSave())
-	{
+    if(maybeSave()){
 		graph.clearGraph();
 		setCurrentFile(QString::fromStdString(""));
 	}
 }
 
 void BLOCKEDITOR::open(){
-	if (maybeSave()) {
+    if (maybeSave()){
 		QString fileName = QFileDialog::getOpenFileName(this,
             QString(), QString(), QString("Súbory dizajnéru (*.jee)"));
 		if (!fileName.isEmpty())
@@ -329,18 +329,16 @@ void BLOCKEDITOR::open(){
 }
 
 void BLOCKEDITOR::merge(){
-
 	QString fileName = QFileDialog::getOpenFileName(this,
         QString("Vložiť"), QString(), QString("Súbory dizajnéru (*.jee)"));
 	if (!fileName.isEmpty())
 		loadFile(fileName, true);
-
 }
 
 bool BLOCKEDITOR::save(){
-	if (curFile.isEmpty()) {
+    if (curFile.isEmpty()){
 		return saveAs();
-	} else {
+    } else{
 		return saveFile(curFile);
 	}
 }
@@ -351,22 +349,22 @@ bool BLOCKEDITOR::saveAs(){
 	dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setNameFilter("Súbory dizajnéru (*.jee)");
 	std::string saveName;
-	if (curFile.isEmpty()) {
+    if (curFile.isEmpty()){
 		if (graph.GetName().empty()){
             saveName = "plocha1.jee";
-		} else {
+        } else{
             saveName = graph.GetName() + ".jee";
 		}
-	} else {
+    } else{
 		saveName = curFile.toStdString();
 	}
 	dialog.selectFile(saveName.c_str());
 	QStringList files;
-	if (dialog.exec())
+    if (dialog.exec()){
 		files = dialog.selectedFiles();
-	else
+    } else{
 		return false;
-
+    }
 	return saveFile(files.at(0));
 }
 
@@ -460,10 +458,9 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
 }
 
 
-bool BLOCKEDITOR::saveFile(const QString &fileName)
-{
+bool BLOCKEDITOR::saveFile(const QString &fileName){
 	QFile file(fileName);
-	if (!file.open(QFile::WriteOnly | QFile::Text)) {
+    if (!file.open(QFile::WriteOnly | QFile::Text)){
         QMessageBox::warning(this, "(j)Elitný editor",
                              QString::fromStdString("Nemožno uložiť súbor %1:\n%2.")
 							 .arg(fileName)
@@ -479,12 +476,12 @@ bool BLOCKEDITOR::saveFile(const QString &fileName)
 	std::stringstream funcOut;
 	funcOut = graph.saveGraph();
 
-	while(funcOut.good()) {
+    while(funcOut.good()){
 		std::string str;
 		std::getline(funcOut, str);
 		out << QString::fromStdString(str) << '\n';
 	}
-	if(funcOut.fail()) {
+    if(funcOut.fail()){
         QMessageBox::warning(this, "(j)Elitný editor",
                                    QString::fromStdString("Chyba zápisu súboru."));
 	}
@@ -497,16 +494,12 @@ bool BLOCKEDITOR::saveFile(const QString &fileName)
 	return true;
 }
 
-void BLOCKEDITOR::setCurrentFile(const QString &fileName)
-{
+void BLOCKEDITOR::setCurrentFile(const QString &fileName){
 	curFile = fileName;
-
 	setWindowModified(false);
-
 	QString shownName = curFile;
-	if (curFile.isEmpty()) {
+    if (curFile.isEmpty()){
         shownName = "plocha.jee";
 	}
-
 	setWindowFilePath(shownName);
 }

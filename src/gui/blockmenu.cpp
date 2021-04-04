@@ -75,7 +75,7 @@ void BlockMenu::ShowMenu() {
 	menu.move(point);
 	auto selected = menu.exec();
 	if (selected != nullptr) {
-        BlockBase *b = graph.addBlock(static_cast<BlockMenuAction&>(*selected));;
+        BlockBase *b = graph.addBlock(static_cast<BlockMenuAction&>(*selected));
 		auto block = static_cast<BlockUI<BlockBase>*>(b);
 		if(block != nullptr){
 			auto p = graph.mapFromGlobal(point) - graph.getOffset();
