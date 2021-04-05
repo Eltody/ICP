@@ -1,9 +1,7 @@
-#include <QFontMetricsF>
 #include <QPainterPath>
 #include <QApplication>
 #include <QPainter>
 #include <QRectF>
-#include <QFont>
 #include <cmath>
 
 #include "blockeditor.h"
@@ -71,9 +69,7 @@ void OutPortUI::mousePressEvent(QMouseEvent *){
 }
 
 int PortBaseUI::getWidth() const{
-    QFont SegoeUI("Segoe UI", 10);
-    QFontMetrics fm(SegoeUI);
-    return Style::PortNamePadding * 2 + fm.horizontalAdvance(label.text());
+    return Style::PortNamePadding * 2 + QApplication::fontMetrics().horizontalAdvance(label.text());
 }
 
 void InPortUI::Move(int x, int y){
