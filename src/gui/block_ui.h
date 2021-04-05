@@ -72,8 +72,8 @@ public:
         QFont SegoeUI("Segoe UI", 10);
         QFontMetrics fm(SegoeUI);
 
-        height_ = (static_cast<int>(std::max(inputs.size(), outputs.size()))) * Style::PortMarginV +
-				 std::max(Style::PortMarginV, Style::NodeNameHeight);
+        height_ = (1.3 * static_cast<int>(std::max(inputs.size(), outputs.size()))) * Style::PortMarginV +
+                 std::max(Style::PortMarginV, Style::NodeNameHeight);
 		width_ = std::max(input_w + output_w, Style::NodeMinWidth);
         width_ = std::max(width_, Style::NodeNamePadding * 4 + fm.horizontalAdvance(label.text()));
 
@@ -360,7 +360,7 @@ protected:
 
         QFont SegoeUI("Segoe UI", 10);
         QFontMetrics fm(SegoeUI);
-        int h = QApplication::fontMetrics().height();
+        int h = fm.height();
 
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
