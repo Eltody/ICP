@@ -7,45 +7,38 @@
 #include <algorithm>
 
 ConnectionUI::ConnectionUI(InPortUI *in, OutPortUI *out, QWidget *parent)
-	: QWidget(parent), p(parent), t(parent), in(in), out(out)
-{
+	: QWidget(parent), p(parent), t(parent), in(in), out(out){
 	resize(parent->size());
 	show();
 	setAttribute(Qt::WA_TransparentForMouseEvents);
 }
 
 ConnectionUI::ConnectionUI(const ConnectionUI &other)
-	: QWidget(other.p), p(other.p), t(other.p), in(other.in), out(other.out) { }
+    : QWidget(other.p), p(other.p), t(other.p), in(other.in), out(other.out){ }
 
-bool ConnectionUI::operator==(const InPort &p)
-{
+bool ConnectionUI::operator==(const InPort &p){
 	return this->in == &p;
 }
 
-bool ConnectionUI::operator==(const OutPort &p)
-{
+bool ConnectionUI::operator==(const OutPort &p){
 	return this->out == &p;
 }
 
-bool ConnectionUI::operator==(const Port &p)
-{
+bool ConnectionUI::operator==(const Port &p){
 	return (this->in == &p || this->out == &p);
 }
 
-bool operator==(const ConnectionUI &a, const ConnectionUI &b)
-{
+bool operator==(const ConnectionUI &a, const ConnectionUI &b){
 	return a.in == b.in;
 }
 
-QPainterPath ConnectionUI::computePath()
-{
+QPainterPath ConnectionUI::computePath(){
 	QPoint left = getLeft();
 	QPoint right = getRight();
 
 	QPainterPath path;
 	path.moveTo(left);
-	int cp = std::max(abs(left.y() - right.y())/3, abs(left.x() - right.x())/2); //control point
-	path.cubicTo(left + QPoint(cp, 0), right + QPoint(-cp, 0), right);
+    path.lineTo(right);
 
 	return path;
 }
@@ -56,12 +49,12 @@ void ConnectionUI::showValue(){
 	t.show();
 	t.raise();
 }
+
 void ConnectionUI::hideValue(){
 	t.hide();
 }
 
-void ConnectionUI::paintEvent(QPaintEvent *)
-{
+void ConnectionUI::paintEvent(QPaintEvent *){
 	resize(parentWidget()->size());
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
@@ -76,19 +69,16 @@ void ConnectionUI::paintEvent(QPaintEvent *)
 	painter.drawPath(computePath());
 }
 
-void ConnectionUI::Redraw()
-{
+void ConnectionUI::Redraw(){
 	raise();
 	update();
 }
 
-QPoint ConnectionUI::getLeft()
-{
+QPoint ConnectionUI::getLeft(){
 	return this->out->Pos();
 }
 
-QPoint ConnectionUI::getRight()
-{
+QPoint ConnectionUI::getRight(){
 	return this->in->Pos();
 }
 
@@ -112,8 +102,7 @@ TempConnectionUI::TempConnectionUI(InPort **in, OutPort **out, QWidget *parent)
 	t.hide();
 }
 
-QPoint TempConnectionUI::getLeft()
-{
+QPoint TempConnectionUI::getLeft(){
 	if (*in_c == nullptr && *out_c == nullptr){
 		//hide();
 		return QPoint(0, 0);
@@ -127,8 +116,7 @@ QPoint TempConnectionUI::getLeft()
 	}
 }
 
-QPoint TempConnectionUI::getRight()
-{
+QPoint TempConnectionUI::getRight(){
 	if (*in_c == nullptr && *out_c == nullptr){
 		//hide();
 		return QPoint(0, 0);
@@ -142,8 +130,7 @@ QPoint TempConnectionUI::getRight()
 	}
 }
 
-void TempConnectionUI::paintEvent(QPaintEvent *event)
-{
+void TempConnectionUI::paintEvent(QPaintEvent *event){
 	hover = false;
 	ConnectionUI::paintEvent(event);
 }
