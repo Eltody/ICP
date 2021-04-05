@@ -70,7 +70,7 @@ public:
         height_ = (static_cast<int>(std::max(inputs.size(), outputs.size()))) * Style::PortMarginV +
                  std::max(Style::PortMarginV, Style::NodeNameHeight);
 		width_ = std::max(input_w + output_w, Style::NodeMinWidth);
-        width_ = std::max(width_, Style::NodeNamePadding * 4 + QApplication::fontMetrics().width(label.text()));
+        width_ = std::max(width_, Style::NodeNamePadding * 5 + QApplication::fontMetrics().width(label.text()));
 
         resize(width_ + 1, height_ + 1);
 
