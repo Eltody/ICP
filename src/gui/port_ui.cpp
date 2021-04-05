@@ -69,7 +69,7 @@ void OutPortUI::mousePressEvent(QMouseEvent *){
 }
 
 int PortBaseUI::getWidth() const{
-    return Style::PortNamePadding * 2 + QApplication::fontMetrics().horizontalAdvance(label.text());
+    return Style::PortNamePadding * 2 + QApplication::fontMetrics().width(label.text());
 }
 
 void InPortUI::Move(int x, int y){

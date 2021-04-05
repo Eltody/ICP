@@ -12,7 +12,7 @@ std::vector<std::string> Tooltip::TextLines(const std::string &text, int &width,
 	std::string tmp;
 	for(auto const &c : text){
 		if(c == '\n'){
-            int width = QApplication::fontMetrics().horizontalAdvance(tmp.c_str());
+            int width = QApplication::fontMetrics().width(tmp.c_str());
 			w = width > w ? width : w;
 			lines.push_back(tmp);
 			tmp.clear();

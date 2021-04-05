@@ -70,7 +70,7 @@ public:
         height_ = (static_cast<int>(std::max(inputs.size(), outputs.size()))) * Style::PortMarginV +
                  std::max(Style::PortMarginV, Style::NodeNameHeight);
 		width_ = std::max(input_w + output_w, Style::NodeMinWidth);
-        width_ = std::max(width_, Style::NodeNamePadding * 4 + QApplication::fontMetrics().horizontalAdvance(label.text()));
+        width_ = std::max(width_, Style::NodeNamePadding * 4 + QApplication::fontMetrics().width(label.text()));
 
         resize(width_ + 1, height_ + 1);
 
@@ -316,7 +316,7 @@ public:
 		auto data = this->Output(0).Value().Data();
 		text_in_off = 0;
 		for(auto &el : data){
-            text_in_off = std::max(text_in_off, QApplication::fontMetrics().horizontalAdvance((el.first + " : ").c_str()));
+            text_in_off = std::max(text_in_off, QApplication::fontMetrics().width((el.first + " : ").c_str()));
 		}
 		int off = Style::NodeNameHeight - 3;
 
@@ -386,7 +386,7 @@ public:
 		int cnt = static_cast<int>(lines.size()) - 1;
 		this->height_ = this->orig_h + h * (cnt < 0 ? 0 : cnt) - h;
 		this->width_ = this->orig_w - static_cast<InPortUI&>(this->Input(0)).getWidth() + w;
-        this->width_ = std::max(this->width_, Style::NodeNamePadding * 2 + QApplication::fontMetrics().horizontalAdvance(this->name.c_str()));
+        this->width_ = std::max(this->width_, Style::NodeNamePadding * 2 + QApplication::fontMetrics().width(this->name.c_str()));
 		this->width_ = std::max(this->width_, Style::NodeMinWidth);
 		this->resize(this->width_ + 1, this->height_ + 1);
 	}
