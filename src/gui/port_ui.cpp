@@ -1,11 +1,14 @@
-#include "blockeditor.h"
-#include "port_ui.h"
-#include <QPainter>
-#include <QRectF>
+#include <QFontMetricsF>
 #include <QPainterPath>
 #include <QApplication>
+#include <QPainter>
+#include <QRectF>
+#include <QFont>
 #include <cmath>
+
+#include "blockeditor.h"
 #include "graph_ui.h"
+#include "port_ui.h"
 
 PortBaseUI::PortBaseUI(const std::string name, QWidget *parent)
 	: QWidget(parent), p(parent), label(name.c_str(), parent){
@@ -69,7 +72,9 @@ void OutPortUI::mousePressEvent(QMouseEvent *){
 }
 
 int PortBaseUI::getWidth() const{
-    return Style::PortNamePadding * 2 + QApplication::fontMetrics().horizontalAdvance(label.text());
+    QFont SegoeUI("Segoe UI", 10);
+    QFontMetrics fm(SegoeUI);
+    return Style::PortNamePadding * 2 + fm.horizontalAdvance(label.text());
 }
 
 void InPortUI::Move(int x, int y){

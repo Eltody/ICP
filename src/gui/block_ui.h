@@ -1,22 +1,15 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file block_ui.h
- * @brief Block appearance
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCK_UI_H
 #define BLOCK_UI_H
 
 #include <QFontMetricsF>
+#include <QPainterPath>
 #include <QApplication>
 #include <QPaintEvent>
-#include <QWidget>
-#include <list>
-
 #include <QLineEdit>
 #include <QPainter>
-#include <QPainterPath>
+#include <QWidget>
+#include <QFont>
+#include <list>
 
 #include <utility>
 #include <algorithm>
@@ -31,8 +24,7 @@
  * @brief Block GUI representation
  */
 template <typename BlockBaseT>
-class BlockUI : public QWidget, public BlockBaseT
-{
+class BlockUI : public QWidget, public BlockBaseT{
 private:
 	//! Vector of GUI input ports
 	std::vector<InPortUI> inputs; // Should be const vector of non const elements, but this requires custom implementation of vector!
@@ -77,10 +69,13 @@ public:
 			)).getWidth();
 		}
 
+        QFont SegoeUI("Segoe UI", 10);
+        QFontMetrics fm(SegoeUI);
+
 		height_ = (static_cast<int>(std::max(inputs.size(), outputs.size()))) * Style::PortMarginV +
 				 std::max(Style::PortMarginV, Style::NodeNameHeight);
 		width_ = std::max(input_w + output_w, Style::NodeMinWidth);
-        width_ = std::max(width_, Style::NodeNamePadding * 4 + QApplication::fontMetrics().horizontalAdvance(label.text()));
+        width_ = std::max(width_, Style::NodeNamePadding * 4 + fm.horizontalAdvance(label.text()));
 
         resize(width_ + 1, height_ + 1);
 
@@ -326,7 +321,9 @@ public:
 		auto data = this->Output(0).Value().Data();
 		text_in_off = 0;
 		for(auto &el : data){
-            text_in_off = std::max(text_in_off, QApplication::fontMetrics().horizontalAdvance((el.first + " : ").c_str()));
+            QFont SegoeUI("Segoe UI", 10);
+            QFontMetrics fm(SegoeUI);
+            text_in_off = std::max(text_in_off, fm.horizontalAdvance((el.first + " : ").c_str()));
 		}
 		int off = Style::NodeNameHeight - 3;
 
@@ -361,7 +358,9 @@ protected:
     void paintEvent(QPaintEvent *event) {
 		BlockUI<BlockBaseT>::paintEvent(event);
 
-        int h = QApplication::fontMetrics().height();
+        QFont SegoeUI("Segoe UI", 10);
+        QFontMetrics fm(SegoeUI);
+        int h = fm.height();
 
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
@@ -378,7 +377,7 @@ protected:
  * @brief Output Block GUI representation
  */
 template <typename BlockBaseT>
-class OutputBlockUI : public BlockUI<BlockBaseT> {
+class OutputBlockUI : public BlockUI<BlockBaseT>{
 private:
 	int orig_w, orig_h;
 public:
@@ -387,27 +386,27 @@ public:
 		this->Input(0).onConnectionChange([this](Port &){this->update();});
 		this->Input(0).onValueChange([this](Port &){this->update();});
 	}
-    bool Computable() {
+    bool Computable(){
 		return false;
 	}
-	void updateBlockSize()
-	{
+    void updateBlockSize(){
+        QFont SegoeUI("Segoe UI", 10);
+        QFontMetrics fm(SegoeUI);
 		int w, h;
 		auto lines = Tooltip::TextLines(static_cast<std::string>(this->Input(0).Value()), w, h);
 		int cnt = static_cast<int>(lines.size()) - 1;
 		this->height_ = this->orig_h + h * (cnt < 0 ? 0 : cnt) - h;
 		this->width_ = this->orig_w - static_cast<InPortUI&>(this->Input(0)).getWidth() + w;
-        this->width_ = std::max(this->width_, Style::NodeNamePadding * 2 + QApplication::fontMetrics().horizontalAdvance(this->name.c_str()));
+        this->width_ = std::max(this->width_, Style::NodeNamePadding * 2 + fm.horizontalAdvance(this->name.c_str()));
 		this->width_ = std::max(this->width_, Style::NodeMinWidth);
 		this->resize(this->width_ + 1, this->height_ + 1);
 	}
-    void Move(int x, int y) {
+    void Move(int x, int y){
 		updateBlockSize();
 		BlockUI<BlockBaseT>::Move(x, y);
 	}
 protected:
-    void paintEvent(QPaintEvent *event)
-	{
+    void paintEvent(QPaintEvent *event){
 		updateBlockSize();
 		BlockUI<BlockBaseT>::paintEvent(event);
 

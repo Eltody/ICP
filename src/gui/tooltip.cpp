@@ -1,19 +1,22 @@
 #include "blockeditor.h"
 #include "tooltip.h"
 
-#include <QPainter>
+#include <QFontMetricsF>
 #include <QPainterPath>
 #include <QApplication>
+#include <QPainter>
+#include <QFont>
 #include <vector>
 
-std::vector<std::string> Tooltip::TextLines(const std::string &text, int &width, int &height)
-{
-	int w = 0;
+std::vector<std::string> Tooltip::TextLines(const std::string &text, int &width, int &height){
+    QFont SegoeUI("Segoe UI", 10);
+    QFontMetrics fm(SegoeUI);
+    int w = 0;
 	std::vector<std::string> lines;
 	std::string tmp;
 	for(auto const &c : text){
 		if(c == '\n'){
-            int width = QApplication::fontMetrics().horizontalAdvance(tmp.c_str());
+            int width = fm.horizontalAdvance(tmp.c_str());
 			w = width > w ? width : w;
 			lines.push_back(tmp);
 			tmp.clear();
@@ -21,7 +24,7 @@ std::vector<std::string> Tooltip::TextLines(const std::string &text, int &width,
 			tmp += c;
 		}
 	}
-	int h = QApplication::fontMetrics().height();
+    int h = fm.height();
 	height = h;
 	width = w;
 	return lines;
