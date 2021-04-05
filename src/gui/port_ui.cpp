@@ -20,15 +20,14 @@ PortBaseUI::PortBaseUI(const std::string name, QWidget *parent)
 	setMouseTracking(true);
 }
 
-InPortUI::InPortUI(const InPortUI &other) : InPortUI(other, other.p) { }
+InPortUI::InPortUI(const InPortUI &other) : InPortUI(other, other.p){ }
 
 InPortUI::InPortUI(const InPort &p, QWidget *parent)
-	: PortBaseUI(p.name, parent), InPort(p) {
+    : PortBaseUI(p.name, parent), InPort(p){
 	Move(0, 0);
 }
 
-void InPortUI::mouseMoveEvent(QMouseEvent *event)
-{
+void InPortUI::mouseMoveEvent(QMouseEvent *event){
 	static_cast<GraphUI&>(this->block.graph).hoverConnectionUI(event->pos() + pos());
 	PortBaseUI::mouseMoveEvent(event);
 }
@@ -44,12 +43,12 @@ void InPortUI::mousePressEvent(QMouseEvent *){
 			g.addConnection(*g.out_click, *this);
 		}
 	}
-	else {
+    else{
 		g.removeConnection(*this);
 	}
 }
 
-OutPortUI::OutPortUI(const OutPortUI &other) : OutPortUI(other, other.p) { }
+OutPortUI::OutPortUI(const OutPortUI &other) : OutPortUI(other, other.p){ }
 
 OutPortUI::OutPortUI(const OutPort &p, QWidget *parent)
 	: PortBaseUI(p.name, parent), OutPort(p) {
