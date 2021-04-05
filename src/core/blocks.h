@@ -73,8 +73,8 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { VECTOR_SUB3D, "Vektorové odčítanie (3D)"},
     { VECTOR_SUB,  "Vektorové odčítanie  (2D)"},
     { VECTOR_DOTPRODUCT, "Skalárny súčin" },
-    { VECTOR_MUL_CONST, "Vektorové násobenie konštantou (2D)"},
-    { VECTOR_MUL_CONST3D, "Vektorové násobenie konštantou (3D)"},
+    { VECTOR_MUL_CONST, "Vektorové násobenie číslom (2D)"},
+    { VECTOR_MUL_CONST3D, "Vektorové násobenie číslom (3D)"},
 
     // Matrix
     { MAT2_INPUT, "Maticový vstup" },
