@@ -74,7 +74,7 @@ public:
 
         resize(width_ + 1, height_ + 1);
 
-        Move(rand() % 568 + 155, rand() % 396 + 108);
+        Move(rand() % 436 + 97, rand() % 340 + 60);
 
 		show();
 		this->label.show();
