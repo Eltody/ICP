@@ -51,7 +51,6 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	ui->setupUi(this);
 
     QApplication::setApplicationDisplayName("(j)Elitný editor");
-    setFixedSize(1280,720);
     createActions();
 	createToolBars();
 	setCurrentFile("");
@@ -190,8 +189,8 @@ void BLOCKEDITOR::createToolBars(){
 
     blockMenu = new QToolBar();
     addToolBar(Qt::LeftToolBarArea, blockMenu);
-    blockMenu->setIconSize(QSize(250, 50));
-    blockMenu->setFixedWidth(250);
+    blockMenu->setIconSize(QSize(226, 45));
+    blockMenu->setFixedWidth(226);
     blockMenu->setMovable(false);
     blockMenu->addAction(calculatorBTN);
     blockMenu->addAction(matrix2BTN);
