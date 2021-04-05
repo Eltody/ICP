@@ -51,7 +51,8 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	ui->setupUi(this);
 
     QApplication::setApplicationDisplayName("(j)Elitný editor");
-	createActions();
+    setFixedSize(1280,720);
+    createActions();
 	createToolBars();
 	setCurrentFile("");
 	setUnifiedTitleAndToolBarOnMac(true);
