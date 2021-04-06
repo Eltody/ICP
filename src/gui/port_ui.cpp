@@ -1,16 +1,24 @@
 #include <QPainterPath>
 #include <QApplication>
 #include <QPainter>
+#include <QColor>
 #include <QRectF>
 #include <cmath>
 
-#include "blockeditor.h"
 #include "graph_ui.h"
 #include "port_ui.h"
 
+const int PortBaseUI::PortDrawSize = 10;
+const int PortBaseUI::PortSize = 25;
+const int PortBaseUI::PortMarginV = 30;
+const int PortBaseUI::PortNamePadding = 15;
+const QColor PortBaseUI::PortOutlineCol = QColor(0, 0, 0);
+const QColor PortBaseUI::PortFreeCol = QColor(255, 255, 255);
+const QColor PortBaseUI::PortHoverCol = QColor(175, 175, 175);
+
 PortBaseUI::PortBaseUI(const std::string name, QWidget *parent)
 	: QWidget(parent), p(parent), label(name.c_str(), parent){
-	resize(Style::PortSize + 2, Style::PortSize + 2);
+    resize(PortBaseUI::PortSize + 2, PortBaseUI::PortSize + 2);
 
 	show();
 	label.show();
@@ -69,20 +77,20 @@ void OutPortUI::mousePressEvent(QMouseEvent *){
 }
 
 int PortBaseUI::getWidth() const{
-    return Style::PortNamePadding * 2 + QApplication::fontMetrics().width(label.text());
+    return PortBaseUI::PortNamePadding * 2 + QApplication::fontMetrics().width(label.text());
 }
 
 void InPortUI::Move(int x, int y){
-	move(x - Style::PortSize/2 - 1, y - Style::PortSize/2 - 1);
-	label.move(x + Style::PortNamePadding, y - label.height() / 2);
+    move(x - PortBaseUI::PortSize/2 - 1, y - PortBaseUI::PortSize/2 - 1);
+    label.move(x + PortBaseUI::PortNamePadding, y - label.height() / 2);
 
 	GraphUI &g = static_cast<GraphUI&>(this->block.graph);
 	g.updateConnectionUI(*this);
 }
 
 void OutPortUI::Move(int x, int y){
-    move(x - Style::PortSize/2 - 1, y - Style::PortSize/2 - 1);
-	label.move(x - Style::PortNamePadding - label.width(), y - label.height() / 2);
+    move(x - PortBaseUI::PortSize/2 - 1, y - PortBaseUI::PortSize/2 - 1);
+    label.move(x - PortBaseUI::PortNamePadding - label.width(), y - label.height() / 2);
 
 	GraphUI &g = static_cast<GraphUI&>(this->block.graph);
 	g.updateConnectionUI(*this);
@@ -92,19 +100,19 @@ void PortBaseUI::paintEvent(QPaintEvent *){
 	QPainter painter(this);
     QRectF rectangle(9, 9, 8, 8);
 
-	painter.setPen(Style::PortOutlineCol);
+    painter.setPen(PortBaseUI::PortOutlineCol);
 	if(hover){
-		painter.setBrush(Style::PortHoverCol); //hover
+        painter.setBrush(PortBaseUI::PortHoverCol); //hover
 	} else {
-		painter.setBrush(Style::PortFreeCol); //free
+        painter.setBrush(PortBaseUI::PortFreeCol); //free
 	}
     painter.drawRect(rectangle);
 }
 
 void PortBaseUI::mouseMoveEvent(QMouseEvent *event){
-	QPoint diff = (event->pos() - QPoint(Style::PortSize/2, Style::PortSize/2));
+    QPoint diff = (event->pos() - QPoint(PortBaseUI::PortSize/2, PortBaseUI::PortSize/2));
     int dist = std::sqrt(diff.x()*diff.x() + diff.y()*diff.y());
-	hover = (dist <= Style::PortSize/2);
+    hover = (dist <= PortBaseUI::PortSize/2);
 	update();
 }
 
@@ -114,5 +122,5 @@ void PortBaseUI::leaveEvent(QEvent *){
 }
 
 QPoint PortBaseUI::Pos(){
-	return QPoint(pos().x() + Style::PortSize/2 + 1, pos().y() + Style::PortSize/2 + 1);
+    return QPoint(pos().x() + PortBaseUI::PortSize/2 + 1, pos().y() + PortBaseUI::PortSize/2 + 1);
 }

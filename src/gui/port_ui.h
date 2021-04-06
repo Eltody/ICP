@@ -12,8 +12,7 @@
 /**
  * @brief The base abstract class of port GUI representation
  */
-class PortBaseUI : public QWidget
-{
+class PortBaseUI : public QWidget{
 protected:
 	//! Parent widget
 	QWidget *p;
@@ -41,13 +40,26 @@ public:
 	virtual void Move(int x, int y) = 0;
 	//! Get width of Port GUI widget
 	int getWidth() const;
+    //! Port connect diameter
+    static const int PortSize;
+    //! Port draw diameter
+    static const int PortDrawSize;
+    //! Port margin
+    static const int PortMarginV;
+    //! Port name padding
+    static const int PortNamePadding;
+    //! Port outline color
+    static const QColor PortOutlineCol;
+    //! Unoccupied port color
+    static const QColor PortFreeCol;
+    //! Port color when hovered over
+    static const QColor PortHoverCol;
 };
 
 /**
  * @brief Input ports GUI representation
  */
-class InPortUI : public PortBaseUI, public InPort
-{
+class InPortUI : public PortBaseUI, public InPort{
 public:
 	//! Copy constructor
 	InPortUI(const InPortUI &other);

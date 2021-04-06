@@ -69,7 +69,7 @@ public:
 
         height_ = (static_cast<int>(std::max(inputs.size(), outputs.size()))) * Style::PortMarginV +
                  std::max(Style::PortMarginV, Style::NodeNameHeight);
-		width_ = std::max(input_w + output_w, Style::NodeMinWidth);
+        width_ = std::max(input_w + output_w, Style::NodeMinWidth);
         width_ = std::max(width_, Style::NodeNamePadding * 5 + QApplication::fontMetrics().width(label.text()));
 
         resize(width_ + 1, height_ + 1);
@@ -173,19 +173,19 @@ public:
 
 		move(x, y);
 
-		label.move(0, Style::NodeNamePadding);
+        label.move(0, Style::NodeNamePadding);
 		label.setFixedWidth(width_);
 		label.setAlignment(Qt::AlignCenter);
 
-		int offset = std::max(Style::PortMarginV, Style::NodeNameHeight);
+        int offset = std::max(Style::PortMarginV, Style::NodeNameHeight);
 		for(auto &in : inputs) {
 			in.Move(x, y + offset);
-			offset += Style::PortMarginV;
+            offset += Style::PortMarginV;
 		}
-		offset = std::max(Style::PortMarginV, Style::NodeNameHeight);
+        offset = std::max(Style::PortMarginV, Style::NodeNameHeight);
 		for(auto &out : outputs) {
 			out.Move(x + width_, y + offset);
-			offset += Style::PortMarginV;
+            offset += Style::PortMarginV;
 		}
 	}
 
@@ -205,19 +205,19 @@ protected:
 		QPainterPath path;
         path.addRoundedRect(QRectF(.5, .5, width_, height_), Style::NodeRoundSize, Style::NodeRoundSize);
 
-		painter.fillPath(path, QBrush(Style::NodeBackgroundCol));
+        painter.fillPath(path, QBrush(Style::NodeBackgroundCol));
 
         if (highlight){
 			QPainterPath h;
-			h.addRoundedRect(QRectF(2.5, 2.5, width_ - 4, height_ - 4), Style::NodeRoundSize, Style::NodeRoundSize);
+            h.addRoundedRect(QRectF(2.5, 2.5, width_ - 4, height_ - 4), Style::NodeRoundSize, Style::NodeRoundSize);
 
-			QPen p(Style::NodeOutlineHighlightCol);
+            QPen p(Style::NodeOutlineHighlightCol);
 			p.setWidth(5);
 
 			painter.strokePath(h, p);
 		}
 
-		painter.strokePath(path, QPen(Style::NodeOutlineCol));
+        painter.strokePath(path, QPen(Style::NodeOutlineCol));
 	}
 
 	//! Moving block by dragging
@@ -318,16 +318,16 @@ public:
 		for(auto &el : data){
             text_in_off = std::max(text_in_off, QApplication::fontMetrics().width((el.first + " : ").c_str()));
 		}
-		int off = Style::NodeNameHeight - 3;
+        int off = Style::NodeNameHeight - 3;
 
 		for(auto &el : data){
 			auto l = new TextEdit(this, [this](){this->update_output();});
 			l->show();
 			l->setText("0");
-			l->resize(Style::NodeFieldWidth, l->height());
-			l->move(Style::PortNamePadding + text_in_off, off);
+            l->resize(Style::NodeFieldWidth, l->height());
+            l->move(Style::PortNamePadding + text_in_off, off);
 			text_in.insert(std::pair<std::string, TextEdit*>(el.first.c_str(), l));
-			off += Style::NodeFieldOffset;
+            off += Style::NodeFieldOffset;
 		}
 		update_output();
 	}
@@ -341,9 +341,9 @@ public:
 	}
     void Move(int x, int y)
 	{
-		this->width_ = this->orig_w - static_cast<OutPortUI&>(this->Output(0)).getWidth() + text_in_off + Style::NodeFieldWidth;
+        this->width_ = this->orig_w - static_cast<OutPortUI&>(this->Output(0)).getWidth() + text_in_off + Style::NodeFieldWidth;
 		int cnt = static_cast<int>(text_in.size()) - 1;
-		this->height_ = this->orig_h + Style::NodeFieldOffset * (cnt < 0 ? 0 : cnt);
+        this->height_ = this->orig_h + Style::NodeFieldOffset * (cnt < 0 ? 0 : cnt);
 		this->resize(this->width_ + 1, this->height_ + 1);
 		BlockUI<BlockBaseT>::Move(x, y);
 	}
@@ -356,10 +356,10 @@ protected:
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 
-		int offset = Style::NodeNameHeight + h - 2;
+        int offset = Style::NodeNameHeight + h - 2;
 		for(const auto &el : text_in){
-			painter.drawText(Style::PortNamePadding, offset, (el.first + " : ").c_str());
-			offset += Style::NodeFieldOffset;
+            painter.drawText(Style::PortNamePadding, offset, (el.first + " : ").c_str());
+            offset += Style::NodeFieldOffset;
 		}
 	}
 };
@@ -387,7 +387,7 @@ public:
 		this->height_ = this->orig_h + h * (cnt < 0 ? 0 : cnt) - h;
 		this->width_ = this->orig_w - static_cast<InPortUI&>(this->Input(0)).getWidth() + w;
         this->width_ = std::max(this->width_, Style::NodeNamePadding * 2 + QApplication::fontMetrics().width(this->name.c_str()));
-		this->width_ = std::max(this->width_, Style::NodeMinWidth);
+        this->width_ = std::max(this->width_, Style::NodeMinWidth);
 		this->resize(this->width_ + 1, this->height_ + 1);
 	}
     void Move(int x, int y){
@@ -405,9 +405,9 @@ protected:
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
 
-		int offset = Style::PortMarginV + h - 3;
+        int offset = Style::PortMarginV + h - 3;
 		for(const std::string &line : lines){
-			painter.drawText(Style::PortNamePadding, offset, line.c_str());
+            painter.drawText(Style::PortNamePadding, offset, line.c_str());
 			offset += h;
 		}
 	}

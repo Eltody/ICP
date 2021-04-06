@@ -19,20 +19,13 @@ const int Style::NodeRoundSize = 9; //b
 const QColor Style::NodeOutlineCol = QColor(0, 0, 0);   //b
 const QColor Style::NodeOutlineHighlightCol = QColor(76, 76, 76);   //b
 const QColor Style::NodeBackgroundCol = QColor(76, 76, 76); //b
-
-const int Style::PortDrawSize = 10; //p
-const int Style::PortSize = 25; //p
 const int Style::PortMarginV = 30;  //b
 const int Style::PortNamePadding = 15;  //b p
-const QColor Style::PortOutlineCol = QColor(0, 0, 0);   //p
-const QColor Style::PortFreeCol = QColor(255, 255, 255);    //p
-const QColor Style::PortHoverCol = QColor(175, 175, 175);      //p
 
 bool calcIsOpen = false;
 bool vectIsOpen = false;
 bool matr2IsOpen = false;
 bool matr3IsOpen = false;
-
 
 BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	QMainWindow(parent),  ui(new Ui::BLOCKEDITOR), graph(g){

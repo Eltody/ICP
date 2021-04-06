@@ -13,20 +13,11 @@
  */
 class Style{
 public:
-    //! Port connect diameter
-    static const int PortSize;
-    //! Port draw diameter
-    static const int PortDrawSize;
     //! Port margin
     static const int PortMarginV;
     //! Port name padding
     static const int PortNamePadding;
-    //! Port outline color
-    static const QColor PortOutlineCol;
-    //! Unoccupied port color
-    static const QColor PortFreeCol;
-    //! Port color when hovered over
-    static const QColor PortHoverCol;
+
 
     //! Offset for positioning text fields in IO blocks
     static const int NodeFieldOffset;
