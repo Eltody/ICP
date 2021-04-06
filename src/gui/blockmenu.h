@@ -3,6 +3,7 @@
 
 #include <QAction>
 #include <QMenu>
+
 #include "../core/blocks.h"
 #include "../core/blockbase.h"
 

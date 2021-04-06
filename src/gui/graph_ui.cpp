@@ -35,7 +35,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 
 	int x_off = 0, y_off = 0;
 	bool first_ = true;
-	if (merge) {
+    if (merge){
         for (BlockBase *b : blocks){
 			auto block = static_cast<BlockUI<BlockBase>*>(b);
 			if(first_){
@@ -47,7 +47,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 			y_off = std::max(y_off, block->Pos().y() + block->height());
 		}
         y_off += GraphUI::GraphLoadPadding;
-	} else {
+    } else{
 		pos_offset = QPoint(0, 0); // reset drag offset
         x_off = GraphUI::GraphLoadPadding;
         y_off = GraphUI::GraphLoadPadding;
@@ -62,7 +62,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 		// Block Positions
 		graph >> std::ws; // skip whitespaces
 		std::getline(graph, tmp,'[');
-		if (tmp != "pos") {
+        if (tmp != "pos"){
 			return false;
 		}
 		std::getline(graph, tmp, ']');
@@ -96,7 +96,7 @@ std::stringstream GraphUI::saveGraph(){
 	// get offset
 	int x_off = 0, y_off = 0;
 	bool first_ = true;
-	for (BlockBase *b : blocks) {
+    for (BlockBase *b : blocks){
 		auto p = static_cast<BlockUI<BlockBase>*>(b)->Pos();
 		if (first_) {
 			x_off = p.x(); y_off = p.y();
@@ -111,7 +111,7 @@ std::stringstream GraphUI::saveGraph(){
 	ss << '\n';
 	ss << "pos[";
 	bool first = true;
-	for (BlockBase *b : blocks) {
+    for (BlockBase *b : blocks){
 		if(first) {
 			first = false;
 		} else {
@@ -141,8 +141,7 @@ void GraphUI::removeBlock(BlockBase *b){
 	this->out_click = nullptr;
 }
 
-bool GraphUI::addConnection(OutPort &a, InPort &b)
-{
+bool GraphUI::addConnection(OutPort &a, InPort &b){
     if(Graph::addConnection(a, b)){
 		// remove previous connection
 		for(ConnectionUI *c : ui_connections){
@@ -158,11 +157,11 @@ bool GraphUI::addConnection(OutPort &a, InPort &b)
 		this->out_click = nullptr;
 		return true;
 	}
-	else {
+    else{
 		if(!a.Value().type_of(b.Value())){
             GraphUI::ErrorAlert("Hodnoty týchto konektorov nie sú kompatibilné!");
 		}
-		else {
+        else{
             GraphUI::ErrorAlert("Toto prepojenie by vytvorilo cyklus!");
 		}
 
@@ -172,49 +171,40 @@ bool GraphUI::addConnection(OutPort &a, InPort &b)
 	}
 }
 
-void GraphUI::removeConnection(InPort &p)
-{
+void GraphUI::removeConnection(InPort &p){
 	OutPort *conn_p = getConnectedOutPort(p);
 	if(conn_p != nullptr){
 		this->out_click = conn_p;
 
 		Graph::removeConnection(p);
 
-		for (auto it = ui_connections.cbegin(); it != ui_connections.cend();)
-		{
-			if (*(*it) == p)
-			{
+        for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
+            if (*(*it) == p){
 				delete (*it);
 				it = ui_connections.erase(it);
 			}
-			else
-			{
+            else{
 				it++;
 			}
 		}
 	}
 }
 
-void GraphUI::removeConnection(OutPort &p)
-{
+void GraphUI::removeConnection(OutPort &p){
 	Graph::removeConnection(p);
 
-	for (auto it = ui_connections.cbegin(); it != ui_connections.cend();)
-	{
-		if (*(*it) == p)
-		{
+    for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
+        if (*(*it) == p){
 			delete (*it);
 			it = ui_connections.erase(it);
 		}
-		else
-		{
+        else{
 			it++;
 		}
 	}
 }
 
-void GraphUI::updateConnectionUI(Port &p)
-{
+void GraphUI::updateConnectionUI(Port &p){
 	for(ConnectionUI *c : ui_connections){
 		if((*c) == p){
 			c->Redraw();
@@ -222,15 +212,13 @@ void GraphUI::updateConnectionUI(Port &p)
 	}
 }
 
-GraphUI::~GraphUI()
-{
+GraphUI::~GraphUI(){
 	for(ConnectionUI *c : ui_connections){
 		delete c;
 	}
 }
 
-void GraphUI::hoverConnectionUI(QPoint mouse)
-{
+void GraphUI::hoverConnectionUI(QPoint mouse){
 	for(ConnectionUI *c : ui_connections){
 		c->mouseHover(mouse);
 	}
@@ -249,16 +237,14 @@ void GraphUI::mouseMoveEvent(QMouseEvent *event){
 	}
 }
 
-void GraphUI::hideHoverConnectionUI()
-{
+void GraphUI::hideHoverConnectionUI(){
 	for(ConnectionUI *c : ui_connections){
 		c->mouseHover(false);
 	}
 	tc.Redraw();
 }
 
-bool GraphUI::allInputsConnected()
-{
+bool GraphUI::allInputsConnected(){
 	if(!Graph::allInputsConnected()){
         GraphUI::ErrorAlert("Nie všetky vstupy sú pripojené!");
 		return false;
@@ -266,16 +252,14 @@ bool GraphUI::allInputsConnected()
 	return true;
 }
 
-void GraphUI::computeReset()
-{
+void GraphUI::computeReset(){
 	if(last_computed != nullptr){
 		static_cast<BlockUI<BlockBase>*>(last_computed)->Highlight(false);
 	}
 	Graph::computeReset();
 }
 
-bool GraphUI::computeStep()
-{
+bool GraphUI::computeStep(){
 	if(last_computed != nullptr){
 		static_cast<BlockUI<BlockBase>*>(last_computed)->Highlight(false);
 	}
@@ -286,28 +270,25 @@ bool GraphUI::computeStep()
 	return ret;
 }
 
-bool GraphUI::computeAll()
-{
-	if (Graph::computeAll()) {
+bool GraphUI::computeAll(){
+    if (Graph::computeAll()){
 		return computeStep();
 	} else {
 		return false;
 	}
 }
 
-void GraphUI::leaveEvent(QEvent *)
-{
+void GraphUI::leaveEvent(QEvent *){
 	hideHoverConnectionUI();
 }
 
-void GraphUI::mousePressEvent(QMouseEvent *event)
-{
+void GraphUI::mousePressEvent(QMouseEvent *event){
 	setFocus();
 	in_click = nullptr;
 	out_click = nullptr;
 	tc.Redraw();
 
-	if(event->button() != Qt::RightButton) {
+    if(event->button() != Qt::RightButton){
 		drag = true;
 		drag_p = event->pos();
 	}
@@ -315,8 +296,7 @@ void GraphUI::mousePressEvent(QMouseEvent *event)
 	}
 }
 
-void GraphUI::mouseReleaseEvent(QMouseEvent *)
-{
+void GraphUI::mouseReleaseEvent(QMouseEvent *){
 	drag = false;
 }
 

@@ -10,7 +10,6 @@
 #include "blockmenu.h"
 #include <list>
 
-
 class ConnectionUI;
 
 /**
