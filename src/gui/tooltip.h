@@ -1,8 +1,8 @@
 #ifndef TOOLTIP_H
 #define TOOLTIP_H
 
-#include <string>
 #include <QWidget>
+#include <string>
 
 //! Tooltips shown when hovering over connections
 class Tooltip : public QWidget{
@@ -10,6 +10,19 @@ private:
 	//! Label used in the tooltip
 	std::string text;
 public:
+    //! Tooltip corner rounding size
+    static const int TooltipRoundSize;
+    //! Tooltip padding
+    static const int TooltipPadding;
+    //! Tooltip horizontal padding
+    static const int TooltipHPadding;
+    //! Tooltip outline color
+    static const QColor TooltipOutlineCol;
+    //! Tooltip background color
+    static const QColor TooltipBackgroundCol;
+    //! Tooltip text color
+    static const QColor TooltipTextCol;
+
 	//! Function that renders labels in a tooltip
 	static std::vector<std::string> TextLines(const std::string &text, int &width, int &height);
 	/**

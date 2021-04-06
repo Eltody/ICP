@@ -1,10 +1,12 @@
-#include "connection_ui.h"
-#include "blockeditor.h"
-
-#include <QPen>
-#include <QPainter>
 #include <QPainterPath>
+#include <QPainter>
+#include <QPen>
 #include <algorithm>
+
+#include "connection_ui.h"
+
+const int ConnectionUI::ConnectionHoverSize = 15;  //c
+const QColor ConnectionUI::ConnectionCol = QColor(255, 255, 255);  //c
 
 ConnectionUI::ConnectionUI(InPortUI *in, OutPortUI *out, QWidget *parent)
 	: QWidget(parent), p(parent), t(parent), in(in), out(out){
@@ -58,7 +60,7 @@ void ConnectionUI::paintEvent(QPaintEvent *){
 	resize(parentWidget()->size());
 	QPainter painter(this);
 	painter.setRenderHint(QPainter::Antialiasing);
-	QPen p(Style::ConnectionCol);
+    QPen p(ConnectionUI::ConnectionCol);
 	if(hover){
 		p.setWidth(2);
 		showValue();
@@ -83,7 +85,7 @@ QPoint ConnectionUI::getRight(){
 }
 
 bool ConnectionUI::mouseHover(QPoint mouse){
-	QPoint off = QPoint(Style::ConnectionHoverSize / 2, Style::ConnectionHoverSize / 2);
+    QPoint off = QPoint(ConnectionUI::ConnectionHoverSize / 2, ConnectionUI::ConnectionHoverSize / 2);
 	hover = computePath().intersects(QRectF(mouse - off, mouse + off));
 	update();
 	return hover;
@@ -134,4 +136,3 @@ void TempConnectionUI::paintEvent(QPaintEvent *event){
 	hover = false;
 	ConnectionUI::paintEvent(event);
 }
-

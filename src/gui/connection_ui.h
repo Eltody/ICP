@@ -55,6 +55,10 @@ public:
 	bool mouseHover(QPoint mouse);
 	//! Activating hover state by function call
 	bool mouseHover(bool hover);
+    //! Connection line width when hovered
+    static const int ConnectionHoverSize;
+    //! Connection line color
+    static const QColor ConnectionCol;
 protected:
 	void paintEvent(QPaintEvent *event) override;
 };

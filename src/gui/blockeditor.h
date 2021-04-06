@@ -28,14 +28,6 @@ public:
     //! Port color when hovered over
     static const QColor PortHoverCol;
 
-    //! Connection line width when hovered
-    static const int ConnectionHoverSize;
-    //! Connection line color
-    static const QColor ConnectionCol;
-
-    //! Padding around the graph widget
-    static const int GraphLoadPadding;
-
     //! Offset for positioning text fields in IO blocks
     static const int NodeFieldOffset;
     //! Width of text fields in IO blocks
@@ -54,19 +46,6 @@ public:
     static const QColor NodeOutlineHighlightCol;
     //! Background block color
     static const QColor NodeBackgroundCol;
-
-    //! Tooltip corner rounding size
-    static const int TooltipRoundSize;
-    //! Tooltip padding
-    static const int TooltipPadding;
-    //! Tooltip horizontal padding
-    static const int TooltipHPadding;
-    //! Tooltip outline color
-    static const QColor TooltipOutlineCol;
-    //! Tooltip background color
-    static const QColor TooltipBackgroundCol;
-    //! Tooltip text color
-    static const QColor TooltipTextCol;
 };
 
 
@@ -176,8 +155,6 @@ private:
 	Ui::BLOCKEDITOR *ui;
 	GraphUI &graph;
 
-	//! Function that destroys QActions for buttons
-	void deleteActions();
 	//! Function that creates QActions for buttons
     void createActions();
 	//! Sets up menu bar with all buttons
@@ -290,13 +267,3 @@ private:
 };
 
 #endif // BLOCKEDITOR_H
-
-#ifndef ALERT_H
-#define ALERT_H
-
-//! Functions that creates a warning/error window
-
-//! @param message Warning/Error message
-void ErrorAlert(std::string message);
-
-#endif // ALERT_H

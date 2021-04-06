@@ -1,4 +1,3 @@
-#include "QMessageBox"
 #include <QtWidgets>
 #include <QToolBar>
 #include <QString>
@@ -11,30 +10,18 @@
 #include "graph_ui.h"
 
 
-const int Style::ConnectionHoverSize = 15;
-const QColor Style::ConnectionCol = QColor(255, 255, 255);
-
-const int Style::GraphLoadPadding = 15;
-
-const int Style::NodeFieldOffset = 25;
-const int Style::NodeFieldWidth = 65;
-const int Style::NodeNamePadding = 8;
-const int Style::NodeNameHeight = 40;
-const int Style::NodeMinWidth = 60;
-const int Style::NodeRoundSize = 9;
-const QColor Style::NodeOutlineCol = QColor(0, 0, 0);
-const QColor Style::NodeOutlineHighlightCol = QColor(76, 76, 76);
-const QColor Style::NodeBackgroundCol = QColor(76, 76, 76);
-
-const int Style::TooltipRoundSize = 10; //t
-const int Style::TooltipPadding = 10;   //t
-const int Style::TooltipHPadding = 18;  //t
-const QColor Style::TooltipOutlineCol = QColor(0, 0, 0, 0); //t
-const QColor Style::TooltipBackgroundCol = QColor(76, 76, 76);  //t
-const QColor Style::TooltipTextCol = QColor(255, 255, 255); //t
+const int Style::NodeFieldOffset = 25;  //b
+const int Style::NodeFieldWidth = 65;   //b
+const int Style::NodeNamePadding = 8;   //b
+const int Style::NodeNameHeight = 40;   //b
+const int Style::NodeMinWidth = 60; //b
+const int Style::NodeRoundSize = 9; //b
+const QColor Style::NodeOutlineCol = QColor(0, 0, 0);   //b
+const QColor Style::NodeOutlineHighlightCol = QColor(76, 76, 76);   //b
+const QColor Style::NodeBackgroundCol = QColor(76, 76, 76); //b
 
 const int Style::PortDrawSize = 10; //p
-const int Style::PortSize = 25; //no
+const int Style::PortSize = 25; //p
 const int Style::PortMarginV = 30;  //b
 const int Style::PortNamePadding = 15;  //b p
 const QColor Style::PortOutlineCol = QColor(0, 0, 0);   //p
@@ -52,6 +39,7 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
 	ui->setupUi(this);
 
     QApplication::setApplicationDisplayName("(j)Elitný editor");
+    setMinimumSize(600, 558);
     createActions();
 	createToolBars();
 	setCurrentFile("");
@@ -67,23 +55,19 @@ BLOCKEDITOR::~BLOCKEDITOR(){
 	//avoid destruction of graph, which is destructed externally
 	centralWidget()->setParent(nullptr);
 
-	deleteActions();
-	delete ui;
-}
-
-void BLOCKEDITOR::deleteActions(){
     delete newBTN;
     delete openBTN;
     delete saveBTN;
     delete importBTN;
-	delete computeAct;
-	delete stepAct;
-	delete resetAct;
-	delete helpAct;
+    delete computeAct;
+    delete stepAct;
+    delete resetAct;
+    delete helpAct;
     delete calculatorBTN;
     delete vectorBTN;
     delete matrix2BTN;
     delete matrix3BTN;
+	delete ui;
 }
 
 void BLOCKEDITOR::createActions(){
@@ -665,14 +649,6 @@ bool BLOCKEDITOR::maybeSave(){
         }
 	}
 	return true;
-}
-
-void ErrorAlert(std::string message){
-    QMessageBox alert;
-    alert.setWindowTitle("Chyba");
-    alert.setText(message.c_str());
-    alert.show();
-    alert.exec();
 }
 
 void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){

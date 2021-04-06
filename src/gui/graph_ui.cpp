@@ -1,6 +1,9 @@
-#include "blockeditor.h"
+#include "QMessageBox"
+
 #include "graph_ui.h"
 #include "block_ui.h"
+
+const int GraphUI::GraphLoadPadding = 15;
 
 BlockFactory &GraphUI::GetBlockFactory(){
 	return bf;
@@ -33,7 +36,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 	int x_off = 0, y_off = 0;
 	bool first_ = true;
 	if (merge) {
-		for (BlockBase *b : blocks) {
+        for (BlockBase *b : blocks){
 			auto block = static_cast<BlockUI<BlockBase>*>(b);
 			if(first_){
 				x_off = block->Pos().x();
@@ -43,11 +46,11 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 			x_off = std::min(x_off, block->Pos().x());
 			y_off = std::max(y_off, block->Pos().y() + block->height());
 		}
-		y_off += Style::GraphLoadPadding;
+        y_off += GraphUI::GraphLoadPadding;
 	} else {
 		pos_offset = QPoint(0, 0); // reset drag offset
-		x_off = Style::GraphLoadPadding;
-		y_off = Style::GraphLoadPadding;
+        x_off = GraphUI::GraphLoadPadding;
+        y_off = GraphUI::GraphLoadPadding;
 	}
 
 	if (!Graph::loadGraph(graph, merge)){
@@ -55,7 +58,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 	}
 
 	std::string tmp;
-	try {
+    try{
 		// Block Positions
 		graph >> std::ws; // skip whitespaces
 		std::getline(graph, tmp,'[');
@@ -81,7 +84,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 			it++;
 		}
 	}
-	catch (const std::invalid_argument &) {
+    catch (const std::invalid_argument &){
 		return false;
 	}
 	return true;
@@ -157,10 +160,10 @@ bool GraphUI::addConnection(OutPort &a, InPort &b)
 	}
 	else {
 		if(!a.Value().type_of(b.Value())){
-            ErrorAlert("Hodnoty týchto konektorov nie sú kompatibilné!");
+            GraphUI::ErrorAlert("Hodnoty týchto konektorov nie sú kompatibilné!");
 		}
 		else {
-            ErrorAlert("Toto prepojenie by vytvorilo cyklus!");
+            GraphUI::ErrorAlert("Toto prepojenie by vytvorilo cyklus!");
 		}
 
 		this->in_click = nullptr;
@@ -257,7 +260,7 @@ void GraphUI::hideHoverConnectionUI()
 bool GraphUI::allInputsConnected()
 {
 	if(!Graph::allInputsConnected()){
-        ErrorAlert("Nie všetky vstupy sú pripojené!");
+        GraphUI::ErrorAlert("Nie všetky vstupy sú pripojené!");
 		return false;
 	}
 	return true;
@@ -315,4 +318,12 @@ void GraphUI::mousePressEvent(QMouseEvent *event)
 void GraphUI::mouseReleaseEvent(QMouseEvent *)
 {
 	drag = false;
+}
+
+void GraphUI::ErrorAlert(std::string message){
+    QMessageBox alert;
+    alert.setWindowTitle("Chyba");
+    alert.setText(message.c_str());
+    alert.show();
+    alert.exec();
 }
