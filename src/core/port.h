@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file port.h
- * @brief Ports header
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef PORT_H
 #define PORT_H
 

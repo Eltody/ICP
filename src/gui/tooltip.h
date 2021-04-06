@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file tooltip.h
- * @brief Tooltips for viewing values when hovering over connections
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef TOOLTIP_H
 #define TOOLTIP_H
 
@@ -12,8 +5,7 @@
 #include <QWidget>
 
 //! Tooltips shown when hovering over connections
-class Tooltip : public QWidget
-{
+class Tooltip : public QWidget{
 private:
 	//! Label used in the tooltip
 	std::string text;

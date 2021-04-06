@@ -16,7 +16,7 @@ vector2D_out::vector2D_out(double x, double y) : vector2D_out(){
 	operator[]("y") = y;
 }
 
-vector3D_out::vector3D_out() : Type{"x", "y", "z"} { }
+vector3D_out::vector3D_out() : Type{"x", "y", "z"}{ }
 
 vector3D_out::vector3D_out(double x, double y, double z) : vector3D_out(){
     operator[]("x") = x;

@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blocks.h
- * @brief Block types definition and helper structures
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCKS_H
 #define BLOCKS_H
 
@@ -82,7 +75,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MAT_DETERMINANT_INPUT, "Vstup pre determinant" },
     { MAT2_OUTPUT, "Maticový výstup" },
     { MAT3_OUTPUT, "Maticový výstup" },
-    { MAT_DETERMINANT_OUTPUT, "Výstup pre determinantu" },
+    { MAT_DETERMINANT_OUTPUT, "Výstup pre determinant" },
     { MAT_ADD, "Maticové sčítanie"},
     { MAT3_ADD, "Maticové sčítanie"},
     { MAT_MUL,  "Maticové násobenie"},

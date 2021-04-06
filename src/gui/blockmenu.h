@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockmenu.h
- * @brief Menu dropdown showed after right-clicking blocks
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCKMENU_H
 #define BLOCKMENU_H
 

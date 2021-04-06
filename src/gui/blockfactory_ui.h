@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockfactory_ui.h
- * @brief Abstract factory for blocks - GUI
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCKFACTORY_UI_H
 #define BLOCKFACTORY_UI_H
 

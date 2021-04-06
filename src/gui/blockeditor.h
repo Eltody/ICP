@@ -1,18 +1,12 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockeditor.h
- * @brief Block appearance
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCKEDITOR_H
 #define BLOCKEDITOR_H
 
 #include <QGraphicsLinearLayout>
 #include <QMainWindow>
-#include "graph_ui.h"
-
 #include <QColor>
+#include <string>
+
+#include "graph_ui.h"
 
 /**
  * @brief Container for all custom defined styles
@@ -99,7 +93,7 @@ public:
 	//! Constructor
 	explicit BLOCKEDITOR(GraphUI &g, QWidget *parent = 0);
 	//! Destructor
-	~BLOCKEDITOR();
+    ~BLOCKEDITOR();
 
 protected:
 	//! Event called when closing the opened scheme
@@ -296,3 +290,13 @@ private:
 };
 
 #endif // BLOCKEDITOR_H
+
+#ifndef ALERT_H
+#define ALERT_H
+
+//! Functions that creates a warning/error window
+
+//! @param message Warning/Error message
+void ErrorAlert(std::string message);
+
+#endif // ALERT_H

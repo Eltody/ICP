@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file types.h
- * @brief Custom data types for schemes header
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef TYPES_H
 #define TYPES_H
 

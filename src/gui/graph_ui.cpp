@@ -1,7 +1,6 @@
 #include "blockeditor.h"
 #include "graph_ui.h"
 #include "block_ui.h"
-#include "alert.h"
 
 BlockFactory &GraphUI::GetBlockFactory(){
 	return bf;

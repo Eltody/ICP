@@ -1,3 +1,4 @@
+#include "QMessageBox"
 #include <QtWidgets>
 #include <QToolBar>
 #include <QString>
@@ -25,20 +26,20 @@ const QColor Style::NodeOutlineCol = QColor(0, 0, 0);
 const QColor Style::NodeOutlineHighlightCol = QColor(76, 76, 76);
 const QColor Style::NodeBackgroundCol = QColor(76, 76, 76);
 
-const int Style::TooltipRoundSize = 10;
-const int Style::TooltipPadding = 10;
-const int Style::TooltipHPadding = 18;
-const QColor Style::TooltipOutlineCol = QColor(0, 0, 0, 0);
-const QColor Style::TooltipBackgroundCol = QColor(76, 76, 76);
-const QColor Style::TooltipTextCol = QColor(255, 255, 255);
+const int Style::TooltipRoundSize = 10; //t
+const int Style::TooltipPadding = 10;   //t
+const int Style::TooltipHPadding = 18;  //t
+const QColor Style::TooltipOutlineCol = QColor(0, 0, 0, 0); //t
+const QColor Style::TooltipBackgroundCol = QColor(76, 76, 76);  //t
+const QColor Style::TooltipTextCol = QColor(255, 255, 255); //t
 
-const int Style::PortDrawSize = 10;
-const int Style::PortSize = 25;
-const int Style::PortMarginV = 30;
-const int Style::PortNamePadding = 15;
-const QColor Style::PortOutlineCol = QColor(0, 0, 0);
-const QColor Style::PortFreeCol = QColor(255, 255, 255);
-const QColor Style::PortHoverCol = QColor(175, 175, 175);
+const int Style::PortDrawSize = 10; //p
+const int Style::PortSize = 25; //no
+const int Style::PortMarginV = 30;  //b
+const int Style::PortNamePadding = 15;  //b p
+const QColor Style::PortOutlineCol = QColor(0, 0, 0);   //p
+const QColor Style::PortFreeCol = QColor(255, 255, 255);    //p
+const QColor Style::PortHoverCol = QColor(175, 175, 175);      //p
 
 bool calcIsOpen = false;
 bool vectIsOpen = false;
@@ -664,6 +665,14 @@ bool BLOCKEDITOR::maybeSave(){
         }
 	}
 	return true;
+}
+
+void ErrorAlert(std::string message){
+    QMessageBox alert;
+    alert.setWindowTitle("Chyba");
+    alert.setText(message.c_str());
+    alert.show();
+    alert.exec();
 }
 
 void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){

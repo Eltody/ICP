@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockbase.h
- * @brief Base class for blocks header
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCKBASE_H
 #define BLOCKBASE_H
 

@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file blockfactory.h
- * @brief Abstract factory for blocks
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef BLOCKFACTORY_H
 #define BLOCKFACTORY_H
 

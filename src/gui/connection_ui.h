@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file connection_ui.h
- * @brief Connection graphical representation
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef CONNECTION_UI_H
 #define CONNECTION_UI_H
 
@@ -16,8 +9,7 @@
 #include "port_ui.h"
 
 //! Widget for connection graphical representation
-class ConnectionUI : public QWidget
-{
+class ConnectionUI : public QWidget{
 protected:
 	//! Parent widget
 	QWidget *p;

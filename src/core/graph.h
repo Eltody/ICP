@@ -1,10 +1,3 @@
-/** ICP Project 2017/2018: BlockEditor
- * @file graph.h
- * @brief Scheme operations
- * @author Tomáš Pazdiora (xpazdi02)
- * @author Michal Pospíšil (xpospi95)
- */
-
 #ifndef GRAPH_H
 #define GRAPH_H
 

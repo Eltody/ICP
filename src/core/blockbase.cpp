@@ -8,22 +8,20 @@
 #include "blockbase.h"
 
 BlockBase::BlockBase(Graph &g, BlockType type, std::string name)
-	: graph(g), type(type), name(name) { }
+    : graph(g), type(type), name(name){ }
 
 BlockBase::BlockBase(Graph &g, BlockType type, std::string name,
 					 std::initializer_list<InPort> inputs,
 					 std::initializer_list<OutPort> outputs)
-	: inputs(inputs), outputs(outputs), graph(g), type(type), name(name) { }
+    : inputs(inputs), outputs(outputs), graph(g), type(type), name(name){ }
 
-int BlockBase::getID() const
-{
+int BlockBase::getID() const{
 	return this->graph.getBlockID(*this);
 }
 
-int BlockBase::getPortID(const InPort &port) const
-{
+int BlockBase::getPortID(const InPort &port) const{
 	int idx = 0;
-	for (const InPort &p : inputs) {
+    for (const InPort &p : inputs){
 		if (&p == &port){
 			return idx;
 		}
@@ -32,10 +30,9 @@ int BlockBase::getPortID(const InPort &port) const
 	return -1;
 }
 
-int BlockBase::getPortID(const OutPort &port) const
-{
+int BlockBase::getPortID(const OutPort &port) const{
 	int idx = 0;
-	for (const OutPort &p : outputs) {
+    for (const OutPort &p : outputs){
 		if (&p == &port){
 			return idx;
 		}
@@ -44,35 +41,29 @@ int BlockBase::getPortID(const OutPort &port) const
 	return -1;
 }
 
-InPort &BlockBase::Input(std::size_t id)
-{
+InPort &BlockBase::Input(std::size_t id){
 	return inputs[id];
 }
 
-std::size_t BlockBase::InputCount()
-{
+std::size_t BlockBase::InputCount(){
 	return inputs.size();
 }
 
-OutPort &BlockBase::Output(std::size_t id)
-{
+OutPort &BlockBase::Output(std::size_t id){
 	return outputs[id];
 }
 
-std::size_t BlockBase::OutputCount()
-{
+std::size_t BlockBase::OutputCount(){
 	return outputs.size();
 }
 
-void BlockBase::Reset()
-{
-	for(size_t i = 0; i < OutputCount(); i++) {
+void BlockBase::Reset(){
+    for(size_t i = 0; i < OutputCount(); i++){
 		Output(i).Value().setNull();
 	}
 }
 
-bool BlockBase::HasAllValues()
-{
+bool BlockBase::HasAllValues(){
 	for(size_t i = 0; i < InputCount(); i++) {
 		if (Input(i).Value().isNull()) {
 			return false;
@@ -81,8 +72,7 @@ bool BlockBase::HasAllValues()
 	return true;
 }
 
-bool BlockBase::InputsAreConnected()
-{
+bool BlockBase::InputsAreConnected(){
 	for(size_t i = 0; i < InputCount(); i++) {
 		if(graph.connections.count(&Input(i)) <= 0) {
 			return false;
@@ -91,7 +81,6 @@ bool BlockBase::InputsAreConnected()
 	return true;
 }
 
-bool BlockBase::Computable()
-{
+bool BlockBase::Computable(){
 	return true;
 }
