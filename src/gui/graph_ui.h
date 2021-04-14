@@ -89,8 +89,6 @@ public:
 	InPort *in_click;
 	//! Temporary value used while creating a connection - port's address after one click
 	OutPort *out_click;
-    //! Padding around the graph widget
-    static const int GraphLoadPadding;
 private:
 	//! Temporary connection held between mouse and the first port while connecting to the other port
 	TempConnectionUI tc;

@@ -26,11 +26,11 @@ protected:
 	//! Showing the tooltip
 	void showValue();
 	//! Hiding the tooltip
-	void hideValue();
-	//! Provides start point for path compution
-	virtual QPoint getLeft();
-	//! Provides end point for path compution
-	virtual QPoint getRight();
+    void hideValue();
+    //! Provides start point for path compution
+    virtual QPoint getLeft();
+    //! Provides end point for path compution
+    virtual QPoint getRight();
 public:
 	/**
 	 * @brief Connection constructor
@@ -41,8 +41,6 @@ public:
 	explicit ConnectionUI(InPortUI *in, OutPortUI *out, QWidget *parent = nullptr);
 	//! Connection constructor
 	ConnectionUI(const ConnectionUI &other);
-	//! Redraw connection above other elements
-	void Redraw();
 	//! Overloading operator == for input port comparison
 	bool operator==(const InPort &p);
 	//! Overloading operator == for output port comparison
@@ -72,10 +70,10 @@ private:
 	//! Output port
 	OutPort **out_c;
 protected:
-	//! Get starting coordinates
-	QPoint getLeft() override;
-	//! Get end coordinates
-	QPoint getRight() override;
+    //! Get starting coordinates
+    QPoint getLeft() override;
+    //! Get end coordinates
+    QPoint getRight() override;
 	//! Actual rendering of the connection
 	void paintEvent(QPaintEvent *) override;
 public:

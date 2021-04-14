@@ -3,8 +3,6 @@
 #include "graph_ui.h"
 #include "block_ui.h"
 
-const int GraphUI::GraphLoadPadding = 15;
-
 BlockFactory &GraphUI::GetBlockFactory(){
 	return bf;
 }
@@ -33,7 +31,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
 
-	int x_off = 0, y_off = 0;
+    int x_off = 5, y_off = 5;
 	bool first_ = true;
     if (merge){
         for (BlockBase *b : blocks){
@@ -46,11 +44,9 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 			x_off = std::min(x_off, block->Pos().x());
 			y_off = std::max(y_off, block->Pos().y() + block->height());
 		}
-        y_off += GraphUI::GraphLoadPadding;
+        y_off += 5;
     } else{
 		pos_offset = QPoint(0, 0); // reset drag offset
-        x_off = GraphUI::GraphLoadPadding;
-        y_off = GraphUI::GraphLoadPadding;
 	}
 
 	if (!Graph::loadGraph(graph, merge)){
@@ -61,11 +57,11 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
     try{
 		// Block Positions
 		graph >> std::ws; // skip whitespaces
-		std::getline(graph, tmp,'[');
-        if (tmp != "pos"){
+        std::getline(graph, tmp,'(');
+        if (tmp != "position"){
 			return false;
 		}
-		std::getline(graph, tmp, ']');
+        std::getline(graph, tmp, ')');
 		std::stringstream pos_stream(tmp);
 
 		auto it = blocks.begin();
@@ -73,7 +69,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 			std::advance(it, b_id_off);
 		}
 
-		while(std::getline(pos_stream, tmp, ',')){
+        while(std::getline(pos_stream, tmp, ';')){
 			std::stringstream xy(tmp);
 			std::string xs, ys;
 			std::getline(xy, xs, ':');
@@ -109,18 +105,18 @@ std::stringstream GraphUI::saveGraph(){
 
 	// Block Positions
 	ss << '\n';
-	ss << "pos[";
+    ss << "position(";
 	bool first = true;
     for (BlockBase *b : blocks){
 		if(first) {
 			first = false;
 		} else {
-			ss << ",";
+            ss << ";";
 		}
 		BlockUI<BlockBase> *b_ui = static_cast<BlockUI<BlockBase>*>(b);
 		ss << b_ui->Pos().x() - x_off << ":" << b_ui->Pos().y() - y_off;
 	}
-	ss << "]";
+    ss << ")";
 
 	return std::move(ss);
 }
@@ -207,7 +203,8 @@ void GraphUI::removeConnection(OutPort &p){
 void GraphUI::updateConnectionUI(Port &p){
 	for(ConnectionUI *c : ui_connections){
 		if((*c) == p){
-			c->Redraw();
+            c->raise();
+            c->update();
 		}
 	}
 }
@@ -222,12 +219,14 @@ void GraphUI::hoverConnectionUI(QPoint mouse){
 	for(ConnectionUI *c : ui_connections){
 		c->mouseHover(mouse);
 	}
-	tc.Redraw();
+    tc.raise();
+    tc.update();
 }
 
 void GraphUI::mouseMoveEvent(QMouseEvent *event){
 	hoverConnectionUI(event->pos());
-	tc.Redraw();
+    tc.raise();
+    tc.update();
 	if(drag){
 		pos_offset += event->pos() - drag_p;
 		drag_p = event->pos();
@@ -241,7 +240,8 @@ void GraphUI::hideHoverConnectionUI(){
 	for(ConnectionUI *c : ui_connections){
 		c->mouseHover(false);
 	}
-	tc.Redraw();
+    tc.raise();
+    tc.update();
 }
 
 bool GraphUI::allInputsConnected(){
@@ -273,7 +273,7 @@ bool GraphUI::computeStep(){
 bool GraphUI::computeAll(){
     if (Graph::computeAll()){
 		return computeStep();
-	} else {
+    } else{
 		return false;
 	}
 }
@@ -286,13 +286,14 @@ void GraphUI::mousePressEvent(QMouseEvent *event){
 	setFocus();
 	in_click = nullptr;
 	out_click = nullptr;
-	tc.Redraw();
+    tc.raise();
+    tc.update();
 
     if(event->button() != Qt::RightButton){
 		drag = true;
 		drag_p = event->pos();
 	}
-	else {
+    else{
 	}
 }
 

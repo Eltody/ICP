@@ -5,14 +5,13 @@
 
 #include "connection_ui.h"
 
-const int ConnectionUI::ConnectionHoverSize = 15;  //c
-const QColor ConnectionUI::ConnectionCol = QColor(255, 255, 255);  //c
+const int ConnectionUI::ConnectionHoverSize = 15;
+const QColor ConnectionUI::ConnectionCol = QColor(255, 255, 255);
 
 ConnectionUI::ConnectionUI(InPortUI *in, OutPortUI *out, QWidget *parent)
-	: QWidget(parent), p(parent), t(parent), in(in), out(out){
-	resize(parent->size());
-	show();
-	setAttribute(Qt::WA_TransparentForMouseEvents);
+    : QWidget(parent), p(parent), t(parent), in(in), out(out){
+    show();
+    setAttribute(Qt::WA_TransparentForMouseEvents);
 }
 
 ConnectionUI::ConnectionUI(const ConnectionUI &other)
@@ -35,11 +34,11 @@ bool operator==(const ConnectionUI &a, const ConnectionUI &b){
 }
 
 QPainterPath ConnectionUI::computePath(){
-	QPoint left = getLeft();
-	QPoint right = getRight();
+    QPoint left = getLeft();
+    QPoint right = getRight();
 
-	QPainterPath path;
-	path.moveTo(left);
+    QPainterPath path;
+    path.moveTo(left);
     path.lineTo(right);
 
 	return path;
@@ -64,24 +63,19 @@ void ConnectionUI::paintEvent(QPaintEvent *){
 	if(hover){
 		p.setWidth(2);
 		showValue();
-	} else {
+    } else{
 		hideValue();
 	}
 	painter.setPen(p);
 	painter.drawPath(computePath());
 }
 
-void ConnectionUI::Redraw(){
-	raise();
-	update();
-}
-
 QPoint ConnectionUI::getLeft(){
-	return this->out->Pos();
+    return this->out->Pos();
 }
 
 QPoint ConnectionUI::getRight(){
-	return this->in->Pos();
+    return this->in->Pos();
 }
 
 bool ConnectionUI::mouseHover(QPoint mouse){
