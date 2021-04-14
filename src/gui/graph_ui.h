@@ -4,11 +4,28 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QWidget>
+#include <QMenu>
+#include <list>
+
+#include "../core/blockbase.h"
 #include "../core/graph.h"
 #include "blockfactory_ui.h"
 #include "connection_ui.h"
-#include "blockmenu.h"
-#include <list>
+
+
+class BlockDelete{
+private:
+    //! Parent widget
+    GraphUI &graph;
+    //! Dropdown menu object
+    QMenu menu;
+public:
+    //! Menu constructor
+    BlockDelete(GraphUI &g);
+    //! Function for showing the menu after right-clicking a block
+    void ShowMenu(BlockBase *block);
+};
+
 
 class ConnectionUI;
 

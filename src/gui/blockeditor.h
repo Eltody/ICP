@@ -3,10 +3,26 @@
 
 #include <QGraphicsLinearLayout>
 #include <QMainWindow>
+#include <QAction>
 #include <QColor>
 #include <string>
 
+#include "../core/blocks.h"
 #include "graph_ui.h"
+
+
+class GraphUI;
+
+//! BlockType decorator for QAction
+class BlockMenuAction : public QAction{
+private:
+    //! Type of the generated block
+    BlockType t;
+public:
+    //! Action constructor
+    BlockMenuAction(BlockType t, const QIcon &icon);
+    operator BlockType();
+};
 
 /**
  * @brief Container for all custom defined styles

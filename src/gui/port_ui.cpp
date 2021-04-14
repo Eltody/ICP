@@ -1,6 +1,7 @@
 #include <QPainterPath>
 #include <QApplication>
 #include <QPainter>
+#include <QCursor>
 #include <QColor>
 #include <QRectF>
 #include <cmath>
@@ -38,20 +39,22 @@ void InPortUI::mouseMoveEvent(QMouseEvent *event){
 	PortBaseUI::mouseMoveEvent(event);
 }
 
-void InPortUI::mousePressEvent(QMouseEvent *){
-	setFocus();
-	GraphUI& g = dynamic_cast<GraphUI&>(block.graph);
-	g.hideHoverConnectionUI();
-	if(g.getConnectedOutPort(*this) == nullptr)
-	{
-		g.in_click = this;
-		if (g.out_click != nullptr){
-			g.addConnection(*g.out_click, *this);
-		}
-	}
-    else{
-		g.removeConnection(*this);
-	}
+void InPortUI::mousePressEvent(QMouseEvent *event){
+    setFocus();
+    if(event->button() == Qt::LeftButton){
+        GraphUI& g = dynamic_cast<GraphUI&>(block.graph);
+        g.hideHoverConnectionUI();
+        if(g.getConnectedOutPort(*this) == nullptr)
+        {
+            g.in_click = this;
+            if (g.out_click != nullptr){
+                g.addConnection(*g.out_click, *this);
+            }
+        }
+        else{
+            g.removeConnection(*this);
+        }
+    }
 }
 
 OutPortUI::OutPortUI(const OutPortUI &other) : OutPortUI(other, other.p){ }
@@ -68,12 +71,14 @@ void OutPortUI::mouseMoveEvent(QMouseEvent *event){
 
 void OutPortUI::mousePressEvent(QMouseEvent *){
 	setFocus();
-	GraphUI& g = static_cast<GraphUI&>(block.graph);
-	g.hideHoverConnectionUI();
-	g.out_click = this;
-	if (g.in_click != nullptr){
-		g.addConnection(*this, *g.in_click);
-	}
+    if(event->button() == Qt::LeftButton){
+        GraphUI& g = static_cast<GraphUI&>(block.graph);
+        g.hideHoverConnectionUI();
+        g.out_click = this;
+        if (g.in_click != nullptr){
+            g.addConnection(*this, *g.in_click);
+        }
+    }
 }
 
 int PortBaseUI::getWidth() const{
