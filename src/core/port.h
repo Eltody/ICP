@@ -1,14 +1,10 @@
-#ifndef PORT_H
-#define PORT_H
-
 #include <string>
 #include "type.h"
 
 class BlockBase;
 
 //! Class defining plain port
-class Port
-{
+class Port{
 protected:
 	//! Data type
 	Type data;
@@ -44,8 +40,7 @@ public:
 };
 
 //! Input port class
-class InPort : public Port
-{
+class InPort : public Port{
 public:
 	//! Get input port ID
 	//! @return ID of the port
@@ -64,8 +59,7 @@ public:
 };
 
 //! Input port class
-class OutPort : public Port
-{
+class OutPort : public Port{
 public:
 	//! Fires onValueChange callback for this port and all connected ports
 	void eventValueChange() override;
@@ -84,6 +78,3 @@ public:
 	//! Returns port's value
 	Type & Value() override;
 };
-
-
-#endif // PORT_H

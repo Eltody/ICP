@@ -1,6 +1,3 @@
-#ifndef TOOLTIP_H
-#define TOOLTIP_H
-
 #include <QWidget>
 #include <string>
 
@@ -45,5 +42,3 @@ protected:
 	//! Rendering the tooltip
 	void paintEvent(QPaintEvent *) override;
 };
-
-#endif // TOOLTIP_H

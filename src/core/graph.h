@@ -1,6 +1,3 @@
-#ifndef GRAPH_H
-#define GRAPH_H
-
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -136,5 +133,3 @@ public:
 	 */
 	bool isAcyclic(OutPort &a, InPort &b);
 };
-
-#endif // GRAPH_H

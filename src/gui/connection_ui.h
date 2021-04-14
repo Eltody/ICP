@@ -1,6 +1,3 @@
-#ifndef CONNECTION_UI_H
-#define CONNECTION_UI_H
-
 #include <QPoint>
 #include <QWidget>
 #include <QPaintEvent>
@@ -62,8 +59,7 @@ protected:
 };
 
 //! Temporary connection for visualising unfinished connection
-class TempConnectionUI : public ConnectionUI
-{
+class TempConnectionUI : public ConnectionUI{
 private:
 	//! Input port
 	InPort **in_c;
@@ -85,5 +81,3 @@ public:
 	 */
 	TempConnectionUI(InPort **in, OutPort **out, QWidget *parent = nullptr);
 };
-
-#endif // CONNECTION_UI_H

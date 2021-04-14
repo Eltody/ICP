@@ -1,6 +1,3 @@
-#ifndef BLOCKS_H
-#define BLOCKS_H
-
 #include <string>
 #include <map>
 
@@ -101,5 +98,3 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MATH_INC, "Inkrement čísla o 1"},
     { MATH_DEC, "Dekrement čísla o 1"},
 };
-
-#endif // BLOCKS_H

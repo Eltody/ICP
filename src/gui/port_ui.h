@@ -1,6 +1,3 @@
-#ifndef PORT_UI_H
-#define PORT_UI_H
-
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QWidget>
@@ -77,8 +74,7 @@ protected:
 /**
  * @brief Output ports GUI representation
  */
-class OutPortUI : public PortBaseUI, public OutPort
-{
+class OutPortUI : public PortBaseUI, public OutPort{
 public:
 	//! Copy constructor
 	OutPortUI(const OutPortUI &other);
@@ -92,5 +88,3 @@ protected:
 	//! Event that invokes actions triggered by mouse clicks
 	void mousePressEvent(QMouseEvent *) override;
 };
-
-#endif // PORT_UI_H

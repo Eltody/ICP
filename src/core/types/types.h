@@ -1,6 +1,3 @@
-#ifndef TYPES_H
-#define TYPES_H
-
 #include "../type.h"
 
 /**
@@ -48,7 +45,3 @@ public:
     one_number();
     one_number(double hodnota);
 };
-
-
-
-#endif // TYPES_H

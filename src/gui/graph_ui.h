@@ -1,6 +1,3 @@
-#ifndef GRAPH_UI_H
-#define GRAPH_UI_H
-
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QWidget>
@@ -131,5 +128,3 @@ protected:
 	//! Invokes actions triggered by mouse leaving a connection
 	void leaveEvent(QEvent *) override;
 };
-
-#endif // GRAPH_UI_H

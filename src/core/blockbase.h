@@ -1,6 +1,3 @@
-#ifndef BLOCKBASE_H
-#define BLOCKBASE_H
-
 #include <string>
 #include <vector>
 #include <initializer_list>
@@ -107,5 +104,3 @@ public:
 	//! Virtual destructor to prevent leaks
 	virtual ~BlockBase() = default;
 };
-
-#endif // BLOCKBASE_H

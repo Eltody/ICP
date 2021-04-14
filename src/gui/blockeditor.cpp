@@ -655,9 +655,9 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
 	}
 
 	QTextStream in(&file);
-#ifndef QT_NO_CURSOR
+
 	QApplication::setOverrideCursor(Qt::WaitCursor);
-#endif
+
 	// FILE LOADING
 	std::stringstream funcIn;
 	while(!in.atEnd()){
@@ -668,9 +668,9 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
         QMessageBox::warning(this, "(j)Elitný editor",
                                    QString::fromStdString("Chyba čítania súboru."));
 	}
-#ifndef QT_NO_CURSOR
+
 	QApplication::restoreOverrideCursor();
-#endif
+
 
     statusBar()->showMessage("Súbor bol otvorený", 2000);
 
@@ -692,9 +692,9 @@ bool BLOCKEDITOR::saveFile(const QString &fileName){
 	}
 
 	QTextStream out(&file);
-#ifndef QT_NO_CURSOR
+
 	QApplication::setOverrideCursor(Qt::WaitCursor);
-#endif
+
 	// FILE SAVING
 	std::stringstream funcOut;
 	funcOut = graph.saveGraph();
@@ -708,9 +708,8 @@ bool BLOCKEDITOR::saveFile(const QString &fileName){
         QMessageBox::warning(this, "(j)Elitný editor",
                                    QString::fromStdString("Chyba zápisu súboru."));
 	}
-#ifndef QT_NO_CURSOR
+
 	QApplication::restoreOverrideCursor();
-#endif
 
 	setCurrentFile(fileName);
     statusBar()->showMessage("Súbor bol uložený", 2000);

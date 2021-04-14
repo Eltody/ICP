@@ -1,6 +1,3 @@
-#ifndef BLOCKEDITOR_H
-#define BLOCKEDITOR_H
-
 #include <QGraphicsLinearLayout>
 #include <QMainWindow>
 #include <QAction>
@@ -272,5 +269,3 @@ private:
 	//! Action for showing the help box
     QAction *helpAct;
 };
-
-#endif // BLOCKEDITOR_H

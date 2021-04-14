@@ -1,6 +1,3 @@
-#ifndef BLOCK_UI_H
-#define BLOCK_UI_H
-
 #include <QPainterPath>
 #include <QApplication>
 #include <QPaintEvent>
@@ -84,7 +81,7 @@ public:
 	 * @brief Position where block is placed
 	 * @return Top left adjusted block's position
 	 */
-	QPoint Pos() const {
+    QPoint Pos() const{
 		return (pos() - offset);
 	}
 
@@ -93,10 +90,9 @@ public:
 	 * @param port Input port
 	 * @return ID on success, -1 otherwise
 	 */
-    int getPortID(const InPort &port) const
-	{
+    int getPortID(const InPort &port) const{
 		int idx = 0;
-		for (const InPortUI &p : inputs) {
+        for (const InPortUI &p : inputs){
 			if (&p == &port){
 				return idx;
 			}
@@ -110,10 +106,9 @@ public:
 	 * @param port Output port
 	 * @return ID on success, -1 otherwise
 	 */
-    int getPortID(const OutPort &port) const
-	{
+    int getPortID(const OutPort &port) const{
 		int idx = 0;
-		for (const OutPortUI &p : outputs) {
+        for (const OutPortUI &p : outputs){
 			if (&p == &port){
 				return idx;
 			}
@@ -127,14 +122,12 @@ public:
 	 * @param id Port's ID
 	 * @return Address of a port
 	 */
-    InPort & Input(std::size_t id)
-	{
+    InPort & Input(std::size_t id){
 		return inputs[id];
 	}
 
 	//! Returns number of block's inputs
-    std::size_t InputCount()
-	{
+    std::size_t InputCount(){
 		return inputs.size();
 	}
 
@@ -143,14 +136,12 @@ public:
 	 * @param id Port's ID
 	 * @return Address of a port
 	 */
-    OutPort & Output(std::size_t id)
-	{
+    OutPort & Output(std::size_t id){
 		return outputs[id];
 	}
 
 	//! Returns number of block's outputs
-    std::size_t OutputCount()
-	{
+    std::size_t OutputCount(){
 		return outputs.size();
 	}
 
@@ -166,8 +157,7 @@ public:
 	 * @param x X-axis position
 	 * @param y Y-axis position
 	 */
-	virtual void Move(int x, int y)
-	{
+    virtual void Move(int x, int y){
 		x += this->offset.x();
 		y += this->offset.y();
 
@@ -178,20 +168,19 @@ public:
 		label.setAlignment(Qt::AlignCenter);
 
         int offset = std::max(Style::PortMarginV, Style::NodeNameHeight);
-		for(auto &in : inputs) {
+        for(auto &in : inputs){
 			in.Move(x, y + offset);
             offset += Style::PortMarginV;
 		}
         offset = std::max(Style::PortMarginV, Style::NodeNameHeight);
-		for(auto &out : outputs) {
+        for(auto &out : outputs){
 			out.Move(x + width_, y + offset);
             offset += Style::PortMarginV;
 		}
 	}
 
 	//! Change block's highlight status
-	void Highlight(bool enable)
-	{
+    void Highlight(bool enable){
 		this->highlight = enable;
 		update();
 	}
@@ -263,7 +252,7 @@ private:
 public:
 	TextEdit(QWidget *parent, std::function<void(void)> callback)
         : QLineEdit(parent), callback(callback){ }
-	void ErrorColor(bool err) {
+    void ErrorColor(bool err){
 		this->err = err;
 	}
 protected:
@@ -412,5 +401,3 @@ protected:
 		}
 	}
 };
-
-#endif // BLOCK_UI_H

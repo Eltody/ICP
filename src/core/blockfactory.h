@@ -1,6 +1,3 @@
-#ifndef BLOCKFACTORY_H
-#define BLOCKFACTORY_H
-
 #include "blocks.h"
 #include <list>
 
@@ -32,5 +29,3 @@ public:
 	//! Factory destructor
 	virtual ~BlockFactory();
 };
-
-#endif // BLOCKFACTORY_H

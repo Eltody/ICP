@@ -1,6 +1,3 @@
-#ifndef BLOCKFACTORY_UI_H
-#define BLOCKFACTORY_UI_H
-
 #include <QWidget>
 #include <list>
 #include "../core/blockfactory.h"
@@ -26,5 +23,3 @@ public:
 	//! @param g Parent scheme object
 	BlockFactoryUI(GraphUI &g);
 };
-
-#endif // BLOCKFACTORY_UI_H

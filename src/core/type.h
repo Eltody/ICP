@@ -1,6 +1,3 @@
-#ifndef TYPE_H
-#define TYPE_H
-
 #include <map>
 #include <string>
 #include <initializer_list>
@@ -11,7 +8,7 @@ class Port;
 class Type;
 
 //! @brief TypeValue is a single component of Type
-class TypeValue {
+class TypeValue{
 	friend class Type;
 private:
 	double data;
@@ -24,8 +21,7 @@ public:
 };
 
 //! @brief Type Class is not polymorphic! Derived classes are used only as predefined Types with assigned name!
-class Type
-{
+class Type{
 	friend class TypeValue;
 private:
 	bool null_data;
@@ -47,5 +43,3 @@ public:
 	friend bool operator== (const Type &a, const Type &b);
 	operator std::string();
 };
-
-#endif // TYPE_H
