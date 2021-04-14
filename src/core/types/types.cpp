@@ -5,8 +5,6 @@
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
-
-
 #include "types.h"
 
 vector2D_out::vector2D_out() : Type{"x", "y"}{ }

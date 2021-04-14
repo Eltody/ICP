@@ -1,5 +1,5 @@
 /** VUT FIT ICP 2020/2021
- * @file calculator.cpp
+ * @file operations.cpp
  * @brief Súbor obsahuje funkcie pre prácu so základnými matematickými operáciami
  * @date 3.4.2021
  * @author Tomáš Zaťko  - xzatko02
@@ -8,7 +8,7 @@
 
 #include "../types/types.h"
 #include "../blocks.h"
-#include "calculator.h"
+#include "operations.h"
 #include "math.h"
 #include <cmath>
 

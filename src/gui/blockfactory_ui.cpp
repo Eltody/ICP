@@ -3,7 +3,7 @@
 #include "graph_ui.h"
 #include "block_ui.h"
 
-#include "../core/blocks/calculator.h"
+#include "../core/blocks/operations.h"
 
 
 BlockBase *BlockFactoryUI::AllocBlock(BlockType option){

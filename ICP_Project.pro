@@ -26,7 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    src/core/blocks/calculator.cpp \
+    src/core/blocks/operations.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
     src/core/type.cpp \
@@ -42,7 +42,7 @@ SOURCES += \
     src/gui/graph_ui.cpp
 
 HEADERS += \
-    src/core/blocks/calculator.h \
+    src/core/blocks/operations.h \
     src/gui/tooltip.h \
     src/core/type.h \
     src/core/port.h \

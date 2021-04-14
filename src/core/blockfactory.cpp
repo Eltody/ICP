@@ -7,7 +7,7 @@
 
 #include "blockfactory.h"
 
-#include "blocks/calculator.h"
+#include "blocks/operations.h"
 
 
 // alokácia blokov

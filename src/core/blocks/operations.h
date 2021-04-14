@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file calculator.h
+ * @file operations.h
  * @brief Header súbor pre matematické operácie a prácu s blokmi
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
