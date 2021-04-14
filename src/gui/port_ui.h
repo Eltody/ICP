@@ -1,3 +1,5 @@
+
+#pragma once
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QWidget>

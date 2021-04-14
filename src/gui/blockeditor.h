@@ -1,3 +1,5 @@
+
+#pragma once
 #include <QGraphicsLinearLayout>
 #include <QMainWindow>
 #include <QAction>

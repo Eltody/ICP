@@ -4,6 +4,7 @@
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
+#pragma once
 #include <string>
 #include <vector>
 #include <initializer_list>
