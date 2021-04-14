@@ -223,11 +223,11 @@ void Graph::removeConnection(OutPort &p){
 }
 
 bool Graph::allInputsConnected(){
-	for(const auto b : to_compute){
+    for(const auto b : to_compute){
         if(b->Computable() && !b->InputsAreConnected()){
-			return false;
-		}
-	}
+            return false;
+        }
+    }
 	return true;
 }
 

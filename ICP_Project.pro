@@ -27,8 +27,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/core/blocks/calculator.cpp \
-    src/core/blocks/matrix.cpp \
-    src/core/blocks/vector.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
     src/core/type.cpp \

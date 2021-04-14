@@ -246,10 +246,10 @@ void GraphUI::hideHoverConnectionUI(){
 }
 
 bool GraphUI::allInputsConnected(){
-	if(!Graph::allInputsConnected()){
+    if(!Graph::allInputsConnected()){
         GraphUI::ErrorAlert("Nie všetky vstupy sú pripojené!");
-		return false;
-	}
+        return false;
+    }
 	return true;
 }
 

@@ -69,7 +69,7 @@ void OutPortUI::mouseMoveEvent(QMouseEvent *event){
 	PortBaseUI::mouseMoveEvent(event);
 }
 
-void OutPortUI::mousePressEvent(QMouseEvent *){
+void OutPortUI::mousePressEvent(QMouseEvent *event){
 	setFocus();
     if(event->button() == Qt::LeftButton){
         GraphUI& g = static_cast<GraphUI&>(block.graph);
