@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file graph.cpp
+ * @brief
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include "graph.h"
 #include <utility>
 #include <sstream>

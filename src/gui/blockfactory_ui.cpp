@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file blockfactory_ui.cpp
+ * @brief
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include "blockfactory_ui.h"
 #include "port_ui.h"
 #include "graph_ui.h"

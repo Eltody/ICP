@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file connection_ui.cpp
+ * @brief
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include <QPainterPath>
 #include <QPainter>
 #include <QPen>

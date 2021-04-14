@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file port_ui.cpp
+ * @brief
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include <QPainterPath>
 #include <QApplication>
 #include <QPainter>

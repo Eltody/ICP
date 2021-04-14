@@ -1,13 +1,8 @@
-/** VUT FIT ICP
- * Predmet: Seminár C++ 2020/2021
- *
- * Názov súboru: port.cpp
- * Popis súboru: porty pre bloky a vytvorenie menu pri right click-u na blok
- *
- * Dátum: 3.4.2021
- * Autori:
- *        Zaťko Tomáš  - xzatko02
- *        Martin Rakús - xrakus04
+/*! VUT FIT ICP
+ * @file port.h
+ * @brief Porty pre bloky a vytvorenie menu pri right click-u na blok
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
 
 

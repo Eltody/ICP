@@ -1,15 +1,9 @@
-/** VUT FIT ICP
- * Predmet: Seminár C++ 2020/2021
- *
- * Názov súboru: type.cpp
- * Popis súboru: implementácia type-related operácií
- *
- * Dátum: 3.4.2021
- * Autori:
- *        Zaťko Tomáš  - xzatko02
- *        Martin Rakús - xrakus04
+/*! VUT FIT ICP
+ * @file type.cpp
+ * @brief Implementácia type-related operácií
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
-
 
 #include "type.h"
 #include "port.h"

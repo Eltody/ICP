@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file graph_ui.cpp
+ * @brief
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include <QMessageBox>
 #include <QCursor>
 
