@@ -1,4 +1,5 @@
-#include "QMessageBox"
+#include <QMessageBox>
+#include <QCursor>
 
 #include "graph_ui.h"
 #include "block_ui.h"
@@ -289,11 +290,9 @@ void GraphUI::mousePressEvent(QMouseEvent *event){
     tc.raise();
     tc.update();
 
-    if(event->button() != Qt::RightButton){
+    if(event->button() == Qt::LeftButton){
 		drag = true;
 		drag_p = event->pos();
-	}
-    else{
 	}
 }
 
@@ -307,4 +306,17 @@ void GraphUI::ErrorAlert(std::string message){
     alert.setText(message.c_str());
     alert.show();
     alert.exec();
+}
+
+
+
+BlockDelete::BlockDelete(GraphUI &g) : graph(g){
+    menu.addAction(QIcon(":/icons/delete.png"), "Vymazať");
+}
+
+void BlockDelete::ShowMenu(BlockBase *block){
+    menu.move(QCursor::pos());
+    if (menu.exec() != nullptr){
+        graph.removeBlock(block);
+    }
 }

@@ -41,8 +41,7 @@ SOURCES += \
     src/core/types/types.cpp \
     src/core/blockfactory.cpp \
     src/gui/blockfactory_ui.cpp \
-    src/gui/graph_ui.cpp \
-    src/gui/blockmenu.cpp \
+    src/gui/graph_ui.cpp
 
 HEADERS += \
     src/core/blocks/calculator.h \
@@ -62,7 +61,6 @@ HEADERS += \
     src/core/blocks.h \
     src/gui/blockfactory_ui.h \
     src/gui/graph_ui.h \
-    src/gui/blockmenu.h \
 
 FORMS += \
     src/gui/blockeditor.ui

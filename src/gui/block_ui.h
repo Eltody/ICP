@@ -231,11 +231,11 @@ protected:
 	//! Begin drag on left click, open context menu on right click
     void mousePressEvent(QMouseEvent *event){
 		setFocus();
-        if(event->button() != Qt::RightButton){
+        if(event->button() == Qt::LeftButton){
 			drag = true;
 			drag_p = event->pos();
 		}
-		else {
+        else if (event->button() == Qt::RightButton){
 			static_cast<GraphUI&>(this->graph).blockContextMenu(this);
 		}
 	}

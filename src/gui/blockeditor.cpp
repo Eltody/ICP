@@ -726,3 +726,12 @@ void BLOCKEDITOR::setCurrentFile(const QString &fileName){
 	}
 	setWindowFilePath(shownName);
 }
+
+
+
+BlockMenuAction::BlockMenuAction(BlockType t, const QIcon &icon)
+    : QAction(icon, QString(BLOCK_NAME.at(t).c_str()), nullptr), t(t){ }
+
+BlockMenuAction::operator BlockType(){
+    return t;
+}
