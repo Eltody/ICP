@@ -1,6 +1,6 @@
-/** VUT FIT ICP
- * @file vector.h
- * @brief Matrix Blocks header
+/*! VUT FIT ICP
+ * @file matrix.h
+ * @brief Header súbor pre maticové operácie a prácu s blokmi
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
@@ -11,8 +11,8 @@
 #include "../blockbase.h"
 #include "../graph.h"
 
-/**
- * @brief The matrix input block class
+/*!
+ * @brief Trieda - blok pre 2x2 maticový vstup
  *
  * Construction, computation and destruction of a block.
  */
@@ -28,8 +28,8 @@ public:
     virtual ~MatrixInput() = default;
 };
 
-/**
- * @brief The matrix output block class
+/*!
+ * @brief Trieda - blok pre 2x2 maticový výstup
  *
  * Construction, computation and destruction of a block.
  */
@@ -53,17 +53,12 @@ public:
 
 #ifndef MATRIX3x3_IO_H
 #define MATRIX3x3_IO_H
-
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix input block class
+/*!
+ * @brief Trieda - blok pre 3x3 maticový vstup
  *
  * Construction, computation and destruction of a block.
  */
-class Matrix3x3Input : public BlockBase
-{
+class Matrix3x3Input : public BlockBase{
 public:
     //! Constructor
 
@@ -75,13 +70,12 @@ public:
     virtual ~Matrix3x3Input() = default;
 };
 
-/**
- * @brief The matrix output block class
+/*!
+ * @brief Trieda - blok pre 3x3 maticový výstup
  *
  * Construction, computation and destruction of a block.
  */
-class Matrix3x3Output : public BlockBase
-{
+class Matrix3x3Output : public BlockBase{
 public:
     //! Constructor
 
@@ -103,16 +97,12 @@ public:
 #ifndef MATMULVECBLOCK_H
 #define MATMULVECBLOCK_H
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix by vector multiplication block class
+/*!
+ * @brief Trieda - blok pre 2x2 maticové násobenie vektorom
  *
  * Construction, computation and destruction of a block.
  */
-class MatMulVecBlock : public BlockBase
-{
+class MatMulVecBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -133,16 +123,12 @@ public:
 #ifndef MAT3MULVECBLOCK_H
 #define MAT3MULVECBLOCK_H
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix by vector multiplication block class
+/*!
+ * @brief Trieda - blok pre 3x3 maticové násobenie vektorom
  *
  * Construction, computation and destruction of a block.
  */
-class Mat3x3MulVecBlock : public BlockBase
-{
+class Mat3x3MulVecBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -163,16 +149,12 @@ public:
 #ifndef MATRIXADDBLOCK
 #define MATRIXADDBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix addition block class
+/*!
+ * @brief Trieda - blok pre 2x2 maticové sčítanie
  *
  * Construction, computation and destruction of a block.
  */
-class MatrixAddBlock : public BlockBase
-{
+class MatrixAddBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -194,16 +176,12 @@ public:
 #ifndef MATRIX3x3ADDBLOCK
 #define MATRIX3x3ADDBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix addition block class
+/*!
+ * @brief Trieda - blok pre 3x3 maticové sčítanie
  *
  * Construction, computation and destruction of a block.
  */
-class Matrix3x3AddBlock : public BlockBase
-{
+class Matrix3x3AddBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -224,16 +202,12 @@ public:
 #ifndef MATRIXMULBLOCK
 #define MATRIXMULBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix multiplication block class
+/*!
+ * @brief Trieda - blok pre 2x2 maticové násobenie
  *
  * Construction, computation and destruction of a block.
  */
-class MatrixMulBlock : public BlockBase
-{
+class MatrixMulBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -255,16 +229,12 @@ public:
 #ifndef MATRIX3x3MULBLOCK
 #define MATRIX3x3MULBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix multiplication block class
+/*!
+ * @brief Trieda - blok pre 3x3 maticové násobenie
  *
  * Construction, computation and destruction of a block.
  */
-class Matrix3x3MulBlock : public BlockBase
-{
+class Matrix3x3MulBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -280,22 +250,18 @@ public:
 #endif // MATRIXMULBLOCK
 
 
-//************************************************************//
+//*!**********************************************************//
 
 
 #ifndef MATRIXSUBBLOCK
 #define MATRIXSUBBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix subtraction block class
+/*!
+ * @brief Trieda - blok pre 2x2 maticové odčítanie
  *
  * Construction, computation and destruction of a block.
  */
-class MatrixSubBlock : public BlockBase
-{
+class MatrixSubBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -314,16 +280,12 @@ public:
 #ifndef MATRIX3x3SUBBLOCK
 #define MATRIX3x3SUBBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix subtracion block class
+/*!
+ * @brief Trieda - blok pre 3x3 maticové odčítanie
  *
  * Construction, computation and destruction of a block.
  */
-class Matrix3x3SubBlock : public BlockBase
-{
+class Matrix3x3SubBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -342,16 +304,12 @@ public:
 #ifndef MATRIXDETERMINANTBLOCK
 #define MATRIXDETERMINANTBLOCK
 
-#include "../blockbase.h"
-#include "../graph.h"
-
-/**
- * @brief The matrix determinant block class
+/*!
+ * @brief Trieda - blok pre výpočet determinantu matice 2x2
  *
  * Construction, computation and destruction of a block.
  */
-class MatrixDeterminantBlock : public BlockBase
-{
+class MatrixDeterminantBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -369,8 +327,8 @@ public:
 #ifndef MATRIX_DETERMINANT_IO_H
 #define MATRIX_DETERMINANT_IO_H
 
-/**
- * @brief The matrix determinant output block class
+/*!
+ * @brief Trieda - blok pre výstup výpočtu determinantu matice 2x2
  *
  * Construction, computation and destruction of a block.
  */
@@ -387,8 +345,8 @@ public:
 };
 
 
-/**
- * @brief The matrix determinant input block class
+/*!
+ * @brief Trieda - blok pre vstup výpočtu determinantu matice 2x2
  *
  * Construction, computation and destruction of a block.
  */

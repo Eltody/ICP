@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file calculator.h
- * @brief Header súbor pre mat.funkcie a prácu s blokmi
+ * @brief Header súbor pre matematické operácie a prácu s blokmi
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
@@ -9,12 +9,11 @@
 #include "../graph.h"
 
 /*!
- * @brief The mathematical input block class
+ * @brief Trieda - blok pre číselný vstup
  *
  * Construction, computation and destruction of a block.
  */
-class MathInput : public BlockBase
-{
+class MathInput : public BlockBase{
 public:
     //! Constructor
 
@@ -27,12 +26,11 @@ public:
 };
 
 /*!
- * @brief The mathematical output block class
+ * @brief Trieda - blok pre číselný výstup
  *
  * Construction, computation and destruction of a block.
  */
-class MathOutput : public BlockBase
-{
+class MathOutput : public BlockBase{
 public:
     //! Constructor
 
@@ -46,12 +44,11 @@ public:
 
 
 /*!
- * @brief The mathematical addition block class
+ * @brief Trieda - blok pre sčítanie dvoch čísel
  *
  * Construction, computation and destruction of a block.
  */
-class MathAddBlock : public BlockBase
-{
+class MathAddBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -66,12 +63,11 @@ public:
 
 
 /*!
- * @brief The mathematical subtraction block class
+ * @brief Trieda - blok pre odčítanie dvoch čísel
  *
  * Construction, computation and destruction of a block.
  */
-class MathSubBlock : public BlockBase
-{
+class MathSubBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -86,12 +82,11 @@ public:
 
 
 /*!
- * @brief The mathematical multiplication block class
+ * @brief Trieda - blok pre násobenie dvoch čísel
  *
  * Construction, computation and destruction of a block.
  */
-class MathMulBlock : public BlockBase
-{
+class MathMulBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -106,12 +101,11 @@ public:
 
 
 /*!
- * @brief The mathematical division block class
+ * @brief Trieda - blok pre delenie dvoch čísel
  *
  * Construction, computation and destruction of a block.
  */
-class MathDivBlock : public BlockBase
-{
+class MathDivBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -126,12 +120,11 @@ public:
 
 
 /*!
- * @brief The square root block class
+ * @brief Trieda - blok odmocnenie čísla
  *
  * Construction, computation and destruction of a block.
  */
-class MathSqrtBlock : public BlockBase
-{
+class MathSqrtBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -146,12 +139,11 @@ public:
 
 
 /*!
- * @brief The absolute value block class
+ * @brief Trieda - blok pre absolútnu hodnotu čísla
  *
  * Construction, computation and destruction of a block.
  */
-class MathAbsBlock : public BlockBase
-{
+class MathAbsBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -166,12 +158,11 @@ public:
 
 
 /*!
- * @brief Greater value than another block class
+ * @brief Trieda - blok pre zistenie väčšieho z dvoch čísel
  *
  * Construction, computation and destruction of a block.
  */
-class MathGTBlock : public BlockBase
-{
+class MathGTBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -186,12 +177,11 @@ public:
 
 
 /*!
- * @brief Less value than another block class
+ * @brief Trieda - blok pre zistenie menšieho z dvoch čísel
  *
  * Construction, computation and destruction of a block.
  */
-class MathLTBlock : public BlockBase
-{
+class MathLTBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -206,12 +196,11 @@ public:
 
 
 /*!
- * @brief Sinus block class
+ * @brief Trieda - blok pre výpočet sínusu čísla
  *
  * Construction, computation and destruction of a block.
  */
-class MathSinBlock : public BlockBase
-{
+class MathSinBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -226,12 +215,11 @@ public:
 
 
 /*!
- * @brief Cosinus block class
+ * @brief Trieda - blok pre výpočet cosínusu čísla
  *
  * Construction, computation and destruction of a block.
  */
-class MathCosBlock : public BlockBase
-{
+class MathCosBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -246,12 +234,11 @@ public:
 
 
 /*!
- * @brief Increment block class
+ * @brief Trieda - blok pre inkrementáciu čísla o 1
  *
  * Construction, computation and destruction of a block.
  */
-class MathIncBlock : public BlockBase
-{
+class MathIncBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -266,12 +253,11 @@ public:
 
 
 /*!
- * @brief Decrement block class
+ * @brief Trieda - blok pre dekrementáciu čísla o 1
  *
  * Construction, computation and destruction of a block.
  */
-class MathDecBlock : public BlockBase
-{
+class MathDecBlock : public BlockBase{
 public:
     //! Constructor
 

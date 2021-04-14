@@ -1,19 +1,18 @@
-/** VUT FIT ICP
+/*! VUT FIT ICP
  * @file vector.h
- * @brief Vector Blocks Header
+ * @brief Header súbor pre vektorové operácie a prácu s blokmi
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
 #include "../blockbase.h"
 #include "../graph.h"
 
-/**
- * @brief The vector input block class
+/*!
+ * @brief Trieda - blok pre 2D vektorový vstup
  *
  * Construction, computation and destruction of a block.
  */
-class VectorInput : public BlockBase
-{
+class VectorInput : public BlockBase{
 public:
 	//! Constructor
 
@@ -25,13 +24,12 @@ public:
 	virtual ~VectorInput() = default;
 };
 
-/**
- * @brief The vector output block class
+/*!
+ * @brief Trieda - blok pre 2D vektorový výstup
  *
  * Construction, computation and destruction of a block.
  */
-class VectorOutput : public BlockBase
-{
+class VectorOutput : public BlockBase{
 public:
 	//! Constructor
 
@@ -46,13 +44,12 @@ public:
 
 
 
-/**
- * @brief The vector input block class
+/*!
+ * @brief Trieda - blok pre 3D vektorový vstup
  *
  * Construction, computation and destruction of a block.
  */
-class Vector3DInput : public BlockBase
-{
+class Vector3DInput : public BlockBase{
 public:
     //! Constructor
 
@@ -64,13 +61,12 @@ public:
     virtual ~Vector3DInput() = default;
 };
 
-/**
- * @brief The vector output block class
+/*!
+ * @brief Trieda - blok pre 3D vektorový výstup
  *
  * Construction, computation and destruction of a block.
  */
-class Vector3DOutput : public BlockBase
-{
+class Vector3DOutput : public BlockBase{
 public:
     //! Constructor
 
@@ -85,13 +81,12 @@ public:
 
 
 
-/**
- * @brief The vector addition block class
+/*!
+ * @brief Trieda - blok pre 2D sčítanie dvoch vektorov
  *
  * Construction, computation and destruction of a block.
  */
-class VectorAddBlock : public BlockBase
-{
+class VectorAddBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -105,13 +100,12 @@ public:
 };
 
 
-/**
- * @brief The vector subtraction block class
+/*!
+ * @brief Trieda - blok pre 2D odčítanie dvoch vektorov
  *
  * Construction, computation and destruction of a block.
  */
-class VectorSubBlock : public BlockBase
-{
+class VectorSubBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -126,13 +120,12 @@ public:
 
 
 
-/**
- * @brief The 3D vector addition block class
+/*!
+ * @brief Trieda - blok pre 3D sčítanie dvoch vektorov
  *
  * Construction, computation and destruction of a block.
  */
-class VectorAddBlock3D : public BlockBase
-{
+class VectorAddBlock3D : public BlockBase{
 public:
     //! Constructor
 
@@ -146,13 +139,12 @@ public:
 };
 
 
-/**
- * @brief The 3D vector subtraction block class
+/*!
+ * @brief Trieda - blok pre 3D odčítanie dvoch vektorov
  *
  * Construction, computation and destruction of a block.
  */
-class VectorSubBlock3D : public BlockBase
-{
+class VectorSubBlock3D : public BlockBase{
 public:
     //! Constructor
 
@@ -166,13 +158,12 @@ public:
 };
 
 
-/**
- * @brief The vector dot product block class
+/*!
+ * @brief Trieda - blok pre 2D skalárny súčin
  *
  * Construction, computation and destruction of a block.
  */
-class VectorDotProductBlock2D : public BlockBase
-{
+class VectorDotProductBlock2D : public BlockBase{
 public:
     //! Constructor
 
@@ -186,13 +177,12 @@ public:
 };
 
 
-/**
- * @brief The vector output block class
+/*!
+ * @brief Trieda - blok pre výstup 2D skalárneho súčinu
  *
  * Construction, computation and destruction of a block.
  */
-class VectorDotOutput : public BlockBase
-{
+class VectorDotOutput : public BlockBase{
 public:
     //! Constructor
 
@@ -205,13 +195,12 @@ public:
 };
 
 
-/**
- * @brief The 2D vector multiplied by const block class
+/*!
+ * @brief Trieda - blok pre násobenie 2D vektoru konštantou
  *
  * Construction, computation and destruction of a block.
  */
-class VectorMulConstBlock : public BlockBase
-{
+class VectorMulConstBlock : public BlockBase{
 public:
     //! Constructor
 
@@ -225,13 +214,12 @@ public:
 };
 
 
-/**
- * @brief The 3D vector multiplied by const block class
+/*!
+ * @brief Trieda - blok pre násobenie 3D vektoru konštantou
  *
  * Construction, computation and destruction of a block.
  */
-class VectorMulConstBlock3D : public BlockBase
-{
+class VectorMulConstBlock3D : public BlockBase{
 public:
     //! Constructor
 
