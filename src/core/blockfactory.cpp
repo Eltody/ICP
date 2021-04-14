@@ -8,8 +8,6 @@
 #include "blockfactory.h"
 
 #include "blocks/calculator.h"
-#include "blocks/vector.h"
-#include "blocks/matrix.h"
 
 
 // alokácia blokov

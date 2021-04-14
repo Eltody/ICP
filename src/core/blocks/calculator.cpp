@@ -9,8 +9,6 @@
 #include "../types/types.h"
 #include "../blocks.h"
 #include "calculator.h"
-#include "matrix.h"
-#include "vector.h"
 #include "math.h"
 #include <cmath>
 
@@ -268,7 +266,7 @@ void MathDecBlock::Compute(){
 
 
 
-
+//----------MATICE----------
 
 
 
@@ -444,11 +442,6 @@ void Matrix3x3MulBlock::Compute(){
 
 
 
-
-//*****************************************************************************//
-
-
-
 // blok pre odčítanie matíc 2x2
 MatrixSubBlock::MatrixSubBlock(Graph &g)
     : BlockBase(g, MAT_SUB, BLOCK_NAME.at(MAT_SUB),
@@ -531,7 +524,7 @@ void MatrixDeterminantOutput::Compute() { }
 
 
 
-
+//----------VEKTORY----------
 
 
 

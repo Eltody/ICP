@@ -4,8 +4,7 @@
 #include "block_ui.h"
 
 #include "../core/blocks/calculator.h"
-#include "../core/blocks/vector.h"
-#include "../core/blocks/matrix.h"
+
 
 BlockBase *BlockFactoryUI::AllocBlock(BlockType option){
 	GraphUI *gp = static_cast<GraphUI*>(&g);

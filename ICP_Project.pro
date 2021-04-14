@@ -43,8 +43,6 @@ SOURCES += \
 
 HEADERS += \
     src/core/blocks/calculator.h \
-    src/core/blocks/matrix.h \
-    src/core/blocks/vector.h \
     src/gui/tooltip.h \
     src/core/type.h \
     src/core/port.h \
