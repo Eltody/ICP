@@ -1,3 +1,17 @@
+<<<<<<< Updated upstream
+=======
+/*! VUT FIT ICP
+ * @file port.h
+ * @brief Header súbor pre prácu s portami
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
+
+#ifndef PORT_H
+#define PORT_H
+
+>>>>>>> Stashed changes
 #include <string>
 #include "type.h"
 

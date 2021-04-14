@@ -1,3 +1,17 @@
+<<<<<<< Updated upstream
+=======
+/*! VUT FIT ICP
+ * @file graph.h
+ * @brief Header súbor pre prácu a operáciami nad schémou
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
+
+#ifndef GRAPH_H
+#define GRAPH_H
+
+>>>>>>> Stashed changes
 #include <iostream>
 #include <string>
 #include <sstream>

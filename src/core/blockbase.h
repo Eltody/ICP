@@ -1,3 +1,16 @@
+<<<<<<< Updated upstream
+=======
+/*! VUT FIT ICP
+ * @file bockbase.h
+ * @brief Header súbor pre kontrolu a prácu s portami
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
+#ifndef BLOCKBASE_H
+#define BLOCKBASE_H
+
+>>>>>>> Stashed changes
 #include <string>
 #include <vector>
 #include <initializer_list>

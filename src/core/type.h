@@ -1,3 +1,17 @@
+<<<<<<< Updated upstream
+=======
+/*! VUT FIT ICP
+ * @file type.h
+ * @brief Header súbor pre kontrolu a prácu s portami
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
+
+#ifndef TYPE_H
+#define TYPE_H
+
+>>>>>>> Stashed changes
 #include <map>
 #include <string>
 #include <initializer_list>

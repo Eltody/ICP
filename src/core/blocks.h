@@ -1,3 +1,17 @@
+<<<<<<< Updated upstream
+=======
+/*! VUT FIT ICP
+ * @file blocks.h
+ * @brief Header súbor pre kontrolu a prácu s portami
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
+
+#ifndef BLOCKS_H
+#define BLOCKS_H
+
+>>>>>>> Stashed changes
 #include <string>
 #include <map>
 

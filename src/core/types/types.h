@@ -1,3 +1,16 @@
+<<<<<<< Updated upstream
+=======
+/*! VUT FIT ICP
+ * @file types.h
+ * @brief Header súbor pre dátové typy výstupov
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
+#ifndef TYPES_H
+#define TYPES_H
+
+>>>>>>> Stashed changes
 #include "../type.h"
 
 /**
