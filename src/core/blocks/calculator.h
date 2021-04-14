@@ -1,6 +1,6 @@
-/** VUT FIT ICP
+/*! VUT FIT ICP
  * @file calculator.h
- * @brief Calculator Blocks Header
+ * @brief Header súbor pre mat.funkcie a prácu s blokmi
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
@@ -8,7 +8,7 @@
 #include "../blockbase.h"
 #include "../graph.h"
 
-/**
+/*!
  * @brief The mathematical input block class
  *
  * Construction, computation and destruction of a block.
@@ -26,7 +26,7 @@ public:
     virtual ~MathInput() = default;
 };
 
-/**
+/*!
  * @brief The mathematical output block class
  *
  * Construction, computation and destruction of a block.
@@ -45,7 +45,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief The mathematical addition block class
  *
  * Construction, computation and destruction of a block.
@@ -65,7 +65,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief The mathematical subtraction block class
  *
  * Construction, computation and destruction of a block.
@@ -85,7 +85,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief The mathematical multiplication block class
  *
  * Construction, computation and destruction of a block.
@@ -105,7 +105,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief The mathematical division block class
  *
  * Construction, computation and destruction of a block.
@@ -125,7 +125,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief The square root block class
  *
  * Construction, computation and destruction of a block.
@@ -145,7 +145,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief The absolute value block class
  *
  * Construction, computation and destruction of a block.
@@ -165,7 +165,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief Greater value than another block class
  *
  * Construction, computation and destruction of a block.
@@ -185,7 +185,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief Less value than another block class
  *
  * Construction, computation and destruction of a block.
@@ -205,7 +205,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief Sinus block class
  *
  * Construction, computation and destruction of a block.
@@ -225,7 +225,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief Cosinus block class
  *
  * Construction, computation and destruction of a block.
@@ -245,7 +245,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief Increment block class
  *
  * Construction, computation and destruction of a block.
@@ -265,7 +265,7 @@ public:
 };
 
 
-/**
+/*!
  * @brief Decrement block class
  *
  * Construction, computation and destruction of a block.
