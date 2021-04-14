@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file blockeditor.cpp
+ * @brief
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #include <QtWidgets>
 #include <QToolBar>
 #include <QString>

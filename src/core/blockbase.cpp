@@ -1,6 +1,6 @@
 /** VUT FIT ICP
- * @file blockfactory.cpp
- * @brief Alokácia a dealokácia blokov
+ * @file blockbase.cpp
+ * @brief
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

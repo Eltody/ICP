@@ -1,13 +1,8 @@
-/** VUT FIT ICP
- * Predmet: Seminár C++ 2020/2021
- *
- * Názov súboru: main.cpp
- * Popis súboru: main aplikácie
- *
- * Dátum: 3.4.2021
- * Autori:
- *        Zaťko Tomáš  - xzatko02
- *        Martin Rakús - xrakus04
+/*! VUT FIT ICP
+ * @file main.cpp
+ * @brief Main súbor programu
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
  */
 
 
