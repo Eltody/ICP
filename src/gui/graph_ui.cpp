@@ -32,7 +32,7 @@ void GraphUI::GraphClearing(){
 	ui_connections.clear();
 	in_click = nullptr;
 	out_click = nullptr;
-	last_computed = nullptr;
+	computedAsLast = nullptr;
 }
 
 bool GraphUI::GraphLoading(std::stringstream &graph, bool merge){
@@ -261,19 +261,19 @@ bool GraphUI::allInputsConnected(){
 }
 
 void GraphUI::computeReset(){
-	if(last_computed != nullptr){
-		static_cast<BlockUI<BlockBase>*>(last_computed)->Highlight(false);
+	if(computedAsLast != nullptr){
+		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(false);
 	}
 	Graph::computeReset();
 }
 
 bool GraphUI::computeStep(){
-	if(last_computed != nullptr){
-		static_cast<BlockUI<BlockBase>*>(last_computed)->Highlight(false);
+	if(computedAsLast != nullptr){
+		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(false);
 	}
 	bool ret = Graph::computeStep();
-	if(last_computed != nullptr){
-		static_cast<BlockUI<BlockBase>*>(last_computed)->Highlight(true);
+	if(computedAsLast != nullptr){
+		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(true);
 	}
 	return ret;
 }

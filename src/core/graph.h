@@ -25,7 +25,6 @@ class Graph
 private:
     //! Funkcia, ktorá sa volá pri každej zmene grafu
 	std::function<void(void)> graphChanged;
-	//! Block abstract factory
 	BlockFactory bf;
 protected:
     //! Názov schémy
@@ -35,9 +34,9 @@ protected:
     //! Zoznam všetkých nevykonaných blokov pre computeStep()
 	std::list<BlockBase*> to_compute;
     //! Iterátor pre vykonávanie blokov
-	std::list<BlockBase*>::iterator c_it;
+    std::list<BlockBase*>::iterator blocks_iterator;
     //! Referencia k poslednému vykonanému bloku
-	BlockBase *last_computed;
+    BlockBase *computedAsLast;
 public:
     //! Zoznam všetkých blokov
 	std::list<BlockBase*> blocks;
@@ -91,11 +90,11 @@ public:
     OutPort * getConnectedOutPort(InPort &port);
 	/**
      * @brief Pridá prepojenie medzi dva bloky
-     * @param startingPointConnection Výstupný port, odkiaľ prichádza prepojenie
-     * @param endingPointConnection Vstupný port, kde prepojenie končí
+     * @param startPointConnection Výstupný port, kde prepojenie začína
+     * @param endPointConnection Vstupný port, kde prepojenie končí
      * @return Vracia true, pokiaľ sedia dátové typy a prepojenie nevytvorilo cyklus
 	 */
-    virtual bool addConnection(OutPort &startingPointConnection, InPort &endingPointConnection);
+    virtual bool addConnection(OutPort &startPointConnection, InPort &endPointConnection);
 	/**
      * @brief Zruší prepojenie vstupného portu
      * @param port Vstupný port
@@ -120,21 +119,21 @@ public:
      * @return Vracia true pri úspešnom vykonaní
 	 */
 	virtual bool computeStep();
-	/**
+    /**
      * @brief Vykoná všetky akcie, ktoré čakajú na vykonanie
      * @return Vracia true pri úspešnom vykonaní
 	 */
 	virtual bool computeAll();
 	/**
-	 * @brief Informs that computation is finished
+     * @brief Informuje o dokončení vykonávania akcie
      * @return Vracia true, pokiaľ sa vykonali všetky bloky
 	 */
 	bool computeFinished();
 	/**
-	 * @brief Checks that attempted connection doesn't forme a cycle
-	 * @param a Output port where the connection starts
-	 * @param b Input port where the connection ends
-	 * @return True when connection doesn't form a cycle, false otherwise
+     * @brief Kontroluje či by prepojenie nevytvorilo cyklus
+     * @param startPointConnection Výstupný port, kde prepojenie začína
+     * @param endPointConnection Vstupný port, kde prepojenie končí
+     * @return Vracia true, pokiaľ prepojenie nevytvorilo cyklus
 	 */
-    bool isAcyclic(OutPort &startingPointConnection, InPort &endingPointConnection);
+    bool AcyclicBlocks(OutPort &startPointConnection, InPort &endPointConnection);
 };

@@ -14,7 +14,7 @@
 #include <set>
 #include <algorithm>
 
-Graph::Graph() : bf(*this), to_compute(), c_it(to_compute.begin()), last_computed(nullptr) { }
+Graph::Graph() : bf(*this), to_compute(), blocks_iterator(to_compute.begin()), computedAsLast(nullptr) { }
 
 std::string Graph::GetSchemeName() const{
 	return this->name;
@@ -188,7 +188,7 @@ bool Graph::addConnection(OutPort &a, InPort &b){
     if (!a.Value().type_of(b.Value())){
 		return false;
 	}
-    if (!isAcyclic(a, b)){
+    if (!AcyclicBlocks(a, b)){
 		return false;
 	}
 	connections.insert(std::pair<InPort *, OutPort *>(&b, &a));
@@ -245,39 +245,39 @@ void Graph::computeReset(){
         }
 	}
 	to_compute = blocks;
-	c_it = to_compute.begin();
+    blocks_iterator = to_compute.begin();
 }
 
 bool Graph::computeStep(){
-	last_computed = nullptr;
+    computedAsLast = nullptr;
 
     if (!allInputsConnected()){
 		return false;
 	}
     while (to_compute.size() > 0){
-        if ((*c_it)->Computable()){
-            if ((*c_it)->HasAllValues()){
-				(*c_it)->Compute();
-				last_computed = *c_it;
-				to_compute.erase(c_it++);
+        if ((*blocks_iterator)->Computable()){
+            if ((*blocks_iterator)->HasAllValues()){
+                (*blocks_iterator)->Compute();
+                computedAsLast = *blocks_iterator;
+                to_compute.erase(blocks_iterator++);
 				break; // block is computed, continue
             } else{
-				c_it++;
+                blocks_iterator++;
 			}
 		}
         else{
 			// remove non-computable block
-			to_compute.erase(c_it++);
+            to_compute.erase(blocks_iterator++);
 		}
 		// cyclic iteration
-		if(c_it == to_compute.end()){
-			c_it = to_compute.begin();
+        if(blocks_iterator == to_compute.end()){
+            blocks_iterator = to_compute.begin();
 		}
 	}
 
 	// cyclic iteration
-	if(c_it == to_compute.end()){
-		c_it = to_compute.begin();
+    if(blocks_iterator == to_compute.end()){
+        blocks_iterator = to_compute.begin();
 	}
 	return true;
 }
@@ -300,7 +300,7 @@ bool Graph::computeFinished(){
  * Directed Acyclic Graph Check
  * Reference: https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
  */
-bool Graph::isAcyclic(OutPort &a, InPort &b){
+bool Graph::AcyclicBlocks(OutPort &a, InPort &b){
 	// std::map<output, inputs> edges
 	std::map<const BlockBase*, std::set<const BlockBase*>> dag;
 
