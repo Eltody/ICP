@@ -24,11 +24,11 @@ private:
     /**
 	 * @brief Vector of input ports
 	 */
-	std::vector<InPort> inputs; // Should be const vector of non const elements, but this requires custom implementation of vector!
+    std::vector<InPort> inputs;
     /**
 	 * @brief Vector of output ports
 	 */
-	std::vector<OutPort> outputs; // Should be const vector of non const elements, but this requires custom implementation of vector!
+    std::vector<OutPort> outputs;
 protected:
     BlockBase(Graph &g, BlockType type, std::string name);
 	BlockBase(Graph &g, BlockType type, std::string name,

@@ -5,13 +5,14 @@
  * @author Martin Rakús - xrakus04
  */
 #pragma once
-#include <string>
 #include <map>
+#include <string>
 
 //! BlockTypes used for adding blocks, block factories, etc. with assigned numbers for file saves
+//! Pridelené čísla pre všetky typy blokov - pre pridávanie blokov, ...
 enum BlockType{
-    // Vector
-	VECTOR_INPUT = 1,
+    // Pre vektory
+    VECTOR_INPUT = 1,
     VECTOR3D_INPUT = 2,
     VECTOR_OUTPUT = 3,
     VECTOR3D_OUTPUT = 4,
@@ -24,7 +25,7 @@ enum BlockType{
     VECTOR_MUL_CONST = 39,
     VECTOR_MUL_CONST3D = 40,
 
-    // Matrix
+    // Pre matice
     MAT2_INPUT = 9,
     MAT3_INPUT = 10,
     MAT_DETERMINANT_INPUT = 11,
@@ -40,7 +41,7 @@ enum BlockType{
     MAT_MUL_VEC = 21,
     MAT_DETERMINANT = 22,
 
-    // Calculator
+    // Pre základné matematické operácie
     MATH_INPUT = 23,
     MATH_OUTPUT = 24,
     MATH_ADD = 25,
@@ -57,9 +58,9 @@ enum BlockType{
     MATH_DEC = 36
 };
 
-//! Maps human readable block names to BlockType
+//! Namapovanie typov blokov na čitateľný obsah pre výber v katergóriach
 const std::map<BlockType, std::string> BLOCK_NAME = {
-    // Vector
+    // Pre vektory
     { VECTOR_INPUT, "Vektorový vstup (2D)" },
     { VECTOR3D_INPUT, "Vektorový vstup (3D)" },
     { VECTOR_OUTPUT, "Vektorový výstup (2D)" },
@@ -73,7 +74,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { VECTOR_MUL_CONST, "Vektorové násobenie číslom (2D)"},
     { VECTOR_MUL_CONST3D, "Vektorové násobenie číslom (3D)"},
 
-    // Matrix
+    // Pre matice
     { MAT2_INPUT, "Maticový vstup" },
     { MAT3_INPUT, "Maticový vstup" },
     { MAT_DETERMINANT_INPUT, "Vstup pre determinant" },
@@ -89,7 +90,7 @@ const std::map<BlockType, std::string> BLOCK_NAME = {
     { MAT_DETERMINANT, "Výpočet determinantu"},
     { MAT_MUL_VEC,  "Násobenie matice a vektoru"},
 
-    // Calculator
+    // Pre základné matematické operácie
     { MATH_INPUT, "Číselný vstup" },
     { MATH_OUTPUT, "Číselný výstup" },
     { MATH_ADD, "Sčítanie dvoch čísel"},

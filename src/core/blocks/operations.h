@@ -26,9 +26,7 @@ public:
 class MathOutput : public BlockBase{
 public:
     MathOutput(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathOutput() = default; // destruktor
 };
 
@@ -40,9 +38,7 @@ public:
 class MathAddBlock : public BlockBase{
 public:
     MathAddBlock(Graph &graph_obj);
-    //! Performs the mathematical addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathAddBlock() = default; // destruktor
 };
 
@@ -54,9 +50,7 @@ public:
 class MathSubBlock : public BlockBase{
 public:
     MathSubBlock(Graph &graph_obj);
-    //! Performs the mathematical subtraction
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathSubBlock() = default; // destruktor
 };
 
@@ -68,9 +62,7 @@ public:
 class MathMulBlock : public BlockBase{
 public:
     MathMulBlock(Graph &graph_obj);
-    //! Performs the mathematical multiplication
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathMulBlock() = default; // destruktor
 };
 
@@ -82,9 +74,9 @@ public:
 class MathDivBlock : public BlockBase{
 public:
     MathDivBlock(Graph &graph_obj);
-    //! Performs the mathematical division
+
     void Compute() override;
-    //! Virtual destructor to prevent leaks
+
     virtual ~MathDivBlock() = default; // destruktor
 };
 
@@ -96,9 +88,7 @@ public:
 class MathSqrtBlock : public BlockBase{
 public:
     MathSqrtBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathSqrtBlock() = default; // destruktor
 };
 
@@ -110,9 +100,7 @@ public:
 class MathAbsBlock : public BlockBase{
 public:
     MathAbsBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathAbsBlock() = default; // destruktor
 };
 
@@ -124,9 +112,7 @@ public:
 class MathGTBlock : public BlockBase{
 public:
     MathGTBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathGTBlock() = default; // destruktor
 };
 
@@ -138,9 +124,7 @@ public:
 class MathLTBlock : public BlockBase{
 public:
     MathLTBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathLTBlock() = default; // destruktor
 };
 
@@ -152,9 +136,7 @@ public:
 class MathSinBlock : public BlockBase{
 public:
     MathSinBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathSinBlock() = default; // destruktor
 };
 
@@ -166,9 +148,7 @@ public:
 class MathCosBlock : public BlockBase{
 public:
     MathCosBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathCosBlock() = default; // destruktor
 };
 
@@ -180,9 +160,7 @@ public:
 class MathIncBlock : public BlockBase{
 public:
     MathIncBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathIncBlock() = default; // destruktor
 };
 
@@ -194,9 +172,7 @@ public:
 class MathDecBlock : public BlockBase{
 public:
     MathDecBlock(Graph &graph_obj);
-    //! Performs the square root
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MathDecBlock() = default; // destruktor
 };
 
@@ -211,9 +187,7 @@ public:
 class MatrixInput : public BlockBase{
 public:
     MatrixInput(Graph &graph_obj);
-    //! Not used for Input Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixInput() = default; // destruktor
 };
 
@@ -224,9 +198,7 @@ public:
 class MatrixOutput : public BlockBase{
 public:
     MatrixOutput(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixOutput() = default; // destruktor
 };
 
@@ -237,9 +209,7 @@ public:
 class Matrix3x3Input : public BlockBase{
 public:
     Matrix3x3Input(Graph &graph_obj);
-    //! Not used for Input Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Matrix3x3Input() = default; // destruktor
 };
 
@@ -250,9 +220,7 @@ public:
 class Matrix3x3Output : public BlockBase{
 public:
     Matrix3x3Output(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Matrix3x3Output() = default; // destruktor
 };
 
@@ -264,9 +232,7 @@ public:
 class MatMulVecBlock : public BlockBase{
 public:
     MatMulVecBlock(Graph &graph_obj);
-    //! Multiplies matrix by a vector
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatMulVecBlock() = default; // destruktor
 };
 
@@ -277,14 +243,8 @@ public:
  */
 class Mat3x3MulVecBlock : public BlockBase{
 public:
-    //! Constructor
-
-    //! @param g Graph object - parent scheme
     Mat3x3MulVecBlock(Graph &graph_obj);
-
-    //! Multiplies matrix by a vector
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Mat3x3MulVecBlock() = default; // destruktor
 };
 
@@ -296,9 +256,7 @@ public:
 class MatrixAddBlock : public BlockBase{
 public:
     MatrixAddBlock(Graph &graph_obj);
-    //! Performs the matrix addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixAddBlock() = default; // destruktor
 };
 
@@ -310,9 +268,7 @@ public:
 class Matrix3x3AddBlock : public BlockBase{
 public:
     Matrix3x3AddBlock(Graph &graph_obj);
-    //! Performs the matrix addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Matrix3x3AddBlock() = default; // destruktor
 };
 
@@ -324,9 +280,7 @@ public:
 class MatrixMulBlock : public BlockBase{
 public:
     MatrixMulBlock(Graph &graph_obj);
-    //! Performs the matrix multiplication
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixMulBlock() = default; // destruktor
 };
 
@@ -338,9 +292,7 @@ public:
 class Matrix3x3MulBlock : public BlockBase{
 public:
     Matrix3x3MulBlock(Graph &graph_obj);
-    //! Performs the matrix multiplication
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Matrix3x3MulBlock() = default; // destruktor
 };
 
@@ -352,9 +304,7 @@ public:
 class MatrixSubBlock : public BlockBase{
 public:
     MatrixSubBlock(Graph &graph_obj);
-    //! Performs the matrix addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixSubBlock() = default; // destruktor
 };
 
@@ -366,9 +316,7 @@ public:
 class Matrix3x3SubBlock : public BlockBase{
 public:
     Matrix3x3SubBlock(Graph &graph_obj);
-    //! Performs the matrix addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Matrix3x3SubBlock() = default; // destruktor
 };
 
@@ -380,9 +328,7 @@ public:
 class MatrixDeterminantBlock : public BlockBase{
 public:
     MatrixDeterminantBlock(Graph &graph_obj);
-    //! Performs the matrix determinant
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixDeterminantBlock() = default; // destruktor
 };
 
@@ -394,9 +340,7 @@ public:
 class MatrixDeterminantOutput : public BlockBase{
 public:
     MatrixDeterminantOutput(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixDeterminantOutput() = default; // destruktor
 };
 
@@ -408,9 +352,7 @@ public:
 class MatrixDeterminantInput : public BlockBase{
 public:
     MatrixDeterminantInput(Graph &graph_obj);
-    //! Not used for Input Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~MatrixDeterminantInput() = default; // destruktor
 };
 
@@ -425,9 +367,7 @@ public:
 class VectorInput : public BlockBase{
 public:
     VectorInput(Graph &graph_obj);
-    //! Not used for Input Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorInput() = default; // destruktor
 };
 
@@ -439,9 +379,7 @@ public:
 class VectorOutput : public BlockBase{
 public:
     VectorOutput(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorOutput() = default; // destruktor
 };
 
@@ -453,9 +391,7 @@ public:
 class Vector3DInput : public BlockBase{
 public:
     Vector3DInput(Graph &graph_obj);
-    //! Not used for Input Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Vector3DInput() = default; // destruktor
 };
 
@@ -467,9 +403,7 @@ public:
 class Vector3DOutput : public BlockBase{
 public:
     Vector3DOutput(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~Vector3DOutput() = default; // destruktor
 };
 
@@ -481,9 +415,7 @@ public:
 class VectorAddBlock : public BlockBase{
 public:
     VectorAddBlock(Graph &graph_obj);
-    //! Performs the vector addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorAddBlock() = default; // destruktor
 };
 
@@ -495,9 +427,8 @@ public:
 class VectorSubBlock : public BlockBase{
 public:
     VectorSubBlock(Graph &graph_obj);
-    //! Performs the vector addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
+
     virtual ~VectorSubBlock() = default; // destruktor
 };
 
@@ -509,9 +440,7 @@ public:
 class VectorAddBlock3D : public BlockBase{
 public:
     VectorAddBlock3D(Graph &graph_obj);
-    //! Performs the vector addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorAddBlock3D() = default; // destruktor
 };
 
@@ -523,9 +452,7 @@ public:
 class VectorSubBlock3D : public BlockBase{
 public:
     VectorSubBlock3D(Graph &graph_obj);
-    //! Performs the vector addition
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorSubBlock3D() = default; // destruktor
 };
 
@@ -537,9 +464,7 @@ public:
 class VectorDotProductBlock2D : public BlockBase{
 public:
     VectorDotProductBlock2D(Graph &graph_obj);
-    //! Computes the vectors' dot product
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorDotProductBlock2D() = default; // destruktor
 };
 
@@ -551,9 +476,7 @@ public:
 class VectorDotOutput : public BlockBase{
 public:
     VectorDotOutput(Graph &graph_obj);
-    //! Not used for Output Blocks
     void Compute() override;
-    //! Virtual destructor to prevent leaks
     virtual ~VectorDotOutput() = default; // destruktor
 };
 
@@ -565,7 +488,6 @@ public:
 class VectorMulConstBlock : public BlockBase{
 public:
     VectorMulConstBlock(Graph &graph_obj);
-    //! Performs the vector addition
     void Compute() override;
     virtual ~VectorMulConstBlock() = default; // destruktor
 };
@@ -578,7 +500,6 @@ public:
 class VectorMulConstBlock3D : public BlockBase{
 public:
     VectorMulConstBlock3D(Graph &graph_obj);
-    //! Performs the vector addition
     void Compute() override;
     virtual ~VectorMulConstBlock3D() = default; // destruktor
 };

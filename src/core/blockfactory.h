@@ -27,6 +27,5 @@ public:
 	//! @param g Parent scheme object
 	BlockFactory(Graph &g);
 	
-	//! Factory destructor
-	virtual ~BlockFactory();
+    virtual ~BlockFactory(); // destruktor
 };
