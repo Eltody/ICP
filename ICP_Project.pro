@@ -27,6 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/core/blocks/operations.cpp \
+    src/gui/EliteEditor.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
     src/core/type.cpp \
@@ -34,7 +35,6 @@ SOURCES += \
     src/core/blockbase.cpp \
     src/gui/connection_ui.cpp \
     src/gui/port_ui.cpp \
-    src/gui/blockeditor.cpp \
     src/core/graph.cpp \
     src/core/types/types.cpp \
     src/core/blockfactory.cpp \
@@ -43,6 +43,7 @@ SOURCES += \
 
 HEADERS += \
     src/core/blocks/operations.h \
+    src/gui/EliteEditor.h \
     src/gui/tooltip.h \
     src/core/type.h \
     src/core/port.h \
@@ -50,7 +51,6 @@ HEADERS += \
     src/gui/connection_ui.h \
     src/gui/block_ui.h \
     src/gui/port_ui.h \
-    src/gui/blockeditor.h \
     src/core/graph.h \
     src/core/types/types.h \
     src/core/blockfactory.h \
@@ -59,7 +59,7 @@ HEADERS += \
     src/gui/graph_ui.h \
 
 FORMS += \
-    src/gui/blockeditor.ui
+    src/gui/EliteEditor.ui
 
 RESOURCES += res/icons.qrc
 

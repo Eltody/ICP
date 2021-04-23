@@ -6,7 +6,7 @@
  */
 
 
-#include "gui/blockeditor.h"
+#include "gui/EliteEditor.h"
 #include <QApplication>
 #include "gui/graph_ui.h"
 

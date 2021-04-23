@@ -11,7 +11,7 @@
 #include <string>
 
 #include "../core/blocks.h"
-#include "blockeditor.h"
+#include "EliteEditor.h"
 #include "ui_blockeditor.h"
 #include "block_ui.h"
 #include "graph_ui.h"
