@@ -10,6 +10,7 @@
 
 /*!
  * @brief Trieda - blok pre číselný vstup
+ * @param Graph object graph_obj
  */
 class MathInput : public BlockBase{
 public:
@@ -20,6 +21,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre číselný výstup
+ * @param Graph object graph_obj
  */
 class MathOutput : public BlockBase{
 public:
@@ -33,6 +35,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre sčítanie dvoch čísel
+ * @param Graph object graph_obj
  */
 class MathAddBlock : public BlockBase{
 public:
@@ -46,6 +49,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre odčítanie dvoch čísel
+ * @param Graph object graph_obj
  */
 class MathSubBlock : public BlockBase{
 public:
@@ -59,6 +63,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre násobenie dvoch čísel
+ * @param Graph object graph_obj
  */
 class MathMulBlock : public BlockBase{
 public:
@@ -72,6 +77,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre delenie dvoch čísel
+ * @param Graph object graph_obj
  */
 class MathDivBlock : public BlockBase{
 public:
@@ -85,6 +91,7 @@ public:
 
 /*!
  * @brief Trieda - blok odmocnenie čísla
+ * @param Graph object graph_obj
  */
 class MathSqrtBlock : public BlockBase{
 public:
@@ -98,6 +105,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre absolútnu hodnotu čísla
+ * @param Graph object graph_obj
  */
 class MathAbsBlock : public BlockBase{
 public:
@@ -111,6 +119,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre zistenie väčšieho z dvoch čísel
+ * @param Graph object graph_obj
  */
 class MathGTBlock : public BlockBase{
 public:
@@ -124,6 +133,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre zistenie menšieho z dvoch čísel
+ * @param Graph object graph_obj
  */
 class MathLTBlock : public BlockBase{
 public:
@@ -137,6 +147,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre výpočet sínusu čísla
+ * @param Graph object graph_obj
  */
 class MathSinBlock : public BlockBase{
 public:
@@ -150,6 +161,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre výpočet cosínusu čísla
+ * @param Graph object graph_obj
  */
 class MathCosBlock : public BlockBase{
 public:
@@ -163,6 +175,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre inkrementáciu čísla o 1
+ * @param Graph object graph_obj
  */
 class MathIncBlock : public BlockBase{
 public:
@@ -176,6 +189,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre dekrementáciu čísla o 1
+ * @param Graph object graph_obj
  */
 class MathDecBlock : public BlockBase{
 public:
@@ -192,6 +206,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2x2 maticový vstup
+ * @param Graph object graph_obj
  */
 class MatrixInput : public BlockBase{
 public:
@@ -204,6 +219,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2x2 maticový výstup
+ * @param Graph object graph_obj
  */
 class MatrixOutput : public BlockBase{
 public:
@@ -216,6 +232,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3x3 maticový vstup
+ * @param Graph object graph_obj
  */
 class Matrix3x3Input : public BlockBase{
 public:
@@ -228,6 +245,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3x3 maticový výstup
+ * @param Graph object graph_obj
  */
 class Matrix3x3Output : public BlockBase{
 public:
@@ -241,6 +259,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2x2 maticové násobenie vektorom
+ * @param Graph object graph_obj
  */
 class MatMulVecBlock : public BlockBase{
 public:
@@ -254,6 +273,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3x3 maticové násobenie vektorom
+ * @param Graph object graph_obj
  */
 class Mat3x3MulVecBlock : public BlockBase{
 public:
@@ -271,6 +291,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2x2 maticové sčítanie
+ * @param Graph object graph_obj
  */
 class MatrixAddBlock : public BlockBase{
 public:
@@ -284,6 +305,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3x3 maticové sčítanie
+ * @param Graph object graph_obj
  */
 class Matrix3x3AddBlock : public BlockBase{
 public:
@@ -297,6 +319,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2x2 maticové násobenie
+ * @param Graph object graph_obj
  */
 class MatrixMulBlock : public BlockBase{
 public:
@@ -310,6 +333,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3x3 maticové násobenie
+ * @param Graph object graph_obj
  */
 class Matrix3x3MulBlock : public BlockBase{
 public:
@@ -323,6 +347,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2x2 maticové odčítanie
+ * @param Graph object graph_obj
  */
 class MatrixSubBlock : public BlockBase{
 public:
@@ -336,6 +361,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3x3 maticové odčítanie
+ * @param Graph object graph_obj
  */
 class Matrix3x3SubBlock : public BlockBase{
 public:
@@ -349,6 +375,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre výpočet determinantu matice 2x2
+ * @param Graph object graph_obj
  */
 class MatrixDeterminantBlock : public BlockBase{
 public:
@@ -362,6 +389,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre výstup výpočtu determinantu matice 2x2
+ * @param Graph object graph_obj
  */
 class MatrixDeterminantOutput : public BlockBase{
 public:
@@ -375,6 +403,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre vstup výpočtu determinantu matice 2x2
+ * @param Graph object graph_obj
  */
 class MatrixDeterminantInput : public BlockBase{
 public:
@@ -391,6 +420,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2D vektorový vstup
+ * @param Graph object graph_obj
  */
 class VectorInput : public BlockBase{
 public:
@@ -404,6 +434,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2D vektorový výstup
+ * @param Graph object graph_obj
  */
 class VectorOutput : public BlockBase{
 public:
@@ -417,6 +448,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3D vektorový vstup
+ * @param Graph object graph_obj
  */
 class Vector3DInput : public BlockBase{
 public:
@@ -430,6 +462,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3D vektorový výstup
+ * @param Graph object graph_obj
  */
 class Vector3DOutput : public BlockBase{
 public:
@@ -443,6 +476,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2D sčítanie dvoch vektorov
+ * @param Graph object graph_obj
  */
 class VectorAddBlock : public BlockBase{
 public:
@@ -456,6 +490,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2D odčítanie dvoch vektorov
+ * @param Graph object graph_obj
  */
 class VectorSubBlock : public BlockBase{
 public:
@@ -469,6 +504,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3D sčítanie dvoch vektorov
+ * @param Graph object graph_obj
  */
 class VectorAddBlock3D : public BlockBase{
 public:
@@ -482,6 +518,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 3D odčítanie dvoch vektorov
+ * @param Graph object graph_obj
  */
 class VectorSubBlock3D : public BlockBase{
 public:
@@ -495,6 +532,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre 2D skalárny súčin
+ * @param Graph object graph_obj
  */
 class VectorDotProductBlock2D : public BlockBase{
 public:
@@ -508,6 +546,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre výstup 2D skalárneho súčinu
+ * @param Graph object graph_obj
  */
 class VectorDotOutput : public BlockBase{
 public:
@@ -521,6 +560,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre násobenie 2D vektoru konštantou
+ * @param Graph object graph_obj
  */
 class VectorMulConstBlock : public BlockBase{
 public:
@@ -533,7 +573,7 @@ public:
 
 /*!
  * @brief Trieda - blok pre násobenie 3D vektoru konštantou
- * @param Graph object g
+ * @param Graph object graph_obj
  */
 class VectorMulConstBlock3D : public BlockBase{
 public:
