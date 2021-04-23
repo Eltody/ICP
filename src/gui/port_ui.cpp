@@ -59,7 +59,7 @@ void InPortUI::mousePressEvent(QMouseEvent *event){
             }
         }
         else{
-            g.removeConnection(*this);
+            g.ConnectionRemoving(*this);
         }
     }
 }

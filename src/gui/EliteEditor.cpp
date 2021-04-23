@@ -544,7 +544,7 @@ void BLOCKEDITOR::vect(){
 
 void BLOCKEDITOR::newFile(){
     if(maybeSave()){
-		graph.clearGraph();
+		graph.GraphClearing();
 		setCurrentFile(QString::fromStdString(""));
 	}
 }
@@ -580,10 +580,10 @@ bool BLOCKEDITOR::saveAs(){
     dialog.setNameFilter("Súbory dizajnéru (*.jee)");
 	std::string saveName;
     if (curFile.isEmpty()){
-		if (graph.GetName().empty()){
+		if (graph.GetSchemeName().empty()){
             saveName = "plocha1.jee";
         } else{
-            saveName = graph.GetName() + ".jee";
+            saveName = graph.GetSchemeName() + ".jee";
 		}
     } else{
 		saveName = curFile.toStdString();
@@ -671,7 +671,7 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
 		funcIn << in.read(1024).toStdString() << '\n';
 	}
 
-	if(!graph.loadGraph(funcIn, merge)) {
+	if(!graph.GraphLoading(funcIn, merge)) {
         QMessageBox::warning(this, "(j)Elitný editor",
                                    QString::fromStdString("Chyba čítania súboru."));
 	}
@@ -704,7 +704,7 @@ bool BLOCKEDITOR::saveFile(const QString &fileName){
 
 	// FILE SAVING
 	std::stringstream funcOut;
-	funcOut = graph.saveGraph();
+	funcOut = graph.GraphSaving();
 
     while(funcOut.good()){
 		std::string str;

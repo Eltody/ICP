@@ -24,8 +24,8 @@ QPoint GraphUI::getOffset() const{
 	return pos_offset;
 }
 
-void GraphUI::clearGraph(){
-	Graph::clearGraph();
+void GraphUI::GraphClearing(){
+	Graph::GraphClearing();
 	for(ConnectionUI *c : ui_connections){
 		delete c;
 	}
@@ -35,7 +35,7 @@ void GraphUI::clearGraph(){
 	last_computed = nullptr;
 }
 
-bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
+bool GraphUI::GraphLoading(std::stringstream &graph, bool merge){
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
 
@@ -57,7 +57,7 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 		pos_offset = QPoint(0, 0); // reset drag offset
 	}
 
-	if (!Graph::loadGraph(graph, merge)){
+	if (!Graph::GraphLoading(graph, merge)){
 		return false;
 	}
 
@@ -94,8 +94,8 @@ bool GraphUI::loadGraph(std::stringstream &graph, bool merge){
 	return true;
 }
 
-std::stringstream GraphUI::saveGraph(){
-	std::stringstream ss = Graph::saveGraph();
+std::stringstream GraphUI::GraphSaving(){
+	std::stringstream ss = Graph::GraphSaving();
 
 	// get offset
 	int x_off = 0, y_off = 0;
@@ -139,8 +139,8 @@ BlockBase *GraphUI::addBlock(BlockType t){
 	return b;
 }
 
-void GraphUI::removeBlock(BlockBase *b){
-	Graph::removeBlock(b);
+void GraphUI::BlockRemoving(BlockBase *b){
+	Graph::BlockRemoving(b);
 	this->in_click = nullptr;
 	this->out_click = nullptr;
 }
@@ -175,12 +175,12 @@ bool GraphUI::addConnection(OutPort &a, InPort &b){
 	}
 }
 
-void GraphUI::removeConnection(InPort &p){
+void GraphUI::ConnectionRemoving(InPort &p){
 	OutPort *conn_p = getConnectedOutPort(p);
 	if(conn_p != nullptr){
 		this->out_click = conn_p;
 
-		Graph::removeConnection(p);
+		Graph::ConnectionRemoving(p);
 
         for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
             if (*(*it) == p){
@@ -194,8 +194,8 @@ void GraphUI::removeConnection(InPort &p){
 	}
 }
 
-void GraphUI::removeConnection(OutPort &p){
-	Graph::removeConnection(p);
+void GraphUI::ConnectionRemoving(OutPort &p){
+	Graph::ConnectionRemoving(p);
 
     for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
         if (*(*it) == p){
@@ -324,6 +324,6 @@ BlockDelete::BlockDelete(GraphUI &g) : graph(g){
 void BlockDelete::ShowMenu(BlockBase *block){
     menu.move(QCursor::pos());
     if (menu.exec() != nullptr){
-        graph.removeBlock(block);
+        graph.BlockRemoving(block);
     }
 }

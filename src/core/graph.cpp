@@ -16,11 +16,11 @@
 
 Graph::Graph() : bf(*this), to_compute(), c_it(to_compute.begin()), last_computed(nullptr) { }
 
-std::string Graph::GetName() const{
+std::string Graph::GetSchemeName() const{
 	return this->name;
 }
 
-void Graph::SetName(const std::string name){
+void Graph::SetSchemeName(const std::string name){
 	this->name = name;
 	if (graphChanged) {
 		graphChanged();
@@ -31,7 +31,7 @@ void Graph::onGraphChange(std::function<void ()> callback){
 	this->graphChanged = callback;
 }
 
-int Graph::getBlockID(const BlockBase &block) const{
+int Graph::getIDofBlock(const BlockBase &block) const{
 	int idx = 0;
 	for (BlockBase *b : blocks) {
 		if (b == &block){
@@ -42,7 +42,7 @@ int Graph::getBlockID(const BlockBase &block) const{
 	return -1;
 }
 
-void Graph::clearGraph(){
+void Graph::GraphClearing(){
 	for (BlockBase *b : blocks){
 		GetBlockFactory().FreeBlock(b);
 	}
@@ -54,9 +54,9 @@ void Graph::clearGraph(){
 	}
 }
 
-bool Graph::loadGraph(std::stringstream &graph, bool merge){
+bool Graph::GraphLoading(std::stringstream &graph, bool merge){
 	if(!merge){
-		clearGraph();
+        GraphClearing();
 	}
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
@@ -110,7 +110,7 @@ bool Graph::loadGraph(std::stringstream &graph, bool merge){
 	return true;
 }
 
-std::stringstream Graph::saveGraph(){
+std::stringstream Graph::GraphSaving(){
 	std::stringstream ss;
 	// Blocks
     ss << "blocks(";
@@ -161,13 +161,13 @@ BlockBase *Graph::addBlock(BlockType t){
 	return b;
 }
 
-void Graph::removeBlock(BlockBase *b){
+void Graph::BlockRemoving(BlockBase *b){
 	this->blocks.remove(b);
 	for(std::size_t i = 0; i < b->InputCount(); i++){
-		removeConnection(b->Input(i));
+        ConnectionRemoving(b->Input(i));
 	}
 	for(std::size_t i = 0; i < b->OutputCount(); i++){
-		removeConnection(b->Output(i));
+        ConnectionRemoving(b->Output(i));
 	}
 	GetBlockFactory().FreeBlock(b);
 	computeReset();
@@ -201,7 +201,7 @@ bool Graph::addConnection(OutPort &a, InPort &b){
 	return true;
 }
 
-void Graph::removeConnection(InPort &p){
+void Graph::ConnectionRemoving(InPort &p){
 	OutPort *op = getConnectedOutPort(p);
 	if (op != nullptr){
 		op->eventConnectionChange();
@@ -213,7 +213,7 @@ void Graph::removeConnection(InPort &p){
 	}
 }
 
-void Graph::removeConnection(OutPort &p){
+void Graph::ConnectionRemoving(OutPort &p){
 	for(auto it = connections.begin(); it != connections.end();){
         if ((*it).second == &p){
 			(*it).first->eventConnectionChange();

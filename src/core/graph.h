@@ -48,20 +48,20 @@ public:
 	Graph();
 
     //! Vráti názov schémy
-    std::string GetName() const;
+    std::string GetSchemeName() const;
 	
     //! @brief Nastaví nový názov pre schému
     //! @param name Nový názov schémy
-    void SetName(const std::string name);
+    void SetSchemeName(const std::string name);
 
 	//! Sets callback called on graph change
 	void onGraphChange(std::function<void(void)> callback);
 
 	//! Returns ID of a block in graph's block list
-	int getBlockID(const BlockBase &block) const;
+    int getIDofBlock(const BlockBase &block) const;
 
 	//! Delete all blocks and connections - clear the scheme
-	virtual void clearGraph();
+    virtual void GraphClearing();
 	/**
 	 * @brief Loads scheme from a GPH file.
 	 * @param graph Reference to parent scheme object
@@ -69,12 +69,12 @@ public:
 	 * (if true, loaded scheme will be overlapped through the existing one)
 	 * @return True on success, else false
 	 */
-	virtual bool loadGraph(std::stringstream &graph, bool merge = false);
+    virtual bool GraphLoading(std::stringstream &graph, bool merge = false);
 	/**
 	 * @brief Generates the file that needs to be saved to a disk by another function.
 	 * @return String stream object with GPH representation of a scheme
 	 */
-	virtual std::stringstream saveGraph();
+    virtual std::stringstream GraphSaving();
 
 	//! Adds new block specified by BlockType
 	virtual BlockBase *addBlock(BlockType);
@@ -82,7 +82,7 @@ public:
 	 * @brief Removes a block form the scheme
 	 * @param b Reference to a block to remove
 	 */
-	virtual void removeBlock(BlockBase *b);
+    virtual void BlockRemoving(BlockBase *b);
 	/**
 	 * @brief Gets port on the other side of a connection
 	 * @param p Input port of the connection
@@ -100,12 +100,12 @@ public:
 	 * @brief Remove a connection
 	 * @param p Input port
 	 */
-	virtual void removeConnection(InPort &p);
+    virtual void ConnectionRemoving(InPort &p);
 	/**
 	 * @brief Remove a connection
 	 * @param p Output port
 	 */
-	virtual void removeConnection(OutPort &p);
+    virtual void ConnectionRemoving(OutPort &p);
 	/**
 	 * @brief Checks if all inputs of all blocks are connected
 	 * @return True when all inputs are connected, else false

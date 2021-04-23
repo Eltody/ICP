@@ -16,7 +16,7 @@ BlockBase::BlockBase(Graph &g, BlockType type, std::string name,
     : inputs(inputs), outputs(outputs), graph(g), type(type), name(name){ }
 
 int BlockBase::getID() const{
-	return this->graph.getBlockID(*this);
+    return this->graph.getIDofBlock(*this);
 }
 
 int BlockBase::getPortID(const InPort &port) const{
