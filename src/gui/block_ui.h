@@ -11,7 +11,7 @@
 #include <utility>
 #include <algorithm>
 
-#include "blockeditor.h"
+#include "EliteEditor.h"
 #include "port_ui.h"
 #include "graph_ui.h"
 

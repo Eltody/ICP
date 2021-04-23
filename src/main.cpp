@@ -6,7 +6,7 @@
  */
 
 
-#include "gui/blockeditor.h"
+#include "gui/EliteEditor.h"
 #include <QApplication>
 #include "gui/graph_ui.h"
 
@@ -14,6 +14,6 @@
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
     GraphUI scheme;
-    BLOCKEDITOR win(scheme);
+    EliteEditor win(scheme);
 	return app.exec();
 }
