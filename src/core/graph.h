@@ -18,44 +18,41 @@
 #include "blockfactory.h"
 
 /**
- * @brief Holds all information about scheme
- *
- * This class holds all information about a scheme
- * and should be used to perform all operations on it.
+ * @brief Trieda - udržuje všetky informácie o schéme
  */
 class Graph
 {
 private:
-	//! Function called with every graph change
+    //! Funkcia, ktorá sa volá pri každej zmene grafu
 	std::function<void(void)> graphChanged;
 	//! Block abstract factory
 	BlockFactory bf;
 protected:
-	//! Scheme name
-	std::string name;
+    //! Názov schémy
+    std::string name;
 	//! Get block abstract factory
 	virtual BlockFactory & GetBlockFactory();
-	//! List of not yet computed blocks for computeStep()
+    //! Zoznam všetkých nevykonaných blokov pre computeStep()
 	std::list<BlockBase*> to_compute;
-	//! Block compute iterator
+    //! Iterátor pre vykonávanie blokov
 	std::list<BlockBase*>::iterator c_it;
-	//! Reference to a last computed block
+    //! Referencia k poslednému vykonanému bloku
 	BlockBase *last_computed;
 public:
-	//! List of all blocks
+    //! Zoznam všetkých blokov
 	std::list<BlockBase*> blocks;
-	//! List of all connections
+    //! Zoznam všetkých pripojení
 	std::map<InPort *, OutPort *> connections;
 
-	//! Constructor
+    //! Konštruktor
 	Graph();
 
-	//! Returns name of the scheme
-	std::string GetName() const;
+    //! Vráti názov schémy
+    std::string GetName() const;
 	
-	//! @brief Sets a new name of the scheme
-	//! @param name New name
-	void SetName(const std::string name);
+    //! @brief Nastaví nový názov pre schému
+    //! @param name Nový názov schémy
+    void SetName(const std::string name);
 
 	//! Sets callback called on graph change
 	void onGraphChange(std::function<void(void)> callback);
