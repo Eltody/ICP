@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file graph.h
- * @brief Header súbor pre prácu a operáciami nad schémou
+ * @brief Header súbor pre prácu so schémou a uchovanie informácií o schéme
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
@@ -32,7 +32,7 @@ protected:
 	//! Get block abstract factory
 	virtual BlockFactory & GetBlockFactory();
     //! Zoznam všetkých nevykonaných blokov pre computeStep()
-	std::list<BlockBase*> to_compute;
+    std::list<BlockBase*> needToBeComputed;
     //! Iterátor pre vykonávanie blokov
     std::list<BlockBase*>::iterator blocks_iterator;
     //! Referencia k poslednému vykonanému bloku
@@ -64,11 +64,10 @@ public:
 	/**
      * @brief Načíta GPH súbor ako schému
      * @param graph Reference to parent scheme object
-	 * @param merge Flag that indicates merge mode
-	 * (if true, loaded scheme will be overlapped through the existing one)
+     * @param overlap Príznak, pokiaľ true, načítaná schéma prekryje existujúcu schému
      * @return Vracia true pre úspešné vykonanie
 	 */
-    virtual bool GraphLoading(std::stringstream &graph, bool merge = false);
+    virtual bool GraphLoading(std::stringstream &graph, bool overlap = false);
 	/**
      * @brief Generuje súbor, ktorý bude uložený inou funkciou
      * @return Vracia string stream objekt s GPH reprezentáciou schémy

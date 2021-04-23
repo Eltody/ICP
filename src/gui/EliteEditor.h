@@ -143,7 +143,7 @@ private slots:
 	//! Button slot to call when opening a file
 	void open();
 	//! Button slot to call when merging a file into existing scheme
-	void merge();
+    void overlap();
 	//! Button slot to call when opening a file
 	bool save();
 	//! Button slot to call when saving file a new one
@@ -172,7 +172,7 @@ private:
 	//! Asks user to save changes before quitting
     bool maybeSave();
 	//! Creates dialogs for opening a scheme file
-	void loadFile(const QString &fileName, bool merge);
+    void loadFile(const QString &fileName, bool overlap);
 	//! Creates dialogs for saving a scheme to disk
     bool saveFile(const QString &fileName);
 	//! Sets current file name in window title

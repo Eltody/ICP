@@ -83,7 +83,7 @@ void BLOCKEDITOR::createActions(){
 
     importBTN = new QAction(QIcon(":/icons/import.png"), "&Vložiť", this);
     importBTN->setStatusTip("Vloží súbor do aktuálnej plochy");
-    connect(importBTN, SIGNAL(triggered()), this, SLOT(merge()));
+    connect(importBTN, SIGNAL(triggered()), this, SLOT(overlap()));
 
     saveBTN = new QAction(QIcon(":/icons/save.png"), "&Uložiť", this);
     saveBTN->setShortcuts(QKeySequence::Save);
@@ -558,7 +558,7 @@ void BLOCKEDITOR::open(){
 	}
 }
 
-void BLOCKEDITOR::merge(){
+void BLOCKEDITOR::overlap(){
 	QString fileName = QFileDialog::getOpenFileName(this,
         QString("Vložiť"), QString(), QString("Súbory dizajnéru (*.jee)"));
 	if (!fileName.isEmpty())
@@ -651,7 +651,7 @@ bool BLOCKEDITOR::maybeSave(){
 	return true;
 }
 
-void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
+void BLOCKEDITOR::loadFile(const QString &fileName, bool overlap){
 	QFile file(fileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::warning(this, "(j)Elitný editor",
@@ -671,7 +671,7 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
 		funcIn << in.read(1024).toStdString() << '\n';
 	}
 
-	if(!graph.GraphLoading(funcIn, merge)) {
+	if(!graph.GraphLoading(funcIn, overlap)) {
         QMessageBox::warning(this, "(j)Elitný editor",
                                    QString::fromStdString("Chyba čítania súboru."));
 	}
@@ -681,7 +681,7 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool merge){
 
     statusBar()->showMessage("Súbor bol otvorený", 2000);
 
-	if(!merge){
+	if(!overlap){
 		setCurrentFile(fileName);
 		setWindowModified(false);
 	}

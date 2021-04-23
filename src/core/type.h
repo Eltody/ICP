@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file type.h
- * @brief Header súbor pre kontrolu a prácu s portami
+ * @brief Header súbor pre prácu s typovými hodnotami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

@@ -16,12 +16,12 @@ class BlockDelete{
 private:
     //! Parent widget
     GraphUI &graph;
-    //! Dropdown menu object
+    //! Objekt zobrazujúceho sa menu
     QMenu menu;
 public:
-    //! Menu constructor
+    //! Konštruktor
     BlockDelete(GraphUI &g);
-    //! Function for showing the menu after right-clicking a block
+    //! Function for showing the menu after right-clicking a block Funkcia pre zobrazenie menu po kliknutí pravého tlačidla
     void ShowMenu(BlockBase *block);
 };
 
@@ -45,10 +45,10 @@ public:
     /**
      * @brief Load scheme from a file
      * @param graph Scheme's parent widget
-     * @param merge Merge flag - file will merge into existing scheme if true
+     * @param overlap Merge flag - file will overlap into existing scheme if true
      * @return True when file was loaded successfully, else false
      */
-    bool GraphLoading(std::stringstream &graph, bool merge = false) override;
+    bool GraphLoading(std::stringstream &graph, bool overlap = false) override;
     /**
      * @brief Prepare scheme for saving - generate stringstream GPH represaentation
      * @return GPH stringstream representation

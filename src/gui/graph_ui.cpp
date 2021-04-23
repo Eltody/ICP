@@ -35,13 +35,13 @@ void GraphUI::GraphClearing(){
 	computedAsLast = nullptr;
 }
 
-bool GraphUI::GraphLoading(std::stringstream &graph, bool merge){
+bool GraphUI::GraphLoading(std::stringstream &graph, bool overlap){
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
 
     int x_off = 5, y_off = 5;
 	bool first_ = true;
-    if (merge){
+    if (overlap){
         for (BlockBase *b : blocks){
 			auto block = static_cast<BlockUI<BlockBase>*>(b);
 			if(first_){
@@ -57,7 +57,7 @@ bool GraphUI::GraphLoading(std::stringstream &graph, bool merge){
 		pos_offset = QPoint(0, 0); // reset drag offset
 	}
 
-	if (!Graph::GraphLoading(graph, merge)){
+	if (!Graph::GraphLoading(graph, overlap)){
 		return false;
 	}
 
@@ -73,7 +73,7 @@ bool GraphUI::GraphLoading(std::stringstream &graph, bool merge){
 		std::stringstream pos_stream(tmp);
 
 		auto it = blocks.begin();
-		if (merge) {
+		if (overlap) {
 			std::advance(it, b_id_off);
 		}
 

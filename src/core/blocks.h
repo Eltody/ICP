@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
  * @file blocks.h
- * @brief Header súbor pre kontrolu a prácu s portami
+ * @brief Header súbor pre pridelenie čísel a namapovanie blokov na čitateľný obsah
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
@@ -8,7 +8,6 @@
 #include <map>
 #include <string>
 
-//! BlockTypes used for adding blocks, block factories, etc. with assigned numbers for file saves
 //! Pridelené čísla pre všetky typy blokov - pre pridávanie blokov, ...
 enum BlockType{
     // Pre vektory

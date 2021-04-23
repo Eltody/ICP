@@ -14,7 +14,7 @@
 #include <set>
 #include <algorithm>
 
-Graph::Graph() : bf(*this), to_compute(), blocks_iterator(to_compute.begin()), computedAsLast(nullptr) { }
+Graph::Graph() : bf(*this), needToBeComputed(), blocks_iterator(needToBeComputed.begin()), computedAsLast(nullptr) { }
 
 std::string Graph::GetSchemeName() const{
 	return this->name;
@@ -54,8 +54,8 @@ void Graph::GraphClearing(){
 	}
 }
 
-bool Graph::GraphLoading(std::stringstream &graph, bool merge){
-	if(!merge){
+bool Graph::GraphLoading(std::stringstream &graph, bool overlap){
+    if(!overlap){
         GraphClearing();
 	}
 	// block id offset
@@ -230,7 +230,7 @@ void Graph::ConnectionRemoving(OutPort &p){
 }
 
 bool Graph::allInputsConnected(){
-    for(const auto b : to_compute){
+    for(const auto b : needToBeComputed){
         if(b->Computable() && !b->InputsAreConnected()){
             return false;
         }
@@ -244,8 +244,8 @@ void Graph::computeReset(){
             b->Reset();
         }
 	}
-	to_compute = blocks;
-    blocks_iterator = to_compute.begin();
+    needToBeComputed = blocks;
+    blocks_iterator = needToBeComputed.begin();
 }
 
 bool Graph::computeStep(){
@@ -254,12 +254,12 @@ bool Graph::computeStep(){
     if (!allInputsConnected()){
 		return false;
 	}
-    while (to_compute.size() > 0){
+    while (needToBeComputed.size() > 0){
         if ((*blocks_iterator)->Computable()){
             if ((*blocks_iterator)->HasAllValues()){
                 (*blocks_iterator)->Compute();
                 computedAsLast = *blocks_iterator;
-                to_compute.erase(blocks_iterator++);
+                needToBeComputed.erase(blocks_iterator++);
 				break; // block is computed, continue
             } else{
                 blocks_iterator++;
@@ -267,17 +267,17 @@ bool Graph::computeStep(){
 		}
         else{
 			// remove non-computable block
-            to_compute.erase(blocks_iterator++);
+            needToBeComputed.erase(blocks_iterator++);
 		}
 		// cyclic iteration
-        if(blocks_iterator == to_compute.end()){
-            blocks_iterator = to_compute.begin();
+        if(blocks_iterator == needToBeComputed.end()){
+            blocks_iterator = needToBeComputed.begin();
 		}
 	}
 
 	// cyclic iteration
-    if(blocks_iterator == to_compute.end()){
-        blocks_iterator = to_compute.begin();
+    if(blocks_iterator == needToBeComputed.end()){
+        blocks_iterator = needToBeComputed.begin();
 	}
 	return true;
 }
@@ -293,7 +293,7 @@ bool Graph::computeAll(){
 }
 
 bool Graph::computeFinished(){
-	return (to_compute.size() == 0);
+    return (needToBeComputed.size() == 0);
 }
 
 /**
