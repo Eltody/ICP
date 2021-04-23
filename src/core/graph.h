@@ -41,7 +41,7 @@ protected:
 public:
     //! Zoznam všetkých blokov
 	std::list<BlockBase*> blocks;
-    //! Zoznam všetkých pripojení
+    //! Zoznam všetkých prepojení
 	std::map<InPort *, OutPort *> connections;
 
     //! Konštruktor
@@ -57,77 +57,77 @@ public:
 	//! Sets callback called on graph change
 	void onGraphChange(std::function<void(void)> callback);
 
-	//! Returns ID of a block in graph's block list
+    //! Vracia ID bloku, zo zoznamu blokov
     int getIDofBlock(const BlockBase &block) const;
 
-	//! Delete all blocks and connections - clear the scheme
+    //! Vymaže všetky bloky a spojenia
     virtual void GraphClearing();
 	/**
-	 * @brief Loads scheme from a GPH file.
-	 * @param graph Reference to parent scheme object
+     * @brief Načíta GPH súbor ako schému
+     * @param graph Reference to parent scheme object
 	 * @param merge Flag that indicates merge mode
 	 * (if true, loaded scheme will be overlapped through the existing one)
-	 * @return True on success, else false
+     * @return Vracia true pre úspešné vykonanie
 	 */
     virtual bool GraphLoading(std::stringstream &graph, bool merge = false);
 	/**
-	 * @brief Generates the file that needs to be saved to a disk by another function.
-	 * @return String stream object with GPH representation of a scheme
+     * @brief Generuje súbor, ktorý bude uložený inou funkciou
+     * @return Vracia string stream objekt s GPH reprezentáciou schémy
 	 */
     virtual std::stringstream GraphSaving();
 
-	//! Adds new block specified by BlockType
+    //! Pridá nový blok do schémy špecifikovaný BlockTypom
 	virtual BlockBase *addBlock(BlockType);
 	/**
-	 * @brief Removes a block form the scheme
-	 * @param b Reference to a block to remove
+     * @brief Odstráni blok zo schémy
+     * @param blockToRemove Referencia bloku na odstránenie
 	 */
-    virtual void BlockRemoving(BlockBase *b);
+    virtual void BlockRemoving(BlockBase *blockToRemove);
 	/**
-	 * @brief Gets port on the other side of a connection
-	 * @param p Input port of the connection
-	 * @return Output port of the connection
+     * @brief Získa port na druhej strane prepojenia
+     * @param port Vstupný port prepojenia
+     * @return Vracia výstupný port prepojenia
 	 */
-	OutPort * getConnectedOutPort(InPort &p);
+    OutPort * getConnectedOutPort(InPort &port);
 	/**
-	 * @brief Add a connection between the blocks
-	 * @param a Output port where the connection starts
-	 * @param b Input port where the connection ends
-	 * @return True if data type matched and connection didn't form a cycle, false otherwise
+     * @brief Pridá prepojenie medzi dva bloky
+     * @param startingPointConnection Výstupný port, odkiaľ prichádza prepojenie
+     * @param endingPointConnection Vstupný port, kde prepojenie končí
+     * @return Vracia true, pokiaľ sedia dátové typy a prepojenie nevytvorilo cyklus
 	 */
-	virtual bool addConnection(OutPort &a, InPort &b);
+    virtual bool addConnection(OutPort &startingPointConnection, InPort &endingPointConnection);
 	/**
-	 * @brief Remove a connection
-	 * @param p Input port
+     * @brief Zruší prepojenie vstupného portu
+     * @param port Vstupný port
 	 */
-    virtual void ConnectionRemoving(InPort &p);
+    virtual void ConnectionRemoving(InPort &port);
 	/**
-	 * @brief Remove a connection
-	 * @param p Output port
+     * @brief Zruší pripojenie výstupného portu
+     * @param port Výstupný port
 	 */
-    virtual void ConnectionRemoving(OutPort &p);
+    virtual void ConnectionRemoving(OutPort &port);
 	/**
-	 * @brief Checks if all inputs of all blocks are connected
-	 * @return True when all inputs are connected, else false
+     * @brief Skontroluje, či sú všetky vstupné a výstupné porty blokov pripojené
+     * @return Vracia true, pokiaľ sú všetky porty pripojené
 	 */
 	virtual bool allInputsConnected();
 	/**
-	 * @brief Resets the copution
+     * @brief Zruší vykonávanie akcií
 	 */
 	virtual void computeReset();
-	/**
-	 * @brief Computes one block in compute queue
-	 * @return False when failed, else true
+    /**
+     * @brief Vykoná jednu akciu, ktorá čaká na vykonanie
+     * @return Vracia true pri úspešnom vykonaní
 	 */
 	virtual bool computeStep();
 	/**
-	 * @brief Computes the whole compute queue
-	 * @return False when failed, else true
+     * @brief Vykoná všetky akcie, ktoré čakajú na vykonanie
+     * @return Vracia true pri úspešnom vykonaní
 	 */
 	virtual bool computeAll();
 	/**
 	 * @brief Informs that computation is finished
-	 * @return True when all blocks were computed, else false
+     * @return Vracia true, pokiaľ sa vykonali všetky bloky
 	 */
 	bool computeFinished();
 	/**
@@ -136,5 +136,5 @@ public:
 	 * @param b Input port where the connection ends
 	 * @return True when connection doesn't form a cycle, false otherwise
 	 */
-	bool isAcyclic(OutPort &a, InPort &b);
+    bool isAcyclic(OutPort &startingPointConnection, InPort &endingPointConnection);
 };
