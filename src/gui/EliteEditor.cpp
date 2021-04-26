@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file blockeditor.cpp
+ * @file EliteEditor.cpp
  * @brief
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
@@ -34,8 +34,8 @@ bool vectIsOpen = false;
 bool matr2IsOpen = false;
 bool matr3IsOpen = false;
 
-BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
-	QMainWindow(parent),  ui(new Ui::BLOCKEDITOR), graph(g){
+ELITEEDITOR::ELITEEDITOR(GraphUI &g, QWidget *parent) :
+    QMainWindow(parent),  ui(new Ui::ELITEEDITOR), graph(g){
 	ui->setupUi(this);
 
     QApplication::setApplicationDisplayName("(j)Elitný editor");
@@ -51,7 +51,7 @@ BLOCKEDITOR::BLOCKEDITOR(GraphUI &g, QWidget *parent) :
     graph.onGraphChange([this](){this->setWindowModified(true);});
 }
 
-BLOCKEDITOR::~BLOCKEDITOR(){
+ELITEEDITOR::~ELITEEDITOR(){
 	//avoid destruction of graph, which is destructed externally
 	centralWidget()->setParent(nullptr);
 
@@ -70,7 +70,7 @@ BLOCKEDITOR::~BLOCKEDITOR(){
 	delete ui;
 }
 
-void BLOCKEDITOR::createActions(){
+void ELITEEDITOR::createActions(){
     newBTN = new QAction(QIcon(":/icons/new.png"), "&Nový...", this);
     newBTN->setShortcuts(QKeySequence::New);
     newBTN->setStatusTip("Vytvoriť novú plochu");
@@ -111,7 +111,7 @@ void BLOCKEDITOR::createActions(){
 	connect(helpAct, SIGNAL(triggered()), this, SLOT(help()));
 }
 
-void BLOCKEDITOR::createToolBars(){
+void ELITEEDITOR::createToolBars(){
     connect(calcIn, SIGNAL(triggered()), this , SLOT(buildMathInput()));
     connect(calcOut, SIGNAL(triggered()), this , SLOT(buildMathOutput()));
     connect(calcAdd, SIGNAL(triggered()), this , SLOT(buildMathAdd()));
@@ -203,172 +203,172 @@ void BLOCKEDITOR::createToolBars(){
 	helpToolBar->addAction(helpAct);
 }
 
-void BLOCKEDITOR::buildMathInput(){
+void ELITEEDITOR::buildMathInput(){
     graph.addBlock(MATH_INPUT);
 }
 
-void BLOCKEDITOR::buildMathOutput(){
+void ELITEEDITOR::buildMathOutput(){
     graph.addBlock(MATH_OUTPUT);
 }
 
-void BLOCKEDITOR::buildMathAdd(){
+void ELITEEDITOR::buildMathAdd(){
     graph.addBlock(MATH_ADD);
 }
 
-void BLOCKEDITOR::buildMathSub(){
+void ELITEEDITOR::buildMathSub(){
     graph.addBlock(MATH_SUB);
 }
 
-void BLOCKEDITOR::buildMathMul(){
+void ELITEEDITOR::buildMathMul(){
     graph.addBlock(MATH_MUL);
 }
 
-void BLOCKEDITOR::buildMathDiv(){
+void ELITEEDITOR::buildMathDiv(){
     graph.addBlock(MATH_DIV);
 }
 
-void BLOCKEDITOR::buildMathSqrt(){
+void ELITEEDITOR::buildMathSqrt(){
     graph.addBlock(MATH_SQRT);
 }
 
-void BLOCKEDITOR::buildMathAbs(){
+void ELITEEDITOR::buildMathAbs(){
     graph.addBlock(MATH_ABS);
 }
 
-void BLOCKEDITOR::buildMathGt(){
+void ELITEEDITOR::buildMathGt(){
     graph.addBlock(MATH_GT);
 }
 
-void BLOCKEDITOR::buildMathLt(){
+void ELITEEDITOR::buildMathLt(){
     graph.addBlock(MATH_LT);
 }
 
-void BLOCKEDITOR::buildMathSin(){
+void ELITEEDITOR::buildMathSin(){
     graph.addBlock(MATH_SIN);
 }
 
-void BLOCKEDITOR::buildMathCos(){
+void ELITEEDITOR::buildMathCos(){
     graph.addBlock(MATH_COS);
 }
 
-void BLOCKEDITOR::buildMathInc(){
+void ELITEEDITOR::buildMathInc(){
     graph.addBlock(MATH_INC);
 }
 
-void BLOCKEDITOR::buildMathDec(){
+void ELITEEDITOR::buildMathDec(){
     graph.addBlock(MATH_DEC);
 }
 
 
 
-void BLOCKEDITOR::buildVectorInput(){
+void ELITEEDITOR::buildVectorInput(){
     graph.addBlock(VECTOR_INPUT);
 }
 
-void BLOCKEDITOR::buildVectorInput3D(){
+void ELITEEDITOR::buildVectorInput3D(){
     graph.addBlock(VECTOR3D_INPUT);
 }
 
-void BLOCKEDITOR::buildVectorOutput(){
+void ELITEEDITOR::buildVectorOutput(){
     graph.addBlock(VECTOR_OUTPUT);
 }
 
-void BLOCKEDITOR::buildVectorOutput3D(){
+void ELITEEDITOR::buildVectorOutput3D(){
     graph.addBlock(VECTOR3D_OUTPUT);
 }
 
-void BLOCKEDITOR::buildVectorDotOut(){
+void ELITEEDITOR::buildVectorDotOut(){
     graph.addBlock(VECTOR_DOT_OUTPUT);
 }
 
-void BLOCKEDITOR::buildVectorAdd(){
+void ELITEEDITOR::buildVectorAdd(){
     graph.addBlock(VECTOR_ADD);
 }
 
-void BLOCKEDITOR::buildVectorAdd3D(){
+void ELITEEDITOR::buildVectorAdd3D(){
     graph.addBlock(VECTOR_ADD3D);
 }
 
-void BLOCKEDITOR::buildVectorSub(){
+void ELITEEDITOR::buildVectorSub(){
     graph.addBlock(VECTOR_SUB);
 }
 
-void BLOCKEDITOR::buildVectorSub3D(){
+void ELITEEDITOR::buildVectorSub3D(){
     graph.addBlock(VECTOR_SUB3D);
 }
 
-void BLOCKEDITOR::buildVectorMul(){
+void ELITEEDITOR::buildVectorMul(){
     graph.addBlock(VECTOR_MUL_CONST);
 }
 
-void BLOCKEDITOR::buildVectorMul3D(){
+void ELITEEDITOR::buildVectorMul3D(){
     graph.addBlock(VECTOR_MUL_CONST3D);
 }
 
-void BLOCKEDITOR::buildVectorDot(){
+void ELITEEDITOR::buildVectorDot(){
     graph.addBlock(VECTOR_DOTPRODUCT);
 }
 
 
 
-void BLOCKEDITOR::buildMatrixInput(){
+void ELITEEDITOR::buildMatrixInput(){
     graph.addBlock(MAT2_INPUT);
 }
 
-void BLOCKEDITOR::buildMatrixOutput(){
+void ELITEEDITOR::buildMatrixOutput(){
     graph.addBlock(MAT2_OUTPUT);
 }
 
-void BLOCKEDITOR::buildMatrixDetInput(){
+void ELITEEDITOR::buildMatrixDetInput(){
     graph.addBlock(MAT_DETERMINANT_INPUT);
 }
 
-void BLOCKEDITOR::buildMatrixDetOutput(){
+void ELITEEDITOR::buildMatrixDetOutput(){
     graph.addBlock(MAT_DETERMINANT_OUTPUT);
 }
 
-void BLOCKEDITOR::buildMatrixAdd(){
+void ELITEEDITOR::buildMatrixAdd(){
     graph.addBlock(MAT_ADD);
 }
 
-void BLOCKEDITOR::buildMatrixSub(){
+void ELITEEDITOR::buildMatrixSub(){
     graph.addBlock(MAT_SUB);
 }
 
-void BLOCKEDITOR::buildMatrixMul(){
+void ELITEEDITOR::buildMatrixMul(){
     graph.addBlock(MAT_MUL);
 }
 
-void BLOCKEDITOR::buildMatrixMulVec(){
+void ELITEEDITOR::buildMatrixMulVec(){
     graph.addBlock(MAT_MUL_VEC);
 }
 
-void BLOCKEDITOR::buildMatrixDet(){
+void ELITEEDITOR::buildMatrixDet(){
     graph.addBlock(MAT_DETERMINANT);
 }
 
-void BLOCKEDITOR::buildMatrix3In(){
+void ELITEEDITOR::buildMatrix3In(){
     graph.addBlock(MAT3_INPUT);
 }
 
-void BLOCKEDITOR::buildMatrix3Out(){
+void ELITEEDITOR::buildMatrix3Out(){
     graph.addBlock(MAT3_OUTPUT);
 }
 
-void BLOCKEDITOR::buildMatrix3Add(){
+void ELITEEDITOR::buildMatrix3Add(){
     graph.addBlock(MAT3_ADD);
 }
 
-void BLOCKEDITOR::buildMatrix3Sub(){
+void ELITEEDITOR::buildMatrix3Sub(){
     graph.addBlock(MAT3_SUB);
 }
 
-void BLOCKEDITOR::buildMatrix3Mul(){
+void ELITEEDITOR::buildMatrix3Mul(){
     graph.addBlock(MAT3_MUL);
 }
 
 
-void BLOCKEDITOR::closeEvent(QCloseEvent *event){
+void ELITEEDITOR::closeEvent(QCloseEvent *event){
     if (maybeSave()) {
         event->accept();
     } else {
@@ -376,7 +376,7 @@ void BLOCKEDITOR::closeEvent(QCloseEvent *event){
     }
 }
 
-void BLOCKEDITOR::calc(){
+void ELITEEDITOR::calc(){
     if (vectIsOpen == true){
         vect();
     } else if (matr2IsOpen == true){
@@ -429,7 +429,7 @@ void BLOCKEDITOR::calc(){
     }
 }
 
-void BLOCKEDITOR::matr2(){
+void ELITEEDITOR::matr2(){
     if (calcIsOpen == true){
         calc();
     } else if (vectIsOpen == true){
@@ -470,7 +470,7 @@ void BLOCKEDITOR::matr2(){
     }
 }
 
-void BLOCKEDITOR::matr3(){
+void ELITEEDITOR::matr3(){
     if (calcIsOpen == true){
         calc();
     } else if (vectIsOpen == true){
@@ -501,7 +501,7 @@ void BLOCKEDITOR::matr3(){
     }
 }
 
-void BLOCKEDITOR::vect(){
+void ELITEEDITOR::vect(){
     if (calcIsOpen == true){
         calc();
     } else if (matr2IsOpen == true){
@@ -542,14 +542,14 @@ void BLOCKEDITOR::vect(){
     }
 }
 
-void BLOCKEDITOR::newFile(){
+void ELITEEDITOR::newFile(){
     if(maybeSave()){
 		graph.GraphClearing();
 		setCurrentFile(QString::fromStdString(""));
 	}
 }
 
-void BLOCKEDITOR::open(){
+void ELITEEDITOR::open(){
     if (maybeSave()){
 		QString fileName = QFileDialog::getOpenFileName(this,
             QString(), QString(), QString("Súbory dizajnéru (*.jee)"));
@@ -558,14 +558,14 @@ void BLOCKEDITOR::open(){
 	}
 }
 
-void BLOCKEDITOR::overlap(){
+void ELITEEDITOR::overlap(){
 	QString fileName = QFileDialog::getOpenFileName(this,
         QString("Vložiť"), QString(), QString("Súbory dizajnéru (*.jee)"));
 	if (!fileName.isEmpty())
 		loadFile(fileName, true);
 }
 
-bool BLOCKEDITOR::save(){
+bool ELITEEDITOR::save(){
     if (curFile.isEmpty()){
 		return saveAs();
     } else{
@@ -573,7 +573,7 @@ bool BLOCKEDITOR::save(){
 	}
 }
 
-bool BLOCKEDITOR::saveAs(){
+bool ELITEEDITOR::saveAs(){
 	QFileDialog dialog(this);
 	dialog.setWindowModality(Qt::WindowModal);
 	dialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -598,19 +598,19 @@ bool BLOCKEDITOR::saveAs(){
 	return saveFile(files.at(0));
 }
 
-void BLOCKEDITOR::compute(){
+void ELITEEDITOR::compute(){
 	graph.computeAll();
 }
 
-void BLOCKEDITOR::step(){
+void ELITEEDITOR::step(){
 	graph.computeStep();
 }
 
-void BLOCKEDITOR::reset(){
+void ELITEEDITOR::reset(){
 	graph.computeReset();
 }
 
-void BLOCKEDITOR::help(){
+void ELITEEDITOR::help(){
     QMessageBox::about(this, "Nápoveda",
                              "<h1>(j)Elitný editor - nápoveda</h1>"
                              "<h2>Bloky:</h2>"
@@ -629,7 +629,7 @@ void BLOCKEDITOR::help(){
 					   );
 }
 
-bool BLOCKEDITOR::maybeSave(){
+bool ELITEEDITOR::maybeSave(){
     if(this->isWindowModified()){
         QMessageBox ret(QMessageBox::Question, tr("Uložiť?"), tr("Plocha bola upravená.\nPrajete si uložiť vykonané zmeny?"), QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
         ret.setButtonText(QMessageBox::Save, tr("Uložiť"));
@@ -651,7 +651,7 @@ bool BLOCKEDITOR::maybeSave(){
 	return true;
 }
 
-void BLOCKEDITOR::loadFile(const QString &fileName, bool overlap){
+void ELITEEDITOR::loadFile(const QString &fileName, bool overlap){
 	QFile file(fileName);
 	if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::warning(this, "(j)Elitný editor",
@@ -688,7 +688,7 @@ void BLOCKEDITOR::loadFile(const QString &fileName, bool overlap){
 }
 
 
-bool BLOCKEDITOR::saveFile(const QString &fileName){
+bool ELITEEDITOR::saveFile(const QString &fileName){
 	QFile file(fileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)){
         QMessageBox::warning(this, "(j)Elitný editor",
@@ -723,7 +723,7 @@ bool BLOCKEDITOR::saveFile(const QString &fileName){
 	return true;
 }
 
-void BLOCKEDITOR::setCurrentFile(const QString &fileName){
+void ELITEEDITOR::setCurrentFile(const QString &fileName){
 	curFile = fileName;
 	setWindowModified(false);
 	QString shownName = curFile;

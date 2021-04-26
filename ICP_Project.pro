@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = blockeditor
+TARGET = EliteEditor
 TEMPLATE = app
 
 RC_ICONS = icon.ico

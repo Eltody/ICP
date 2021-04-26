@@ -63,7 +63,7 @@ class QLabel;
 QT_END_NAMESPACE
 
 namespace Ui {
-class BLOCKEDITOR;
+class ELITEEDITOR;
 }
 
 
@@ -72,13 +72,13 @@ class BLOCKEDITOR;
  * This class is a QWidget that is parent to all graphic elements within the window.
  * All other control widgets (except the dropdown menus for adding/removing blocks) are declared here.
  */
-class BLOCKEDITOR : public QMainWindow{
+class ELITEEDITOR : public QMainWindow{
     Q_OBJECT
 public:
 	//! Constructor
-	explicit BLOCKEDITOR(GraphUI &g, QWidget *parent = 0);
+	explicit ELITEEDITOR(GraphUI &g, QWidget *parent = 0);
 	//! Destructor
-    ~BLOCKEDITOR();
+    ~ELITEEDITOR();
 
 protected:
 	//! Event called when closing the opened scheme
@@ -158,7 +158,7 @@ private slots:
 	void help();
 
 private:
-	Ui::BLOCKEDITOR *ui;
+	Ui::ELITEEDITOR *ui;
 	GraphUI &graph;
 
 	//! Function that creates QActions for buttons
