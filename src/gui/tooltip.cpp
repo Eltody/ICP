@@ -12,13 +12,6 @@
 
 #include "tooltip.h"
 
-const int Tooltip::TooltipRoundSize = 10;
-const int Tooltip::TooltipPadding = 10;
-const int Tooltip::TooltipHPadding = 18;
-const QColor Tooltip::TooltipOutlineCol = QColor(0, 0, 0, 0);
-const QColor Tooltip::TooltipBackgroundCol = QColor(76, 76, 76);
-const QColor Tooltip::TooltipTextCol = QColor(255, 255, 255);
-
 std::vector<std::string> Tooltip::TextLines(const std::string &text, int &width, int &height){
     int w = 0;
     std::vector<std::string> lines;
