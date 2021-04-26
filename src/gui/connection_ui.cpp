@@ -16,13 +16,13 @@ const int ConnectionUI::ConnectionHoverSize = 15;
 const QColor ConnectionUI::ConnectionCol = QColor(255, 255, 255);
 
 ConnectionUI::ConnectionUI(InPortUI *in, OutPortUI *out, QWidget *parent)
-    : QWidget(parent), p(parent), t(parent), in(in), out(out){
+    : QWidget(parent), p(parent), in(in), out(out){
     show();
     setAttribute(Qt::WA_TransparentForMouseEvents);
 }
 
 ConnectionUI::ConnectionUI(const ConnectionUI &other)
-    : QWidget(other.p), p(other.p), t(other.p), in(other.in), out(other.out){ }
+    : QWidget(other.p), p(other.p), in(other.in), out(other.out){ }
 
 bool ConnectionUI::operator==(const InPort &p){
 	return this->in == &p;
@@ -51,17 +51,6 @@ QPainterPath ConnectionUI::computePath(){
 	return path;
 }
 
-void ConnectionUI::showValue(){
-	t.move(mapFromGlobal(QCursor::pos()));
-	t.Text(out->Value());
-	t.show();
-	t.raise();
-}
-
-void ConnectionUI::hideValue(){
-	t.hide();
-}
-
 void ConnectionUI::paintEvent(QPaintEvent *){
 	resize(parentWidget()->size());
 	QPainter painter(this);
@@ -69,10 +58,7 @@ void ConnectionUI::paintEvent(QPaintEvent *){
     QPen p(ConnectionUI::ConnectionCol);
 	if(hover){
 		p.setWidth(2);
-		showValue();
-    } else{
-		hideValue();
-	}
+    }
 	painter.setPen(p);
 	painter.drawPath(computePath());
 }
@@ -102,7 +88,6 @@ TempConnectionUI::TempConnectionUI(InPort **in, OutPort **out, QWidget *parent)
 	: ConnectionUI(static_cast<InPortUI*>(*in), static_cast<OutPortUI*>(*out), parent),
 	  in_c(in), out_c(out) {
 	hover = false;
-	t.hide();
 }
 
 QPoint TempConnectionUI::getLeft(){

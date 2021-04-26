@@ -12,8 +12,6 @@ class ConnectionUI : public QWidget{
 protected:
 	//! Parent widget
 	QWidget *p;
-	//! Tooltip shown after hovering a connection
-	Tooltip t;
 	//! Connection terminates here
 	InPortUI *in;
 	//! Connection starts here
@@ -21,11 +19,7 @@ protected:
 	//! Adjusts the line shape and position
 	QPainterPath computePath();
 	//! Mouse hover state
-	bool hover = false;
-	//! Showing the tooltip
-	void showValue();
-	//! Hiding the tooltip
-    void hideValue();
+    bool hover = false;
     //! Provides start point for path compution
     virtual QPoint getLeft();
     //! Provides end point for path compution
