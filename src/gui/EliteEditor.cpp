@@ -12,7 +12,7 @@
 
 #include "../core/blocks.h"
 #include "EliteEditor.h"
-#include "ui_blockeditor.h"
+#include "ui_EliteEditor.h"
 #include "block_ui.h"
 #include "graph_ui.h"
 
