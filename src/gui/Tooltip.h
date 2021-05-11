@@ -2,9 +2,9 @@
 #include <QWidget>
 #include <string>
 
-//! Tooltips shown when hovering over connections
+//! Zobrazené tooltipy pri umiestnení kurzoru nad blokmi
 class Tooltip : public QWidget{
 public:
-    //! Function that renders labels in a tooltip
+    //! Funkcia vykreslujuca štítky v tooltipe
     static std::vector<std::string> TextLines(const std::string &text, int &width, int &height);
 };

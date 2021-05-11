@@ -7,73 +7,63 @@
 #include "Tooltip.h"
 #include "ui_BlockPort.h"
 
-//! Widget for connection graphical representation
+//! Grafické prepojenie
 class UIConnections : public QWidget{
 protected:
-	//! Parent widget
-	QWidget *p;
-	//! Connection terminates here
-	InPortUI *in;
-	//! Connection starts here
-	OutPortUI *out;
-	//! Adjusts the line shape and position
-	QPainterPath computePath();
-	//! Mouse hover state
+    QWidget *p;
+    InPortUI *in;
+    OutPortUI *out;
+    QPainterPath computePath();
     bool hover = false;
-    //! Provides start point for path compution
     virtual QPoint getLeft();
-    //! Provides end point for path compution
     virtual QPoint getRight();
+
 public:
-	/**
-	 * @brief Connection constructor
-	 * @param in Input port
-	 * @param out Output port
-	 * @param parent Parent widget containing the scheme
-	 */
+    /**
+     * @brief Konštruktor prepojenia
+     * @param in Vstupný port
+     * @param out Výstupný port
+     * @param parent Parent widget obsahujuci schemu
+     */
     explicit UIConnections(InPortUI *in, OutPortUI *out, QWidget *parent = nullptr);
-	//! Connection constructor
+    //! Konštruktor prepojenia
     UIConnections(const UIConnections &other);
-	//! Overloading operator == for input port comparison
-	bool operator==(const InPort &p);
-	//! Overloading operator == for output port comparison
-	bool operator==(const OutPort &p);
-	//! Overloading operator == for any port comparison
-	bool operator==(const Ports &p);
-	//! Overloading operator == for connection comparison (based on input ports)
+    //! Pre porovnanie vstupného portu
+    bool operator==(const InPort &p);
+    //! Pre porovnanie výstupného portu
+    bool operator==(const OutPort &p);
+    //! Pre porovnanie akéhokoľvek portu
+    bool operator==(const Ports &p);
     friend bool operator==(const UIConnections &a, const UIConnections &b);
-	//! Activating hover state by mouse
-	bool mouseHover(QPoint mouse);
-	//! Activating hover state by function call
-	bool mouseHover(bool hover);
-    //! Connection line width when hovered
+    bool mouseHover(QPoint mouse);
+    bool mouseHover(bool hover);
     static const int ConnectionHoverSize;
-    //! Connection line color
+    //! farba prepojenia
     static const QColor ConnectionCol;
 protected:
-	void paintEvent(QPaintEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
 };
 
-//! Temporary connection for visualising unfinished connection
+//! Dočasné prepojenie zobrazujuce nedokončoné prepojenie
 class TempConnectionUI : public UIConnections{
 private:
-	//! Input port
-	InPort **in_c;
-	//! Output port
-	OutPort **out_c;
+    //! Vstupný port
+    InPort **in_c;
+    //! Výstupný port
+    OutPort **out_c;
 protected:
-    //! Get starting coordinates
+    //! Súradnice začiatku
     QPoint getLeft() override;
-    //! Get end coordinates
+    //! Súradnice konca
     QPoint getRight() override;
-	//! Actual rendering of the connection
-	void paintEvent(QPaintEvent *) override;
+    //! Vykreslovanie prepojenia
+    void paintEvent(QPaintEvent *) override;
 public:
-	/**
-	 * @brief Temp connection constructor
-	 * @param in Input port
-	 * @param out Output port
-	 * @param parent Parent widget where the whole scheme is stored
-	 */
-	TempConnectionUI(InPort **in, OutPort **out, QWidget *parent = nullptr);
+    /**
+     * @brief Konštruktor dočasného prepojenia
+     * @param in Vstupný port
+     * @param out Výstupný port
+     * @param parent Parent widget kde bude schéma uložené
+     */
+    TempConnectionUI(InPort **in, OutPort **out, QWidget *parent = nullptr);
 };
