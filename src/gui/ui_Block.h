@@ -18,30 +18,27 @@
 #include "../core/BlockBase.h"
 
 /**
- * @brief Block GUI representation
+ * @brief GUI reprezentácia bloku
  */
 template <typename BlockBaseT>
 class UIBlock : public QWidget, public BlockBaseT{
 private:
-	//! Vector of GUI input ports
+    //! Vektory vstupných a výstupných portov
 	std::vector<InPortUI> inputs; // Should be const vector of non const elements, but this requires custom implementation of vector!
-	//! Vector of GUI output ports
 	std::vector<OutPortUI> outputs; // Should be const vector of non const elements, but this requires custom implementation of vector!
 	QLabel label;
-	//! Block's dragging status
 	bool drag = false;
-	//! Block's highlight status
+    //! Highlight status bloku
 	bool highlight = false;
-	//! Block's position
+    //! Pozícia bloku
 	QPoint drag_p, offset;
 protected:
-	//! Block's height and width
+    //! Výška a šírka bloku
 	int width_, height_;
+
 public:
 	/**
-     * @brief UIBlock constructor
-	 * @param b Block derived from BlockBase
-	 * @param parent Widget where the block is rendered
+     * @brief UIBlock konštruktor
 	 */
     explicit UIBlock(const BlockBaseT &b, QWidget *parent = nullptr)
         : QWidget(parent), BlockBaseT(b), label(b.name.c_str(), this){
@@ -80,17 +77,16 @@ public:
 	}
 
 	/**
-	 * @brief Position where block is placed
-	 * @return Top left adjusted block's position
+     * @brief Pozícia kde bude blok vložený
 	 */
     QPoint Pos() const{
 		return (pos() - offset);
 	}
 
 	/**
-	 * @brief Generate ID for a port
-	 * @param port Input port
-	 * @return ID on success, -1 otherwise
+     * @brief Generuje ID portu
+     * @param port Vstupný port
+     * @return Pri úspešnom vykonaní vráti ID, inak -1
 	 */
     int getPortID(const InPort &port) const{
 		int idx = 0;
@@ -104,9 +100,9 @@ public:
 	}
 
 	/**
-	 * @brief Generate ID for a port
-	 * @param port Output port
-	 * @return ID on success, -1 otherwise
+     * @brief Generuje ID portu
+     * @param port Výstupný port
+     * @return Pri úspešnom vykonaní vráti ID, inak -1
 	 */
     int getPortID(const OutPort &port) const{
 		int idx = 0;
@@ -120,34 +116,34 @@ public:
 	}
 
 	/**
-	 * @brief Returns reference to an input port specified by ID
-	 * @param id Ports's ID
-	 * @return Address of a port
+     * @brief Vráti referenciu do vstupného portu špecifikovaného s OID
+     * @param id ID portu
+     * @return Vracia adresu portu
 	 */
     InPort & Input(std::size_t id){
 		return inputs[id];
 	}
 
-	//! Returns number of block's inputs
+    //! Vracia počet vstupov bloku
     std::size_t InputCount(){
 		return inputs.size();
 	}
 
 	/**
-	 * @brief Returns reference to an output port specified by ID
-	 * @param id Ports's ID
-	 * @return Address of a port
+     * @brief Vráti referenciu do výstupného portu špecifikovaného s ID
+     * @param id ID portu
+     * @return Vracia adresu portu
 	 */
     OutPort & Output(std::size_t id){
 		return outputs[id];
 	}
 
-	//! Returns number of block's outputs
+    //! Vráti počet výstupov bloku
     std::size_t OutputCount(){
 		return outputs.size();
 	}
 
-	//! Move block to the specified offset in addition to it's position
+    //! Presun bloku s offsetom
 	void updateOffset(QPoint offset){
 		auto p = Pos();
 		this->offset = offset;
@@ -155,9 +151,9 @@ public:
 	}
 
 	/**
-	 * @brief Moves block to a specified location
-	 * @param x X-axis position
-	 * @param y Y-axis position
+     * @brief Moves block to a specified location Presunutie bloku na špecifikovanú lokáciu
+     * @param x X-ová pozícia
+     * @param y Y-ová pozícia
 	 */
     virtual void Move(int x, int y){
 		x += this->offset.x();
@@ -181,19 +177,19 @@ public:
 		}
 	}
 
-	//! Change block's highlight status
+    //! Zmena highlight statusu bloku
     void Highlight(bool enable){
 		this->highlight = enable;
 		update();
 	}
 
 protected:
-	//! Rendering the block
+    //! Vykreslovanie bloku
     void paintEvent(QPaintEvent *){
 		QPainter painter(this);
 		painter.setRenderHint(QPainter::Antialiasing);
-
 		QPainterPath path;
+
         path.addRoundedRect(QRectF(.5, .5, width_, height_), Style::NodeRoundSize, Style::NodeRoundSize);
 
         painter.fillPath(path, QBrush(Style::NodeBackgroundCol));
@@ -210,8 +206,6 @@ protected:
 
         painter.strokePath(path, QPen(Style::NodeOutlineCol));
 	}
-
-	//! Moving block by dragging
     void mouseMoveEvent(QMouseEvent *event){
 		static_cast<UIBlockManager&>(this->graph).hideHoverConnectionUI();
 		if(drag){
@@ -219,7 +213,6 @@ protected:
 			Move(tmp.x(), tmp.y());
 		}
 	}
-	//! Begin drag on left click, open context menu on right click
     void mousePressEvent(QMouseEvent *event){
 		setFocus();
         if(event->button() == Qt::LeftButton){
@@ -231,19 +224,17 @@ protected:
 		}
 	}
 
-	//! End drag
     void mouseReleaseEvent(QMouseEvent *){
 		drag = false;
 	}
 
-	//! Hide connection tooltip when hovering over the block
     void enterEvent(QEvent *){
 		static_cast<UIBlockManager&>(this->graph).hideHoverConnectionUI();
 	}
 };
 
 /**
- * @brief Input block text edit box
+ * @brief Textové okno pre vstupný blok
  */
 class TextEdit : public QLineEdit{
 private:
@@ -279,7 +270,7 @@ protected:
 };
 
 /**
- * @brief Input Block GUI representation
+ * @brief GUI reprezentácia vstupného bloku
  */
 template <typename BlockBaseT>
 class InputBlockUI : public UIBlock<BlockBaseT>{
@@ -356,7 +347,7 @@ protected:
 };
 
 /**
- * @brief Output Block GUI representation
+ * @brief GUI reprezentácia výstupného bloku
  */
 template <typename BlockBaseT>
 class OutputBlockUI : public UIBlock<BlockBaseT>{
@@ -385,6 +376,7 @@ public:
 		updateBlockSize();
         UIBlock<BlockBaseT>::Move(x, y);
 	}
+
 protected:
     void paintEvent(QPaintEvent *event){
 		updateBlockSize();

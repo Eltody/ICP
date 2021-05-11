@@ -11,78 +11,68 @@
 
 class BlockBase;
 
-//! Class defining plain port
+//! Trieda definujuca vytvoreny port
 class Ports{
 protected:
-	//! Data type
     Type data;
     std::function<void(Ports &)> connUpdate, valUpdate;
-public:
-	//! Parent block reference
-	const BlockBase &block;
-	//! Human readable block name
-	const std::string name;
 
-	//! Copy constructor
+public:
+	const BlockBase &block;
+	const std::string name;
     Ports(const Ports &other);
 	/**
-	 * @brief Constructor
-	 * @param b Block where to create the new port
-     * @param t Type of the port
-	 * @param name Name of the port's label
+     * @brief Constructor Konštruktor
+     * @param b Blok, kde sa vytvorí nový port
+     * @param t Typ portu
+     * @param name Názov portu
 	 */
     Ports(const BlockBase & b, const Type &t, std::string name);
-	//! Returns port's value
+    //! Vráti hodnotu portu
     virtual Type & Value() = 0;
-	//! Operator [] overloading for using data type specific strings to access values of the port
 	TypeValue & operator[](const std::string &s);
 
-	//! Fires onValueChange callback for this port
 	virtual void eventValueChange();
-	//! Fires onConnectionChange callback
 	void eventConnectionChange();
-	//! Sets what to do on connection change
     void onConnectionChange(std::function<void(Ports &)> callback);
-	//! Sets what to do on value change
     void onValueChange(std::function<void(Ports &)> callback);
 };
 
-//! Input port class
+//! Trieda vstupného portu
 class InPort : public Ports{
 public:
-	//! Get input port ID
-	//! @return ID of the port
+    //! Získaj vstupný ID port
+    //! @return Vracia sa ID portu
 	int getID() const;
-	//! Input port copy constructor
 	InPort(const InPort & other, const BlockBase & b);
 	/**
-	 * @brief Input port constructor
-	 * @param b Block where the port is created
-     * @param t Type of the port
-	 * @param name Name of the port's label
+     * @brief Konštruktor vstupného portu
+     * @param b Blok kde bude port vytvorený
+     * @param t Typ portu
+     * @param name Názov portu
 	 */
     InPort(const BlockBase & b, const Type &t, std::string name);
-	//! Returns port's value
+    //! Vráti hodnotu portu
     Type & Value() override;
 };
 
-//! Input port class
+//! Trieda pre výstupný port
 class OutPort : public Ports{
 public:
-	//! Fires onValueChange callback for this port and all connected ports
+    //! Spusti callback pre tento a všetky pripojené porty
 	void eventValueChange() override;
-	//! Get output port ID
-	//! @return ID of the port
+    //! Získa ID výstupného portu
+    //! @return Vracia sa ID portu
 	int getID() const;
-	//! Input port copy constructor
+    //! Konštruktor
 	OutPort(const OutPort & other, const BlockBase & b);
 	/**
-	 * @brief Input port constructor
-	 * @param b Block where the port is created
-     * @param t Type of the port
-	 * @param name Name of the port's label
+     * @brief Konštruktor vstupného portu
+     * @param b Blok kde bude port vytvorený
+     * @param t Typ portu
+     * @param name Názov portu
 	 */
     OutPort(const BlockBase & b, const Type &t, std::string name);
-	//! Returns port's value
+    //! Vracia hodnotu portu
     Type & Value() override;
 };

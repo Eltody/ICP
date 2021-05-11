@@ -12,46 +12,33 @@
 
 class UIBlockManager;
 
-//! BlockType decorator for QAction
 class BlockMenuAction : public QAction{
 private:
-    //! BlockType of the generated block
+    //! BlockType generovaného bloku
     BlockType t;
 public:
-    //! Action constructor
+    //! Action Konštruktor
     BlockMenuAction(BlockType t, const QIcon &icon);
     operator BlockType();
 };
 
 /**
- * @brief Container for all custom defined styles
+ * @brief Úložisko pre všetky custom defined štýly
  */
 class Style{
 public:
-    //! Ports margin
     static const int PortMarginV;
-    //! Ports name padding
     static const int PortNamePadding;
 
-
-    //! Offset for positioning text fields in IO blocks
-    static const int NodeFieldOffset;
-    //! Width of text fields in IO blocks
-    static const int NodeFieldWidth;
-    //! Block name padding
-    static const int NodeNamePadding;
-    //! Block name Height
-    static const int NodeNameHeight;
-    //! Block's minimum width
-    static const int NodeMinWidth;
-    //! Corner rounding size on block
+    static const int NodeFieldOffset; // offset pre umiestnenie textových polí
+    static const int NodeFieldWidth; // šírka textových polí v IO blokov
+    static const int NodeNamePadding; // odsadenie bloku
+    static const int NodeNameHeight; // veľkosť mena bloku
+    static const int NodeMinWidth; // minimum šírky bloku
     static const int NodeRoundSize;
-    //! Block's outline color
-    static const QColor NodeOutlineCol;
-    //! Block's highlight outline color
-    static const QColor NodeOutlineHighlightCol;
-    //! Background block color
-    static const QColor NodeBackgroundCol;
+    static const QColor NodeOutlineCol; // outline farba
+    static const QColor NodeOutlineHighlightCol; // highlight outline farba
+    static const QColor NodeBackgroundCol; // farba pozadia bloku
 };
 
 
@@ -68,20 +55,18 @@ class ELITEEDITOR;
 
 
 /**
- * @brief Main window class
- * This class is a QWidget that is parent to all graphic elements within the window.
- * All other control widgets (except the dropdown menus for adding/removing blocks) are declared here.
+ * @brief Trieda hlavného okna
  */
 class ELITEEDITOR : public QMainWindow{
     Q_OBJECT
 public:
-	//! Constructor
+    //! Konštruktor
 	explicit ELITEEDITOR(UIBlockManager &g, QWidget *parent = 0);
-	//! Destructor
+    //! Deštruktor
     ~ELITEEDITOR();
 
 protected:
-	//! Event called when closing the opened scheme
+    //! Vyvolaná akcia pri zatváraní schémy
 	void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 private slots:
@@ -129,86 +114,52 @@ private slots:
     void buildMatrix3Mul();
 
 
-
-    //! Button slot called when opening standard calculator operations
     void calc();
-    //! Button slot called when opening vector operations
     void vect();
-    //! Button slot called when opening 2x2 matrix operations
     void matr2();
-    //! Button slot called when opening 3x3 matrix operations
     void matr3();
-	//! Button slot to call when creating a new scheme
 	void newFile();
-	//! Button slot to call when opening a file
 	void open();
-	//! Button slot to call when merging a file into existing scheme
     void overlap();
-	//! Button slot to call when opening a file
 	bool save();
-	//! Button slot to call when saving file a new one
 	bool saveAs();
-	//! Button slot called when computing the whole scheme
 	void compute();
-	//! Button slot called when computing one block from compute queue
 	void step();
-	//! Button slot called to set first block as next in compute queue
 	void reset();
-	//! Button slot called when opening help
 	void help();
 
 private:
 	Ui::ELITEEDITOR *ui;
 	UIBlockManager &graph;
 
-	//! Function that creates QActions for buttons
+    // praca so suborom
     void createActions();
-	//! Sets up menu bar with all buttons
     void createMenus();
-	//! Destroys toolbars
 	void deleteToolBars();
-	//! Place buttons on toolbars
     void createToolBars();
-	//! Asks user to save changes before quitting
     bool maybeSave();
-	//! Creates dialogs for opening a scheme file
     void loadFile(const QString &fileName, bool overlap);
-	//! Creates dialogs for saving a scheme to disk
     bool saveFile(const QString &fileName);
-	//! Sets current file name in window title
     void setCurrentFile(const QString &fileName);
 
-	//! Currently edited file's name
     QString curFile;
-
-	//! Dialog used for opening and closing files
     QMenu *fileMenu;
-	//! Dialog used for help and about boxes
     QMenu *helpMenu;
 
-    //! Menu with available blocks
     QToolBar *blockMenu;
-	//! Toolbar with file buttons
 	QToolBar *fileToolBar;
-	//! Toolbar with buttons related to computing blocks
     QToolBar *actionToolBar;
-	//! Toolbar with a help button
+    //! Toolbar s help buttonom
     QToolBar *helpToolBar;
-	//! Toolbar with a name of currently edited scheme
 	QToolBar *nameToolBar;
 
-    //! Widget that right-aligns the scheme name
     QWidget *spacerWidget;
-
-    //! Action for opening standard calculator operations
     QAction *calculatorBTN;
-    //! Action for opening vector operations
     QAction *vectorBTN;
-    //! Action for opening 2x2 matrix operations
     QAction *matrix2BTN;
-    //! Action for opening 3x3 matrix operations
     QAction *matrix3BTN;
 
+    // praca s operaciami
     QAction *calcIn = new BlockMenuAction(MATH_INPUT, QIcon());
     QAction *calcOut = new BlockMenuAction(MATH_OUTPUT, QIcon());
     QAction *calcAdd = new BlockMenuAction(MATH_ADD, QIcon());
@@ -252,22 +203,23 @@ private:
     QAction *matrix3Sub = new BlockMenuAction(MAT3_SUB, QIcon());
     QAction *matrix3Mul = new BlockMenuAction(MAT3_MUL, QIcon());
 
-	//! Action for creating a new file
+    // Akcie:
+    //! Vytvorenie noveho suboru
 	QAction *newBTN;
-	//! Action for opening a file
+    //! Otvaranie suboru
 	QAction *openBTN;
-	//! Action for saving a file
+    //! Ukladanie suboru
     QAction *saveBTN;
-    //! Action for importing a file
+    //! Import suboru
     QAction *importBTN;
-	//! Action for computing the whole scheme
+    //! Vypocet celej schemy
     QAction *computeAct;
-	//! Action for computing next block in the compute queue
+    //! Vypocet nasledujuceho bloku schemy
     QAction *stepAct;
-	//! Action that sets the first block as next in compute queue
+    //! Nastavenie bloku ako nasledujuceho vykonavaneho bloku
     QAction *resetAct;
-	//! Action for deleting a block
+    //! Vymazanie bloku
 	QAction *deleteAct;
-	//! Action for showing the help box
+    //! Ukáž Help Box
     QAction *helpAct;
 };

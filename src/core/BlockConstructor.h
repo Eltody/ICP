@@ -13,26 +13,22 @@ class Manager;
 class BlockBase;
 
 /**
- * @brief Abstract factory for creating blocks
- *
- * Blocks are created using abstract factory design patern.
+ * @brief Vytváranie blokov
  */
 class BlockConstructor{
 protected:
-	//! Main widget that contains the scheme
+    //! Schéma
 	Manager &g;
-	//! List of all blocks
+    //! Zoznam všetkých blokov
 	std::list<BlockBase*> blocks;
 public:
-	//! @brief Block constructor
-	//! @param t BlockType of block to construct
+    //! @brief Konštruktor bloku
+    //! @param t Typ bloku pre vytvorenie
 	virtual BlockBase* AllocBlock(BlockType t);
-	//! @brief Block destructor
-	//! @param b Address of the block to destruct
+    //! @brief Deštruktor bloku
+    //! @param b Adresa bloku na vymazanie
 	virtual void FreeBlock(BlockBase *b);
-	//! @brief Factory constructor
-	//! @param g Parent scheme object
-    BlockConstructor(Manager &g);
-	
-    virtual ~BlockConstructor(); // destruktor
+
+    BlockConstructor(Manager &g); // konštruktor
+    virtual ~BlockConstructor(); // deštruktor
 };

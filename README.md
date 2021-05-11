@@ -14,3 +14,11 @@
 ## Členovia tímu:
 * **Tomáš Zaťko (xzatko02)**
 * **Martin Rakús (xrakus04)**
+
+## Implementovaná funkcionalita:
+* **Editor podporuje prácu s blokmi s jednoduchými matematickými funkciami, operácie s vektormi a maticami.**
+* **Editor umožňuje zobraziť obsah knižnice typov blokov štrukturovných v kategóriách.**
+* **Vizuálne je každá inštancia obdĺžnik. Záhlavie zobrazuje typ a názov inštancie. Vľavo sú pomenované vstupné porty a napravo sú pomenované výstupné porty.**
+* **Editor iteratívne vyhodnocuje bloky s hodnotami zvolenými užívateľom.**
+* **Editor si pamätá posledné kroky vyhodnocovania blokov s hodnotami.**
+* **Editor podporuje uloženie súboru aktuálnej pracovnej plochy.**

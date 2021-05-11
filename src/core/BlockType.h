@@ -15,7 +15,7 @@
 class Ports;
 class Type;
 
-//! @brief TypeValue is a single component of Type
+//! @brief TypeValue je komponent Type
 class TypeValue{
     friend class Type;
 private:
@@ -28,13 +28,14 @@ public:
 	friend bool operator== (const TypeValue &a, const TypeValue &b);
 };
 
-//! @brief Type Class is not polymorphic! Derived classes are used only as predefined Types with assigned name!
 class Type{
 	friend class TypeValue;
+
 private:
 	bool null_data;
 	std::map<std::string, TypeValue> data;
 	Ports *port;
+
 public:
     Type(std::initializer_list<std::string> components);
     Type(const Type &other);
@@ -42,12 +43,15 @@ public:
     Type & operator=(const Type &other);
     Type(Type &&other) = delete;
 	TypeValue & operator[](const std::string &s);
+
 	const std::map<std::string, TypeValue> Data();
 	bool isNull() const;
 	void setNull();
-    //! Type comparison
+
+    //! porovnanie typu
     bool type_of(const Type &other) const;
-	//! Value comparison
+
+    //! porovnanie hodnoty
     friend bool operator== (const Type &a, const Type &b);
 	operator std::string();
 };

@@ -7,21 +7,16 @@
 class UIBlockManager;
 
 /**
- * @brief Abstract factory for creating GUI blocks
- *
- * Blocks are created using abstract factory design patern.
+ * @brief GUI vytváranie blokov
  */
 class UIBlockConstructor : public BlockConstructor
 {
 private:
-	//! Widged used as parent for constructed blocks
 	QWidget *block_parent;
 public:
-	//! GUI Block constructor
-	//! @param t BlockType of block to construct
+    //! GUI Konštruktor bloku
+    //! @param t BlockType bloku pre vytvorenie
 	BlockBase* AllocBlock(BlockType t) override;
 
-	//! Factory constructor
-	//! @param g Parent scheme object
     UIBlockConstructor(UIBlockManager &g);
 };
