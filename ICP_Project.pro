@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    src/core/BlockBase.cpp \
     src/core/BlockConstructor.cpp \
     src/core/BlockManager.cpp \
     src/core/BlockPort.cpp \
@@ -34,7 +35,6 @@ SOURCES += \
     src/gui/EliteEditor.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
-    src/core/blockbase.cpp \
     src/gui/connection_ui.cpp \
     src/gui/port_ui.cpp \
     src/core/types/types.cpp \
@@ -42,6 +42,7 @@ SOURCES += \
     src/gui/graph_ui.cpp
 
 HEADERS += \
+    src/core/BlockBase.h \
     src/core/BlockConstructor.h \
     src/core/BlockManager.h \
     src/core/BlockPort.h \
@@ -50,7 +51,6 @@ HEADERS += \
     src/core/blocks/operations.h \
     src/gui/EliteEditor.h \
     src/gui/tooltip.h \
-    src/core/blockbase.h \
     src/gui/connection_ui.h \
     src/gui/block_ui.h \
     src/gui/port_ui.h \

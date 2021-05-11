@@ -6,7 +6,7 @@
 #include <QMenu>
 #include <list>
 
-#include "../core/blockbase.h"
+#include "../core/BlockBase.h"
 #include "../core/BlockManager.h"
 #include "blockfactory_ui.h"
 #include "connection_ui.h"

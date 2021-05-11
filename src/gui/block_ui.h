@@ -15,7 +15,7 @@
 #include "port_ui.h"
 #include "graph_ui.h"
 
-#include "../core/blockbase.h"
+#include "../core/BlockBase.h"
 
 /**
  * @brief Block GUI representation

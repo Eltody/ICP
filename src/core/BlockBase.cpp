@@ -5,7 +5,7 @@
  * @author Martin Rakús - xrakus04
  */
 
-#include "blockbase.h"
+#include "BlockBase.h"
 
 BlockBase::BlockBase(Manager &g, BlockType type, std::string name)
     : graph(g), type(type), name(name){ }
@@ -64,8 +64,8 @@ void BlockBase::Reset(){
 }
 
 bool BlockBase::HasAllValues(){
-	for(size_t i = 0; i < InputCount(); i++) {
-		if (Input(i).Value().isNull()) {
+    for(size_t i = 0; i < InputCount(); i++){
+        if (Input(i).Value().isNull()){
 			return false;
 		}
 	}
@@ -73,8 +73,8 @@ bool BlockBase::HasAllValues(){
 }
 
 bool BlockBase::InputsAreConnected(){
-	for(size_t i = 0; i < InputCount(); i++) {
-		if(graph.connections.count(&Input(i)) <= 0) {
+    for(size_t i = 0; i < InputCount(); i++){
+        if(graph.connections.count(&Input(i)) <= 0){
 			return false;
 		}
 	}

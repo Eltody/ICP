@@ -7,7 +7,7 @@
 
 
 #include "BlockPort.h"
-#include "blockbase.h"
+#include "BlockBase.h"
 
 
 Ports::Ports(const Ports &other) : data(other.data, this),

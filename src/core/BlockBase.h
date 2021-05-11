@@ -18,7 +18,7 @@ class Manager;
  * @brief Definícia základného bloku
  * Všetky bloky dedia funkcie z tejto triedy a implemenetujú výpočty
  */
-class BlockBase {
+class BlockBase{
 private:
     /**
      * @brief Vektor vstupných portov

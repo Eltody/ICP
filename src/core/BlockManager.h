@@ -14,7 +14,7 @@
 #include <initializer_list>
 #include <functional>
 #include "BlockPort.h"
-#include "blockbase.h"
+#include "BlockBase.h"
 #include "BlockConstructor.h"
 
 /**
