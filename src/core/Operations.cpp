@@ -6,9 +6,9 @@
  * @author Martin Rakús - xrakus04
  */
 
-#include "../types/types.h"
-#include "../Blocks.h"
-#include "operations.h"
+#include "Types.h"
+#include "Blocks.h"
+#include "Operations.h"
 #include "math.h"
 #include <cmath>
 

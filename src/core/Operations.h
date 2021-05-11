@@ -5,8 +5,8 @@
  * @author Martin Rakús - xrakus04
  */
 
-#include "../BlockBase.h"
-#include "../BlockManager.h"
+#include "BlockBase.h"
+#include "BlockManager.h"
 
 /*!
  * @brief Trieda - blok pre číselný vstup

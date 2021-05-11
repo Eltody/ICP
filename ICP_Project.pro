@@ -31,13 +31,13 @@ SOURCES += \
     src/core/BlockManager.cpp \
     src/core/BlockPort.cpp \
     src/core/BlockType.cpp \
-    src/core/blocks/operations.cpp \
+    src/core/Operations.cpp \
+    src/core/Types.cpp \
     src/gui/EliteEditor.cpp \
     src/gui/tooltip.cpp \
     src/main.cpp \
     src/gui/connection_ui.cpp \
     src/gui/port_ui.cpp \
-    src/core/types/types.cpp \
     src/gui/blockfactory_ui.cpp \
     src/gui/graph_ui.cpp
 
@@ -48,13 +48,13 @@ HEADERS += \
     src/core/BlockPort.h \
     src/core/BlockType.h \
     src/core/Blocks.h \
-    src/core/blocks/operations.h \
+    src/core/Operations.h \
+    src/core/Types.h \
     src/gui/EliteEditor.h \
     src/gui/tooltip.h \
     src/gui/connection_ui.h \
     src/gui/block_ui.h \
     src/gui/port_ui.h \
-    src/core/types/types.h \
     src/gui/blockfactory_ui.h \
     src/gui/graph_ui.h \
 

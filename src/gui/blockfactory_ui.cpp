@@ -10,7 +10,7 @@
 #include "graph_ui.h"
 #include "block_ui.h"
 
-#include "../core/blocks/operations.h"
+#include "../core/Operations.h"
 
 
 BlockBase *BlockFactoryUI::AllocBlock(BlockType option){

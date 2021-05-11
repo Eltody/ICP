@@ -4,7 +4,7 @@
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
-#include "../BlockType.h"
+#include "BlockType.h"
 
 /**
  * @brief Dátový typ pre 2D vektor

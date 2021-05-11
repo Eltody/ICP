@@ -7,7 +7,7 @@
 
 #include "BlockConstructor.h"
 
-#include "blocks/operations.h"
+#include "Operations.h"
 
 
 // alokácia blokov

@@ -4,7 +4,7 @@
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
-#include "types.h"
+#include "Types.h"
 
 one_number::one_number() : Type{"Hodnota"}{ }
 
