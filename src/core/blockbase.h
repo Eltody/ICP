@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file bockbase.h
+ * @file blockbase.h
  * @brief Header súbor pre kontrolu a prácu s portami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
@@ -15,18 +15,17 @@
 class Graph;
 
 /**
- * @brief Base block definition.
- * Every block inherits basic functions from this class
- * and implements its computation method over it.
+ * @brief Definícia základného bloku
+ * Všetky bloky dedia funkcie z tejto triedy a implemenetujú výpočty
  */
 class BlockBase {
 private:
     /**
-	 * @brief Vector of input ports
+     * @brief Vektor vstupných portov
 	 */
     std::vector<InPort> inputs;
     /**
-	 * @brief Vector of output ports
+     * @brief Vektor výstupných portov
 	 */
     std::vector<OutPort> outputs;
 protected:
@@ -36,78 +35,75 @@ protected:
 			  std::initializer_list<OutPort> outputs);
 public:
     /**
-	 * @brief A reference to the parent Graph object.
+     * @brief Referencia parent Graph object
 	 */
 	Graph &graph;
     /**
-	 * @brief Type of the block.
-	 * See BlockType.
+     * @brief Typ bloku
 	 */
 	const BlockType type;
     /**
-	 * @brief Human readable name of a block type
+     * @brief Názov bloku
 	 */
 	const std::string name;
     /**
-	 * @brief Gets unique ID of a block
-	 * @return ID of a block
+     * @brief Získanie unikátneho ID bloku
+     * @return Vracia ID bloku
 	 */
 	int getID() const;
     /**
-	 * @brief Gets unique ID of a port
-	 * @param port Input port
-	 * @return ID of a port
-	 */
+     * @brief Získanie unikátneho ID portu
+     * @param Port InPort
+     * @return Vracia ID input portu
+     */
 	virtual int getPortID(const InPort &port) const;
     /**
-	 * @brief Gets unique ID of a port
-	 * @param port Output port
-	 * @return ID of a port
+     * @brief Získanie unikátneho ID portu
+     * @param Port OutPort
+     * @return Vracia ID output portu
 	 */
 	virtual int getPortID(const OutPort &port) const;
     /**
-	 * @brief Gets address of a port
-	 * @param port ID of an input port
-	 * @return Address of an input port
+     * @brief Získanie adresy portu
+     * @param Port ID vstupného portu
+     * @return Vracia adresu vstupného portu
 	 */
 	virtual InPort & Input(std::size_t id);
     /**
-	 * @brief Returns number of inputs
-	 * @return Number of inputs
+     * @brief Počet vstupov
+     * @return Vráti počet vstupov
 	 */
 	virtual std::size_t InputCount();
     /**
-	 * @brief Gets address of a port
-	 * @param port ID of an output port
-	 * @return Address of an output port
+     * @brief Získanie adresy portu
+     * @param Port ID výstupného portu
+     * @return Vracia adresu výstupného portu
 	 */
 	virtual OutPort & Output(std::size_t id);
     /**
-	 * @brief Returns number of outputs
-	 * @return Number of inputs
+     * @brief Počet výstupov
+     * @return Vracia počet výstupov
 	 */
 	virtual std::size_t OutputCount();
 
     /**
-	 * @brief Checks if all inputs are non-null values
-	 * @return True when all inputs are non-null, false otherwise
+     * @brief Kontrola či sú všetky porty nenulové
+     * @return Vracia true, ak sú všetky porty nenulové
 	 */
 	bool HasAllValues();
     /**
-	 * @brief Checks that all inputs are connected with some blocks
-	 * @return True when all inputs are connected, false otherwise
+     * @brief Kontrola či sú všetky vstupy pripojené na bloky
+     * @return Vracia true ak všetky sú všetky vstupy pripojené
 	 */
 	bool InputsAreConnected();
 	virtual bool Computable();
     /**
-	 * @brief Sets all output port's values to Null
+     * @brief Nastavenie všetkých hodnôt výstupných portov na Null
 	 */
 	void Reset();
-    /**
-	 * @brief Virtual method that is implemented by every block type
-	 */
+
 	virtual void Compute() = 0;
 
-	//! Virtual destructor to prevent leaks
+    // Deštruktor
 	virtual ~BlockBase() = default;
 };

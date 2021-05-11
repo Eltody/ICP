@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file blockbase.h
+ * @brief Header súbor pre kontrolu a prácu s portami
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #pragma once
 #include "blocks.h"
 #include <list>
