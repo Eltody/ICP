@@ -10,7 +10,7 @@
 #include <QPainter>
 #include <vector>
 
-#include "tooltip.h"
+#include "Tooltip.h"
 
 std::vector<std::string> Tooltip::TextLines(const std::string &text, int &width, int &height){
     int w = 0;

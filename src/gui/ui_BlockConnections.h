@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QPaintEvent>
 
-#include "tooltip.h"
+#include "Tooltip.h"
 #include "ui_BlockPort.h"
 
 //! Widget for connection graphical representation

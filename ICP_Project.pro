@@ -34,7 +34,7 @@ SOURCES += \
     src/core/Operations.cpp \
     src/core/Types.cpp \
     src/gui/EliteEditor.cpp \
-    src/gui/tooltip.cpp \
+    src/gui/Tooltip.cpp \
     src/gui/ui_BlockConnections.cpp \
     src/gui/ui_BlockConstructor.cpp \
     src/gui/ui_BlockManager.cpp \
@@ -51,7 +51,7 @@ HEADERS += \
     src/core/Operations.h \
     src/core/Types.h \
     src/gui/EliteEditor.h \
-    src/gui/tooltip.h \
+    src/gui/Tooltip.h \
     src/gui/ui_Block.h \
     src/gui/ui_BlockConnections.h \
     src/gui/ui_BlockConstructor.h \
