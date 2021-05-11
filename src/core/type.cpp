@@ -6,7 +6,7 @@
  */
 
 #include "type.h"
-#include "port.h"
+#include "BlockPort.h"
 #include <utility>
 #include <sstream>
 #include <stdexcept>
@@ -27,7 +27,7 @@ Type::Type(const Type &other) : null_data(other.null_data), port(other.port) {
 }
 
 
-Type::Type(const Type &other, Port *port) : null_data(other.null_data), port(port) {
+Type::Type(const Type &other, Ports *port) : null_data(other.null_data), port(port) {
 	for (const auto &elem : other.data) {
 		this->data.insert(std::pair<std::string, TypeValue>(elem.first, TypeValue(*this, elem.second.data)));
 	}

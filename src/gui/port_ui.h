@@ -6,7 +6,7 @@
 #include <QLabel>
 #include <QPoint>
 #include <string>
-#include "../core/port.h"
+#include "../core/BlockPort.h"
 
 /**
  * @brief The base abstract class of port GUI representation
@@ -15,9 +15,9 @@ class PortBaseUI : public QWidget{
 protected:
 	//! Parent widget
 	QWidget *p;
-	//! Port hover state
+	//! Ports hover state
 	bool hover = false;
-	//! Port label
+	//! Ports label
 	QLabel label;
 	/**
 	 * @brief Plain ort constructor
@@ -37,21 +37,21 @@ public:
 	QPoint Pos();
 	//! Move to coordinates
 	virtual void Move(int x, int y) = 0;
-	//! Get width of Port GUI widget
+	//! Get width of Ports GUI widget
 	int getWidth() const;
-    //! Port connect diameter
+    //! Ports connect diameter
     static const int PortSize;
-    //! Port draw diameter
+    //! Ports draw diameter
     static const int PortDrawSize;
-    //! Port margin
+    //! Ports margin
     static const int PortMarginV;
-    //! Port name padding
+    //! Ports name padding
     static const int PortNamePadding;
-    //! Port outline color
+    //! Ports outline color
     static const QColor PortOutlineCol;
     //! Unoccupied port color
     static const QColor PortFreeCol;
-    //! Port color when hovered over
+    //! Ports color when hovered over
     static const QColor PortHoverCol;
 };
 

@@ -81,9 +81,9 @@ public:
     void ConnectionRemoving(OutPort &p) override;
     /**
      * @brief Replace detached side of the connection
-     * @param p Port, where the connection was detached
+     * @param p Ports, where the connection was detached
      */
-    void updateConnectionUI(Port &p);
+    void updateConnectionUI(Ports &p);
     /**
      * @brief Show tooltip when connection is hovered while other connection is being attached to the second port
      * @param mouse QPoint coordinates

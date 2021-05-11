@@ -39,7 +39,7 @@ public:
 	//! Overloading operator == for output port comparison
 	bool operator==(const OutPort &p);
 	//! Overloading operator == for any port comparison
-	bool operator==(const Port &p);
+	bool operator==(const Ports &p);
 	//! Overloading operator == for connection comparison (based on input ports)
 	friend bool operator==(const ConnectionUI &a, const ConnectionUI &b);
 	//! Activating hover state by mouse

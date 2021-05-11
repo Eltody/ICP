@@ -12,7 +12,7 @@
 #include <iostream>
 #include <functional>
 
-class Port;
+class Ports;
 class Type;
 
 //! @brief TypeValue is a single component of Type
@@ -34,11 +34,11 @@ class Type{
 private:
 	bool null_data;
 	std::map<std::string, TypeValue> data;
-	Port *port;
+	Ports *port;
 public:
 	Type(std::initializer_list<std::string> components);
 	Type(const Type &other);
-	Type(const Type &other, Port *port);
+	Type(const Type &other, Ports *port);
 	Type & operator=(const Type &other);
 	Type(Type &&other) = delete;
 	TypeValue & operator[](const std::string &s);

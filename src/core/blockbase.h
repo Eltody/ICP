@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 #include <initializer_list>
-#include "port.h"
+#include "BlockPort.h"
 #include "graph.h"
 #include "blocks.h"
 
@@ -53,19 +53,19 @@ public:
 	int getID() const;
     /**
      * @brief Získanie unikátneho ID portu
-     * @param Port InPort
+     * @param Ports InPort
      * @return Vracia ID input portu
      */
 	virtual int getPortID(const InPort &port) const;
     /**
      * @brief Získanie unikátneho ID portu
-     * @param Port OutPort
+     * @param Ports OutPort
      * @return Vracia ID output portu
 	 */
 	virtual int getPortID(const OutPort &port) const;
     /**
      * @brief Získanie adresy portu
-     * @param Port ID vstupného portu
+     * @param Ports ID vstupného portu
      * @return Vracia adresu vstupného portu
 	 */
 	virtual InPort & Input(std::size_t id);
@@ -76,7 +76,7 @@ public:
 	virtual std::size_t InputCount();
     /**
      * @brief Získanie adresy portu
-     * @param Port ID výstupného portu
+     * @param Ports ID výstupného portu
      * @return Vracia adresu výstupného portu
 	 */
 	virtual OutPort & Output(std::size_t id);

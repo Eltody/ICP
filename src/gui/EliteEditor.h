@@ -28,9 +28,9 @@ public:
  */
 class Style{
 public:
-    //! Port margin
+    //! Ports margin
     static const int PortMarginV;
-    //! Port name padding
+    //! Ports name padding
     static const int PortNamePadding;
 
 

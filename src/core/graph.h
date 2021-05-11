@@ -13,7 +13,7 @@
 #include <map>
 #include <initializer_list>
 #include <functional>
-#include "port.h"
+#include "BlockPort.h"
 #include "blockbase.h"
 #include "blockfactory.h"
 

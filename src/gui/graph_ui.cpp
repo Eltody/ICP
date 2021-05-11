@@ -208,7 +208,7 @@ void GraphUI::ConnectionRemoving(OutPort &p){
 	}
 }
 
-void GraphUI::updateConnectionUI(Port &p){
+void GraphUI::updateConnectionUI(Ports &p){
 	for(ConnectionUI *c : ui_connections){
 		if((*c) == p){
             c->raise();

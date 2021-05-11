@@ -121,7 +121,7 @@ public:
 
 	/**
 	 * @brief Returns reference to an input port specified by ID
-	 * @param id Port's ID
+	 * @param id Ports's ID
 	 * @return Address of a port
 	 */
     InPort & Input(std::size_t id){
@@ -135,7 +135,7 @@ public:
 
 	/**
 	 * @brief Returns reference to an output port specified by ID
-	 * @param id Port's ID
+	 * @param id Ports's ID
 	 * @return Address of a port
 	 */
     OutPort & Output(std::size_t id){
@@ -365,8 +365,8 @@ private:
 public:
 	explicit OutputBlockUI(const BlockUI<BlockBaseT> &b, QWidget *parent = nullptr)
 		: BlockUI<BlockBaseT>(b, parent), orig_w(this->width_), orig_h(this->height_) {
-		this->Input(0).onConnectionChange([this](Port &){this->update();});
-		this->Input(0).onValueChange([this](Port &){this->update();});
+		this->Input(0).onConnectionChange([this](Ports &){this->update();});
+		this->Input(0).onValueChange([this](Ports &){this->update();});
 	}
     bool Computable(){
 		return false;

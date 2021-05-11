@@ -32,7 +32,7 @@ bool ConnectionUI::operator==(const OutPort &p){
 	return this->out == &p;
 }
 
-bool ConnectionUI::operator==(const Port &p){
+bool ConnectionUI::operator==(const Ports &p){
 	return (this->in == &p || this->out == &p);
 }
 

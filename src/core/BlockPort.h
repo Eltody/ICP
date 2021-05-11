@@ -12,11 +12,11 @@
 class BlockBase;
 
 //! Class defining plain port
-class Port{
+class Ports{
 protected:
 	//! Data type
 	Type data;
-	std::function<void(Port &)> connUpdate, valUpdate;
+    std::function<void(Ports &)> connUpdate, valUpdate;
 public:
 	//! Parent block reference
 	const BlockBase &block;
@@ -24,14 +24,14 @@ public:
 	const std::string name;
 
 	//! Copy constructor
-	Port(const Port &other);
+    Ports(const Ports &other);
 	/**
 	 * @brief Constructor
 	 * @param b Block where to create the new port
 	 * @param t Type of the port
 	 * @param name Name of the port's label
 	 */
-	Port(const BlockBase & b, const Type &t, std::string name);
+    Ports(const BlockBase & b, const Type &t, std::string name);
 	//! Returns port's value
 	virtual Type & Value() = 0;
 	//! Operator [] overloading for using data type specific strings to access values of the port
@@ -42,13 +42,13 @@ public:
 	//! Fires onConnectionChange callback
 	void eventConnectionChange();
 	//! Sets what to do on connection change
-	void onConnectionChange(std::function<void(Port &)> callback);
+    void onConnectionChange(std::function<void(Ports &)> callback);
 	//! Sets what to do on value change
-	void onValueChange(std::function<void(Port &)> callback);
+    void onValueChange(std::function<void(Ports &)> callback);
 };
 
 //! Input port class
-class InPort : public Port{
+class InPort : public Ports{
 public:
 	//! Get input port ID
 	//! @return ID of the port
@@ -67,7 +67,7 @@ public:
 };
 
 //! Input port class
-class OutPort : public Port{
+class OutPort : public Ports{
 public:
 	//! Fires onValueChange callback for this port and all connected ports
 	void eventValueChange() override;
