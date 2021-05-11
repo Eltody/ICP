@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file port.h
+ * @file BlockPort.h
  * @brief Header súbor pre prácu s portami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04

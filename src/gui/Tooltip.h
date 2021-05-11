@@ -1,3 +1,10 @@
+/*! VUT FIT ICP
+ * @file tooltip.h
+ * @brief Header súbor pre tooltip
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
+
 #pragma once
 #include <QWidget>
 #include <string>

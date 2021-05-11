@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file types.h
+ * @file Types.h
  * @brief Header súbor pre dátové typy výstupov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04

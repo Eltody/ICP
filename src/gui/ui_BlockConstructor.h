@@ -1,3 +1,9 @@
+/*! VUT FIT ICP
+ * @file EliteEditor.h
+ * @brief Header súbor pre GUI vytváranie blokov
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
 
 #pragma once
 #include <QWidget>

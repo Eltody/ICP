@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file blockbase.h
- * @brief Header súbor pre kontrolu a prácu s portami
+ * @file BlockConstructor.h
+ * @brief Header súbor pre vytváranie blokov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

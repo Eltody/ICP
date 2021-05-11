@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file type.h
+ * @file BlockType.h
  * @brief Header súbor pre prácu s typovými hodnotami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
