@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file tooltip.h
+ * @file Tooltip.h
  * @brief Header súbor pre tooltip
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04

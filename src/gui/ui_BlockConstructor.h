@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file EliteEditor.h
+ * @file ui_BlockConstructor.h
  * @brief Header súbor pre GUI vytváranie blokov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04

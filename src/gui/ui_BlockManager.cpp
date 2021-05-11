@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file graph_ui.cpp
- * @brief
+ * @file ui_BlockManager.h
+ * @brief Súbor pre prácu s blokmi - vymazanie a zobrazenie menu
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

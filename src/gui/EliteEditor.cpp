@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file EliteEditor.cpp
- * @brief
+ * @file EliteEditor.h
+ * @brief Súbor pre vyvolávanie akcií
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

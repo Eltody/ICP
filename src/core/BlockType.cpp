@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file type.cpp
- * @brief Implementácia type-related operácií
+ * @file BlockType.h
+ * @brief Súbor pre prácu s typovými hodnotami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

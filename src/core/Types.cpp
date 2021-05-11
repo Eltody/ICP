@@ -1,9 +1,10 @@
-/** VUT FIT ICP 2020/2021
- * @file types.cpp
- * @brief Dátové typy použité vo výpočtoch
+/*! VUT FIT ICP
+ * @file Types.h
+ * @brief Súbor pre dátové typy výstupov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
+
 #include "Types.h"
 
 one_number::one_number() : Type{"Hodnota"}{ }

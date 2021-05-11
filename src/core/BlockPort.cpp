@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file port.h
- * @brief Porty pre bloky a vytvorenie menu pri right click-u na blok
+ * @file BlockPort.h
+ * @brief Súbor pre prácu s portami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

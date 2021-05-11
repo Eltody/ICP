@@ -1,6 +1,6 @@
-/** VUT FIT ICP
- * @file blockbase.cpp
- * @brief
+/*! VUT FIT ICP
+ * @file BlockBase.h
+ * @brief Súbor pre kontrolu a prácu s portami
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file port_ui.cpp
- * @brief
+ * @file ui_BlockPort.h
+ * @brief Súbor pre GUI I/O portov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

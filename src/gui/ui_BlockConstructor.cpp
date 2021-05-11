@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file blockfactory_ui.cpp
- * @brief
+ * @file ui_BlockConstructor.h
+ * @brief Súbor pre GUI vytváranie blokov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

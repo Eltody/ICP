@@ -1,10 +1,9 @@
 /*! VUT FIT ICP
  * @file main.cpp
- * @brief Main súbor programu
+ * @brief Main súbor projektu
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
-
 
 #include "gui/EliteEditor.h"
 #include <QApplication>

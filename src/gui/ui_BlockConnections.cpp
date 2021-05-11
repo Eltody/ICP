@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file connection_ui.cpp
- * @brief
+ * @file ui_BlockConnections.h
+ * @brief Súbor pre vytvárenie prepojení blokov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

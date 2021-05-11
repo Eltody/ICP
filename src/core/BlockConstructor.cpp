@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file blockfactory.cpp
- * @brief Alokácia a dealokácia blokov
+ * @file BlockConstructor.h
+ * @brief Súbor pre vytváranie blokov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

@@ -1,7 +1,6 @@
-/** VUT FIT ICP 2020/2021
- * @file operations.cpp
- * @brief Súbor obsahuje funkcie pre prácu so základnými matematickými operáciami
- * @date 3.4.2021
+/*! VUT FIT ICP
+ * @file operations.h
+ * @brief Súbor pre matematické operácie a prácu s blokmi
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

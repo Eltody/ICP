@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file EliteEditor.h
+ * @file ui_BlockConnections.h
  * @brief Header súbor pre vytvárenie prepojení blokov
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04

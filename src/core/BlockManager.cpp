@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file graph.cpp
- * @brief
+ * @file BlockManager.h
+ * @brief Súbor pre prácu so schémou a uchovanie informácií o schéme
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */

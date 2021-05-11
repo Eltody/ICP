@@ -1,3 +1,9 @@
+/*! VUT FIT ICP
+ * @file ui_BlockPort.h
+ * @brief Header súbor pre GUI I/O portov
+ * @author Tomáš Zaťko  - xzatko02
+ * @author Martin Rakús - xrakus04
+ */
 
 #pragma once
 #include <QPaintEvent>
@@ -37,37 +43,34 @@ public:
 };
 
 /**
- * @brief Input ports GUI representation
+ * @brief GUI reprezentácia vstupných portov
  */
 class InPortUI : public UIBlockPort, public InPort{
 public:
-	//! Copy constructor
 	InPortUI(const InPortUI &other);
-	//! Input port constructor (decorator pattern)
 	explicit InPortUI(const InPort &p, QWidget *parent = nullptr);
-	//! Move to coordinates
+    //! Presuň na súradnice
 	void Move(int x, int y) override;
 protected:
-	//! Event that invokes actions triggered by mouse movement
+    //! Vyvolá akcie pri pohybe myšou
 	void mouseMoveEvent(QMouseEvent *event) override;
-	//! Event that invokes actions triggered by mouse clicks
+    //! Vyvolá akcie pri kliknutí myšou
 	void mousePressEvent(QMouseEvent *) override;
 };
 
 /**
- * @brief Output ports GUI representation
+ * @brief GUI reprezentácia výstupných portov
  */
 class OutPortUI : public UIBlockPort, public OutPort{
 public:
-	//! Copy constructor
+    //! Konštruktor
 	OutPortUI(const OutPortUI &other);
-	//! Output port constructor (decorator pattern)
 	explicit OutPortUI(const OutPort &p, QWidget *parent = nullptr);
-	//! Move to coordinates
+    //! Presuň na súradnice
 	void Move(int x, int y) override;
 protected:
-	//! Event that invokes actions triggered by mouse movement
+    //! Vyvolá akcie pri pohybe myšou
 	void mouseMoveEvent(QMouseEvent *event) override;
-	//! Event that invokes actions triggered by mouse clicks
+    //! Vyvolá akcie pri kliknutí myšou
 	void mousePressEvent(QMouseEvent *) override;
 };

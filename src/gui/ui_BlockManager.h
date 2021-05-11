@@ -1,6 +1,6 @@
 /*! VUT FIT ICP
- * @file EliteEditor.h
- * @brief Header súbor pre prácu s blokmi - vymazanie
+ * @file ui_BlockManager.h
+ * @brief Header súbor pre prácu s blokmi - vymazanie a zobrazenie menu
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
  */
