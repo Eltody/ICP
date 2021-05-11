@@ -9,10 +9,10 @@
 #include <vector>
 #include <initializer_list>
 #include "BlockPort.h"
-#include "graph.h"
-#include "blocks.h"
+#include "BlockManager.h"
+#include "Blocks.h"
 
-class Graph;
+class Manager;
 
 /**
  * @brief Definícia základného bloku
@@ -29,15 +29,15 @@ private:
 	 */
     std::vector<OutPort> outputs;
 protected:
-    BlockBase(Graph &g, BlockType type, std::string name);
-	BlockBase(Graph &g, BlockType type, std::string name,
+    BlockBase(Manager &g, BlockType type, std::string name);
+	BlockBase(Manager &g, BlockType type, std::string name,
 			  std::initializer_list<InPort> inputs,
 			  std::initializer_list<OutPort> outputs);
 public:
     /**
-     * @brief Referencia parent Graph object
+     * @brief Referencia parent Manager object
 	 */
-	Graph &graph;
+	Manager &graph;
     /**
      * @brief Typ bloku
 	 */

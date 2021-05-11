@@ -10,7 +10,7 @@
 #include <QString>
 #include <string>
 
-#include "../core/blocks.h"
+#include "../core/Blocks.h"
 #include "EliteEditor.h"
 #include "ui_EliteEditor.h"
 #include "block_ui.h"
@@ -544,7 +544,7 @@ void ELITEEDITOR::vect(){
 
 void ELITEEDITOR::newFile(){
     if(maybeSave()){
-		graph.GraphClearing();
+		graph.JEEclear();
 		setCurrentFile(QString::fromStdString(""));
 	}
 }
@@ -671,7 +671,7 @@ void ELITEEDITOR::loadFile(const QString &fileName, bool overlap){
 		funcIn << in.read(1024).toStdString() << '\n';
 	}
 
-	if(!graph.GraphLoading(funcIn, overlap)) {
+	if(!graph.JEEload(funcIn, overlap)) {
         QMessageBox::warning(this, "(j)Elitný editor",
                                    QString::fromStdString("Chyba čítania súboru."));
 	}
@@ -704,7 +704,7 @@ bool ELITEEDITOR::saveFile(const QString &fileName){
 
 	// FILE SAVING
 	std::stringstream funcOut;
-	funcOut = graph.GraphSaving();
+    funcOut = graph.JEEsave();
 
     while(funcOut.good()){
 		std::string str;

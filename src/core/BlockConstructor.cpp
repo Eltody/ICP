@@ -5,13 +5,13 @@
  * @author Martin Rakús - xrakus04
  */
 
-#include "blockfactory.h"
+#include "BlockConstructor.h"
 
 #include "blocks/operations.h"
 
 
 // alokácia blokov
-BlockBase *BlockFactory::AllocBlock(BlockType option){
+BlockBase *BlockConstructor::AllocBlock(BlockType option){
     BlockBase *block;
     if(option == VECTOR_INPUT){
         block = new VectorInput(g);
@@ -141,18 +141,18 @@ BlockBase *BlockFactory::AllocBlock(BlockType option){
 }
 
 
-BlockFactory::BlockFactory(Graph &g) : g(g) { }
+BlockConstructor::BlockConstructor(Manager &g) : g(g) { }
 
 
 // uvoľnenie bloku
-void BlockFactory::FreeBlock(BlockBase *block){
+void BlockConstructor::FreeBlock(BlockBase *block){
     blocks.remove(block);
     delete block;
 }
 
 
 // uvoľnenie všetkých blokov
-BlockFactory::~BlockFactory(){
+BlockConstructor::~BlockConstructor(){
     for(BlockBase *block : blocks){
         delete block;
 	}

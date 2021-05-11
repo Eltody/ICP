@@ -145,4 +145,4 @@ BlockBase *BlockFactoryUI::AllocBlock(BlockType option){
 }
 
 BlockFactoryUI::BlockFactoryUI(GraphUI &g)
-	: BlockFactory(g), block_parent(&g) { }
+	: BlockConstructor(g), block_parent(&g) { }

@@ -17,11 +17,11 @@ class Type;
 
 //! @brief TypeValue is a single component of Type
 class TypeValue{
-	friend class Type;
+    friend class Type;
 private:
 	double data;
-	Type &type;
-	TypeValue(Type &type, double value = 0.0);
+    Type &type;
+    TypeValue(Type &type, double value = 0.0);
 public:
 	operator const double &() const;
 	TypeValue & operator=(const double &value);
@@ -36,18 +36,18 @@ private:
 	std::map<std::string, TypeValue> data;
 	Ports *port;
 public:
-	Type(std::initializer_list<std::string> components);
-	Type(const Type &other);
-	Type(const Type &other, Ports *port);
-	Type & operator=(const Type &other);
-	Type(Type &&other) = delete;
+    Type(std::initializer_list<std::string> components);
+    Type(const Type &other);
+    Type(const Type &other, Ports *port);
+    Type & operator=(const Type &other);
+    Type(Type &&other) = delete;
 	TypeValue & operator[](const std::string &s);
 	const std::map<std::string, TypeValue> Data();
 	bool isNull() const;
 	void setNull();
-	//! Type comparison
-	bool type_of(const Type &other) const;
+    //! Type comparison
+    bool type_of(const Type &other) const;
 	//! Value comparison
-	friend bool operator== (const Type &a, const Type &b);
+    friend bool operator== (const Type &a, const Type &b);
 	operator std::string();
 };

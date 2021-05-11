@@ -5,39 +5,38 @@
  * @author Martin Rakús - xrakus04
  */
 
-#include "type.h"
+#include "BlockType.h"
 #include "BlockPort.h"
 #include <utility>
 #include <sstream>
 #include <stdexcept>
 
 
-Type::Type(std::initializer_list<std::string> components) : null_data(true), port(nullptr)
-{
+Type::Type(std::initializer_list<std::string> components) : null_data(true), port(nullptr){
 	for (const auto &component : components) {
 		this->data.insert(std::pair<std::string, TypeValue>(component, TypeValue(*this)));
 	}
 }
 
 
-Type::Type(const Type &other) : null_data(other.null_data), port(other.port) {
+Type::Type(const Type &other) : null_data(other.null_data), port(other.port){
 	for (const auto &elem : other.data) {
 		this->data.insert(std::pair<std::string, TypeValue>(elem.first, TypeValue(*this, elem.second.data)));
 	}
 }
 
 
-Type::Type(const Type &other, Ports *port) : null_data(other.null_data), port(port) {
+Type::Type(const Type &other, Ports *port) : null_data(other.null_data), port(port){
 	for (const auto &elem : other.data) {
 		this->data.insert(std::pair<std::string, TypeValue>(elem.first, TypeValue(*this, elem.second.data)));
 	}
 }
 
 
-Type &Type::operator=(const Type &other) {
+Type &Type::operator=(const Type &other){
 	null_data = other.null_data;
 	this->data.clear();
-	for (const auto &elem : other.data) {
+    for (const auto &elem : other.data){
 		this->data.insert(std::pair<std::string, TypeValue>(elem.first, TypeValue(*this, elem.second.data)));
 	}
 	if (this->port != nullptr) {
@@ -48,7 +47,7 @@ Type &Type::operator=(const Type &other) {
 
 
 // access component of type
-TypeValue &Type::operator[](const std::string &component) {
+TypeValue &Type::operator[](const std::string &component){
 	return this->data.at(component);
 }
 
@@ -58,23 +57,23 @@ const std::map<std::string, TypeValue> Type::Data(){
 }
 
 
-bool Type::isNull() const {
+bool Type::isNull() const{
 	return null_data;
 }
 
 
 void Type::setNull(){
 	null_data = true;
-	if (this->port != nullptr) {
+    if (this->port != nullptr){
 		this->port->eventValueChange();
 	}
 }
 
 
 // kontrola typovej kompatibility
-bool Type::type_of(const Type &other) const {
-	for (const auto &element : this->data) {
-		if (other.data.count(element.first) == 0) {
+bool Type::type_of(const Type &other) const{
+    for (const auto &element : this->data){
+        if (other.data.count(element.first) == 0){
 			return false;
 		}
 	}
@@ -82,10 +81,9 @@ bool Type::type_of(const Type &other) const {
 }
 
 
-Type::operator std::string() {
+Type::operator std::string(){
 	std::stringstream ss;
-	for(const auto &elem : data)
-	{
+    for(const auto &elem : data){
 		ss << elem.first << ": ";
 		if (isNull()) {
 			ss << "Null";
@@ -99,19 +97,19 @@ Type::operator std::string() {
 
 
 // 'a' values equals 'b' values
-bool operator==(const Type &a, const Type &b) {
+bool operator==(const Type &a, const Type &b){
 	if(!a.type_of(b)){
 		return false;
 	}
 	if(a.isNull() || b.isNull()){
 		if(a.isNull() && b.isNull()){
 			return true;
-		} else {
+        } else{
 			return false;
 		}
 	}
-	for (const auto &element : a.data) {
-		if (b.data.at(element.first) != element.second) {
+    for (const auto &element : a.data){
+        if (b.data.at(element.first) != element.second){
 			return false;
 		}
 	}
@@ -122,7 +120,7 @@ bool operator==(const Type &a, const Type &b) {
 TypeValue::TypeValue(Type &type, double value) : data(value), type(type) { }
 
 
-TypeValue::operator const double &() const {
+TypeValue::operator const double &() const{
 	if(this->type.isNull()){
 		throw std::runtime_error("Trying to access null TypeValue!");
 	}
@@ -131,10 +129,10 @@ TypeValue::operator const double &() const {
 
 
 // after setting any component to some value, other components are not null anymore and are set to default value '0.0'
-TypeValue &TypeValue::operator=(const double &value) {
+TypeValue &TypeValue::operator=(const double &value){
 	this->data = value;
 	this->type.null_data = false;
-	if (this->type.port != nullptr) {
+    if (this->type.port != nullptr){
 		this->type.port->eventValueChange();
 	}
 	return *this;

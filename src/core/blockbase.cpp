@@ -7,10 +7,10 @@
 
 #include "blockbase.h"
 
-BlockBase::BlockBase(Graph &g, BlockType type, std::string name)
+BlockBase::BlockBase(Manager &g, BlockType type, std::string name)
     : graph(g), type(type), name(name){ }
 
-BlockBase::BlockBase(Graph &g, BlockType type, std::string name,
+BlockBase::BlockBase(Manager &g, BlockType type, std::string name,
 					 std::initializer_list<InPort> inputs,
 					 std::initializer_list<OutPort> outputs)
     : inputs(inputs), outputs(outputs), graph(g), type(type), name(name){ }

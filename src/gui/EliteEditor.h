@@ -6,7 +6,7 @@
 #include <QColor>
 #include <string>
 
-#include "../core/blocks.h"
+#include "../core/Blocks.h"
 #include "graph_ui.h"
 
 
@@ -15,7 +15,7 @@ class GraphUI;
 //! BlockType decorator for QAction
 class BlockMenuAction : public QAction{
 private:
-    //! Type of the generated block
+    //! BlockType of the generated block
     BlockType t;
 public:
     //! Action constructor

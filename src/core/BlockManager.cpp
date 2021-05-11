@@ -5,7 +5,7 @@
  * @author Martin Rakús - xrakus04
  */
 
-#include "graph.h"
+#include "BlockManager.h"
 #include <utility>
 #include <sstream>
 #include <iterator>
@@ -14,49 +14,47 @@
 #include <set>
 #include <algorithm>
 
-Graph::Graph() : bf(*this), needToBeComputed(), blocks_iterator(needToBeComputed.begin()), computedAsLast(nullptr) { }
+Manager::Manager() : bf(*this), needToBeComputed(), blocks_iterator(needToBeComputed.begin()), computedAsLast(nullptr) { }
 
-std::string Graph::GetSchemeName() const{
-	return this->name;
+std::string Manager::GetSchemeName() const{
+    return this->name;
 }
 
-void Graph::SetSchemeName(const std::string name){
-	this->name = name;
-	if (graphChanged) {
-		graphChanged();
-	}
+void Manager::SetSchemeName(const std::string name){
+    this->name = name;
+    if (graphChanged){
+        graphChanged();
+    }
 }
 
-void Graph::onGraphChange(std::function<void ()> callback){
+void Manager::onGraphChange(std::function<void ()> callback){
 	this->graphChanged = callback;
 }
 
-int Graph::getIDofBlock(const BlockBase &block) const{
+int Manager::getIDofBlock(const BlockBase &block) const{
 	int idx = 0;
-	for (BlockBase *b : blocks) {
-		if (b == &block){
+    for (BlockBase *b : blocks){
+        if (b == &block)
 			return idx;
-		}
 		idx++;
 	}
 	return -1;
 }
 
-void Graph::GraphClearing(){
+void Manager::JEEclear(){
 	for (BlockBase *b : blocks){
 		GetBlockFactory().FreeBlock(b);
 	}
 	blocks.clear();
 	connections.clear();
 	name.clear();
-	if (graphChanged) {
+    if (graphChanged)
 		graphChanged();
-	}
 }
 
-bool Graph::GraphLoading(std::stringstream &graph, bool overlap){
+bool Manager::JEEload(std::stringstream &graph, bool overlap){
     if(!overlap){
-        GraphClearing();
+        JEEclear();
 	}
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
@@ -79,7 +77,7 @@ bool Graph::GraphLoading(std::stringstream &graph, bool overlap){
 		// Connections
 		graph >> std::ws; // skip whitespaces
         std::getline(graph, tmp,'(');
-        if (tmp != "paths") {
+        if (tmp != "paths"){
 			return false;
 		}
         std::getline(graph, tmp, ')');
@@ -110,13 +108,13 @@ bool Graph::GraphLoading(std::stringstream &graph, bool overlap){
 	return true;
 }
 
-std::stringstream Graph::GraphSaving(){
+std::stringstream Manager::JEEsave(){
 	std::stringstream ss;
 	// Blocks
     ss << "blocks(";
 	bool first = true;
-	for (BlockBase *b : blocks) {
-		if(first) {
+    for (BlockBase *b : blocks){
+        if(first){
 			first = false;
 		} else {
             ss << ";";
@@ -130,7 +128,7 @@ std::stringstream Graph::GraphSaving(){
     ss << "paths(";
 	first = true;
     for (std::pair<InPort *, OutPort *> p : connections){
-		if(first) {
+        if(first){
 			first = false;
         } else{
             ss << ";";
@@ -145,11 +143,11 @@ std::stringstream Graph::GraphSaving(){
 	return std::move(ss);
 }
 
-BlockFactory &Graph::GetBlockFactory(){
+BlockConstructor &Manager::GetBlockFactory(){
 	return bf;
 }
 
-BlockBase *Graph::addBlock(BlockType t){
+BlockBase *Manager::addBlock(BlockType t){
 	BlockBase *b = GetBlockFactory().AllocBlock(t);
     if (b != nullptr){
 		this->blocks.push_back(b);
@@ -161,7 +159,7 @@ BlockBase *Graph::addBlock(BlockType t){
 	return b;
 }
 
-void Graph::BlockRemoving(BlockBase *b){
+void Manager::BlockRemoving(BlockBase *b){
 	this->blocks.remove(b);
 	for(std::size_t i = 0; i < b->InputCount(); i++){
         ConnectionRemoving(b->Input(i));
@@ -176,15 +174,15 @@ void Graph::BlockRemoving(BlockBase *b){
 	}
 }
 
-OutPort *Graph::getConnectedOutPort(InPort &p){
+OutPort *Manager::getConnectedOutPort(InPort &p){
 	if (connections.find(&p) != connections.end()){
 		return connections.at(&p);
-	} else {
+    } else{
 		return nullptr;
 	}
 }
 
-bool Graph::addConnection(OutPort &a, InPort &b){
+bool Manager::addConnection(OutPort &a, InPort &b){
     if (!a.Value().type_of(b.Value())){
 		return false;
 	}
@@ -201,7 +199,7 @@ bool Graph::addConnection(OutPort &a, InPort &b){
 	return true;
 }
 
-void Graph::ConnectionRemoving(InPort &p){
+void Manager::ConnectionRemoving(InPort &p){
 	OutPort *op = getConnectedOutPort(p);
 	if (op != nullptr){
 		op->eventConnectionChange();
@@ -213,7 +211,7 @@ void Graph::ConnectionRemoving(InPort &p){
 	}
 }
 
-void Graph::ConnectionRemoving(OutPort &p){
+void Manager::ConnectionRemoving(OutPort &p){
 	for(auto it = connections.begin(); it != connections.end();){
         if ((*it).second == &p){
 			(*it).first->eventConnectionChange();
@@ -229,7 +227,7 @@ void Graph::ConnectionRemoving(OutPort &p){
 	}
 }
 
-bool Graph::allInputsConnected(){
+bool Manager::allInputsConnected(){
     for(const auto b : needToBeComputed){
         if(b->Computable() && !b->InputsAreConnected()){
             return false;
@@ -238,7 +236,7 @@ bool Graph::allInputsConnected(){
 	return true;
 }
 
-void Graph::computeReset(){
+void Manager::computeReset(){
 	for (BlockBase *b : blocks){
         if(b->Computable()){
             b->Reset();
@@ -248,7 +246,7 @@ void Graph::computeReset(){
     blocks_iterator = needToBeComputed.begin();
 }
 
-bool Graph::computeStep(){
+bool Manager::computeStep(){
     computedAsLast = nullptr;
 
     if (!allInputsConnected()){
@@ -282,7 +280,7 @@ bool Graph::computeStep(){
 	return true;
 }
 
-bool Graph::computeAll(){
+bool Manager::computeAll(){
 	computeReset();
 	while(!computeFinished()){
 		if(!computeStep()){
@@ -292,15 +290,15 @@ bool Graph::computeAll(){
 	return true;
 }
 
-bool Graph::computeFinished(){
+bool Manager::computeFinished(){
     return (needToBeComputed.size() == 0);
 }
 
 /**
- * Directed Acyclic Graph Check
+ * Directed Acyclic Manager Check
  * Reference: https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
  */
-bool Graph::AcyclicBlocks(OutPort &a, InPort &b){
+bool Manager::AcyclicBlocks(OutPort &a, InPort &b){
 	// std::map<output, inputs> edges
 	std::map<const BlockBase*, std::set<const BlockBase*>> dag;
 

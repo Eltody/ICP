@@ -6,10 +6,10 @@
  */
 
 #pragma once
-#include "blocks.h"
+#include "Blocks.h"
 #include <list>
 
-class Graph;
+class Manager;
 class BlockBase;
 
 /**
@@ -17,22 +17,22 @@ class BlockBase;
  *
  * Blocks are created using abstract factory design patern.
  */
-class BlockFactory {
+class BlockConstructor{
 protected:
 	//! Main widget that contains the scheme
-	Graph &g;
+	Manager &g;
 	//! List of all blocks
 	std::list<BlockBase*> blocks;
 public:
 	//! @brief Block constructor
-	//! @param t Type of block to construct
+	//! @param t BlockType of block to construct
 	virtual BlockBase* AllocBlock(BlockType t);
 	//! @brief Block destructor
 	//! @param b Address of the block to destruct
 	virtual void FreeBlock(BlockBase *b);
 	//! @brief Factory constructor
 	//! @param g Parent scheme object
-	BlockFactory(Graph &g);
+    BlockConstructor(Manager &g);
 	
-    virtual ~BlockFactory(); // destruktor
+    virtual ~BlockConstructor(); // destruktor
 };

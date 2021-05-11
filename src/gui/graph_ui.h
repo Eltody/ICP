@@ -7,7 +7,7 @@
 #include <list>
 
 #include "../core/blockbase.h"
-#include "../core/graph.h"
+#include "../core/BlockManager.h"
 #include "blockfactory_ui.h"
 #include "connection_ui.h"
 
@@ -31,7 +31,7 @@ class ConnectionUI;
 /**
  * @brief Parent QWidget to all other widgets used in scheme
  */
-class GraphUI : public QWidget, public Graph{
+class GraphUI : public QWidget, public Manager{
 public:
     //! Current offset of graph against main window
     QPoint pos_offset;
@@ -41,19 +41,19 @@ public:
     //! Get offset of graph against main window
     QPoint getOffset() const;
     //! Delete the current scheme, get ready for a new scheme
-    void GraphClearing() override;
+    void JEEclear() override;
     /**
      * @brief Load scheme from a file
      * @param graph Scheme's parent widget
      * @param overlap Merge flag - file will overlap into existing scheme if true
      * @return True when file was loaded successfully, else false
      */
-    bool GraphLoading(std::stringstream &graph, bool overlap = false) override;
+    bool JEEload(std::stringstream &graph, bool overlap = false) override;
     /**
      * @brief Prepare scheme for saving - generate stringstream GPH represaentation
      * @return GPH stringstream representation
      */
-    std::stringstream GraphSaving() override;
+    std::stringstream JEEsave() override;
     //! Block's context menu
     void blockContextMenu(BlockBase *b);
 
@@ -99,7 +99,7 @@ public:
     bool computeStep() override;
     //! Computes the whole scheme
     bool computeAll() override;
-    //! Graph GUI destructor
+    //! Manager GUI destructor
     ~GraphUI();
     //! Temporary value used while creating a connection - port's address after one click
 	InPort *in_click;
@@ -111,7 +111,7 @@ private:
 	//! GUI Block factory
 	BlockFactoryUI bf;
 	//! Getting block factory (core)
-	BlockFactory & GetBlockFactory() override;
+	BlockConstructor & GetBlockFactory() override;
 	//! Dragging state
 	bool drag = false;
 	//! Current dragging coordinates

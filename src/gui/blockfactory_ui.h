@@ -2,7 +2,7 @@
 #pragma once
 #include <QWidget>
 #include <list>
-#include "../core/blockfactory.h"
+#include "../core/BlockConstructor.h"
 
 class GraphUI;
 
@@ -11,14 +11,14 @@ class GraphUI;
  *
  * Blocks are created using abstract factory design patern.
  */
-class BlockFactoryUI : public BlockFactory
+class BlockFactoryUI : public BlockConstructor
 {
 private:
 	//! Widged used as parent for constructed blocks
 	QWidget *block_parent;
 public:
 	//! GUI Block constructor
-	//! @param t Type of block to construct
+	//! @param t BlockType of block to construct
 	BlockBase* AllocBlock(BlockType t) override;
 
 	//! Factory constructor

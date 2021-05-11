@@ -7,20 +7,20 @@
  */
 
 #include "../types/types.h"
-#include "../blocks.h"
+#include "../Blocks.h"
 #include "operations.h"
 #include "math.h"
 #include <cmath>
 
 
 // blok pre načítanie vstupu čísla
-MathInput::MathInput(Graph &g)
+MathInput::MathInput(Manager &g)
     : BlockBase(g, MATH_INPUT, "Vstup",
 {}, {OutPort(*this, one_number(), "")}) { }
 
 
 // blok pre výstup čísla
-MathOutput::MathOutput(Graph &g)
+MathOutput::MathOutput(Manager &g)
     : BlockBase(g, MATH_OUTPUT, "Výstup",
     {InPort(*this, one_number(), "")}, {}) { }
 
@@ -30,7 +30,7 @@ void MathOutput::Compute() { }
 
 
 // blok pre sčítanie dvoch čísel
-MathAddBlock::MathAddBlock(Graph &g)
+MathAddBlock::MathAddBlock(Manager &g)
     : BlockBase(g, MATH_ADD, BLOCK_NAME.at(MATH_ADD),
     {
         InPort(*this, one_number(), "Číslo A"),
@@ -49,7 +49,7 @@ void MathAddBlock::Compute(){
 
 
 // blok pre odčítanie dvoch čísel
-MathSubBlock::MathSubBlock(Graph &g)
+MathSubBlock::MathSubBlock(Manager &g)
     : BlockBase(g, MATH_SUB, BLOCK_NAME.at(MATH_SUB),
     {
         InPort(*this, one_number(), "Číslo A"),
@@ -68,7 +68,7 @@ void MathSubBlock::Compute(){
 
 
 // blok pre násobenie dvoch čísel
-MathMulBlock::MathMulBlock(Graph &g)
+MathMulBlock::MathMulBlock(Manager &g)
     : BlockBase(g, MATH_MUL, BLOCK_NAME.at(MATH_MUL),
     {
         InPort(*this, one_number(), "Číslo A"),
@@ -87,7 +87,7 @@ void MathMulBlock::Compute(){
 
 
 // blok pre delenie dvoch čísel
-MathDivBlock::MathDivBlock(Graph &g)
+MathDivBlock::MathDivBlock(Manager &g)
     : BlockBase(g, MATH_DIV, BLOCK_NAME.at(MATH_DIV),
     {
         InPort(*this, one_number(), "Číslo A"),
@@ -106,7 +106,7 @@ void MathDivBlock::Compute(){
 
 
 // blok pre druhú odmocninu čísla
-MathSqrtBlock::MathSqrtBlock(Graph &g)
+MathSqrtBlock::MathSqrtBlock(Manager &g)
     : BlockBase(g, MATH_SQRT, BLOCK_NAME.at(MATH_SQRT),
     {
         InPort(*this, one_number(), "Číslo A")
@@ -124,7 +124,7 @@ void MathSqrtBlock::Compute(){
 
 
 // blok pre výpočet absolútnej hodnoty čísla
-MathAbsBlock::MathAbsBlock(Graph &g)
+MathAbsBlock::MathAbsBlock(Manager &g)
     : BlockBase(g, MATH_ABS, BLOCK_NAME.at(MATH_ABS),
     {
         InPort(*this, one_number(), "Číslo A")
@@ -142,7 +142,7 @@ void MathAbsBlock::Compute(){
 
 
 // blok pre vyhodnotenie väčšieho čísla z dvoch - GT - greater than
-MathGTBlock::MathGTBlock(Graph &g)
+MathGTBlock::MathGTBlock(Manager &g)
     : BlockBase(g, MATH_GT, BLOCK_NAME.at(MATH_GT),
     {
         InPort(*this, one_number(), "Číslo A"),
@@ -168,7 +168,7 @@ void MathGTBlock::Compute(){
 
 
 // blok pre vyhodnotenie menšieho čísla z dvoch - LT - less than
-MathLTBlock::MathLTBlock(Graph &g)
+MathLTBlock::MathLTBlock(Manager &g)
     : BlockBase(g, MATH_LT, BLOCK_NAME.at(MATH_LT),
     {
         InPort(*this, one_number(), "Číslo A"),
@@ -194,7 +194,7 @@ void MathLTBlock::Compute(){
 
 
 // blok pre výpočet sinusu
-MathSinBlock::MathSinBlock(Graph &g)
+MathSinBlock::MathSinBlock(Manager &g)
     : BlockBase(g, MATH_SIN, BLOCK_NAME.at(MATH_SIN),
     {
         InPort(*this, one_number(), "Číslo A")
@@ -212,7 +212,7 @@ void MathSinBlock::Compute(){
 
 
 // blok pre výpočet cosinusu
-MathCosBlock::MathCosBlock(Graph &g)
+MathCosBlock::MathCosBlock(Manager &g)
     : BlockBase(g, MATH_COS, BLOCK_NAME.at(MATH_COS),
     {
         InPort(*this, one_number(), "Číslo A")
@@ -230,7 +230,7 @@ void MathCosBlock::Compute(){
 
 
 // blok pre inkrement
-MathIncBlock::MathIncBlock(Graph &g)
+MathIncBlock::MathIncBlock(Manager &g)
     : BlockBase(g, MATH_INC, BLOCK_NAME.at(MATH_INC),
     {
         InPort(*this, one_number(), "Číslo A")
@@ -248,7 +248,7 @@ void MathIncBlock::Compute(){
 
 
 // blok pre dekrement
-MathDecBlock::MathDecBlock(Graph &g)
+MathDecBlock::MathDecBlock(Manager &g)
     : BlockBase(g, MATH_DEC, BLOCK_NAME.at(MATH_DEC),
     {
         InPort(*this, one_number(), "Číslo A")
@@ -271,13 +271,13 @@ void MathDecBlock::Compute(){
 
 
 // blok pre načítanie vstupu matice 2x2
-MatrixInput::MatrixInput(Graph &g)
+MatrixInput::MatrixInput(Manager &g)
     : BlockBase(g, MAT2_INPUT, "Vstup",
 {}, {OutPort(*this, matrix2x2_out(), "")}) { }
 
 
 // blok pre načítanie vstupu matice 3x3
-Matrix3x3Input::Matrix3x3Input(Graph &g)
+Matrix3x3Input::Matrix3x3Input(Manager &g)
     : BlockBase(g, MAT3_INPUT, "Vstup",
 {}, {OutPort(*this, matrix3x3_out(), "")}) { }
 
@@ -291,19 +291,19 @@ void Matrix3x3Output::Compute() { }
 
 
 // blok pre výstup matice 2x2
-MatrixOutput::MatrixOutput(Graph &g)
+MatrixOutput::MatrixOutput(Manager &g)
     : BlockBase(g, MAT2_OUTPUT, "Výstup",
     {InPort(*this, matrix2x2_out(), "")}, {}) { }
 
 
 // blok pre výstup matice 3x3
-Matrix3x3Output::Matrix3x3Output(Graph &g)
+Matrix3x3Output::Matrix3x3Output(Manager &g)
     : BlockBase(g, MAT3_OUTPUT, "Výstup",
     {InPort(*this, matrix3x3_out(), "")}, {}) { }
 
 
 // blok pre sčítanie matíc 2x2
-MatrixAddBlock::MatrixAddBlock(Graph &g)
+MatrixAddBlock::MatrixAddBlock(Manager &g)
     : BlockBase(g, MAT_ADD, BLOCK_NAME.at(MAT_ADD),
     {
         InPort(*this, matrix2x2_out(), "Matica A"),
@@ -325,7 +325,7 @@ void MatrixAddBlock::Compute(){
 
 
 // blok pre sčítanie matíc 3x3
-Matrix3x3AddBlock::Matrix3x3AddBlock(Graph &g)
+Matrix3x3AddBlock::Matrix3x3AddBlock(Manager &g)
     : BlockBase(g, MAT3_ADD, BLOCK_NAME.at(MAT3_ADD),
     {
         InPort(*this, matrix3x3_out(), "Matica A"),
@@ -352,7 +352,7 @@ void Matrix3x3AddBlock::Compute(){
 
 
 // blok pre násobenie matice 2x2 a 2D vektoru
-MatMulVecBlock::MatMulVecBlock(Graph &g)
+MatMulVecBlock::MatMulVecBlock(Manager &g)
     : BlockBase(g, MAT_MUL_VEC, BLOCK_NAME.at(MAT_MUL_VEC),
     {
         InPort(*this, matrix2x2_out(), "Matica"),
@@ -372,7 +372,7 @@ void MatMulVecBlock::Compute(){
 
 
 // blok pre násobenie matice 3x3 a 3D vektoru
-Mat3x3MulVecBlock::Mat3x3MulVecBlock(Graph &g)
+Mat3x3MulVecBlock::Mat3x3MulVecBlock(Manager &g)
     : BlockBase(g, MAT_MUL_VEC, BLOCK_NAME.at(MAT_MUL_VEC),
     {
         InPort(*this, matrix3x3_out(), "Matica"),
@@ -393,7 +393,7 @@ void Mat3x3MulVecBlock::Compute(){
 
 
 // blok pre sčítanie matíc 2x2
-MatrixMulBlock::MatrixMulBlock(Graph &g)
+MatrixMulBlock::MatrixMulBlock(Manager &g)
     : BlockBase(g, MAT_MUL, BLOCK_NAME.at(MAT_MUL),
     {
         InPort(*this, matrix2x2_out(), "Matica A"),
@@ -415,7 +415,7 @@ void MatrixMulBlock::Compute(){
 
 
 // blok pre násobenie matíc 3x3
-Matrix3x3MulBlock::Matrix3x3MulBlock(Graph &g)
+Matrix3x3MulBlock::Matrix3x3MulBlock(Manager &g)
     : BlockBase(g, MAT3_MUL, BLOCK_NAME.at(MAT3_MUL),
     {
         InPort(*this, matrix3x3_out(), "Matica A"),
@@ -443,7 +443,7 @@ void Matrix3x3MulBlock::Compute(){
 
 
 // blok pre odčítanie matíc 2x2
-MatrixSubBlock::MatrixSubBlock(Graph &g)
+MatrixSubBlock::MatrixSubBlock(Manager &g)
     : BlockBase(g, MAT_SUB, BLOCK_NAME.at(MAT_SUB),
     {
         InPort(*this, matrix2x2_out(), "Matica A"),
@@ -465,7 +465,7 @@ void MatrixSubBlock::Compute(){
 
 
 // blok pre odčítanie matíc 3x3
-Matrix3x3SubBlock::Matrix3x3SubBlock(Graph &g)
+Matrix3x3SubBlock::Matrix3x3SubBlock(Manager &g)
     : BlockBase(g, MAT3_SUB, BLOCK_NAME.at(MAT3_SUB),
     {
         InPort(*this, matrix3x3_out(), "Matica A"),
@@ -492,7 +492,7 @@ void Matrix3x3SubBlock::Compute(){
 
 
 // blok pre výpočet determinantu matice 2x2
-MatrixDeterminantBlock::MatrixDeterminantBlock(Graph &g)
+MatrixDeterminantBlock::MatrixDeterminantBlock(Manager &g)
     : BlockBase(g, MAT_DETERMINANT, BLOCK_NAME.at(MAT_DETERMINANT),
     {
         InPort(*this, matrix2x2_out(), "Matica A")
@@ -509,14 +509,14 @@ void MatrixDeterminantBlock::Compute(){
 }
 
 // blok pre načítanie vstupu matice 2x2 pre výpočet determinantu
-MatrixDeterminantInput::MatrixDeterminantInput(Graph &g)
+MatrixDeterminantInput::MatrixDeterminantInput(Manager &g)
     : BlockBase(g, MAT_DETERMINANT_INPUT, "Vstup",
 {}, {OutPort(*this, matrix2x2_out(), "")}) { }
 
 void MatrixDeterminantInput::Compute() { }
 
 // blok pre výstup determinant matice 2x2
-MatrixDeterminantOutput::MatrixDeterminantOutput(Graph &g)
+MatrixDeterminantOutput::MatrixDeterminantOutput(Manager &g)
     : BlockBase(g, MAT_DETERMINANT_OUTPUT, "Výstup",
     {InPort(*this, one_number(), "")}, {}) { }
 
@@ -529,13 +529,13 @@ void MatrixDeterminantOutput::Compute() { }
 
 
 // blok pre načítanie vstupu 2D vektoru
-VectorInput::VectorInput(Graph &g)
+VectorInput::VectorInput(Manager &g)
     : BlockBase(g, VECTOR_INPUT, "Vstup",
 {}, {OutPort(*this, vector2D_out(), "")}) { }
 
 
 // blok pre načítanie vstupu 3D vektoru
-Vector3DInput::Vector3DInput(Graph &g)
+Vector3DInput::Vector3DInput(Manager &g)
     : BlockBase(g, VECTOR3D_INPUT, "Vstup",
 {}, {OutPort(*this, vector3D_out(), "")}) { }
 
@@ -549,19 +549,19 @@ void Vector3DOutput::Compute() { }
 
 
 // blok pre výstup 2D vektoru
-VectorOutput::VectorOutput(Graph &g)
+VectorOutput::VectorOutput(Manager &g)
     : BlockBase(g, VECTOR_OUTPUT, "Výstup",
     {InPort(*this, vector2D_out(), "")}, {}) { }
 
 
 // blok pre výstup 3D vektoru
-Vector3DOutput::Vector3DOutput(Graph &g)
+Vector3DOutput::Vector3DOutput(Manager &g)
     : BlockBase(g, VECTOR3D_OUTPUT, "Výstup",
     {InPort(*this, vector3D_out(), "")}, {}) { }
 
 
 // blok pre sčítanie dvoch 2D vektorov
-VectorAddBlock::VectorAddBlock(Graph &g)
+VectorAddBlock::VectorAddBlock(Manager &g)
     : BlockBase(g, VECTOR_ADD, BLOCK_NAME.at(VECTOR_ADD),
     {
         InPort(*this, vector2D_out(), "Vektor A"),
@@ -581,7 +581,7 @@ void VectorAddBlock::Compute(){
 
 
 // blok pre odčítanie dvoch 2D vektorov
-VectorSubBlock::VectorSubBlock(Graph &g)
+VectorSubBlock::VectorSubBlock(Manager &g)
     : BlockBase(g, VECTOR_SUB, BLOCK_NAME.at(VECTOR_SUB),
     {
         InPort(*this, vector2D_out(), "Vektor A"),
@@ -601,7 +601,7 @@ void VectorSubBlock::Compute(){
 
 
 // blok pre sčítanie dvoch 3D vektorov
-VectorAddBlock3D::VectorAddBlock3D(Graph &g)
+VectorAddBlock3D::VectorAddBlock3D(Manager &g)
     : BlockBase(g, VECTOR_ADD3D, BLOCK_NAME.at(VECTOR_ADD3D),
     {
         InPort(*this, vector3D_out(), "Vektor A"),
@@ -622,7 +622,7 @@ void VectorAddBlock3D::Compute(){
 
 
 // blok pre odčítanie dvoch 3D vektorov
-VectorSubBlock3D::VectorSubBlock3D(Graph &g)
+VectorSubBlock3D::VectorSubBlock3D(Manager &g)
     : BlockBase(g, VECTOR_SUB3D, BLOCK_NAME.at(VECTOR_SUB3D),
     {
         InPort(*this, vector3D_out(), "Vektor A"),
@@ -643,7 +643,7 @@ void VectorSubBlock3D::Compute(){
 
 
 // blok pre vektorový súčin dvoch 2D vektorov
-VectorDotProductBlock2D::VectorDotProductBlock2D(Graph &g)
+VectorDotProductBlock2D::VectorDotProductBlock2D(Manager &g)
     : BlockBase(g, VECTOR_DOTPRODUCT, BLOCK_NAME.at(VECTOR_DOTPRODUCT),
     {
         InPort(*this, vector2D_out(), "Vektor A"),
@@ -662,7 +662,7 @@ void VectorDotProductBlock2D::Compute(){
 
 
 // blok pre výstup 2D skalárneho súčinu
-VectorDotOutput::VectorDotOutput(Graph &g)
+VectorDotOutput::VectorDotOutput(Manager &g)
     : BlockBase(g, VECTOR_DOT_OUTPUT, "Výstup",
     {InPort(*this, one_number(), "")}, {}) { }
 
@@ -671,7 +671,7 @@ void VectorDotOutput::Compute() { }
 
 
 // blok pre vynásobenie 2D vektora konštantou
-VectorMulConstBlock::VectorMulConstBlock(Graph &g)
+VectorMulConstBlock::VectorMulConstBlock(Manager &g)
     : BlockBase(g, VECTOR_MUL_CONST, BLOCK_NAME.at(VECTOR_MUL_CONST),
     {
         InPort(*this, vector2D_out(), "Vektor"),
@@ -691,7 +691,7 @@ void VectorMulConstBlock::Compute(){
 
 
 // blok pre vynásobenie 3D vektora konštantou
-VectorMulConstBlock3D::VectorMulConstBlock3D(Graph &g)
+VectorMulConstBlock3D::VectorMulConstBlock3D(Manager &g)
     : BlockBase(g, VECTOR_MUL_CONST3D, BLOCK_NAME.at(VECTOR_MUL_CONST3D),
     {
         InPort(*this, vector3D_out(), "Vektor"),

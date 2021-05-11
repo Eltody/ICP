@@ -15,22 +15,21 @@
 #include <functional>
 #include "BlockPort.h"
 #include "blockbase.h"
-#include "blockfactory.h"
+#include "BlockConstructor.h"
 
 /**
  * @brief Trieda - udržuje všetky informácie o schéme
  */
-class Graph
-{
+class Manager{
 private:
     //! Funkcia, ktorá sa volá pri každej zmene grafu
 	std::function<void(void)> graphChanged;
-	BlockFactory bf;
+	BlockConstructor bf;
 protected:
     //! Názov schémy
     std::string name;
 	//! Get block abstract factory
-	virtual BlockFactory & GetBlockFactory();
+	virtual BlockConstructor & GetBlockFactory();
     //! Zoznam všetkých nevykonaných blokov pre computeStep()
     std::list<BlockBase*> needToBeComputed;
     //! Iterátor pre vykonávanie blokov
@@ -44,11 +43,11 @@ public:
 	std::map<InPort *, OutPort *> connections;
 
     //! Konštruktor
-	Graph();
+    Manager();
 
     //! Vráti názov schémy
     std::string GetSchemeName() const;
-	
+
     //! @brief Nastaví nový názov pre schému
     //! @param name Nový názov schémy
     void SetSchemeName(const std::string name);
@@ -60,19 +59,19 @@ public:
     int getIDofBlock(const BlockBase &block) const;
 
     //! Vymaže všetky bloky a spojenia
-    virtual void GraphClearing();
+    virtual void JEEclear();
 	/**
      * @brief Načíta GPH súbor ako schému
      * @param graph Reference to parent scheme object
      * @param overlap Príznak, pokiaľ true, načítaná schéma prekryje existujúcu schému
      * @return Vracia true pre úspešné vykonanie
 	 */
-    virtual bool GraphLoading(std::stringstream &graph, bool overlap = false);
+    virtual bool JEEload(std::stringstream &graph, bool overlap = false);
 	/**
      * @brief Generuje súbor, ktorý bude uložený inou funkciou
      * @return Vracia string stream objekt s GPH reprezentáciou schémy
 	 */
-    virtual std::stringstream GraphSaving();
+    virtual std::stringstream JEEsave();
 
     //! Pridá nový blok do schémy špecifikovaný BlockTypom
 	virtual BlockBase *addBlock(BlockType);

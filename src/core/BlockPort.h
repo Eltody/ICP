@@ -7,7 +7,7 @@
 
 #pragma once
 #include <string>
-#include "type.h"
+#include "BlockType.h"
 
 class BlockBase;
 
@@ -15,7 +15,7 @@ class BlockBase;
 class Ports{
 protected:
 	//! Data type
-	Type data;
+    Type data;
     std::function<void(Ports &)> connUpdate, valUpdate;
 public:
 	//! Parent block reference
@@ -28,12 +28,12 @@ public:
 	/**
 	 * @brief Constructor
 	 * @param b Block where to create the new port
-	 * @param t Type of the port
+     * @param t Type of the port
 	 * @param name Name of the port's label
 	 */
     Ports(const BlockBase & b, const Type &t, std::string name);
 	//! Returns port's value
-	virtual Type & Value() = 0;
+    virtual Type & Value() = 0;
 	//! Operator [] overloading for using data type specific strings to access values of the port
 	TypeValue & operator[](const std::string &s);
 
@@ -58,12 +58,12 @@ public:
 	/**
 	 * @brief Input port constructor
 	 * @param b Block where the port is created
-	 * @param t Type of the port
+     * @param t Type of the port
 	 * @param name Name of the port's label
 	 */
-	InPort(const BlockBase & b, const Type &t, std::string name);
+    InPort(const BlockBase & b, const Type &t, std::string name);
 	//! Returns port's value
-	Type & Value() override;
+    Type & Value() override;
 };
 
 //! Input port class
@@ -79,10 +79,10 @@ public:
 	/**
 	 * @brief Input port constructor
 	 * @param b Block where the port is created
-	 * @param t Type of the port
+     * @param t Type of the port
 	 * @param name Name of the port's label
 	 */
-	OutPort(const BlockBase & b, const Type &t, std::string name);
+    OutPort(const BlockBase & b, const Type &t, std::string name);
 	//! Returns port's value
-	Type & Value() override;
+    Type & Value() override;
 };

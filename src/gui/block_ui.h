@@ -289,7 +289,7 @@ private:
 	std::map<std::string, TextEdit*> text_in;
 	void update_output() {
 		this->graph.computeReset();
-		Type &val = this->Output(0).Value();
+        Type &val = this->Output(0).Value();
 		for(auto l : text_in){
 			bool ok;
 			val[l.first] = l.second->text().toDouble(&ok);

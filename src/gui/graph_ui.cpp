@@ -11,7 +11,7 @@
 #include "graph_ui.h"
 #include "block_ui.h"
 
-BlockFactory &GraphUI::GetBlockFactory(){
+BlockConstructor &GraphUI::GetBlockFactory(){
 	return bf;
 }
 
@@ -24,8 +24,8 @@ QPoint GraphUI::getOffset() const{
 	return pos_offset;
 }
 
-void GraphUI::GraphClearing(){
-	Graph::GraphClearing();
+void GraphUI::JEEclear(){
+	Manager::JEEclear();
 	for(ConnectionUI *c : ui_connections){
 		delete c;
 	}
@@ -35,7 +35,7 @@ void GraphUI::GraphClearing(){
 	computedAsLast = nullptr;
 }
 
-bool GraphUI::GraphLoading(std::stringstream &graph, bool overlap){
+bool GraphUI::JEEload(std::stringstream &graph, bool overlap){
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
 
@@ -57,7 +57,7 @@ bool GraphUI::GraphLoading(std::stringstream &graph, bool overlap){
 		pos_offset = QPoint(0, 0); // reset drag offset
 	}
 
-	if (!Graph::GraphLoading(graph, overlap)){
+	if (!Manager::JEEload(graph, overlap)){
 		return false;
 	}
 
@@ -94,8 +94,8 @@ bool GraphUI::GraphLoading(std::stringstream &graph, bool overlap){
 	return true;
 }
 
-std::stringstream GraphUI::GraphSaving(){
-	std::stringstream ss = Graph::GraphSaving();
+std::stringstream GraphUI::JEEsave(){
+	std::stringstream ss = Manager::JEEsave();
 
 	// get offset
 	int x_off = 0, y_off = 0;
@@ -134,19 +134,19 @@ void GraphUI::blockContextMenu(BlockBase *b){
 }
 
 BlockBase *GraphUI::addBlock(BlockType t){
-	BlockBase *b = Graph::addBlock(t);
+	BlockBase *b = Manager::addBlock(t);
 	static_cast<BlockUI<BlockBase>*>(b)->updateOffset(pos_offset);
 	return b;
 }
 
 void GraphUI::BlockRemoving(BlockBase *b){
-	Graph::BlockRemoving(b);
+	Manager::BlockRemoving(b);
 	this->in_click = nullptr;
 	this->out_click = nullptr;
 }
 
 bool GraphUI::addConnection(OutPort &a, InPort &b){
-    if(Graph::addConnection(a, b)){
+    if(Manager::addConnection(a, b)){
 		// remove previous connection
 		for(ConnectionUI *c : ui_connections){
 			if((*c) == b){
@@ -180,7 +180,7 @@ void GraphUI::ConnectionRemoving(InPort &p){
 	if(conn_p != nullptr){
 		this->out_click = conn_p;
 
-		Graph::ConnectionRemoving(p);
+		Manager::ConnectionRemoving(p);
 
         for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
             if (*(*it) == p){
@@ -195,7 +195,7 @@ void GraphUI::ConnectionRemoving(InPort &p){
 }
 
 void GraphUI::ConnectionRemoving(OutPort &p){
-	Graph::ConnectionRemoving(p);
+	Manager::ConnectionRemoving(p);
 
     for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
         if (*(*it) == p){
@@ -253,7 +253,7 @@ void GraphUI::hideHoverConnectionUI(){
 }
 
 bool GraphUI::allInputsConnected(){
-    if(!Graph::allInputsConnected()){
+    if(!Manager::allInputsConnected()){
         GraphUI::ErrorAlert("Nie všetky vstupy sú pripojené!");
         return false;
     }
@@ -264,14 +264,14 @@ void GraphUI::computeReset(){
 	if(computedAsLast != nullptr){
 		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(false);
 	}
-	Graph::computeReset();
+	Manager::computeReset();
 }
 
 bool GraphUI::computeStep(){
 	if(computedAsLast != nullptr){
 		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(false);
 	}
-	bool ret = Graph::computeStep();
+	bool ret = Manager::computeStep();
 	if(computedAsLast != nullptr){
 		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(true);
 	}
@@ -279,7 +279,7 @@ bool GraphUI::computeStep(){
 }
 
 bool GraphUI::computeAll(){
-    if (Graph::computeAll()){
+    if (Manager::computeAll()){
 		return computeStep();
     } else{
 		return false;

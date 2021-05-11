@@ -1,5 +1,5 @@
 /*! VUT FIT ICP
- * @file blocks.h
+ * @file Blocks.h
  * @brief Header súbor pre pridelenie čísel a namapovanie blokov na čitateľný obsah
  * @author Tomáš Zaťko  - xzatko02
  * @author Martin Rakús - xrakus04
