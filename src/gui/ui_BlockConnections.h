@@ -5,10 +5,10 @@
 #include <QPaintEvent>
 
 #include "tooltip.h"
-#include "port_ui.h"
+#include "ui_BlockPort.h"
 
 //! Widget for connection graphical representation
-class ConnectionUI : public QWidget{
+class UIConnections : public QWidget{
 protected:
 	//! Parent widget
 	QWidget *p;
@@ -31,9 +31,9 @@ public:
 	 * @param out Output port
 	 * @param parent Parent widget containing the scheme
 	 */
-	explicit ConnectionUI(InPortUI *in, OutPortUI *out, QWidget *parent = nullptr);
+    explicit UIConnections(InPortUI *in, OutPortUI *out, QWidget *parent = nullptr);
 	//! Connection constructor
-	ConnectionUI(const ConnectionUI &other);
+    UIConnections(const UIConnections &other);
 	//! Overloading operator == for input port comparison
 	bool operator==(const InPort &p);
 	//! Overloading operator == for output port comparison
@@ -41,7 +41,7 @@ public:
 	//! Overloading operator == for any port comparison
 	bool operator==(const Ports &p);
 	//! Overloading operator == for connection comparison (based on input ports)
-	friend bool operator==(const ConnectionUI &a, const ConnectionUI &b);
+    friend bool operator==(const UIConnections &a, const UIConnections &b);
 	//! Activating hover state by mouse
 	bool mouseHover(QPoint mouse);
 	//! Activating hover state by function call
@@ -55,7 +55,7 @@ protected:
 };
 
 //! Temporary connection for visualising unfinished connection
-class TempConnectionUI : public ConnectionUI{
+class TempConnectionUI : public UIConnections{
 private:
 	//! Input port
 	InPort **in_c;

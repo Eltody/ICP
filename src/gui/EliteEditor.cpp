@@ -13,8 +13,8 @@
 #include "../core/Blocks.h"
 #include "EliteEditor.h"
 #include "ui_EliteEditor.h"
-#include "block_ui.h"
-#include "graph_ui.h"
+#include "ui_Block.h"
+#include "ui_BlockManager.h"
 
 
 const int Style::NodeFieldOffset = 25;  //b
@@ -34,7 +34,7 @@ bool vectIsOpen = false;
 bool matr2IsOpen = false;
 bool matr3IsOpen = false;
 
-ELITEEDITOR::ELITEEDITOR(GraphUI &g, QWidget *parent) :
+ELITEEDITOR::ELITEEDITOR(UIBlockManager &g, QWidget *parent) :
     QMainWindow(parent),  ui(new Ui::ELITEEDITOR), graph(g){
 	ui->setupUi(this);
 

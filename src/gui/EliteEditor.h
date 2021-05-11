@@ -7,10 +7,10 @@
 #include <string>
 
 #include "../core/Blocks.h"
-#include "graph_ui.h"
+#include "ui_BlockManager.h"
 
 
-class GraphUI;
+class UIBlockManager;
 
 //! BlockType decorator for QAction
 class BlockMenuAction : public QAction{
@@ -76,7 +76,7 @@ class ELITEEDITOR : public QMainWindow{
     Q_OBJECT
 public:
 	//! Constructor
-	explicit ELITEEDITOR(GraphUI &g, QWidget *parent = 0);
+	explicit ELITEEDITOR(UIBlockManager &g, QWidget *parent = 0);
 	//! Destructor
     ~ELITEEDITOR();
 
@@ -159,7 +159,7 @@ private slots:
 
 private:
 	Ui::ELITEEDITOR *ui;
-	GraphUI &graph;
+	UIBlockManager &graph;
 
 	//! Function that creates QActions for buttons
     void createActions();

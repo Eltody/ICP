@@ -8,25 +8,25 @@
 #include <QMessageBox>
 #include <QCursor>
 
-#include "graph_ui.h"
-#include "block_ui.h"
+#include "ui_BlockManager.h"
+#include "ui_Block.h"
 
-BlockConstructor &GraphUI::GetBlockFactory(){
+BlockConstructor &UIBlockManager::GetBlockFactory(){
 	return bf;
 }
 
-GraphUI::GraphUI() : in_click(nullptr), out_click(nullptr),
+UIBlockManager::UIBlockManager() : in_click(nullptr), out_click(nullptr),
     tc(&in_click, &out_click, this), bf(*this), block_context_menu(*this){
 	setMouseTracking(true);
 }
 
-QPoint GraphUI::getOffset() const{
+QPoint UIBlockManager::getOffset() const{
 	return pos_offset;
 }
 
-void GraphUI::JEEclear(){
+void UIBlockManager::JEEclear(){
 	Manager::JEEclear();
-	for(ConnectionUI *c : ui_connections){
+	for(UIConnections *c : ui_connections){
 		delete c;
 	}
 	ui_connections.clear();
@@ -35,7 +35,7 @@ void GraphUI::JEEclear(){
 	computedAsLast = nullptr;
 }
 
-bool GraphUI::JEEload(std::stringstream &graph, bool overlap){
+bool UIBlockManager::JEEload(std::stringstream &graph, bool overlap){
 	// block id offset
 	int b_id_off = static_cast<int>(blocks.size());
 
@@ -43,7 +43,7 @@ bool GraphUI::JEEload(std::stringstream &graph, bool overlap){
 	bool first_ = true;
     if (overlap){
         for (BlockBase *b : blocks){
-			auto block = static_cast<BlockUI<BlockBase>*>(b);
+			auto block = static_cast<UIBlock<BlockBase>*>(b);
 			if(first_){
 				x_off = block->Pos().x();
 				y_off = block->Pos().y() + block->height();
@@ -84,7 +84,7 @@ bool GraphUI::JEEload(std::stringstream &graph, bool overlap){
 			std::getline(xy, ys, ':');
 			int x = std::stoi(xs) + x_off;
 			int y = std::stoi(ys) + y_off;
-			static_cast<BlockUI<BlockBase>*>(*it)->Move(x, y);
+			static_cast<UIBlock<BlockBase>*>(*it)->Move(x, y);
 			it++;
 		}
 	}
@@ -94,14 +94,14 @@ bool GraphUI::JEEload(std::stringstream &graph, bool overlap){
 	return true;
 }
 
-std::stringstream GraphUI::JEEsave(){
+std::stringstream UIBlockManager::JEEsave(){
 	std::stringstream ss = Manager::JEEsave();
 
 	// get offset
 	int x_off = 0, y_off = 0;
 	bool first_ = true;
     for (BlockBase *b : blocks){
-		auto p = static_cast<BlockUI<BlockBase>*>(b)->Pos();
+		auto p = static_cast<UIBlock<BlockBase>*>(b)->Pos();
 		if (first_) {
 			x_off = p.x(); y_off = p.y();
 			first_ = false;
@@ -121,7 +121,7 @@ std::stringstream GraphUI::JEEsave(){
 		} else {
             ss << ";";
 		}
-		BlockUI<BlockBase> *b_ui = static_cast<BlockUI<BlockBase>*>(b);
+		UIBlock<BlockBase> *b_ui = static_cast<UIBlock<BlockBase>*>(b);
 		ss << b_ui->Pos().x() - x_off << ":" << b_ui->Pos().y() - y_off;
 	}
     ss << ")";
@@ -129,33 +129,33 @@ std::stringstream GraphUI::JEEsave(){
 	return std::move(ss);
 }
 
-void GraphUI::blockContextMenu(BlockBase *b){
+void UIBlockManager::blockContextMenu(BlockBase *b){
 	block_context_menu.ShowMenu(b);
 }
 
-BlockBase *GraphUI::addBlock(BlockType t){
+BlockBase *UIBlockManager::addBlock(BlockType t){
 	BlockBase *b = Manager::addBlock(t);
-	static_cast<BlockUI<BlockBase>*>(b)->updateOffset(pos_offset);
+	static_cast<UIBlock<BlockBase>*>(b)->updateOffset(pos_offset);
 	return b;
 }
 
-void GraphUI::BlockRemoving(BlockBase *b){
+void UIBlockManager::BlockRemoving(BlockBase *b){
 	Manager::BlockRemoving(b);
 	this->in_click = nullptr;
 	this->out_click = nullptr;
 }
 
-bool GraphUI::addConnection(OutPort &a, InPort &b){
+bool UIBlockManager::addConnection(OutPort &a, InPort &b){
     if(Manager::addConnection(a, b)){
 		// remove previous connection
-		for(ConnectionUI *c : ui_connections){
+		for(UIConnections *c : ui_connections){
 			if((*c) == b){
 				ui_connections.remove(c);
 				delete c;
 			}
 		}
 		// create new connection
-		ui_connections.push_back(new ConnectionUI(static_cast<InPortUI*>(&b), static_cast<OutPortUI*>(&a), this));
+		ui_connections.push_back(new UIConnections(static_cast<InPortUI*>(&b), static_cast<OutPortUI*>(&a), this));
 
 		this->in_click = nullptr;
 		this->out_click = nullptr;
@@ -163,10 +163,10 @@ bool GraphUI::addConnection(OutPort &a, InPort &b){
 	}
     else{
 		if(!a.Value().type_of(b.Value())){
-            GraphUI::ErrorAlert("Hodnoty týchto konektorov nie sú kompatibilné!");
+            UIBlockManager::ErrorAlert("Hodnoty týchto konektorov nie sú kompatibilné!");
 		}
         else{
-            GraphUI::ErrorAlert("Toto prepojenie by vytvorilo cyklus!");
+            UIBlockManager::ErrorAlert("Toto prepojenie by vytvorilo cyklus!");
 		}
 
 		this->in_click = nullptr;
@@ -175,7 +175,7 @@ bool GraphUI::addConnection(OutPort &a, InPort &b){
 	}
 }
 
-void GraphUI::ConnectionRemoving(InPort &p){
+void UIBlockManager::ConnectionRemoving(InPort &p){
 	OutPort *conn_p = getConnectedOutPort(p);
 	if(conn_p != nullptr){
 		this->out_click = conn_p;
@@ -194,7 +194,7 @@ void GraphUI::ConnectionRemoving(InPort &p){
 	}
 }
 
-void GraphUI::ConnectionRemoving(OutPort &p){
+void UIBlockManager::ConnectionRemoving(OutPort &p){
 	Manager::ConnectionRemoving(p);
 
     for (auto it = ui_connections.cbegin(); it != ui_connections.cend();){
@@ -208,8 +208,8 @@ void GraphUI::ConnectionRemoving(OutPort &p){
 	}
 }
 
-void GraphUI::updateConnectionUI(Ports &p){
-	for(ConnectionUI *c : ui_connections){
+void UIBlockManager::updateConnectionUI(Ports &p){
+	for(UIConnections *c : ui_connections){
 		if((*c) == p){
             c->raise();
             c->update();
@@ -217,21 +217,21 @@ void GraphUI::updateConnectionUI(Ports &p){
 	}
 }
 
-GraphUI::~GraphUI(){
-	for(ConnectionUI *c : ui_connections){
+UIBlockManager::~UIBlockManager(){
+	for(UIConnections *c : ui_connections){
 		delete c;
 	}
 }
 
-void GraphUI::hoverConnectionUI(QPoint mouse){
-	for(ConnectionUI *c : ui_connections){
+void UIBlockManager::hoverConnectionUI(QPoint mouse){
+	for(UIConnections *c : ui_connections){
 		c->mouseHover(mouse);
 	}
     tc.raise();
     tc.update();
 }
 
-void GraphUI::mouseMoveEvent(QMouseEvent *event){
+void UIBlockManager::mouseMoveEvent(QMouseEvent *event){
 	hoverConnectionUI(event->pos());
     tc.raise();
     tc.update();
@@ -239,46 +239,46 @@ void GraphUI::mouseMoveEvent(QMouseEvent *event){
 		pos_offset += event->pos() - drag_p;
 		drag_p = event->pos();
 		for (auto b : blocks) {
-			static_cast<BlockUI<BlockBase>*>(b)->updateOffset(pos_offset);
+			static_cast<UIBlock<BlockBase>*>(b)->updateOffset(pos_offset);
 		}
 	}
 }
 
-void GraphUI::hideHoverConnectionUI(){
-	for(ConnectionUI *c : ui_connections){
+void UIBlockManager::hideHoverConnectionUI(){
+	for(UIConnections *c : ui_connections){
 		c->mouseHover(false);
 	}
     tc.raise();
     tc.update();
 }
 
-bool GraphUI::allInputsConnected(){
+bool UIBlockManager::allInputsConnected(){
     if(!Manager::allInputsConnected()){
-        GraphUI::ErrorAlert("Nie všetky vstupy sú pripojené!");
+        UIBlockManager::ErrorAlert("Nie všetky vstupy sú pripojené!");
         return false;
     }
 	return true;
 }
 
-void GraphUI::computeReset(){
+void UIBlockManager::computeReset(){
 	if(computedAsLast != nullptr){
-		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(false);
+		static_cast<UIBlock<BlockBase>*>(computedAsLast)->Highlight(false);
 	}
 	Manager::computeReset();
 }
 
-bool GraphUI::computeStep(){
+bool UIBlockManager::computeStep(){
 	if(computedAsLast != nullptr){
-		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(false);
+		static_cast<UIBlock<BlockBase>*>(computedAsLast)->Highlight(false);
 	}
 	bool ret = Manager::computeStep();
 	if(computedAsLast != nullptr){
-		static_cast<BlockUI<BlockBase>*>(computedAsLast)->Highlight(true);
+		static_cast<UIBlock<BlockBase>*>(computedAsLast)->Highlight(true);
 	}
 	return ret;
 }
 
-bool GraphUI::computeAll(){
+bool UIBlockManager::computeAll(){
     if (Manager::computeAll()){
 		return computeStep();
     } else{
@@ -286,11 +286,11 @@ bool GraphUI::computeAll(){
 	}
 }
 
-void GraphUI::leaveEvent(QEvent *){
+void UIBlockManager::leaveEvent(QEvent *){
 	hideHoverConnectionUI();
 }
 
-void GraphUI::mousePressEvent(QMouseEvent *event){
+void UIBlockManager::mousePressEvent(QMouseEvent *event){
 	setFocus();
 	in_click = nullptr;
 	out_click = nullptr;
@@ -303,11 +303,11 @@ void GraphUI::mousePressEvent(QMouseEvent *event){
 	}
 }
 
-void GraphUI::mouseReleaseEvent(QMouseEvent *){
+void UIBlockManager::mouseReleaseEvent(QMouseEvent *){
 	drag = false;
 }
 
-void GraphUI::ErrorAlert(std::string message){
+void UIBlockManager::ErrorAlert(std::string message){
     QMessageBox alert;
     alert.setWindowTitle("Chyba");
     alert.setText(message.c_str());
@@ -317,7 +317,7 @@ void GraphUI::ErrorAlert(std::string message){
 
 
 
-BlockDelete::BlockDelete(GraphUI &g) : graph(g){
+BlockDelete::BlockDelete(UIBlockManager &g) : graph(g){
     menu.addAction(QIcon(":/icons/delete.png"), "Vymazať");
 }
 

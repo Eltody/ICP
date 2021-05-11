@@ -8,36 +8,36 @@
 
 #include "../core/BlockBase.h"
 #include "../core/BlockManager.h"
-#include "blockfactory_ui.h"
-#include "connection_ui.h"
+#include "ui_BlockConstructor.h"
+#include "ui_BlockConnections.h"
 
 
 class BlockDelete{
 private:
     //! Parent widget
-    GraphUI &graph;
+    UIBlockManager &graph;
     //! Objekt zobrazujúceho sa menu
     QMenu menu;
 public:
     //! Konštruktor
-    BlockDelete(GraphUI &g);
+    BlockDelete(UIBlockManager &g);
     //! Function for showing the menu after right-clicking a block Funkcia pre zobrazenie menu po kliknutí pravého tlačidla
     void ShowMenu(BlockBase *block);
 };
 
 
-class ConnectionUI;
+class UIConnections;
 
 /**
  * @brief Parent QWidget to all other widgets used in scheme
  */
-class GraphUI : public QWidget, public Manager{
+class UIBlockManager : public QWidget, public Manager{
 public:
     //! Current offset of graph against main window
     QPoint pos_offset;
     //! List of graphical connections in GUI
-    std::list<ConnectionUI*> ui_connections;
-    GraphUI();
+    std::list<UIConnections*> ui_connections;
+    UIBlockManager();
     //! Get offset of graph against main window
     QPoint getOffset() const;
     //! Delete the current scheme, get ready for a new scheme
@@ -100,7 +100,7 @@ public:
     //! Computes the whole scheme
     bool computeAll() override;
     //! Manager GUI destructor
-    ~GraphUI();
+    ~UIBlockManager();
     //! Temporary value used while creating a connection - port's address after one click
 	InPort *in_click;
 	//! Temporary value used while creating a connection - port's address after one click
@@ -109,7 +109,7 @@ private:
 	//! Temporary connection held between mouse and the first port while connecting to the other port
 	TempConnectionUI tc;
 	//! GUI Block factory
-	BlockFactoryUI bf;
+	UIBlockConstructor bf;
 	//! Getting block factory (core)
 	BlockConstructor & GetBlockFactory() override;
 	//! Dragging state

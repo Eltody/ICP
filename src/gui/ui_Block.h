@@ -12,8 +12,8 @@
 #include <algorithm>
 
 #include "EliteEditor.h"
-#include "port_ui.h"
-#include "graph_ui.h"
+#include "ui_BlockPort.h"
+#include "ui_BlockManager.h"
 
 #include "../core/BlockBase.h"
 
@@ -21,7 +21,7 @@
  * @brief Block GUI representation
  */
 template <typename BlockBaseT>
-class BlockUI : public QWidget, public BlockBaseT{
+class UIBlock : public QWidget, public BlockBaseT{
 private:
 	//! Vector of GUI input ports
 	std::vector<InPortUI> inputs; // Should be const vector of non const elements, but this requires custom implementation of vector!
@@ -39,11 +39,11 @@ protected:
 	int width_, height_;
 public:
 	/**
-	 * @brief BlockUI constructor
+     * @brief UIBlock constructor
 	 * @param b Block derived from BlockBase
 	 * @param parent Widget where the block is rendered
 	 */
-	explicit BlockUI(const BlockBaseT &b, QWidget *parent = nullptr)
+    explicit UIBlock(const BlockBaseT &b, QWidget *parent = nullptr)
         : QWidget(parent), BlockBaseT(b), label(b.name.c_str(), this){
 		setMouseTracking(true);
 		for(size_t i = 0; i < BlockBaseT::InputCount(); i++) {
@@ -213,7 +213,7 @@ protected:
 
 	//! Moving block by dragging
     void mouseMoveEvent(QMouseEvent *event){
-		static_cast<GraphUI&>(this->graph).hideHoverConnectionUI();
+		static_cast<UIBlockManager&>(this->graph).hideHoverConnectionUI();
 		if(drag){
 			QPoint tmp = Pos() + event->pos() - drag_p;
 			Move(tmp.x(), tmp.y());
@@ -227,7 +227,7 @@ protected:
 			drag_p = event->pos();
 		}
         else if (event->button() == Qt::RightButton){
-			static_cast<GraphUI&>(this->graph).blockContextMenu(this);
+			static_cast<UIBlockManager&>(this->graph).blockContextMenu(this);
 		}
 	}
 
@@ -238,7 +238,7 @@ protected:
 
 	//! Hide connection tooltip when hovering over the block
     void enterEvent(QEvent *){
-		static_cast<GraphUI&>(this->graph).hideHoverConnectionUI();
+		static_cast<UIBlockManager&>(this->graph).hideHoverConnectionUI();
 	}
 };
 
@@ -282,7 +282,7 @@ protected:
  * @brief Input Block GUI representation
  */
 template <typename BlockBaseT>
-class InputBlockUI : public BlockUI<BlockBaseT>{
+class InputBlockUI : public UIBlock<BlockBaseT>{
 private:
 	int orig_w, orig_h;
 	int text_in_off;
@@ -302,8 +302,8 @@ private:
 		}
 	}
 public:
-	explicit InputBlockUI(const BlockUI<BlockBaseT> &b, QWidget *parent = nullptr)
-		: BlockUI<BlockBaseT>(b, parent), orig_w(this->width_), orig_h(this->height_){
+    explicit InputBlockUI(const UIBlock<BlockBaseT> &b, QWidget *parent = nullptr)
+        : UIBlock<BlockBaseT>(b, parent), orig_w(this->width_), orig_h(this->height_){
 		auto data = this->Output(0).Value().Data();
 		text_in_off = 0;
 		for(auto &el : data){
@@ -336,11 +336,11 @@ public:
 		int cnt = static_cast<int>(text_in.size()) - 1;
         this->height_ = this->orig_h + Style::NodeFieldOffset * (cnt < 0 ? 0 : cnt);
 		this->resize(this->width_ + 1, this->height_ + 1);
-		BlockUI<BlockBaseT>::Move(x, y);
+        UIBlock<BlockBaseT>::Move(x, y);
 	}
 protected:
     void paintEvent(QPaintEvent *event) {
-		BlockUI<BlockBaseT>::paintEvent(event);
+        UIBlock<BlockBaseT>::paintEvent(event);
 
         int h = QApplication::fontMetrics().height();
 
@@ -359,12 +359,12 @@ protected:
  * @brief Output Block GUI representation
  */
 template <typename BlockBaseT>
-class OutputBlockUI : public BlockUI<BlockBaseT>{
+class OutputBlockUI : public UIBlock<BlockBaseT>{
 private:
 	int orig_w, orig_h;
 public:
-	explicit OutputBlockUI(const BlockUI<BlockBaseT> &b, QWidget *parent = nullptr)
-		: BlockUI<BlockBaseT>(b, parent), orig_w(this->width_), orig_h(this->height_) {
+    explicit OutputBlockUI(const UIBlock<BlockBaseT> &b, QWidget *parent = nullptr)
+        : UIBlock<BlockBaseT>(b, parent), orig_w(this->width_), orig_h(this->height_) {
 		this->Input(0).onConnectionChange([this](Ports &){this->update();});
 		this->Input(0).onValueChange([this](Ports &){this->update();});
 	}
@@ -383,12 +383,12 @@ public:
 	}
     void Move(int x, int y){
 		updateBlockSize();
-		BlockUI<BlockBaseT>::Move(x, y);
+        UIBlock<BlockBaseT>::Move(x, y);
 	}
 protected:
     void paintEvent(QPaintEvent *event){
 		updateBlockSize();
-		BlockUI<BlockBaseT>::paintEvent(event);
+        UIBlock<BlockBaseT>::paintEvent(event);
 
 		int w, h;
 		auto lines = Tooltip::TextLines(static_cast<std::string>(this->Input(0).Value()), w, h);

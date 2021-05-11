@@ -8,12 +8,12 @@
 
 #include "gui/EliteEditor.h"
 #include <QApplication>
-#include "gui/graph_ui.h"
+#include "gui/ui_BlockManager.h"
 
 
 int main(int argc, char *argv[]) {
 	QApplication app(argc, argv);
-    GraphUI scheme;
+    UIBlockManager scheme;
     ELITEEDITOR win(scheme);
 	return app.exec();
 }

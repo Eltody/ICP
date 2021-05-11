@@ -4,14 +4,14 @@
 #include <list>
 #include "../core/BlockConstructor.h"
 
-class GraphUI;
+class UIBlockManager;
 
 /**
  * @brief Abstract factory for creating GUI blocks
  *
  * Blocks are created using abstract factory design patern.
  */
-class BlockFactoryUI : public BlockConstructor
+class UIBlockConstructor : public BlockConstructor
 {
 private:
 	//! Widged used as parent for constructed blocks
@@ -23,5 +23,5 @@ public:
 
 	//! Factory constructor
 	//! @param g Parent scheme object
-	BlockFactoryUI(GraphUI &g);
+    UIBlockConstructor(UIBlockManager &g);
 };

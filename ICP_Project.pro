@@ -35,11 +35,11 @@ SOURCES += \
     src/core/Types.cpp \
     src/gui/EliteEditor.cpp \
     src/gui/tooltip.cpp \
-    src/main.cpp \
-    src/gui/connection_ui.cpp \
-    src/gui/port_ui.cpp \
-    src/gui/blockfactory_ui.cpp \
-    src/gui/graph_ui.cpp
+    src/gui/ui_BlockConnections.cpp \
+    src/gui/ui_BlockConstructor.cpp \
+    src/gui/ui_BlockManager.cpp \
+    src/gui/ui_BlockPort.cpp \
+    src/main.cpp
 
 HEADERS += \
     src/core/BlockBase.h \
@@ -52,11 +52,11 @@ HEADERS += \
     src/core/Types.h \
     src/gui/EliteEditor.h \
     src/gui/tooltip.h \
-    src/gui/connection_ui.h \
-    src/gui/block_ui.h \
-    src/gui/port_ui.h \
-    src/gui/blockfactory_ui.h \
-    src/gui/graph_ui.h \
+    src/gui/ui_Block.h \
+    src/gui/ui_BlockConnections.h \
+    src/gui/ui_BlockConstructor.h \
+    src/gui/ui_BlockManager.h \
+    src/gui/ui_BlockPort.h
 
 FORMS += \
     src/gui/EliteEditor.ui

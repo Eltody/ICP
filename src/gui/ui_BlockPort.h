@@ -11,7 +11,7 @@
 /**
  * @brief The base abstract class of port GUI representation
  */
-class PortBaseUI : public QWidget{
+class UIBlockPort : public QWidget{
 protected:
 	//! Parent widget
 	QWidget *p;
@@ -24,7 +24,7 @@ protected:
 	 * @param name
 	 * @param parent Parent block's widget
 	 */
-	PortBaseUI(const std::string name, QWidget *parent = nullptr);
+    UIBlockPort(const std::string name, QWidget *parent = nullptr);
 
 	//! Rendering event
 	void paintEvent(QPaintEvent *) override;
@@ -58,7 +58,7 @@ public:
 /**
  * @brief Input ports GUI representation
  */
-class InPortUI : public PortBaseUI, public InPort{
+class InPortUI : public UIBlockPort, public InPort{
 public:
 	//! Copy constructor
 	InPortUI(const InPortUI &other);
@@ -76,7 +76,7 @@ protected:
 /**
  * @brief Output ports GUI representation
  */
-class OutPortUI : public PortBaseUI, public OutPort{
+class OutPortUI : public UIBlockPort, public OutPort{
 public:
 	//! Copy constructor
 	OutPortUI(const OutPortUI &other);
