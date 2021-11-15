@@ -5,15 +5,15 @@
 # Síťové aplikace a správa sítí - Projekt č.1, varianta č.1
 * **Klient POP3 s podporou TLS**
 
+## Autor projektu:
+* **Tomáš Zaťko (xzatko02)**
+
 ## Zadanie projektu
 * **Program po spustení stiahne správy uložené na serveri a uloží ich do zadaného adresára. Na štandardný výstup vypíše počet stiahnutých správ. Pomocou dodatočných parametrov je možné funkcionalitu meniť. Podporovaná je nešifrovaná komunikácia, šifrovaná komunikácia a komunikácia s podporou TLS.**
 
 ## Informácie a obmedzenia projektu
 * **Povinný parameter <server> (IP adresa, alebo doménové jméno) je nutné zadať ako prvý parameter pri spúšťaní programu.**
 * **Program nedokáže správne spracovať parameter -n, pri ktorom sa pracuje len s novými správami.**
-
-## Autor projektu:
-* **Tomáš Zaťko (xzatko02)**
 
 ## Zoznam odovzdaných súborov:
 * **popcl.cpp - zdrojový kód**
