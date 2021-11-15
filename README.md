@@ -21,7 +21,7 @@
 * **manual.pdf - dokumentácia projektu**
 
 ## Spustenie programu:
-$ ./popcl <server> [-p <port>] [-T|-S [-c <certfile>] [-C <certaddr>]] [-d] [-n] -a <auth_file> -o <out_dir>
+* **$ ./popcl <server> [-p <port>] [-T|-S [-c <certfile>] [-C <certaddr>]] [-d] [-n] -a <auth_file> -o <out_dir>**
 
 ## Príklady spustenia:
 * **$ make	- pre preklad zdrojového kódu**
