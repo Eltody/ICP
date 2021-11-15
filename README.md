@@ -1,32 +1,24 @@
 <div align="center">
-    <h1>VUT FIT ISA</h1>
+    <h1>VUT FIT ICP</h1>
 </div>
 
-# Síťové aplikace a správa sítí - Projekt č.1, varianta č.1
-* **Klient POP3 s podporou TLS**
-
-## Autor projektu:
-* **Tomáš Zaťko (xzatko02)**
+# Seminár C++ - projekt č.1 (varianta 2)
+* **Editor a interpret hierarchicky štrukturovaných funkčných blokov**
 
 ## Zadanie projektu
-* **Program po spustení stiahne správy uložené na serveri a uloží ich do zadaného adresára. Na štandardný výstup vypíše počet stiahnutých správ. Pomocou dodatočných parametrov je možné funkcionalitu meniť. Podporovaná je nešifrovaná komunikácia, šifrovaná komunikácia a komunikácia s podporou TLS.**
+* **Celkové zadanie projektu: https://wis.fit.vutbr.cz/FIT/st/cwk.php.cs?title=Projekt_20202021&csid=722871&id=13964**
 
-## Informácie a obmedzenia projektu
-* **Povinný parameter <server> (IP adresa, alebo doménové jméno) je nutné zadať ako prvý parameter pri spúšťaní programu.**
-* **Program nedokáže správne spracovať parameter -n, pri ktorom sa pracuje len s novými správami.**
+## Názov tímu:
+* **Slovenská (j)elita**
 
-## Spustenie programu:
-* **$ ./popcl <server> [-p <port>] [-T|-S [-c <certfile>] [-C <certaddr>]] [-d] [-n] -a <auth_file> -o <out_dir>**
+## Členovia tímu:
+* **Tomáš Zaťko (xzatko02)**
+* **Martin Rakús (xrakus04)**
 
-## Príklady spustenia:
-* **$ make (pre preklad zdrojového kódu)**
-* **$ ./popcl --help (pre zobrazenie nápovedy)**
-* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file (pre nešifrovanú komunikáciu)**
-* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -T (pre šifrovanú komunikáciu)**
-* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -S (pre komunikáciu s podporou TLS)**
-    
-## Zoznam odovzdaných súborov:
-* **popcl.cpp - zdrojový kód**
-* **Makefile - pre preklad zdrojového kódu**
-* **manual.pdf - dokumentácia projektu**
-* **README**
+## Implementovaná funkcionalita:
+* **Editor podporuje prácu s blokmi s jednoduchými matematickými funkciami, operácie s vektormi a maticami.**
+* **Editor umožňuje zobraziť obsah knižnice typov blokov štrukturovných v kategóriách.**
+* **Vizuálne je každá inštancia obdĺžnik. Záhlavie zobrazuje typ a názov inštancie. Vľavo sú pomenované vstupné porty a napravo sú pomenované výstupné porty.**
+* **Editor iteratívne vyhodnocuje bloky s hodnotami zvolenými užívateľom.**
+* **Editor si pamätá posledné kroky vyhodnocovania blokov s hodnotami.**
+* **Editor podporuje uloženie súboru aktuálnej pracovnej plochy.**
