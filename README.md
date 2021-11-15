@@ -15,11 +15,6 @@
 * **Povinný parameter <server> (IP adresa, alebo doménové jméno) je nutné zadať ako prvý parameter pri spúšťaní programu.**
 * **Program nedokáže správne spracovať parameter -n, pri ktorom sa pracuje len s novými správami.**
 
-## Zoznam odovzdaných súborov:
-* **popcl.cpp - zdrojový kód**
-* **Makefile - pre preklad zdrojového kódu**
-* **manual.pdf - dokumentácia projektu**
-
 ## Spustenie programu:
 * **$ ./popcl <server> [-p <port>] [-T|-S [-c <certfile>] [-C <certaddr>]] [-d] [-n] -a <auth_file> -o <out_dir>**
 
@@ -29,3 +24,9 @@
 * **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file (pre nešifrovanú komunikáciu)**
 * **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -T (pre šifrovanú komunikáciu)**
 * **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -S (pre komunikáciu s podporou TLS)**
+    
+## Zoznam odovzdaných súborov:
+* **popcl.cpp - zdrojový kód**
+* **Makefile - pre preklad zdrojového kódu**
+* **manual.pdf - dokumentácia projektu**
+* **README**
