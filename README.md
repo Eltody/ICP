@@ -13,3 +13,8 @@
 
 ## Autor projektu:
 * **Tomáš Zaťko (xzatko02)**
+
+## Zoznam odovzdaných súborov:
+* **popcl.cpp - zdrojový kód**
+* **Makefile - pre preklad zdrojového kódu**
+* **manual.pdf - dokumentácia projektu**
