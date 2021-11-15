@@ -21,8 +21,8 @@
 * **manual.pdf - dokumentácia projektu**
 
 ## Príklady spustenia:
-* **Príkaz: make - pre preklad zdrojového kódu**
-* **Príkaz: ./popcl --help - pre zobrazenie nápovedy**
-* **Príkaz: ./popcl pop3.seznam.cz -o out_dir -a auth_file -> pre nešifrovanú komunikáciu**
-* **Príkaz: ./popcl pop3.seznam.cz -o out_dir -a auth_file -T -> pre šifrovanú komunikáciu**
-* **Príkaz: ./popcl pop3.seznam.cz -o out_dir -a auth_file -S -> pre komunikáciu s podporou TLS**
+* **Príkaz: make    -> pre preklad zdrojového kódu**
+* **Príkaz: ./popcl --help    -> pre zobrazenie nápovedy**
+* **Príkaz: ./popcl pop3.seznam.cz -o out_dir -a auth_file    -> pre nešifrovanú komunikáciu**
+* **Príkaz: ./popcl pop3.seznam.cz -o out_dir -a auth_file -T    -> pre šifrovanú komunikáciu**
+* **Príkaz: ./popcl pop3.seznam.cz -o out_dir -a auth_file -S    -> pre komunikáciu s podporou TLS**
