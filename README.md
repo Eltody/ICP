@@ -26,6 +26,6 @@
 ## Príklady spustenia:
 * **$ make	- pre preklad zdrojového kódu**
 * **$ ./popcl --help 	- pre zobrazenie nápovedy**
-* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file 	- pre nešifrovanú komunikáciu**
-* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -T 	- pre šifrovanú komunikáciu**
-* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -S		- pre komunikáciu s podporou TLS**
+* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file 	    - pre nešifrovanú komunikáciu**
+* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -T 	    - pre šifrovanú komunikáciu**
+* **$ ./popcl pop3.seznam.cz -o out_dir -a auth_file -S		    - pre komunikáciu s podporou TLS**
