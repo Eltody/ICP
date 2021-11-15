@@ -9,7 +9,7 @@
 * **Program po spustení stiahne správy uložené na serveri a uloží ich do zadaného adresára. Na štandardný výstup vypíše počet stiahnutých správ. Pomocou dodatočných parametrov je možné funkcionalitu meniť. Podporovaná je nešifrovaná komunikácia, šifrovaná komunikácia a komunikácia s podporou TLS.**
 
 ## Informácie a obmedzenia projektu
-* **Povinný parameter <server> (IP adresa, alebo doménové jméno) je nutné zadať ako prvý parameter pri sušťaní programu.**
+* **Povinný parameter <server> (IP adresa, alebo doménové jméno) je nutné zadať ako prvý parameter pri spúšťaní programu.**
 * **Program nedokáže správne spracovať parameter -n, pri ktorom sa pracuje len s novými správami.**
 
 ## Autor projektu:
