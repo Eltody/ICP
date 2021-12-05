@@ -8,6 +8,9 @@
 ## Zadanie projektu
 * **Zadanie projektu: https://www.fit.vutbr.cz/study/courses/ITU/private/projects/Zad%C3%A1n%C3%AD%20projektu%20do%20p%C5%99edm%C4%9Btu%20ITU%202021_2022.pdf**
 
+## Názov a číslo tímu:
+* **Tím č.144: Tým xzatko02**
+
 ## Členovia tímu:
 * **Tomáš Zaťko (xzatko02)**
 * **Martin Rakús (xrakus04)**
