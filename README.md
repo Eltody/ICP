@@ -21,3 +21,12 @@
 * **inicializácia databáze: použitý bol MySQL Workbench 8.0 CE, kde bol inicializovaný skript database.sql**
 * **import modulov/knižníc: flask, render_template, fpdf, qrcode, pymysql, datetime, json**
 * **následovaný postup nasadenia Flask aplikácie na Ubuntu server: https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps**
+
+## Odkazy na knižnice/moduly:
+* **https://flask.palletsprojects.com/en/2.0.x/**
+* **http://www.fpdf.org/**
+* **https://pypi.org/project/qrcode/**
+* **https://pypi.org/project/PyMySQL/**
+* **https://docs.python.org/3/library/datetime.html**
+* **https://docs.python.org/3/library/json.html**
+
