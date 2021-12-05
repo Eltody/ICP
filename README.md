@@ -1,35 +1,24 @@
 <div align="center">
-    <h1>VUT FIT ITU</h1>
+    <h1>VUT FIT ICP</h1>
 </div>
 
-# Tvorba užívateľských rozhraní - projekt
-* **Cestovné poriadky: Vyhľadávanie spojov, nákup lístkov**
+# Seminár C++ - projekt č.1 (varianta 2)
+* **Editor a interpret hierarchicky štrukturovaných funkčných blokov**
 
 ## Zadanie projektu
-* **Zadanie projektu: https://www.fit.vutbr.cz/study/courses/ITU/private/projects/Zad%C3%A1n%C3%AD%20projektu%20do%20p%C5%99edm%C4%9Btu%20ITU%202021_2022.pdf**
+* **Celkové zadanie projektu: https://wis.fit.vutbr.cz/FIT/st/cwk.php.cs?title=Projekt_20202021&csid=722871&id=13964**
 
-## Názov a číslo tímu:
-* **Tím č.144: Tým xzatko02**
+## Názov tímu:
+* **Slovenská (j)elita**
 
 ## Členovia tímu:
 * **Tomáš Zaťko (xzatko02)**
 * **Martin Rakús (xrakus04)**
-* **Vu Thi Bao Ngoc (xvuthi00)**
 
-## Postup inštalácie:
-* **skopírovanie všetkých súborov na server, inštalácia Apache2**
-* **verzia pythonu: python 3.8**
-* **databáza: inštalácia MariaDB na serveri**
-* **verzia MariaDB: MariaDB 10.3.31**
-* **inicializácia databáze: použitý bol MySQL Workbench 8.0 CE, kde bol inicializovaný skript database.sql**
-* **import modulov/knižníc: flask, render_template, fpdf, qrcode, pymysql, datetime, json**
-* **následovaný postup nasadenia Flask aplikácie na Ubuntu server: https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps**
-
-## Odkazy na knižnice/moduly:
-* **https://flask.palletsprojects.com/en/2.0.x/**
-* **http://www.fpdf.org/**
-* **https://pypi.org/project/qrcode/**
-* **https://pypi.org/project/PyMySQL/**
-* **https://docs.python.org/3/library/datetime.html**
-* **https://docs.python.org/3/library/json.html**
-
+## Implementovaná funkcionalita:
+* **Editor podporuje prácu s blokmi s jednoduchými matematickými funkciami, operácie s vektormi a maticami.**
+* **Editor umožňuje zobraziť obsah knižnice typov blokov štrukturovných v kategóriách.**
+* **Vizuálne je každá inštancia obdĺžnik. Záhlavie zobrazuje typ a názov inštancie. Vľavo sú pomenované vstupné porty a napravo sú pomenované výstupné porty.**
+* **Editor iteratívne vyhodnocuje bloky s hodnotami zvolenými užívateľom.**
+* **Editor si pamätá posledné kroky vyhodnocovania blokov s hodnotami.**
+* **Editor podporuje uloženie súboru aktuálnej pracovnej plochy.**
